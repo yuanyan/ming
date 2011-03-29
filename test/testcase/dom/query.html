@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Selector Test Page</title>
+<script src="./query.js"></script>
+<script>
+
+    // Simple console
+
+    var konsole = {
+		
+        time: function (name) {
+            this._timers[name] = new Date().getTime();
+        },
+        timeEnd: function (name) {
+            var took = new Date().getTime() - konsole._timers[name];
+            this._timers[name] = null;
+            return took;
+        },
+        log: function (value, br) {
+            br = (typeof br === 'undefined') ? '<br>' : br;
+			var console= document.getElementById('konsole');
+            console.innerHTML += value + br;
+            console.scrollTop = console.scrollHeight; // Scroll to the bottom of the log
+        },
+        _timers: {}
+    };
+
+    // Test speed and accuracy
+    function benchmark(tests, times, wl) {
+        var len = tests.length, test, i, j, took;
+        times = times || 1;
+        wl = wl || '';
+        for (i = 0; i < len; i++) {
+            test = tests[i];
+            if ((wl && wl.indexOf(test.name) === -1) || !test.fn) continue;
+            j = times;
+            konsole.time(name);
+            while (j--) test.fn();
+            took = konsole.timeEnd(name);
+            konsole.log(test.name + ': ' + took + 'ms');
+        }
+        konsole.log('<hr>', '');
+
+    }
+
+    // Test cases
+    var tests = [];
+
+    // Run tests
+    function run() {
+        benchmark(tests, document.getElementById('times').value, '');
+    }
+	
+	function queryResult(obj, det){
+		 var value = (typeof det === 'undefined') ? obj.length : obj;
+         var log = document.getElementById('result');
+         log.innerHTML += value + '<br>';
+         log.scrollTop = log.scrollHeight; // Scroll to the bottom of the log
+	}
+	
+	 // Add test cases
+    window.onload = function() {
+	 
+        tests.push({name: '#ID',  fn: function() {
+			var r=$("#select");	
+			queryResult(r);
+        }});
+        tests.push({name: 'TAG',  fn: function() {
+			var r=$("DIV");
+			queryResult(r);			
+        }});
+		tests.push({name: '.CLSSS',  fn: function() {
+			var r=$(".myButton");
+			queryResult(r);	
+        }});
+		tests.push({name: 'tag.class',  fn: function() {
+			var r=$("input.myButton");
+			queryResult(r);	
+		}});
+
+		tests.push({name: '#id tag',  fn: function() {
+			var r=$("#textarea textarea");
+			queryResult(r);	
+		}});
+		
+		tests.push({name: '*',  fn: function() {
+			var r=$("*");
+			queryResult(r);	
+        }});
+		
+		tests.push({name: 'TAG#ID',  fn: function() {
+			var r=$("div#select");
+			queryResult(r);	
+        }});
+		
+		tests.push({name: '#ID .CLASS',  fn: function() {
+			var r=$("#input .myButton");
+			queryResult(r);	
+        }});
+				
+		tests.push({name: '.CLASS .CLASS',  fn: function() {
+			var r=$(".myForm .myButton");
+			queryResult(r);	
+        }});
+		
+		tests.push({name: '#id tag.class',  fn: function() {
+			var r=$("#input input.myButton");
+			queryResult(r);	
+		}});
+	
+		tests.push({name: '.class tag',  fn: function() {
+			var r=$(".myForm input");
+			queryResult(r);	
+		}});
+			
+		tests.push({name: 'tag tag',  fn: function() {
+			var r=$("form input");
+			queryResult(r);	
+		}});
+		
+		
+		tests.push({name: '#id #id',  fn: function() {
+			var r=$("#textarea #textarea1");
+			queryResult(r);	
+		}});
+		
+
+		tests.push({name: '#id tag tag',  fn: function() {
+			var r=$("#textarea p textarea");
+			queryResult(r);	
+		}});
+		
+		tests.push({name: '#id tag > tag',  fn: function() {
+			var r=$("#textarea p > textarea");
+			queryResult(r);	
+		}});			
+		
+		tests.push({name: 'TAG#ID > TAG',  fn: function() {
+			var r=$("div#select > p");
+			queryResult(r);	
+		}});
+		
+		var context=document.getElementById("input");
+		
+		tests.push({name: 'TAG , CONTEXT ',  fn: function() {
+			var r=$("p",context);
+			queryResult(r);	
+		}});
+		tests.push({name: '#ID , CONTEXT ',  fn: function() {
+			var r=$("#box1",context);
+			queryResult(r);	
+		}});
+
+		tests.push({name: '.CLASS , CONTEXT ',  fn: function() {
+			var r=$(".myButton",context);
+			queryResult(r);	
+		}});	
+		
+		tests.push({name: 'TAG#ID > TAG',  fn: function() {
+			var r=$("div#select>p");
+			queryResult(r);	
+		}});		
+		
+    }
+
+</script>
+
+
+<style type="text/css">
+    body {
+        margin: 0;
+        padding: 15px;
+        font-size: 12px;
+        font-family: Verdana, Arial, sans-serif;
+    }
+    #konsole {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 300px;
+        height: 320px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        padding: 5px;
+        background: #fafafa;
+        overflow: auto;
+        margin: 15px 0;
+        font-family: Consolas, "Courier New", Courier, monospace;
+    }
+    #result {
+        position: absolute;
+        top: 350px;
+        right: 10px;
+        width: 300px;
+        height: 312px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+        padding: 5px;
+        background: #fafafa;
+        overflow: auto;
+        margin: 15px 0;
+        font-family: Consolas, "Courier New", Courier, monospace;
+    }
+</style>
+
+</head>
+<body>
+<div id="konsole"></div>
+<div id="result"></div>
+
+<h1>Selector Test Page</h1>
+<p>
+<input onclick="run()"class="myButton" type="submit" value="TEST" /> <input type="text" value="1" id="times" size="4"/> times </p>
+</p>
+<hr />
+<form class="myForm" name="form1" action="" method="" accept-charset="utf-8">
+
+	<div id="select">
+	<h2>HTMLSelectElement</h2>
+	<p><select name="select1">
+		<option value="1">option1</option>
+		<option value="2">option2</option>
+	</select></p>
+	</div>
+	
+	<div id="input">
+	<h2>HTMLInputeElement</h2>
+	<h3>checkbox</h3>
+	<p><input id="box1" name="checkbox" type="checkbox"  checked="" value="checkbox1"/>checkbox1</p>
+	<p><input id="checkbox" name="checkbox" type="checkbox"  checked="" value="checkbox2"/>checkbox2</p>
+	<h3>radio</h3>
+	<p><input name="radio" type="radio" value="radio1">radio1</p>
+	<p><input name="radio" type="radio" value="radio2">radio2</p>
+	<p><!--<input type="image" src="http://arale.alipay.net/media/arale.png">--></p>
+	<p><input type="file"></p>
+	<p><input name="" type="hidden"></p>
+	<p><input class="myButton" type="submit" value="Continue" /></p>
+	</div>
+	
+	<div id="textarea">
+	<h2>HTMLTextAreaElement</h2>
+	<p><textarea id="textarea1" name="textarea1"></textarea></p>
+	</div>
+
+</form>
+
+
+
+</body>
+</html>
