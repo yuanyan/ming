@@ -1,6 +1,6 @@
 module("lang.Base",function(global){
 	
-  	var DOM = global.document,
+    var DOM = global.document,
 		toString = Object.prototype.toString,
 		config = global.moduleConfig;
 
@@ -102,7 +102,6 @@ module("lang.Base",function(global){
     var isNumber = function(obj){
 		//当obj通过 new Nubmer 封装类构造时   typeof obj === "object" 
         return (typeof obj === "number"||obj instanceof Number) && isFinite(obj);
-    	
 		//toString.call(obj)==="object Number"
 	};
     /**
@@ -145,7 +144,7 @@ module("lang.Base",function(global){
 	 */
 	var isObject =function(obj){
 		return toString.call(obj) === "[object Object]";
-	}
+	};
     
     /**
      * 空对象判断
@@ -153,7 +152,7 @@ module("lang.Base",function(global){
      * @retrun {Boolean}
      */
     var isEmptyObject = function(obj){
-        for (var name in obj) {
+        for (var key in obj) {
             return false;
         }
         return true;
@@ -248,7 +247,7 @@ module("lang.Base",function(global){
      */
     var error = function(msg){
 		if (config.debug)
-        	throw new Error(msg);
+            throw new Error(msg);
     };
 	
     /**
@@ -305,7 +304,9 @@ module("lang.Base",function(global){
     * @param {Object} obj
     */ 
    var dump = function(obj){
-   		var msg="Type:"+toString.call(obj)+" "+obj+"\n", name;
+        var msg="Type:"+toString.call(obj)+" "+obj+"\n",
+            name;
+            
 		if (isObject(obj)) {
 			var hasPM = "Object Property&Method:\n";
 			for (name in obj) {

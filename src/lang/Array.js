@@ -4,10 +4,10 @@
  */
 module("lang.Array",function(){
 	
-  	//IMPORT
+    //IMPORT
 	var Base = module("lang.Base");
 	
-  	/*Array extentions start */
+    /*Array extentions start */
 
     /**
 	 * remove the element from the first argument to the second argument,
@@ -49,7 +49,7 @@ module("lang.Array",function(){
         // loop will not affect the looping.   		
         var len = array.length;
 
-        if (len == 0){
+        if (len === 0){
             return - 1;
         }
 
@@ -71,9 +71,9 @@ module("lang.Array",function(){
             return - 1;
         }
         // Lookup through the array.
-        for (var i = fromIndex; i < len; i++){
-            if (array[i] === undefined && i in array){
-                return i;
+        for (var j = fromIndex; j < len; j++){
+            if (array[j] === undefined && j in array){
+                return j;
             }
         }
         return - 1;

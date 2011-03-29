@@ -3,27 +3,27 @@
  * @class
  */
 module("lang.String", function(){
-    var trimLeft = /^\s+/, trimRight = /\s+$/;
+    var LEFT = /^\s+/, RIGHT = /\s+$/;
     
     /**
      * ECMA-262-5 15.5.4.20
      * Trims whitespace from both ends of the string
      */
     var trim = function(str){
-        return str.replace(trimLeft, "").replace(trimRight, "");
+        return str.replace(LEFT, "").replace(RIGHT, "");
     };
     /**
      * Trims whitespace from the left side of the string
      */
     var trimLeft = function(str){
-        return str.replace(trimLeft, "");      
+        return str.replace(LEFT, "");      
     };
     
     /**
      * Trims whitespace from the right side of the string
      */
     var trimRight = function(str){
-        return str.replace(trimRight, "")
+        return str.replace(RIGHT, "");
     };
     
 	//EXPOSE
@@ -31,5 +31,5 @@ module("lang.String", function(){
 		"trim":trim,
 		"trimLeft" : trimLeft,
 		"trimRight" : trimRigh	
-	}
+	};
 });
