@@ -15,7 +15,8 @@ yuanyan.cao@gmail.com
 * Rich utility class
 
 ###Links
-* [Google Group](http://groups.google.com/group/modulejs) for discussion
+* [Google Group for discussion](http://groups.google.com/group/modulejs)
+* [Visit the Wiki](https://github.com/yuanyan/modulejs/wiki)
 
 ###License
 
