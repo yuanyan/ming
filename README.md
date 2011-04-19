@@ -14,6 +14,10 @@ yuanyan.cao@gmail.com
 * Template engine
 * Rich utility class
 
+###Guide
+
+http://madscript.com/modulejs/#guide
+
 ###Links
 * [Google Group for discussion](http://groups.google.com/group/modulejs)
 * [Visit the Wiki](https://github.com/yuanyan/modulejs/wiki)
