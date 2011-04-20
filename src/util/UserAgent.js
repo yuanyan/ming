@@ -1,6 +1,5 @@
 /**
- * @name util.UserAgent
- * @namespace
+ * Clsss: UserAgent
  * 
  * 通常推荐用特性探测替代浏览器嗅探。特性探测的好处是能自动适应未来设备和未知设备，
  * 比如if(document.addEventListener) 假设 IE9 支持标准事件，则代码不用修改，

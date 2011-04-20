@@ -1,6 +1,5 @@
 /**
- * @name dom.Dom
- * @namespace
+ * Class: Dom
  */
 module("dom.Dom",function(global){
 	
@@ -11,8 +10,9 @@ module("dom.Dom",function(global){
 	
 	var DOM=document,Dom=new Node(document);
 	
-	/**
-	 * 是否为节点
+	
+	
+	/*
 	 * Node.ELEMENT_NODE = 1; // Element
 	 * Node.ATTRIBUTE_NODE = 2;               // Attr
 	 * Node.TEXT_NODE = 3;                    // Text
@@ -22,26 +22,41 @@ module("dom.Dom",function(global){
 	 * Node.DOCUMENT_NODE = 9;                // Document
 	 * Node.DOCUMENT_TYPE_NODE = 10;          // DocumentType
 	 * Node.DOCUMENT_FRAGMENT_NODE = 11;      // DocumentFragment
-	 * @param {*} node
-	 * @return {Boolean}
+	 */	
+	
+	/**
+	 * Function: isNode
+	 * 是否为节点
+	 * 
+	 * Parameters:
+	 *  node - {*}
+	 *  
+	 * Returns: {Boolean}
 	 */
     var isNode = function(node){     
         return (node && node.nodeType) || node instanceof Node;
     };
 		
 	/**
+	 * Function: create
 	 * 创建元素节点
-	 * @param {String} tagName 元素标签名
-	 * @return {Node} element
+	 * 
+	 * Parameters:
+	 *   tagName- {String} 元素标签名
+	 *   
+	 * Returns: {Node} element
 	 */
-	var create=function(tagName){
+	var create = function(tagName){
 		var elem=DOM.createElement(tagName);	
 		return new Node(elem);
 	};
 	
 	/**
+	 * Function: 
 	 * 移除符合选择器的所有节点
-	 * @param {String} selector
+	 * 
+	 * Parameters:
+	 *  selector - {String}
 	 */	
 	var remove=function(selector){ 
 		
@@ -53,13 +68,16 @@ module("dom.Dom",function(global){
 	
 	
     /**
+     * Function: addStyle
      * 添加CSS样式
-     * @param {String} cssText 
+     * 
+     * Parameters:
+     *  cssText - {String}
      */
     var addStyle = function(cssText){
         var elem = create('style');
 		
-        //此处需先把style节点添加至head下 
+        // 此处需先把style节点添加至head下 
         DOM.getElementsByTagName('head')[0].appendChild(elem);
         
         if (elem.styleSheet) { // IE

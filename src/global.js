@@ -1,8 +1,13 @@
+﻿//Namespaces: global
+
 var module = (function(global, undefined){
 
+	//Group: Native extension
+
 	/**
-	 * ECMA-262-5 15.5.4.20
-	 * Trims whitespace from both ends of the string
+	 * Function: String.prototype.trim
+	 * 	ECMA-262-5 15.5.4.20
+	 * 	Trims whitespace from both ends of the string
 	 */
 	String.prototype.trim ||
 	(String.prototype.trim = function(){
@@ -10,10 +15,13 @@ var module = (function(global, undefined){
 	});
 
 	/**
-	 * ECMA-262-5 15.4.4.18
-	 * Calls a function for each element in the array.
-	 * @param {Object} callbackfn
-	 * @param {Object} thisArg   {optional}
+	 * Function: Array.prototype.forEach
+	 * 	ECMA-262-5 15.4.4.18
+	 * 	Calls a function for each element in the array.
+	 * 
+	 * Parameters:
+	 * 	callbackfn - {Object} 
+	 *	thisArg - {Object} {optional}
 	 */
 	Array.prototype.forEach ||
 	(Array.prototype.forEach = function(callbackfn, thisArg){
@@ -31,20 +39,26 @@ var module = (function(global, undefined){
 	});
 
 	/**
-	 * ECMA-262-5 15.3.4.5
-	 * Sets the value of this inside the function to always be
-	 * the value of thisArg when the function is called. Optionally,
-	 * function arguments can be specified (arg1, arg2, etc) that will
-	 * automatically be prepended to the argument list whenever this
-	 * function is called.
+	 * Function: Function.prototype.bind
+	 * 	ECMA-262-5 15.3.4.5
+	 * 	Sets the value of this inside the function to always be
+	 * 	the value of thisArg when the function is called. Optionally,
+	 * 	function arguments can be specified (arg1, arg2, etc) that will
+	 * 	automatically be prepended to the argument list whenever this
+	 * 	function is called.
 	 *
-	 * @param  {Function} thisArg
-	 * @param  {Object} arg1 {optinal}
-	 * @param  {Object} arg2 {optinal}
-	 * @example var flatFunction = obj.method.bind(obj);
+	 * Parameters:
+	 * 	thisArg - {Function} 
+	 * 	arg1 - {Object} {optinal}
+	 * 	arg2 - {Object} arg2 {optinal}
+	 *
+	 * Example:
+	 *  (code)
+	 *	var flatFunction = obj.method.bind(obj);
+	 *  (end)
 	 */
 	Function.prototype.bind ||
-	(Function.prototype.bind = function(thisArg/*[arg1],[arg2],...*/){
+	(Function.prototype.bind = function(thisArg/* ,[arg1],[arg2],...*/){
 		if (!typeof this === "function") 
 			throw new Error("Bind must be called on a function");
 		
@@ -80,7 +94,7 @@ var module = (function(global, undefined){
 	});
 
 
-
+	//Group: module
 	
 	global.moduleConfig = global.moduleConfig||{};//配置项
 	
@@ -163,7 +177,6 @@ var module = (function(global, undefined){
 	};
 	
 	/**
-     * @private
      * DOM Ready 处理
      */
     var ready = function(fn){
@@ -236,13 +249,23 @@ var module = (function(global, undefined){
             }
     };	
 	
- 	/**
-	 * 模块声明，模块名称大小写敏感
-	 * @param {String} ns 命名空间
-	 * @param {Function} fn 模块
-	 * @return {Object} module
-	 * @example  module("lang.JSON",function(global){});
-	 */
+	/*
+	Function: module
+		模块声明
+		
+	Parameters:
+		ns - {String} 模块命名空间,大小写敏感
+		fn - {Function} 模块
+		
+	Returns:
+		module - {Object}
+		
+	Example:
+		(code)
+		module("lang.JSON",function(global){});
+		(end)		
+			
+	*/	 
     var module = function(ns, fn){
 		if(ns == undefined) return;
     
@@ -255,6 +278,13 @@ var module = (function(global, undefined){
         
     };
 	
+	/*
+	Function: module.load
+		模块加载
+		
+	Parameters:
+		namespace - {String|Array} 
+	*/	 
 	module.load = function(namespace){
 		
 		if(namespace instanceof Array){
@@ -267,10 +297,13 @@ var module = (function(global, undefined){
 
 	};
     
-    /**
-     * onReady 事件注册
-     * @param {Function} fn
-     */
+	/*
+	Function: module.onReady
+		onReady 事件注册
+		
+	Parameters:
+		fn - {Function}
+	*/	 
 	module.onReady = function(fn){
 
 		function run(){

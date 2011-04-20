@@ -1,9 +1,15 @@
+
 module("net.JSONP", function(global){
 	
 	var Base = module("lang.Base"),
 		Uri = module("util.Uri"),
 		Loader = module("util.Loader");
 	
+	/**
+	 * Class: JSONP
+	 * JSONP请求
+	 * 
+	 */
 	var JSONP = function(){
 		this._opts = {
 		        "url": location.href, //请求地址，默认为当前地址
@@ -39,6 +45,14 @@ module("net.JSONP", function(global){
 		
 	};		
 	
+	/**
+	 * Function: send
+	 * 发送请求
+	 * 
+	 * Parameters:
+	 *  opts - {Object} 
+	 *  callback - {Function} 成功后回调函数
+	 */
 	JSONP.prototype.send = function(opts,callback){
 		
 		var url,
@@ -66,7 +80,11 @@ module("net.JSONP", function(global){
 		
 		Loader.load("script", url, jsonpId, onComplate);
 	};
-
+	
+	/**
+	 * Function:abort
+	 * 取消请求
+	 */
 	JSONP.prototype.abort = function(){
 		if (this.jsonpId) {
 			var script = global.document.getElementById(this.jsonpId); //删除注入节点

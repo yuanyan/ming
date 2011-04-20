@@ -1,8 +1,7 @@
 // moo.fx.js version 2.0 
 //(c) 2006 Valerio Proietti (http://mad4milk.net). MIT-style license.
 /**
- * @name fx.Color
- * @class
+ * Class: Color
  */
 module("fx.Color", function(){
 	

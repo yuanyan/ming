@@ -1,6 +1,5 @@
 /**
- * @name Ajax
- * @class
+ * Class: Ajax
  */
 module("net.Ajax", function(global){
 	
@@ -9,8 +8,14 @@ module("net.Ajax", function(global){
 		Request = module("net.Request");
 	
 	/**
+	 * Function: ajax
 	 * AJAX请求
-	 * @example
+	 * 
+	 * Parameters:
+	 * 	opts - {Object}
+	 * 
+	 * Example:
+	 * (code)
 	  ajax({
 	   url: 'ajax_demo/sample.json',
 	   method:'POST',
@@ -28,6 +33,7 @@ module("net.Ajax", function(global){
 	      console.log('server-side failure with status code ' + response.status);
 	   }
 	});
+	(end)
 	 */
 	var ajax= function(opts){
 		var request = new Request;
@@ -35,11 +41,14 @@ module("net.Ajax", function(global){
 	};
 	
 	/**
+	 * Function: get
 	 * GET方式请求
-	 * @param {Object} url
-	 * @param {Object} data
-	 * @param {Object} success
-	 * @param {Object} type
+	 * 
+	 * Parameters:
+	 * 	url - {Object} 
+	 * 	data - {Object} 
+	 * 	success - {Object} 
+	 * 	type - {Object}
 	 */
 	var get= function( url, data, success, type ) {
 		// 如果没有data，则shift参数位置
@@ -59,11 +68,14 @@ module("net.Ajax", function(global){
 	};
 	
 	/**
+	 * Function: post
 	 * POST方式请求
-	 * @param {Object} url
-	 * @param {Object} data
-	 * @param {Object} success
-	 * @param {Object} type
+	 * 
+	 * Parameters:
+	 * 	url - {Object} 
+	 * 	data - {Object} 
+	 * 	success - {Object}
+	 * 	type - {Object} 
 	 */
 	var post= function( url, data, success, type ){
 		// 如果没有data，则shift参数位置

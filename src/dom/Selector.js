@@ -1,3 +1,6 @@
+//Class: Selector
+//轻量选择器
+//
 //支持以下三种选择器：
 //1.简单选择器
 // #id
@@ -20,18 +23,6 @@
 // http://github.com/jeresig/sizzle
 // http://james.padolsey.com/javascript/mini/
 
-/**
- * 
- * 轻量选择器
- * 
- * @name dom.Selector
- * @namespace
- *
- * @param {String} query 查询表达式
- * @param {Object} context 查询上下文
- * @param {Function} filter 过滤规则
- * @return {Array}
- */
 module("dom.Selector", function(global){
 	
 	//IMPORT
@@ -64,7 +55,18 @@ module("dom.Selector", function(global){
 
         }
     };
-
+	
+	/**
+	 * Function: select
+	 * 节点查询
+	 * 
+	 * Parameters:
+	 *  query - {String}  查询表达式
+	 *  context - {Object} 查询上下文
+	 *  filter - {Function} 过滤规则
+	 *  
+	 * Returns: {Array[DOMNode]}
+	 */
     var select = function (query, context, filter) {
         if (!context) context = DOM; // 默认上下文为整个DOM  
         //FIX:修正 context===undefined 判断为 !context 或  context = context || DOM , 允许 select("#id",null)
@@ -288,10 +290,7 @@ module("dom.Selector", function(global){
 	
 	//EXPOSE
 	return {
-		"select": select,
-		"getElementsByClass" : getElementsByClass,
-		"getElementsByTag" : getElementsByTag,
-		"getElementById" : getElementById
+		"select": select
 	};
 	
 });

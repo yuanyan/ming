@@ -1,36 +1,34 @@
-/**
- * 
- * @name Cookie
- * @class
- *
- * Cookie操作的静态工具类
- * TODO：添加storage事件，当数据被修改、添加、删除时触发storage事件
- * 
- */
-
-/*
+﻿/*
 interface Storage{
-	attribute length;
-	public key();
-	public set();
-	string get();
-	void reomve();
+	number length();
+	string key(number index);
+	void set(string key,object val);
+	object get(strin key);
+	void reomve(string key);
 }
-implement Storage
+Cookie implement Storage
 */
 
+/*
+ Class: Cookie
+	Cookie操作的静态工具类
+	TODO：添加storage事件，当数据被修改、添加、删除时触发storage事件
+*/
 module("storage.Cookie", function(global){
 	
 	var cookie=global.document.cookie;
     
-    /**
-     * 设置cookie
-     * @param {Object} name
-     * @param {Object} value
-     * @param {Object} expires
-     * @param {Object} path
-     * @param {Object} domain
-     * @param {Object} secure
+    /*
+	Function: set
+		设置cookie
+
+	Parameters:
+		name - Object
+		value - Object
+		expires - Object
+		path - Object
+		domain - Object
+		secure - Object
      */
     var setCookie = function(name, value, expires, path, domain, secure){
         var curcookie = name + "=" + encodeURIComponent(value) + ((expires) ?
@@ -44,10 +42,16 @@ module("storage.Cookie", function(global){
                 document.cookie = curcookie;
     };
     
-    /**
-     * 取出cookie
-     * @param {Object} name
-     */
+    /*
+	Function: get
+		取出cookie
+		
+	Parameters:
+		name - string
+		
+	Returns:
+		string
+    */
     var getCookie = function(name){
         var prefix = name + "=";
         var cookieStartIndex = cookie.indexOf(prefix);
@@ -59,43 +63,52 @@ module("storage.Cookie", function(global){
         return decodeURIComponent(cookie.substring(cookieStartIndex + prefix.length, cookieEndIndex));
     };
 	
-    /**
-     * 清除cookie
-     * @param {Object} name
-     * @param {Object} path
-     * @param {Object} domain
-     */
+    /*
+	Function: remove
+		清除cookie
+		
+	Parameters:
+		name - string
+		path - string
+		domain - string
+    */	 
     var removeCookie = function(name, path, domain){
         if (getCookie(name)) {		
 			setCookie(name, "", new Date(0), path, domain);
         }
     };
-	
-	/**
-	 * return the number of cookie item 
-	 * @return {Number} number
-	 */
+
+    /*
+	Function: length
+		返回当前cookie已存项目数
+		
+	Returns:
+		number
+    */	 
 	var length = function(){
 		var items = cookie.split(';');
 		return items.length;
 	};
 	
-	/**
-	 * 按索引取存储项
-	 * @param {Number} index
-	 * @return {Object} item
-	 */
+    /*
+	Function: key
+		按索引值获取存储项的key
+		
+	Parameters:
+		index - Number
+		
+	Returns:
+		string
+    */	 
 	var key = function(index){
 		
-		var item=null,items = cookie.split(";");
+		var key=null, items = cookie.split(";");
 		
 		if(items[index]){
-			item = items[index].split("=");
-			var key=item[0],val= decodeURIComponent(item[1]);
-			item = {key:val};			
+			key = items[index].split("=")[0];
 		}
-				
-		return item;
+
+		return key;
 		
 	};
 	
@@ -116,64 +129,3 @@ module("storage.Cookie", function(global){
  *     目前modulejs的API设计上在可扩展性和可读性上更好，更适合企业应用开发
  *
  */
-
-
-/*
-  Copyright (c) 2006 Klaus Hartl (stilbuero.de)
-  Dual licensed under the MIT and GPL licenses:
-  http://www.opensource.org/licenses/mit-license.php
-  http://www.gnu.org/licenses/gpl.html  
- */	
-	/**
-	 * cookie操作的简洁方法
-	 * 
-	 * @param {Object} name 
-	 * @param {Object} value 
-	 * @param {Object} options
-	 */
-	/**
-    var cookie = function(name, value, options){
-        if (typeof value != 'undefined') { // name and value given, set cookie
-            options = options || {};
-            if (value === null) {
-                value = '';
-                options.expires = -1;
-            }
-            var expires = '';
-            if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
-                var date;
-                if (typeof options.expires == 'number') {
-                    date = new Date();
-                    date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
-                }
-                else {
-                    date = options.expires;
-                }
-                expires = '; expires=' + date.toUTCString(); // use expires attribute, max-age is not supported by IE
-            }
-            // CAUTION: Needed to parenthesize options.path and options.domain
-            // in the following expressions, otherwise they evaluate to undefined
-            // in the packed version for some reason...
-            var path = options.path ? '; path=' + (options.path) : '';
-            var domain = options.domain ? '; domain=' + (options.domain) : '';
-            var secure = options.secure ? '; secure' : '';
-            cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('');
-        }
-        else { // only name given, get cookie
-            var cookieValue = null;
-            if (cookie && cookie != '') {
-                var cookies = cookie.split(';');
-                for (var i = 0; i < cookies.length; i++) {
-                    var cookie = cookies[i].trim();
-                    // Does this cookie string begin with the name we want?
-                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
-                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                        break;
-                    }
-                }
-            }
-            return cookieValue;
-        }
-    };
-	
-**/

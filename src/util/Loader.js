@@ -1,3 +1,6 @@
+/**
+ * Class: Loader
+ */
 module("util.Loader",function(global){
 				
   	var config = {   //默认配置项
@@ -6,11 +9,14 @@ module("util.Loader",function(global){
 	
 
 	/**
+	 * Function: load
 	 * 加载资源文件
-	 * @param {String} type 资源类型
-	 * @param {String} url  资源地址 如：http://www.example.com/js/san/base.js
-	 * @param {String} opt_id   元素ID
-	 * @param {Function} opt_callback 加载成功后得到回调函数
+	 * 
+	 * Parameters:
+	 * 	type - {String} 资源类型
+	 * 	url - {String} 资源地址 如：http://www.example.com/js/san/base.js
+	 * 	opt_id - {String} 元素ID
+	 * 	opt_callback - {Function} 加载成功后得到回调函数
 	 */
 	var load = function(type, url, opt_id, opt_callback){
 		

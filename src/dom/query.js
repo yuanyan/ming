@@ -1,3 +1,6 @@
+/**
+ * Namespace: query
+ */
 module("dom.query",function(){
 	
 	var NodeList = module("dom.NodeList"), 

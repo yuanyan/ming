@@ -1,14 +1,13 @@
-/**
- * @name Request
- * @class
- * 支持before loading complete success error abort事件
- * 
- */
+
 module("net.Request",function (global){
 	
 	var Base = module("lang.Base"),
 		Uri = module("util.Uri");
-	
+		
+	/**
+	 * Class: Request
+	 * 支持before loading complete success error abort事件
+	 */
 	var Request= function(){
 		this._xhr = this.createRequest();
 		this._opts = {
@@ -59,9 +58,12 @@ module("net.Request",function (global){
     };
 	
     /**
+     * Function: setHeader
      * 设置请求头信息
-     * @param {Object} name
-     * @param {Object} value
+     * 
+     * Parameters:
+     * 	 name - {String|Object}
+     * 	 value - {Object}
      */
      Request.prototype.setHeader = function(name, value){
 		var key;
@@ -75,9 +77,11 @@ module("net.Request",function (global){
     };
 	
     /**
+     * Function: send
      * 发送请求
-     * @param {XMLHttpRequest} xhr
-     * @param {Object} opts
+     * 
+     * Parameters:
+     *  opts - {Object} 
      */
      Request.prototype.send = function(opts){
 		//选项预处理
@@ -153,6 +157,7 @@ module("net.Request",function (global){
     };
 	
     /**
+     * Function: abort
      * 取消请求
      */
      Request.prototype.abort = function(){

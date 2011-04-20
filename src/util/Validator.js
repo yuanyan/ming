@@ -1,6 +1,5 @@
 /**
- * @name util.Validator
- * @namespace
+ * Class: Validator
  */
 module("util.Validator",function(global){
 	
@@ -22,51 +21,158 @@ module("util.Validator",function(global){
 		return pattern.test(str);
 	};
 	
+	/**
+	 * Function: isAlpha
+	 * 英文字符验证
+	 * 
+	 * Parameters:
+	 * 	str - {String}
+	 * 
+	 * Returns: {Boolean}
+	 */
 	var isAlpha = function(str){	
 		return validate(str,ALPHA);
 	};
 
+	/**
+	 * Function: isChinese
+	 * 中文字符验证
+	 * 
+	 * Parameters:
+	 * 	str - {String}
+	 * 
+	 * Returns: {Boolean}
+	 */
 	var isChinese = function(str){	
 		return validate(str,CHINESE);
 	};
 
+	/**
+	 * Function: isInteger
+	 * 整数验证，支持 001格式
+	 * 
+	 * Parameters:
+	 * 	str - {String}
+	 * 
+	 * Returns: {Boolean}
+	 */
 	var isInteger = function(str){	
 		return validate(str,INTEGER);
 	};
 
+	/**
+	 * Function: isNumber
+	 * 整数或浮点数验证
+	 * 
+	 * Parameters:
+	 * 	str - {String}
+	 * 
+	 * Returns: {Boolean}
+	 */
 	var isNumber = function(str){	
 		return validate(str,NUMBER);
 	};
 
+	/**
+	 * Function: isPost
+	 * 邮政编码验证
+	 * 
+	 * Parameters:
+	 * 	str - {String}
+	 * 
+	 * Returns: {Boolean}
+	 */
 	var isPost = function(str){	
 		return validate(str,POST);
 	};
 
-	
+	/**
+	 * Function: isEmail
+	 * 邮箱格式验证
+	 * 
+	 * Parameters:
+	 * 	str - {String}
+	 * 
+	 * Returns: {Boolean}
+	 */	
 	var isEmail = function(str){
 		return validate(str,EMAIL);
 	};
 
+	/**
+	 * Function: isPid
+	 * 身份证验证，15位或18位
+	 * 
+	 * Parameters:
+	 * 	str - {String}
+	 * 
+	 * Returns: {Boolean}
+	 */
 	var isPid = function(str){	
 		return validate(str,PID);
 	};
 
+	/**
+	 * Function: isMobile
+	 * 手机号码验证
+	 * 
+	 * Parameters:
+	 * 	str - {String}
+	 * 
+	 * Returns: {Boolean}
+	 */
 	var isMobile = function(str){	
 		return validate(str,MOBILE);
 	};						
 
+	/**
+	 * Function: isTel
+	 * 电话号码验证，格式：0571-852947**
+	 * 
+	 * Parameters:
+	 * 	str - {String}
+	 * 
+	 * Returns: {Boolean}
+	 */
 	var isTel = function(str){	
 		return validate(str,TEL);
 	};				
 
+	/**
+	 * Function: isUrl
+	 * URL地址验证
+	 * 
+	 * Parameters:
+	 * 	str - {String}
+	 * 
+	 * Returns: {Boolean}
+	 */
 	var isUrl = function(str){	
 		return validate(str,URL);
 	};				
 
+	/**
+	 * Function: isDate
+	 * 日期验证
+	 * 
+	 * Parameters:
+	 * 	str - {String}
+	 * 
+	 * Returns: {Boolean}
+	 */
 	var isDate = function(str){	
 		return validate(str,DATE);
 	};	
-	
+
+	/**
+	 * Function: isName
+	 * 中文姓名验证
+	 * 
+	 * Parameters:
+	 * 	str - {String}
+	 * 
+	 * Returns: {Boolean}
+	 */	
 	var isName = function(str){	
 		return validate(str,NAME);
 	};					

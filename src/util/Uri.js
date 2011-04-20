@@ -1,6 +1,5 @@
 /**
- * @name util.Uri
- * @class
+ * Class: Uri
  */
 module("util.Uri",function(global){
 	
@@ -9,12 +8,20 @@ module("util.Uri",function(global){
 	//http://www.example.com:80/index.php?mod=foo&action=foo
 	//var reg=/^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([0-9.\-A-Za-z]+)+)?(?:\?([&=\w]+))?$/;
 	/**
+	 * Function: deparam
 	 * 参数解析为对象
-	 * @param {String} uri
-	 * @return {Object} obj
-	 * @example
+	 * 
+	 * Parameters:
+	 * 
+	 *  uri - {String}
+	 * 
+	 * Returns: {Object} obj
+	 * 
+	 * Example:
+	 * (code)
 	 *   var url="http://www.example.com:80/index.php?mod=foo&action=foo";
 	 *   var obj= deparam(url); //return {"mod":foo,"action":foo}
+	 * (end) 
 	 */
 	var deparam=function(uri){
 		
@@ -29,9 +36,13 @@ module("util.Uri",function(global){
 	
 
 	/**
+	 * Function: param
 	 * 参数化
-	 * @param {Object|String} obj
-	 * @return {String} str
+	 * 
+	 * Parameters:
+	 * 	obj - {Object|String}
+	 * 
+	 * Returns: {String} str
 	 */	
 	var param = function(obj){
 		var r = [], 

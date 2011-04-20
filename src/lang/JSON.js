@@ -1,6 +1,5 @@
 /**
- * @name lang.JSON
- * @namespace
+ * Class: JSON
  */
 module("lang.JSON",function(global){
 	
@@ -191,13 +190,16 @@ module("lang.JSON",function(global){
         }
 
         /**
+         * Function: parse
          * ECMA-262-5 15.12.2
          * The parse method takes a text and an optional reviver function,
          * and returns a JavaScript value if the text is a valid JSON text.
-         * @lends lang.JSON
-         * @param {Object} text
-         * @param {Object} reviver {optional}
-         * @return {String}
+         * 
+         * Parameters:
+         *  text - {Object}
+         * 	reviver - {optional} {Object}
+         * 
+         * Returns: {String}
          */
         var parse = function(text, reviver){
 
@@ -280,7 +282,8 @@ module("lang.JSON",function(global){
 
 
 
-        /**  
+        /**
+         * Function: stringify
          * ECMA-262-5 15.12.3
          * This method produces a JSON text from a JavaScript value.
          * The stringify method takes a value and an optional replacer, and an optional
@@ -288,20 +291,24 @@ module("lang.JSON",function(global){
          * that can replace values, or an array of strings that will select the keys.
          * A default replacer method can be provided. Use of the space parameter can
          * produce text that is more easily readable.
-         * @lends lang.JSON
-         * @param {Object} value
+         * 
+         * Parameters:
+         *  value - {Object}
          * 					any JavaScript value, usually an object or array.
-         * @param {Object} replacer {optional}
+         *  replacer - {optional} {Object} 
          * 					an optional parameter that determines how object
          * 					values are stringified for objects. It can be a
          * 					function or an array of strings.
-         * @param {Object} space  {optional}
+         * 	space - {optional} {Object}  
          * 					an optional parameter that specifies the indentation
          * 					of nested structures. If it is omitted, the text will
          * 					be packed without extra whitespace. If it is a number,
          * 					it will specify the number of spaces to indent at each
          * 					level. If it is a string (such as '\t' or '&nbsp;'),
          * 					it contains the characters used to indent at each level.
+         * 
+         * Returns:
+         *  {String} 
          */
         var stringify = function(value, replacer, space){
 

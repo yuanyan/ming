@@ -1,3 +1,6 @@
+/**
+ * Class: Base
+ */
 module("lang.Base",function(global){
 	
     var DOM = global.document,
@@ -5,9 +8,11 @@ module("lang.Base",function(global){
 		config = global.moduleConfig;
 
     /**
+     * Function: isIterable
      * 对象是否可以迭代 ：原生数组 NodeList HTMLCollection
-     * @lends san
-     * @param {Object} obj
+     * 
+     * Parameters:
+     *  obj - {Object}
      */
     var isIterable = function(obj){
         //array or arguments
@@ -24,12 +29,16 @@ module("lang.Base",function(global){
     };
         
     /**
+     * Function: toArray
      * 转化任意对象为数组
-     * @lends san
-     * @param {Object} obj
-     * @param {Number} opt_start
-     * @param {Number} opt_end
-     * @return (Array) array
+     * 
+     * Parameters:
+     *  obj - {Object}
+     * 	opt_start - {Number} 
+     * 	opt_end - {Number}
+     * 
+     * Returns:
+     *  (Array) array
      */
     var toArray = function(obj,opt_start,opt_end){
 		//the null and ndefined return empty array
@@ -61,9 +70,14 @@ module("lang.Base",function(global){
 	
 
     /**
+     * Functions: isArray
      * 数组判断
-     * @param {Object} obj
-     * @retrun {Boolean}
+     * 
+     * Parameters:
+     *  obj - {Object}
+     *  
+     * Returns: 
+     * 	{Boolean}
      */
     var isArray = function(obj){
         //首选浏览器内置提供的isArray方法
@@ -85,9 +99,14 @@ module("lang.Base",function(global){
     };
     
     /**
+     * Function: isFunction
      * 函数判断
-     * @param {Object} obj
-     * @retrun {Boolean}
+     * 
+     * Parameters:
+     * 	 obj - {Object}
+     * 
+     * Returns:
+     *  {Boolean}
      */
     var isFunction = function(obj){
         return typeof obj === "function";
@@ -95,9 +114,14 @@ module("lang.Base",function(global){
     };
     
     /**
+     * Function: isNumber
      * 数字判断
-     * @param {Object} obj
-     * @return {Boolean} 为无穷大Infinity与负无穷大-InfInity时返回false
+     * 
+     * Parameters:
+     *  obj - {Object}
+     *  
+     * Returns:
+     *  {Boolean} 为无穷大Infinity与负无穷大-InfInity时返回false
      */
     var isNumber = function(obj){
 		//当obj通过 new Nubmer 封装类构造时   typeof obj === "object" 
@@ -105,9 +129,14 @@ module("lang.Base",function(global){
 		//toString.call(obj)==="object Number"
 	};
     /**
+     * Function: isString
      * 字符串判断
-     * @param {Object} obj
-     * @return {Boolean}
+     * 
+     * Parameters:
+     *  obj - {Object}
+     *  
+     * Returns:
+     *  {Boolean}
      */
     var isString = function(obj){
 		//当obj通过 new String 封装类构造时   typeof obj === "object" 
@@ -117,9 +146,14 @@ module("lang.Base",function(global){
     };
     
     /**
+     * Function: isBoolean
      * 布尔判断
-     * @param {Object} obj
-     * @return {Boolean}
+     * 
+     * Parameters:
+     * 	obj - {Object} 
+     * 
+     * Returns:
+     *  {Boolean}
      */
     var isBoolean = function(obj){
 		//当obj通过 new Boolean 封装类构造时   typeof obj === "object" 
@@ -130,25 +164,36 @@ module("lang.Base",function(global){
     };
     
     /**
+     * Function: isDate
      * 日期判断
-     * @param {Object} obj
-     * @return {Boolean}
+     * 
+     * Parameters:
+     *  obj - {Object}
+     *  
+     * Returns:
+     *  {Boolean}
      */
     var isDate = function(obj){
         return toString.call(obj) === "[object Date]";
     };
 	
 	/**
+	 * Function: isObject
 	 * 对象判断
-	 * @param {Object} obj
+	 * 
+	 * Parameters: 
+	 * 	 obj - {Object}
 	 */
 	var isObject =function(obj){
 		return toString.call(obj) === "[object Object]";
 	};
     
     /**
+     * Function: isEmptyObject
      * 空对象判断
-     * @param {Object} obj
+     * 
+     * Parameters: 
+     * - {Object} obj
      * @retrun {Boolean}
      */
     var isEmptyObject = function(obj){
@@ -159,29 +204,41 @@ module("lang.Base",function(global){
     };
 	
     /**
-     * 空判断
+     * Function: isEmpty
+     * 空值判断
      * 
-     * @example
-     * san.isEmpty(null) === true
-     * san.isEmpty(undefined) === true
-     * san.isEmpty([]) === true
-     * san.isEmpty("")===true
-     * san.isEmpty("",false) === true
-     * san.isEmpty({})=== true
+     * Parameters: 
+     * 	obj - {Mixed} The value to test
+     * 	opt_allowBlank - {Boolean} true to allow empty strings (defaults to false)
      * 
-     * @param {Mixed} value The value to test
-     * @param {Boolean} opt_allowBlank  true to allow empty strings (defaults to false)
-     * @return {Boolean}
+     * Returns:
+     *  {Boolean} 
+     * 
+     * Example:
+     * (code)
+     * isEmpty(null) === true
+     * isEmpty(undefined) === true
+     * isEmpty([]) === true
+     * isEmpty("")===true
+     * isEmpty("",false) === true
+     * isEmpty({})=== true
+     * (end)
+     * 
      */
     var isEmpty = function(obj, opt_allowBlank){
         return obj === null || obj === undefined || ((isArray(obj) && !obj.length)) ||(isObject(obj) && isEmptyObject(obj))|| (!opt_allowBlank ? obj === "" : false);
     };
 	
     /**
+     * Function: each
      * 回掉函数迭代处理
-     * @param {Array|NodeList|Mixed} object 
-     * @param {Function} callback(value,name) 回掉函数
-     * @return {Object} obj 返回传入的对象
+     * 
+     * Parameters: 
+     * 	obj - {Array|NodeList|Mixed} object 
+     * 	callback - {Function} callback(value,name) 回掉函数
+     * 
+     * Returns: 
+     * 	{Object} obj 返回传入的对象
      */
     var each = function(obj, callback){
         var name, i = 0, 
@@ -205,12 +262,16 @@ module("lang.Base",function(global){
 
 	
     /**
+     * Function: mix
      * 对象属性复制,默认不覆盖对象已有的属性, 目标对象会被修改
-     * @lends san
-     * @param {Object} target 目标对象
-     * @param {Object} source 源对象
-     * @paream {Boolean} override 覆盖模式 {optional}
-     * @return {Object} target 对象
+     * 
+     * Parameters: 
+     * 	target - {Object} 目标对象
+     *  source - {Object} 源对象
+     *  override - {Boolean} 覆盖模式 {optional}
+     *  
+     * Returns: 
+     * 	{Object} target 对象
      */
     var mix = function(/**{Object}...**/){
 		var i=1,
@@ -241,9 +302,12 @@ module("lang.Base",function(global){
     };	
     
     /**
-     * 抛出异常
-     * @param {String} msg
-     * @throw {String} "Error: " + msg
+     * Function: error
+     * 抛出异常 throw "Error: " + msg
+     * 
+     * Parameters: 
+     * 	 msg - {String}
+     * 
      */
     var error = function(msg){
 		if (config.debug)
@@ -251,8 +315,11 @@ module("lang.Base",function(global){
     };
 	
     /**
+     * Function: log
      * 日志记录
-     * @param {...String} msg
+     * 
+     * Parameters: 
+     * 	 msg - {...String}
      */
     var log = function(){
 		
@@ -268,13 +335,21 @@ module("lang.Base",function(global){
     };
     
     /**
+     * Function: namespace
      * 命名空间注册
-     * @param {...String} ns 命名空间
-     * @param {Object=} opt_global 全局命名空间
-     * @return {Object} 返回指定的名称空间，如果该名称空间不存在就创建它。
-     * @example 
-     *  san.namespace("lang.JSON",san); //等同于San.namespace("san.lang.JSON"); 
-     *  san.namespace("lang.JSON","lang.Array",san);
+     * 
+     * Parameters:
+     * 
+     *  ns - {...String} 命名空间
+     * 	opt_global - {Object=}  全局命名空间
+     * 
+     * Returns: {Object} 返回指定的名称空间，如果该名称空间不存在就创建它。
+     * 
+     * Example: 
+     * (code)
+     *  namespace("lang.JSON",san); //等同于San.namespace("lang.JSON"); 
+     *  namespace("lang.JSON","lang.Array",san);
+     * (end) 
      * 
      */
     var namespace = function(){
@@ -300,8 +375,11 @@ module("lang.Base",function(global){
 
 
    /**
+    * Function: dump
     * 测试输出
-    * @param {Object} obj
+    * 
+    * Parameters: 
+    * 	obj - {Object}
     */ 
    var dump = function(obj){
         var msg="Type:"+toString.call(obj)+" "+obj+"\n",

@@ -1,7 +1,6 @@
 /**
  * 
- * @name template.jMarker
- * @class
+ * Class: jMarker
  *
  * 默认值 default
  * 内建函数 builtins

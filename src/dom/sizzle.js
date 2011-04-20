@@ -6,9 +6,8 @@
  */
 /**
  * 
- * @name Sizzle
- * @namespace
- *
+ * Namespace: Sizzle
+ * 
  * Sizzle CSS 选择器引擎
  * 
  */

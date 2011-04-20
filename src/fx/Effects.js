@@ -1,20 +1,20 @@
 /**
- * @name fx.Effects
- * @class
+ * Class: Effects
+ * 
  * 动画效果 
- * blind 
- * bounce 
- * clip 
- * drop 
- * explode
- * fade 淡入淡出
- * fold 
- * highlight 高亮
- * pulsate 
- * scale 
- * shake 
- * slide 幻灯片
- * transfer
+ * - blind 
+ * - bounce 
+ * - clip 
+ * - drop 
+ * - explode
+ * - fade 淡入淡出
+ * - fold 
+ * - highlight 高亮
+ * - pulsate 
+ * - scale 
+ * - shake 
+ * - slide 幻灯片
+ * - transfer
  */
 module("fx.Effects", function(global){
 

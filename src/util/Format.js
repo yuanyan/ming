@@ -1,14 +1,18 @@
 /**
- * @name util.Format
- * @class
+ * Class: Format
  */
 module("util.Format", function(global){
 	
 	/**
+	 * Function: camelize
 	 * 把Css属性名格式化为骆驼型
-	 * @param {String} str
-	 * @return {String} camelize
-	 * @example 
+	 * 
+	 * Parameters:
+	 *  str - {String}
+	 * 
+	 * Returns: {String} camelize
+	 * 
+	 * Example:
 	 *  var before= "font-size";
 	 *  var after= camelize(before); //"fontSize"
 	 */
@@ -20,15 +24,22 @@ module("util.Format", function(global){
 	
 	
 	/**
+	 * Function: format
 	 * 以模板方式格式化文本
-	 * @example
+	 * 
+	 * Parameters:
+	 *  temp - {String}
+	 *  value1 - {String|Number|Boolean} The value to replace token {1}
+	 *  value2 - {String|Number|Boolean} Etc...
+	 * 
+	 * Returns: 
+	 * 	{String}
+	 * 
+	 * Example:
+	 * (code)
 	 * format("{1},{2}",1,2) === 1,2
 	 * format("{1},{1}",1)  === 1,1
-	 * 
-	 * @param {String} temp
-	 * @param {String|Number|Boolean} value1 The value to replace token {1}
-	 * @param {String|Number|Boolean} value2 Etc...
-	 * @return {String}
+	 * (end)
 	 */
 	var format = function(temp){
 		

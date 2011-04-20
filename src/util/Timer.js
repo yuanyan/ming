@@ -1,6 +1,5 @@
 /**
- * @name util.Timer
- * @class
+ * Class: Timer
  */
 module("util.Timer",function(global){
 	
@@ -14,11 +13,15 @@ module("util.Timer",function(global){
 	};
 
 	/**
+	 * Function: once
 	 * 在指定延迟后执行指定的任务
 	 * 
-	 * @param {Function|String}  task
-	 * @param {Number} delay 
-	 * @return {Number} timeoutNumber
+	 * Parameters:
+	 * 	task - {Function|String}
+	 * 	delay - {Number}
+	 * 
+	 * Returns: 
+	 * 	{Number} timeoutNumber
 	 */
 	var once = function(task, delay){
 		var timeoutNumber = setTimeout(task, delay);
@@ -33,10 +36,15 @@ module("util.Timer",function(global){
 	};
 	
 	/**
+	 * Function: hit
 	 * 在指定的时间点执行指定的任务。
-	 * @param {Function|String}  task
-	 * @param {Date} time
-	 * @return {Number} timeoutNumber
+	 * 
+	 * Parameters:
+	 * 	task - {Function|String}
+	 * 	time - {Date} 
+	 * 
+	 * Returns: 
+	 * 	{Number} timeoutNumber
 	 */
 	var hit = function(task, time){
 		
@@ -45,11 +53,15 @@ module("util.Timer",function(global){
 	};
 		
 	/**
+	 * Function: schedule
 	 * 
-	 * @param {Function|String}  task
-	 * @param {Number} period 间隔时间
-	 * @param {Function} opt_over 终止条件
-	 * @return {Number} intervalNumber
+	 * Parameters:
+	 * 	task - {Function|String}
+	 * 	period - {Number} 间隔时间
+	 * 	opt_over - {Function} 终止条件
+	 * 
+	 * Returns: 
+	 * 	{Number} intervalNumber
 	 */
 	var schedule=function(task, period, opt_over){
         
@@ -81,11 +93,14 @@ module("util.Timer",function(global){
 	
 	
 	/**
+     * Function: pass
      * 
-     * @param {Function|String}  task
-     * @param {Number} period   相隔多少毫秒时间运行
-     * @param {Number} passedTime 经过多少毫秒时间后结束
-     * @return {Number} intervalNumber
+     * Parameters:
+     * 	task - {Function|String} 
+     * 	period - {Number}  相隔多少毫秒时间运行
+     * 	passedTime - {Number} 经过多少毫秒时间后结束
+     * 
+     * Returns: {Number} intervalNumber
      */
     var pass = function(task, period, passedTime){
 		
@@ -99,11 +114,14 @@ module("util.Timer",function(global){
     };
     
     /**
+     * Function: tick
      * 
-     * @param {Function|String}  task
-     * @param {Number} period  相隔多少毫秒时间运行
-     * @param {Number} times    执行多少次数
-     * @return {Number} intervalNumber 
+     * Parameters:
+     *  task - {Function|String}
+     *  period - {Number}  相隔多少毫秒时间运行
+     *  times - {Number}    执行多少次数
+     *  
+     * Returns: {Number} intervalNumber 
      */
     var tick = function(task, period, times){
         if (times < 1) 
@@ -119,8 +137,11 @@ module("util.Timer",function(global){
     };
 	
 	/**
+	 * Function: cancel
 	 * 终止所有当前已安排的任务或指定的任务
-	 * @param {Object} opt_number
+	 * 
+	 * Parameters:
+	 * 	opt_number - {Number} 
 	 */
 	var cancel = function(opt_number){
 			

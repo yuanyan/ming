@@ -1,6 +1,5 @@
 /**
- * @name util.Color
- * @class
+ * Class: Color
  */
 module("util.Color",function(){
 	
@@ -8,10 +7,14 @@ module("util.Color",function(){
 	var rHex=new RegExp('^[#]{0,1}([\\w]{1,2})([\\w]{1,2})([\\w]{1,2})$');
 	
 	/**
+	 * Function: rgbToHex
 	 * RGB格式转化为HEX
-	 * @param {String} rgb  
-	 * @param {Boolean} array 以数组格式返回
-	 * @return {String} hexText #1e2fcc
+	 * 
+	 * Parameters:
+	 *  rgb - {String}  
+	 *  array - {Boolean} 以数组格式返回
+	 *  
+	 * Returns: {String} hexText #1e2fcc
 	 */
     var rgbToHex = function(rgb,array){
         rgb = rgb.match(rRgb);
@@ -33,9 +36,15 @@ module("util.Color",function(){
     };
     
 	/**
+	 * Function: hexToRgb
 	 * HEX格式转化为RGB
-	 * @param {String} hex 
-	 * @param {Boolean} array 以数组格式返回
+	 * 
+	 * Parameters:
+	 *  hex - {String} 
+	 *  array - {Boolean} 以数组格式返回
+	 * 
+	 * Returns:
+	 *  {String|Array}
 	 */
     var hexToRgb = function(hex,array){
         hex = hex.match(rHex);

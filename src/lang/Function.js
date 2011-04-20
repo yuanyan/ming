@@ -1,12 +1,13 @@
 /**
- * @name lang.Function
- * @class
+ * Class: Function
  */
 module("lang.Function", function(global){
+	
 	//IMPORT
     var Base = module("lang.Base");
 
     /**
+     * Function: bind
      * ECMA-262-5 15.3.4.5
      * Sets the value of func inside the function to always be
      * the value of thisArg when the function is called. Optionally,
@@ -14,29 +15,35 @@ module("lang.Function", function(global){
      * automatically be prepended to the argument list whenever func
      * function is called.
      *
-     * @param  {Function} thisArg
-     * @param  {Object} arg1 {optinal}
-     * @param  {Object} arg2 {optinal}
-     * @example var flatFunction = obj.method.bind(obj);
+     * Parameters:
+     * 	thisArg -  {Function}
+     *  arg1 - {optinal} {Object}
+     *  arg2 - {optinal} {Object}
+     * 
+     * Example: 
+     * (code)
+     * var flatFunction = bind(myFunc, myObj, arg1, arg2);
+     * flatFunction(arg3, arg4);
+     * (end)
      */
-    var bind = function(func, thisArg/*[arg1],[arg2],...*/){
-		
-		if(func.bind){
-			return func.bind();
-		}
-		
+    var bind = function(func, thisArg/*, [arg1],[arg2],...*/){
+
         if (!Base.isFunction(func)) 
             Base.error("Bind must be called on a function");
-		
-        
+
         // thisArg is not an argument that should be bound.
-        var argc_bound = (arguments.length || 1) - 1;
+        var argc_bound = (arguments.length || 2) - 2;
         if (argc_bound > 0) {
             var bound_args = new Array(argc_bound);
             for (var i = 0; i < argc_bound; i++) {
                 bound_args[i] = arguments[i + 1];
             }
-        }
+        }			
+				
+		if(func.bind && argc_bound <= 0){
+			return func.bind(thisArg);
+		}
+
 		
         var fn = func;
 		
@@ -59,14 +66,16 @@ module("lang.Function", function(global){
         
         return result;
     };
-    
 	
     /**
+     * Function: defer
      * 延迟执行
-     * @param {Integer} delay 延迟
-     * @param {Array} args {optinal} 函数参数
-     * @return {Integer}  timeoutID
-     * @example 
+     * 
+     * Parameters:
+     *  delay - {Integer} 延迟
+     *  args - {optinal} {Array} 函数参数
+     * 
+     * Returns: {Integer}  timeoutID
      */
     var defer = function(func, delay, args){
 		if(func.defer){
@@ -80,13 +89,16 @@ module("lang.Function", function(global){
     };
 	
     /**
+     * Function: deferUntil
      * Defer until a passed func returns true.
-     * @param {Function} condition 条件函数
-     * @param {Number} time  超时时间
-     * @param {Array} args  {optinal} 
-     * @param {Function} callback  {optinal} 超时回调函数
-     * @return {Integer} intervalID
-     * @example 
+     * 
+     * Parameters:
+     *  condition - {Function} 条件函数
+     *  time - {Number} 超时时间
+     *  args - {optinal} {Array}   
+     *  callback - {Function} {optinal} 超时回调函数
+     * 
+     * Returns: {Integer} intervalID
      */
    	var deferUntil = function(func, condition, time, args, callback){
 		if(func.deferUntil){
@@ -124,11 +136,16 @@ module("lang.Function", function(global){
     };
     
 	/**
+	 * Function: recur
 	 * 间隔执行
-     * @param {Integer} delay 延迟
-     * @param {Array} args {optinal} 函数参数
-	 * @return {Integer} intervalID
-	 * @example 
+	 * 
+	 * Parameters:
+     *  delay - {Integer} 延迟
+     *  args - {optinal}{Array} 函数参数
+     *  
+	 * Returns: 
+	 * 	{Integer} intervalID
+	 * 
 	 */
     var recur = function(func , delay, args){
 		if(func.recur){

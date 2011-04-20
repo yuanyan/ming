@@ -1,6 +1,5 @@
 /**
- * @name NodeList
- * @class
+ * Class: NodeList
  */
 module("dom.NodeList",function(global){
 	
@@ -9,12 +8,14 @@ module("dom.NodeList",function(global){
 		Base = module("lang.Base"),
 		Node=module("dom.Node");
 	
-	/**
-	 * NodeList constructor
-	 * @constructs
-	 * @param {Object} domNode
-	 */
-	function NodeList(domNodes){	
+    /** 
+     * Constructor: NodeNodeList
+     * 
+     * Parameters:
+     * 	domNode - {Object} 
+     */ 	
+	function NodeList(domNodes){
+		//var: length
 		this.length=0;
 		this.add(domNodes);		
 	}
@@ -23,8 +24,14 @@ module("dom.NodeList",function(global){
 	NodeList.prototype =
 	{
 		/**
+		 * Function: item
 		 * 返回指定索引的节点
-		 * @param {Number} index
+		 * 
+		 * Parameters:
+		 *  index - {Number}
+		 *  
+		 * Returns:
+		 * 	{Node}
 		 */
 		item:function(index){
 			if (index === undefined) { //item() 返回第一个元素
@@ -33,30 +40,43 @@ module("dom.NodeList",function(global){
 				return this[index]||null;
 			}	
 		},
+		
 		/**
+		 * Function: each
 		 * 遍历节点
-		 * @param {Object} callback
+		 * 
+		 * Parameters:
+		 *  callback - {Function}
 		 */
 		each:function(callback){	
-			Base.each(this,callback);	
+			Base.each(this, callback);	
 		},
 		/**
+		 * Function: first
 		 * 获取第一个Node
+		 * 
+		 * Returns: {Node}
 		 */			
 		first:function(){
 			return this.item(0);	
 		},
 		/**
+		 * Function: last
 		 * 获取最后一个Node
+		 * 
+		 * Returns: {Node}
 		 */	
 		last: function(){	
 			return this.item(this.length-1);
 		},
 		
 		/**
+		 * Function: add
 		 * 添加Node
-		 * @param {Array} domNodes
-		 * @param {Bollean} beginning 是否添加至NodeList开头位置，默认为否 
+		 * 
+		 * Parameters:
+		 *  domNodes - {Array[DOMNode|Node]}
+		 *  beginning - {Bollean} 是否添加至NodeList开头位置，默认为否 
 		 */
 		add: function(domNodes, beginning){
 			var nodes=[];
@@ -74,8 +94,11 @@ module("dom.NodeList",function(global){
 		},
 		
 		/**
-		 * append elements to an NodeList
-		 * @param {Object} node ...
+		 * Function: push
+		 * 在NodeList尾部插入节点
+		 * 
+		 * Parameters:
+		 *  node - {...DOMNode|Node}
 		 * 
 		 */
 		push: function(){		
@@ -83,8 +106,11 @@ module("dom.NodeList",function(global){
 		},
 		
 		/**
-		 * insert elements at the beginning of an NodeList
-		 * @param {Object} node ...
+		 * Function: unshift
+		 * 在NodeList头部插入节点
+		 * 
+		 * Parameters:
+		 * 	node - {...DOMNode|Node}
 		 */
 		unshift: function(){
 			return this.add(arguments,true)
@@ -99,6 +125,7 @@ module("dom.NodeList",function(global){
 	
 	//Array映射到NodeList的方法列表
 	var ArrayFns=['concat', 'pop', 'reverse', 'shift', 'slice', 'splice','indexOf', 'lastIndexOf', 'remove', 'every', 'filter', 'map', 'some', 'reduce', 'reduceRight'];
+	
 	for(var i=0,l=ArrayFns.length; i<l; i++){
 		var fn=ArrayFns[i];
 		$NP[fn]=function(){
@@ -114,7 +141,7 @@ module("dom.NodeList",function(global){
 	
 	for(var i=0,l=NodeFns.length; i<l; i++){
 		var fn=NodeFns[i];
-		$NP[fn]=function(){			
+		$NP[fn]=function(){	
 			var args=arguments;
 			this.each(function(node){
 				node[fn].apply(null, args);

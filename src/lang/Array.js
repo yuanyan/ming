@@ -1,6 +1,5 @@
 /**
- * @name lang.Array
- * @class
+ * Class: Array
  */
 module("lang.Array",function(){
 	
@@ -10,11 +9,15 @@ module("lang.Array",function(){
     /*Array extentions start */
 
     /**
+     * Function: remove
 	 * remove the element from the first argument to the second argument,
 	 * if the second argument not gived ,it will remove the element 
-	 * which the fisrt argument index.  
-	 * @param {Object} from
-	 * @param {Object} to {optional}
+	 * which the fisrt argument index.
+	 * 
+	 * Parameters:
+	 *  array - {Array}
+	 * 	from - {Object}
+	 * 	to - {optional}{Object} 
 	 */
     var remove = function(array, from, to){
 		if (array.remove) {
@@ -29,16 +32,24 @@ module("lang.Array",function(){
 
 
     /**
+     * Function: indexOf
      * ECMA-262-5 15.4.4.14
      * Returns the first (least) index of an element within the array
      * equal to the specified value, or -1 if none is found.
      *
-     * @param {Mixed} searchElement
-     * @param {number} fromIndex {optional}
-     * @return {number}
-     * @example ['a','b','c'].indexOf('b') === 1;
+     * Parameters:
+     *  array - {Array}
+     * 	searchElement - {Mixed} 
+     * 	fromIndex {optional} - {number}
+     * 
+     * Returns: 
+     * 	{number}
+     * 
+     * Example:
+     * (code)
+     *  indexOf(['a','b','c'], 'b') === 1
+     * (end)
      */
-
     var indexOf = function(array, searchElement, fromIndex){
 		
 		if(array.indexOf){
@@ -82,14 +93,23 @@ module("lang.Array",function(){
 
 
     /**
+     * Function: lastIndexOf
      * ECMA-262-5 15.4.4.15
      * Returns the last (greatest) index of an element within the array
      * equal to the specified value, or -1 if none is found.
      *
-     * @param {Mixed} searchElement
-     * @param {number} fromIndex {optional}
-     * @return {number}
-     * @example ['a','a','c'].lastIndexOf('a') === 1;
+     * Parameters:
+     *  array - {Array}
+     * 	searchElement - {Mixed} 
+     * 	fromIndex - {optional} {number}
+     * 
+     * Returns:
+     *  {number}
+     * 
+     * Example:
+     * (code)
+     *  lastIndexOf(['a','a','c'], 'a') === 1
+     * (end) 
      */
      var lastIndexOf = function(array, searchElement, fromIndex){
 		if(array.lastIndexOf){
@@ -137,11 +157,15 @@ module("lang.Array",function(){
 
 
     /**
+     * Function: every
      * ECMA-262-5 15.4.4.16
      * Returns true if every element in array array
      * satisfies the provided testing function.
-     * @param {Object} callbackfn
-     * @param {Object} thisArg {optional}
+     * 
+     * Parameters:
+     *  array - {Array}
+     * 	callbackfn - {Function}
+     * 	thisArg - {optional} {Object}
      */
      var every = function(array, callbackfn, thisArg){
 	 	
@@ -168,11 +192,15 @@ module("lang.Array",function(){
 
 
     /**
+     * Function: some
      * ECMA-262-5 15.4.4.17
      * Returns true if at least one element in array array
      * satisfies the provided testing function.
-     * @param {Object} callbackfn
-     * @param {Object} thisArg {optional}
+     * 
+     * Parameters:
+     *  array - {Array}
+     * 	callbackfn - {Function} 
+     * 	thisArg - {Object} {optional}
      */
      var some = function(array, callbackfn, thisArg){
 		if(array.some){
@@ -197,10 +225,14 @@ module("lang.Array",function(){
 
 
     /**
+     * Function: forEach
      * ECMA-262-5 15.4.4.18
      * Calls a function for each element in the array.
-     * @param {Object} callbackfn
-     * @param {Object} thisArg   {optional}
+     * 
+     * Parameters:
+     * 	array - {Array}
+     *	callbackfn - {Function}
+     * 	thisArg - {optional} {Object} 
      */ 
     var forEach = function(array, callbackfn, thisArg){
 		if(array.forEach){
@@ -221,12 +253,18 @@ module("lang.Array",function(){
     };
 
     /**
+     * Function: map
      * ECMA-262-5 15.4.4.19
      * Creates a new array with the results of calling
      * a provided function on every element in array array.
-     * @param {Object} callbackfn
-     * @param {Object} thisArg
-     * @return {Array}
+     * 
+     * Parameters:
+     *  array - {Array}
+     *  callbackfn - {Function}
+     *  thisArg - {Object}
+     *  
+     * Returns:
+     *  {Array}
      */
 
      var map = function(array, callbackfn, thisArg){
@@ -251,12 +289,18 @@ module("lang.Array",function(){
 
 
     /**
+     * Function: filter
      * ECMA-262-5 15.4.4.20
      * Creates a new array with all of the elements of array array
      * for which the provided filtering function returns true.
-     * @param {Object} callbackfn
-     * @param {Object} thisArg
-     * @return {Array}
+     * 
+     * Parameters:
+     *  array - {Array}
+     *  callbackfn - {Function}
+     *  thisArg - {Object}
+     * 
+     * Returns:
+     *  {Array}
      */
 
     var filter = function(array, callbackfn, thisArg){
@@ -283,11 +327,16 @@ module("lang.Array",function(){
 
 
     /**
+     * Function: reduce
      * ECMA-262-5 15.4.4.21
      * Apply a function simultaneously against two values of
      * the array (from left-to-right) as to reduce it to a single value.
-     * @param {Object} callbackfn
-     * @param {Object} current {optional} initialValue 
+     * 
+     * Parameters:
+     *  array - {Array}
+     *  callbackfn - {Function}
+     *  current - {optional} initialValue 
+     *  
      */
     var reduce = function(array, callbackfn, current){
 		
@@ -325,11 +374,15 @@ module("lang.Array",function(){
 
 
     /**
+     * Function: reduceRight
      * ECMA-262-5 15.4.4.22
      * Apply a function simultaneously against two values of
      * the array (from right-to-left) as to reduce it to a single value.
-     * @param {Object} callbackfn
-     * @param {Object} current   {optional} initialValue
+     * 
+     * Parameters:
+     *  array - {Array}
+     * 	callbackfn - {Function}
+     *  current - {optional} initialValue
      */
    
     var reduceRight = function(array, callbackfn, initialValue){
