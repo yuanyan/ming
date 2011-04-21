@@ -18,6 +18,10 @@ yuanyan.cao@gmail.com
 
 http://madscript.com/modulejs/#guide
 
+###API
+
+http://madscript.com/modulejs/docs
+
 ###Links
 * [Google Group for discussion](http://groups.google.com/group/modulejs)
 * [Visit the Wiki](https://github.com/yuanyan/modulejs/wiki)
