@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Class: Node
  */
 module("dom.Node", function (global) {
@@ -42,9 +42,8 @@ module("dom.Node", function (global) {
 	
     Node.prototype = 
 	{
-        //----- 事件方法 -----
+        /*----- 事件方法 -----*/
         //Group: Event
-
         /**
          * Function: on
          * 添加事件
@@ -53,7 +52,8 @@ module("dom.Node", function (global) {
          *  type - {Object}
          *  handler - {Object}
          * 
-         * Returns: {Node} return self
+         * Returns: 
+		 *	{Node} return self
          */
         "on": function (type, handler) {
             Event.on(this.node, type, handler);
@@ -68,16 +68,16 @@ module("dom.Node", function (global) {
          * 	type - {Object}
          *  handler - {Object}
          * 
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          */
         "off": function (type, handler) {
             Event.off(this.domNode, type, handler);
             return this;
         },
 		
-        //----- 属性方法 -----
+        /*----- 属性方法 -----*/
         //Group: Attribute
-
         /**
          * Function: attr
          * 设置元素的属性值
@@ -86,7 +86,8 @@ module("dom.Node", function (global) {
          *  name - {String} 属性名
          *  value - {String} 属性值
          * 
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          * 
          * Example:
          * (code)
@@ -114,7 +115,8 @@ module("dom.Node", function (global) {
          * Parameters:
          * 	name - {String}
          * 
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          */
         "removeAttr": function (name) {
 
@@ -136,7 +138,8 @@ module("dom.Node", function (global) {
          * Parameters:
          *  html - {String|Number}
          *  
-         * Returns: {String|Node}
+         * Returns: 
+		 * 	{String|Node}
          */
         "html": function (html) {
             var elem = this[0];
@@ -161,7 +164,8 @@ module("dom.Node", function (global) {
          * Parameters:
          *  text - {String|Number}
          * 
-         * Returns: {String|Node}
+         * Returns: 
+		 * 	{String|Node}
          */
         "text": function (text) {
 
@@ -190,17 +194,18 @@ module("dom.Node", function (global) {
 
         },
 
-        //-----值方法-----
+        /*-----值方法-----*/
 		//Group: Value
 		
         /**
-         * Function: 
+         * Function: val
          * 设置元素的值 value, 通常用于表单元素
          * 
          * Parameters:
          *  value - {String|Number|Array}
          * 
-         * Returns: {String|Node}
+         * Returns: 
+		 * 	{String|Node}
          */
         "val": function (value) {
 
@@ -320,9 +325,8 @@ module("dom.Node", function (global) {
         },
 
 
-        //-----样式方法-----
+        /*-----样式方法-----*/
 		//Group: Style
-		
         /**
          * Function: css
          * 设置节点样式值
@@ -331,7 +335,8 @@ module("dom.Node", function (global) {
          *  name - {String|Object}
          *  value - {String}
          *  
-         * Returns: {String} return self
+         * Returns: 
+		 * 	{String} return self
          */
         "css": function (name, value) {
             //properties
@@ -372,7 +377,8 @@ module("dom.Node", function (global) {
          * Parameters:
          *  clazz - {Object}
          * 
-         * Returns: {Boolean}
+         * Returns: 
+		 * 	{Boolean}
          */
         "hasClass": function (clazz) {
             var flag = false;
@@ -391,7 +397,8 @@ module("dom.Node", function (global) {
          * Parameters:
          *  clazz - {String}
          *  
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          */
         "addClass": function (clazz) {
 
@@ -406,7 +413,8 @@ module("dom.Node", function (global) {
          * Parameters:
          *  clazz - {String}
          * 
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          */
         "removeClass": function (clazz) {
             if (clazz === undefined) { //removeClass() 删除全部类
@@ -430,7 +438,8 @@ module("dom.Node", function (global) {
          * Parameters:
          *  clazz - {String}
          * 
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          */
         "toggleClass": function (clazz) {
             if (this.hasClass(clazz)) {
@@ -443,13 +452,14 @@ module("dom.Node", function (global) {
 
         },
 
-        //-----文档结构检索方法-----
+        /*-----文档结构检索方法-----*/
 		//Group: Traversal
         /**
          * Function: next
          * 获取后一个兄弟节点
          * 
-         * Returns: {?Node} nextNode
+         * Returns: 
+		 * 	{?Node} nextNode
          */
         "next": function () {
             return new Node(this[0].nextSibling);
@@ -459,7 +469,8 @@ module("dom.Node", function (global) {
          * Function: prev
          * 获取前一个兄弟节点
          * 
-         * Returns: {?Node} previousNode
+         * Returns: 
+		 * 	{?Node} previousNode
          */
         "prev": function () {
             return new Node(this[0].previousSibling);
@@ -469,7 +480,8 @@ module("dom.Node", function (global) {
          * Function: parent
          * 获取父节点
          * 
-         * Returns: {?Node} parentNode 父节点
+         * Returns: 
+		 * 	{?Node} parentNode 父节点
          */
         "parent": function () {
             return new Node(this[0].parentNode);
@@ -482,7 +494,8 @@ module("dom.Node", function (global) {
          * Parameters:
          *  match - {Function}
          * 
-         * Returns: {Array} nodes 
+         * Returns: 
+		 * 	{Array} nodes 
          */
         "childrens": function (match) {
             //TODO 满足条件的子节点
@@ -516,9 +529,8 @@ module("dom.Node", function (global) {
 			
 		},
 		
-        //-----节点基础方法-----
+        /*-----节点基础方法-----*/
 		//Group: Life
-		
         /**
          * Function: empty
          * 清空当前节点的所有子节点，或满足条件的子节点
@@ -526,7 +538,8 @@ module("dom.Node", function (global) {
          * Parameters:
          *   match - {Function}
          * 
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          */
         "empty": function (match) {
             this.childrens(match).forEach(function (node) {
@@ -539,7 +552,8 @@ module("dom.Node", function (global) {
          * Function: destroy
          * 销毁当前节点
          * 
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          */
         "destroy": function () {
 
@@ -554,15 +568,15 @@ module("dom.Node", function (global) {
          * Parameters:
          *  deep - {boolean}默认false 
          * 
-         * Returns: {Node} return cloneNode 
+         * Returns: 
+		 * 	{Node} return cloneNode 
          */
         "clone": function (deep) {
             return new Node(this[0].cloneNode(deep || false));
         },
 
-        //-----文档结构内部插入方法-----
+        /*-----文档结构内部插入方法-----*/
 		//Group: Insertion
-		
         /**
          * Function: append
          * 向当前子节点尾部添加节点
@@ -570,7 +584,8 @@ module("dom.Node", function (global) {
          * Parameters:
          * - {Object} node 支持原生的domNode和封装Node
          * 
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          */
         "append": function (node) {
             if (!node.nodeType) { //参数为封装Node时，还原到原生的domNode
@@ -589,7 +604,8 @@ module("dom.Node", function (global) {
          * Parameters:
          * - {Object} node 支持原生的domNode和封装Node
          * 
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          */
         "prepend": function (node) {
             if (!node.nodeType) { //参数为封装Node时，还原到原生的domNode
@@ -612,7 +628,8 @@ module("dom.Node", function (global) {
          * Parameters:
          *   node - {Object} 支持原生的domNode和封装Node
          *   
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          */
         "appendTo": function (node) {
             new Node(node).append(this[0]);
@@ -626,14 +643,15 @@ module("dom.Node", function (global) {
          * Parameters:
          *   node - {Object} 支持原生的domNode和封装Node
          *   
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          */
         "prependTo": function (node) {
             new Node(node).prepend(this[0]);
             return this;
         },
 
-        //-----文档结构外部插入方法-----
+        /*-----文档结构外部插入方法-----*/
 
         /**
          * Function: before
@@ -642,7 +660,8 @@ module("dom.Node", function (global) {
          * Parameters:
          *   node - {Object}支持原生的domNode和封装Node
          * 
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          */
         "before": function (node) {
             if (!node.nodeType) { //参数为封装Node时，还原到原生的domNode
@@ -659,7 +678,8 @@ module("dom.Node", function (global) {
          * Parameters:
          *   node - {Object} 支持原生的domNode和封装Node
          *   
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          */
         "after": function (node) {
             //当前为最后一个节点时
@@ -671,9 +691,8 @@ module("dom.Node", function (global) {
             return this;
         },
 
-        //-----尺度方法-----
+        /*-----尺度方法-----*/
 		//Group: Dimensions
-		
         /**
          * Function: height
          * 设置节点高度
@@ -681,7 +700,8 @@ module("dom.Node", function (global) {
          * Parameters:
          * 	value - {Number}
          * 
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          */
         "height": function (value) {
             //getter
@@ -706,7 +726,8 @@ module("dom.Node", function (global) {
          * Parameters:
          *  value - {Number}
          *  
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          */
         "width": function (value) {
 
@@ -727,7 +748,7 @@ module("dom.Node", function (global) {
         },
 
 
-        //-----位置方法-----
+        /*-----位置方法-----*/
 		//Group: Position
         /**
          * Function: offset
@@ -736,7 +757,8 @@ module("dom.Node", function (global) {
          * Parameters:
          *  obj - {Object}
          * 
-         * Returns: {Object} obj {left:10,top:10}
+         * Returns: 
+		 * 	{Object} obj {left:10,top:10}
          */
         "offset": function (obj) {
 
@@ -814,7 +836,8 @@ module("dom.Node", function (global) {
          * Function: position
          * 设置相对父元素的偏移
          * 
-         * Returns: {Object} obj {left:10,top:10}
+         * Returns: 
+		 * 	{Object} obj {left:10,top:10}
          */
         "position": function () {
 
@@ -852,7 +875,8 @@ module("dom.Node", function (global) {
          * Function: scroll
          * 设置相对滚动条的偏移
          * 
-         * Returns: {Object} obj {left:10,top:10}
+         * Returns: 
+		 * 	{Object} obj {left:10,top:10}
          */
         "scroll": function () {
             var elem = this[0];
@@ -875,7 +899,8 @@ module("dom.Node", function (global) {
          * Function: show
          * 显示节点
          * 
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          */
         "show": function () {
             return this.css("display","none");
@@ -885,7 +910,8 @@ module("dom.Node", function (global) {
          * Function: hide
          * 隐藏节点
          * 
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          */
         "hide": function () {
 			return this.css("display","");
@@ -895,7 +921,8 @@ module("dom.Node", function (global) {
          * Function: toggle 
          * 显示/隐藏状态切换
          * 
-         * Returns: {Node} return self
+         * Returns: 
+		 * 	{Node} return self
          */
         "toggle": function () {
 			if(this.css("display")){
@@ -907,9 +934,8 @@ module("dom.Node", function (global) {
 			return this;
         },
 		
-		//----- 检索内容与节点方法 -----
+		/*----- 检索内容与节点方法 -----*/
 		//Group: Content Retrieval
-		
 		/**
 		 * Function: contains
 		 * 是否包含指定文本
@@ -917,7 +943,8 @@ module("dom.Node", function (global) {
 		 * Parameters:
 		 * 	text - {String}
 		 * 
-		 * Returns: {Boolean} return boolean
+		 * Returns: 
+		 * 	{Boolean} return boolean
 		 */
 		"contains" :function(text){
 			

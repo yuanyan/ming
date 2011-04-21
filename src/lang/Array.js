@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Class: Array
  */
 module("lang.Array",function(){

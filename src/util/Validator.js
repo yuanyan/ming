@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Class: Validator
  */
 module("util.Validator",function(global){
@@ -28,7 +28,8 @@ module("util.Validator",function(global){
 	 * Parameters:
 	 * 	str - {String}
 	 * 
-	 * Returns: {Boolean}
+	 * Returns: 
+	 * 	{Boolean}
 	 */
 	var isAlpha = function(str){	
 		return validate(str,ALPHA);
@@ -41,7 +42,8 @@ module("util.Validator",function(global){
 	 * Parameters:
 	 * 	str - {String}
 	 * 
-	 * Returns: {Boolean}
+	 * Returns: 
+	 * 	{Boolean}
 	 */
 	var isChinese = function(str){	
 		return validate(str,CHINESE);
@@ -54,7 +56,8 @@ module("util.Validator",function(global){
 	 * Parameters:
 	 * 	str - {String}
 	 * 
-	 * Returns: {Boolean}
+	 * Returns: 
+	 * 	{Boolean}
 	 */
 	var isInteger = function(str){	
 		return validate(str,INTEGER);
@@ -67,7 +70,8 @@ module("util.Validator",function(global){
 	 * Parameters:
 	 * 	str - {String}
 	 * 
-	 * Returns: {Boolean}
+	 * Returns: 
+	 * 	{Boolean}
 	 */
 	var isNumber = function(str){	
 		return validate(str,NUMBER);
@@ -80,7 +84,8 @@ module("util.Validator",function(global){
 	 * Parameters:
 	 * 	str - {String}
 	 * 
-	 * Returns: {Boolean}
+	 * Returns: 
+	 * 	{Boolean}
 	 */
 	var isPost = function(str){	
 		return validate(str,POST);
@@ -93,7 +98,8 @@ module("util.Validator",function(global){
 	 * Parameters:
 	 * 	str - {String}
 	 * 
-	 * Returns: {Boolean}
+	 * Returns: 
+	 * 	{Boolean}
 	 */	
 	var isEmail = function(str){
 		return validate(str,EMAIL);
@@ -106,7 +112,8 @@ module("util.Validator",function(global){
 	 * Parameters:
 	 * 	str - {String}
 	 * 
-	 * Returns: {Boolean}
+	 * Returns: 
+	 * 	{Boolean}
 	 */
 	var isPid = function(str){	
 		return validate(str,PID);
@@ -119,7 +126,8 @@ module("util.Validator",function(global){
 	 * Parameters:
 	 * 	str - {String}
 	 * 
-	 * Returns: {Boolean}
+	 * Returns: 
+	 * 	{Boolean}
 	 */
 	var isMobile = function(str){	
 		return validate(str,MOBILE);
@@ -132,7 +140,8 @@ module("util.Validator",function(global){
 	 * Parameters:
 	 * 	str - {String}
 	 * 
-	 * Returns: {Boolean}
+	 * Returns: 
+	 * 	{Boolean}
 	 */
 	var isTel = function(str){	
 		return validate(str,TEL);
@@ -145,7 +154,8 @@ module("util.Validator",function(global){
 	 * Parameters:
 	 * 	str - {String}
 	 * 
-	 * Returns: {Boolean}
+	 * Returns: 
+	 * 	{Boolean}
 	 */
 	var isUrl = function(str){	
 		return validate(str,URL);
@@ -158,7 +168,8 @@ module("util.Validator",function(global){
 	 * Parameters:
 	 * 	str - {String}
 	 * 
-	 * Returns: {Boolean}
+	 * Returns: 
+	 * 	{Boolean}
 	 */
 	var isDate = function(str){	
 		return validate(str,DATE);
@@ -171,7 +182,8 @@ module("util.Validator",function(global){
 	 * Parameters:
 	 * 	str - {String}
 	 * 
-	 * Returns: {Boolean}
+	 * Returns: 
+	 * 	{Boolean}
 	 */	
 	var isName = function(str){	
 		return validate(str,NAME);

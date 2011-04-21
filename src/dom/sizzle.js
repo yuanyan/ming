@@ -1,16 +1,21 @@
-/*!
+﻿/*!
  * Sizzle CSS Selector Engine - v1.0
  *  Copyright 2009, The Dojo Foundation
  *  Released under the MIT, BSD, and GPL Licenses.
  *  More information: http://sizzlejs.com/
  */
-/**
+
+/** 
+ * Class: Sizzle
+ * Sizzle CSS 选择器引擎查询
  * 
- * Namespace: Sizzle
- * 
- * Sizzle CSS 选择器引擎
- * 
- */
+ * Parameters:
+ *  query - {String}
+ *  context - {Object}
+ *
+ * Returns: 
+ *	{NodeList}
+ */ 
 module("dom.sizzle",function(global){
 	
 	//IMPORT

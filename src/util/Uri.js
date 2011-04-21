@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Class: Uri
  */
 module("util.Uri",function(global){
@@ -15,7 +15,8 @@ module("util.Uri",function(global){
 	 * 
 	 *  uri - {String}
 	 * 
-	 * Returns: {Object} obj
+	 * Returns: 
+	 * 	{Object} obj
 	 * 
 	 * Example:
 	 * (code)
@@ -42,7 +43,8 @@ module("util.Uri",function(global){
 	 * Parameters:
 	 * 	obj - {Object|String}
 	 * 
-	 * Returns: {String} str
+	 * Returns: 
+	 * 	{String} str
 	 */	
 	var param = function(obj){
 		var r = [], 

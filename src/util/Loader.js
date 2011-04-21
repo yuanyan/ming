@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Class: Loader
  */
 module("util.Loader",function(global){

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Class: Format
  */
 module("util.Format", function(global){
@@ -10,7 +10,8 @@ module("util.Format", function(global){
 	 * Parameters:
 	 *  str - {String}
 	 * 
-	 * Returns: {String} camelize
+	 * Returns:
+	 *	{String} camelize
 	 * 
 	 * Example:
 	 *  var before= "font-size";

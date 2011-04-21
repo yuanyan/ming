@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Class: Ajax
  */
 module("net.Ajax", function(global){
@@ -16,24 +16,27 @@ module("net.Ajax", function(global){
 	 * 
 	 * Example:
 	 * (code)
-	  ajax({
-	   url: 'ajax_demo/sample.json',
-	   method:'POST',
-	   data: {'id': '1'}, 
-	   form: 'myForm',
-	   async:ture, //默认所有请求均为异步请求。如果需要发送同步请求，请将此选项设置为 false。注意，同步请求将锁住浏览器，用户其它操作必须等待请求完成才可以执行。
-	   cache: false,
-	   timeout: 100, 
-	   dataType:xml json text(html) 
-	   success: function(xhr, opts) {
-	      var obj = JSON.parse(response.responseText);
-	      console.dir(obj);
-	   },
-	   error: function(xhr, opts) {
-	      console.log('server-side failure with status code ' + response.status);
-	   }
-	});
-	(end)
+	 *  ajax({
+	 *   url: 'ajax_demo/sample.json',
+	 *   method:'POST',
+	 *   data: {'id': '1'}, 
+	 *   form: 'myForm',
+	 *
+	 *   //默认所有请求均为异步请求。如果需要发送同步请求，请将此选项设置为false。
+	 *   //注意，同步请求将锁住浏览器，用户其它操作必须等待请求完成才可以执行。
+	 *   async:ture, 
+	 *   cache: false,
+	 *   timeout: 100, 
+	 *   dataType:xml json text(html) 
+	 *   success: function(xhr, opts) {
+	 *     var obj = JSON.parse(response.responseText);
+	 *      console.dir(obj);
+	 *   },
+	 *   error: function(xhr, opts) {
+	 *      console.log('server-side failure with status code ' + response.status);
+	 *   }
+	 * });
+	 * (end)
 	 */
 	var ajax= function(opts){
 		var request = new Request;

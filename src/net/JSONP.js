@@ -1,4 +1,4 @@
-
+﻿
 module("net.JSONP", function(global){
 	
 	var Base = module("lang.Base"),
@@ -82,7 +82,7 @@ module("net.JSONP", function(global){
 	};
 	
 	/**
-	 * Function:abort
+	 * Function: abort
 	 * 取消请求
 	 */
 	JSONP.prototype.abort = function(){

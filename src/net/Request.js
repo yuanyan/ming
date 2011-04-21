@@ -1,4 +1,4 @@
-
+﻿
 module("net.Request",function (global){
 	
 	var Base = module("lang.Base"),
@@ -88,7 +88,7 @@ module("net.Request",function (global){
 		opts=this._opts=this.optsPrepare(opts);
 		var xhr=this._xhr;
 
-        //method: CONNECT, DELETE, GET, HEAD, OPTIONS, POST, PUT, TRACE, or TRACK
+        //CONNECT, DELETE, GET, HEAD, OPTIONS, POST, PUT, TRACE, or TRACK
 		//其中HEAD请求只返回响应的HTTP头部，而不包含响应内容
         //通常在只需要获取文件的最后修改时间 时，会以HEAD方式请求 
         var method = opts['method'].toUpperCase();
@@ -174,6 +174,7 @@ module("net.Request",function (global){
 	
     /**
      * 发送选项预处理
+	 * @private
      * @param {Object} opts
      */
      Request.prototype.optsPrepare = function(opts){
@@ -209,6 +210,7 @@ module("net.Request",function (global){
 	
 	/**
 	 * 序列化表单
+	 * @private
 	 * @param {Object|String} form
 	 * @return {String} data 
 	 */

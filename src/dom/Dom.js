@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Class: Dom
  */
 module("dom.Dom",function(global){
@@ -31,7 +31,8 @@ module("dom.Dom",function(global){
 	 * Parameters:
 	 *  node - {*}
 	 *  
-	 * Returns: {Boolean}
+	 * Returns: 
+	 * 	{Boolean}
 	 */
     var isNode = function(node){     
         return (node && node.nodeType) || node instanceof Node;
@@ -44,7 +45,8 @@ module("dom.Dom",function(global){
 	 * Parameters:
 	 *   tagName- {String} 元素标签名
 	 *   
-	 * Returns: {Node} element
+	 * Returns: 
+	 * 	{Node} element
 	 */
 	var create = function(tagName){
 		var elem=DOM.createElement(tagName);	
@@ -52,7 +54,7 @@ module("dom.Dom",function(global){
 	};
 	
 	/**
-	 * Function: 
+	 * Function: remove
 	 * 移除符合选择器的所有节点
 	 * 
 	 * Parameters:

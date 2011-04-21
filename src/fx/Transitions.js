@@ -1,4 +1,4 @@
-//moo.fx.transitions.js - depends on prototype.js or prototype.lite.js + moo.fx.js
+﻿//moo.fx.transitions.js - depends on prototype.js or prototype.lite.js + moo.fx.js
 //Author: Robert Penner, <http://www.robertpenner.com/easing/>, modified to be used with mootools.
 //License: Easing Equations v1.5, (c) 2003 Robert Penner, all rights reserved. Open Source BSD License.
 /**

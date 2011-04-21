@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Class: Class
  * class-based OOP
  * - 把类抽象为Class类类型

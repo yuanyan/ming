@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Class: NodeList
  */
 module("dom.NodeList",function(global){
@@ -9,7 +9,7 @@ module("dom.NodeList",function(global){
 		Node=module("dom.Node");
 	
     /** 
-     * Constructor: NodeNodeList
+     * Constructor: NodeList
      * 
      * Parameters:
      * 	domNode - {Object} 
@@ -64,7 +64,8 @@ module("dom.NodeList",function(global){
 		 * Function: last
 		 * 获取最后一个Node
 		 * 
-		 * Returns: {Node}
+		 * Returns: 
+		 * 	{Node}
 		 */	
 		last: function(){	
 			return this.item(this.length-1);

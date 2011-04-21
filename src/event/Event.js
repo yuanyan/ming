@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Class: Event
  * 事件机制封装
  * 对标准事件模型与IE事件模型间差异进行封装
@@ -351,37 +351,4 @@ module("event.Event", function(global){
 		"live": live
 	}
     
-}); // 
-
-
-
-/**
- * 
- * 
-    **
-     * 获取当前鼠标位置的坐标
-     * @param {Event} e
-     * @return {Object}
-     *
-    var getPosition = function(e){
-        var X = 0, Y = 0;
-        var event = e || window.event;
-        
-        if (event.pageX) {
-            X = event.pageX;
-            Y = event.pageY;
-        }
-        else 
-            if (event.clientX) {
-                X = event.clientX + document.documentElement.scrollLeft + document.body.scrollLeft;
-                Y = event.clientY + document.documentElement.scrollTop + document.body.scrollTop;
-            }    
-        
-        //封装成对象返回
-        return {
-            x: X,
-            y: Y
-        };
-    };
-	
-**/
+}); 

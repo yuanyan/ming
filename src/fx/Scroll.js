@@ -1,4 +1,4 @@
-// moo.fx.js version 2.0 
+﻿// moo.fx.js version 2.0 
 //(c) 2006 Valerio Proietti (http://mad4milk.net). MIT-style license.
 /**
  * Class: Scroll

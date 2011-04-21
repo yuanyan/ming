@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Class: JSON
  */
 module("lang.JSON",function(global){
@@ -199,7 +199,8 @@ module("lang.JSON",function(global){
          *  text - {Object}
          * 	reviver - {optional} {Object}
          * 
-         * Returns: {String}
+         * Returns: 
+		 * 	{String}
          */
         var parse = function(text, reviver){
 

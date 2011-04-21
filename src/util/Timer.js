@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Class: Timer
  */
 module("util.Timer",function(global){
@@ -100,7 +100,8 @@ module("util.Timer",function(global){
      * 	period - {Number}  相隔多少毫秒时间运行
      * 	passedTime - {Number} 经过多少毫秒时间后结束
      * 
-     * Returns: {Number} intervalNumber
+     * Returns: 
+	 * 	{Number} intervalNumber
      */
     var pass = function(task, period, passedTime){
 		

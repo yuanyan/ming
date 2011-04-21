@@ -1,27 +1,30 @@
-//Class: Selector
+﻿//Class: Selector
 //轻量选择器
 //
-//支持以下三种选择器：
+//支持选择器:
 //1.简单选择器
-// #id
-// .class
-// tag
-// tag.class
-// tag#id
-// *
+// - #id
+// - .class
+// - tag
+// - tag.class
+// - tag#id
+// - *
+//
 //2.子元素选择器
+//
 //3.组合选择器
-// 
-//注1: 不支持 #id.class
-//注2: 尽可能使用子元素选择器(parent>child)而非组合选择器(parent child)
-//注3：不支持含有通配符 * 的组合选择器
-//注4：其他选择器可通过filter(elem,index,nodes)回调函数间接实现
+//
+//注意:
+//-  不支持 #id.class
+//-  尽可能使用子元素选择器(parent>child)而非组合选择器(parent child)
+//-  不支持含有通配符 * 的组合选择器
+//-  其他选择器可通过filter(elem,index,nodes)回调函数间接实现
 //
 //参考:
-// http://ejohn.org/blog/selectors-that-people-actually-use/
-// http://ejohn.org/blog/thoughts-on-queryselectorall/
-// http://github.com/jeresig/sizzle
-// http://james.padolsey.com/javascript/mini/
+// - http://ejohn.org/blog/selectors-that-people-actually-use/
+// - http://ejohn.org/blog/thoughts-on-queryselectorall/
+// - http://github.com/jeresig/sizzle
+// - http://james.padolsey.com/javascript/mini/
 
 module("dom.Selector", function(global){
 	
@@ -65,7 +68,8 @@ module("dom.Selector", function(global){
 	 *  context - {Object} 查询上下文
 	 *  filter - {Function} 过滤规则
 	 *  
-	 * Returns: {Array[DOMNode]}
+	 * Returns: 
+	 *	{Array[DOMNode]}
 	 */
     var select = function (query, context, filter) {
         if (!context) context = DOM; // 默认上下文为整个DOM  

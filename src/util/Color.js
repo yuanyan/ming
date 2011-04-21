@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Class: Color
  */
 module("util.Color",function(){
@@ -14,7 +14,8 @@ module("util.Color",function(){
 	 *  rgb - {String}  
 	 *  array - {Boolean} 以数组格式返回
 	 *  
-	 * Returns: {String} hexText #1e2fcc
+	 * Returns:
+	 *	 {String} hexText #1e2fcc
 	 */
     var rgbToHex = function(rgb,array){
         rgb = rgb.match(rRgb);

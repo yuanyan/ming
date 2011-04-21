@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Class: Base
  */
 module("lang.Base",function(global){
@@ -70,7 +70,7 @@ module("lang.Base",function(global){
 	
 
     /**
-     * Functions: isArray
+     * Function: isArray
      * 数组判断
      * 
      * Parameters:
@@ -193,8 +193,10 @@ module("lang.Base",function(global){
      * 空对象判断
      * 
      * Parameters: 
-     * - {Object} obj
-     * @retrun {Boolean}
+     *  obj - {Object}
+	 *
+     * Returns:
+	 *	{Boolean}
      */
     var isEmptyObject = function(obj){
         for (var key in obj) {
@@ -343,12 +345,13 @@ module("lang.Base",function(global){
      *  ns - {...String} 命名空间
      * 	opt_global - {Object=}  全局命名空间
      * 
-     * Returns: {Object} 返回指定的名称空间，如果该名称空间不存在就创建它。
+     * Returns: 
+	 * 	{Object} 返回指定的名称空间，如果该名称空间不存在就创建它。
      * 
      * Example: 
      * (code)
-     *  namespace("lang.JSON",san); //等同于San.namespace("lang.JSON"); 
-     *  namespace("lang.JSON","lang.Array",san);
+     *  namespace("lang.JSON",global); //等同于 namespace("lang.JSON"); 
+     *  namespace("lang.JSON","lang.Array",global);
      * (end) 
      * 
      */

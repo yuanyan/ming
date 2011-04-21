@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Class: Template
  */
 module("template.Template", function(){
@@ -10,6 +10,9 @@ module("template.Template", function(){
 	 * Parameters:
 	 * 	temp - {String} 模板
 	 * 	val - {Object} 模板对象
+	 * 
+	 * Returns: 
+	 * 	{String}
 	 * 
 	 * Example:
 	 * (code)

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Class: String
  */
 module("lang.String", function(){
@@ -11,6 +11,9 @@ module("lang.String", function(){
      * 
      * Parameters:
      *  str - {String}
+	 * 
+	 * Returns:
+	 *	 {String}
      */
     var trim = function(str){
         return str.replace(LEFT, "").replace(RIGHT, "");
@@ -21,6 +24,9 @@ module("lang.String", function(){
      * 
      * Parameters:
      *  str - {String}
+	 * 
+	 * Returns:
+	 *	 {String}
      */
     var trimLeft = function(str){
         return str.replace(LEFT, "");      
@@ -32,6 +38,9 @@ module("lang.String", function(){
      * 
      * Parameters:
      *  str - {String}
+	 * 
+	 * Returns:
+	 *	 {String}
      */
     var trimRight = function(str){
         return str.replace(RIGHT, "");

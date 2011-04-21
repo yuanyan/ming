@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Class: Function
  */
 module("lang.Function", function(global){
@@ -75,7 +75,8 @@ module("lang.Function", function(global){
      *  delay - {Integer} 延迟
      *  args - {optinal} {Array} 函数参数
      * 
-     * Returns: {Integer}  timeoutID
+     * Returns: 
+	 * 	{Integer}  timeoutID
      */
     var defer = function(func, delay, args){
 		if(func.defer){
@@ -98,7 +99,8 @@ module("lang.Function", function(global){
      *  args - {optinal} {Array}   
      *  callback - {Function} {optinal} 超时回调函数
      * 
-     * Returns: {Integer} intervalID
+     * Returns: 
+	 * 	{Integer} intervalID
      */
    	var deferUntil = function(func, condition, time, args, callback){
 		if(func.deferUntil){
