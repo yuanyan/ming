@@ -1,14 +1,48 @@
 ﻿/**
  * 
  * Class: jMarker
+ * JavaScript Template using FreeMarker Syntax
  *
- * 默认值 default
- * 内建函数 builtins
+ * Features:
+ *
+ * 支持内建函数 builtins
+ * 
  * 模版语法：
- * ${ ... } 
- * <# ... > 指令
- * <#-- ... --> 注释
- * <@ ... >
+ * - ${ ... } 变量
+ * - <# ... > 指令
+ * - <#-- ... --> 注释
+ * - <@ ... > 宏
+ * 
+ * Example:
+ * 
+ * (code)
+ * //Template
+ * var tpl =  "<h2>${title}</h2>" +
+ *			"<ul><#list animals as animal>" + 
+ *			"<li>${animal.name}</li>" +
+ *			"</#list></ul>";
+ * //Data Object
+ * var data={
+ *    "animals": [{
+ *        "name": "mouse"
+ *    }, {
+ *        "name": "elephant"
+ *    }, {
+ *        "name": "python"
+ *	  }],
+ *    "title": "Animal List"
+ *  };
+ * //Render
+ * var result = jMarker(tpl, data); // or  var result = jMarker(tpl)(data)
+ * 
+ * //<h2>Animal List</h2>
+ * //<ul>
+ * //<li>mouse</li>
+ * //<li>elephant</li>
+ * //<li>python</li>
+ * //</ul>
+ * (end)
+ *
  */
 
 /*!
