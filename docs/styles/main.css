@@ -636,7 +636,7 @@ blockquote {
 
     .IPageTitle {
         font-size: 20pt; font-weight: bold;
-        color: #FFFFFF; background-color: #7070C0;
+        color: #FFC830; background-color: #333;
         padding: 10px 15px 10px 15px;
         border-width: 0 0 3px 0; border-color: #000000; border-style: solid;
         margin: -15px -15px 0 -15px }

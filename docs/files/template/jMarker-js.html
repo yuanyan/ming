@@ -11,7 +11,31 @@ if (browserType) {document.write("<div class=" + browserType + ">");if (browserV
 
 
 
-<div id=Content><div class="CClass"><div class=CTopic id=MainTopic><h1 class=CTitle><a name="jMarker"></a>jMarker</h1><div class=CBody><p>默认值 default 内建函数 builtins 模版语法： ${ ...&nbsp; } &lt;# ...&nbsp; &gt; 指令 &lt;#-- ...&nbsp; --&gt; 注释 &lt;@ ...&nbsp; &gt;</p></div></div></div>
+<div id=Content><div class="CClass"><div class=CTopic id=MainTopic><h1 class=CTitle><a name="jMarker"></a>jMarker</h1><div class=CBody><p>JavaScript Template using FreeMarker Syntax</p><h4 class=CHeading>Features</h4><p>支持内建函数 builtins</p><p>模版语法：</p><ul><li>${ ...&nbsp; } 变量</li><li>&lt;# ...&nbsp; &gt; 指令</li><li>&lt;#-- ...&nbsp; --&gt; 注释</li><li>&lt;@ ...&nbsp; &gt; 宏</li></ul><h4 class=CHeading>Example</h4><blockquote><pre class="prettyprint">//Template
+var tpl =  &quot;&lt;h2&gt;${title}&lt;/h2&gt;&quot; +
+         &quot;&lt;ul&gt;&lt;#list animals as animal&gt;&quot; +
+         &quot;&lt;li&gt;${animal.name}&lt;/li&gt;&quot; +
+         &quot;&lt;/#list&gt;&lt;/ul&gt;&quot;;
+//Data Object
+var data={
+   &quot;animals&quot;: [{
+       &quot;name&quot;: &quot;mouse&quot;
+   }, {
+       &quot;name&quot;: &quot;elephant&quot;
+   }, {
+       &quot;name&quot;: &quot;python&quot;
+   }],
+   &quot;title&quot;: &quot;Animal List&quot;
+ };
+//Render
+var result = jMarker(tpl, data); // or  var result = jMarker(tpl)(data)
+
+//&lt;h2&gt;Animal List&lt;/h2&gt;
+//&lt;ul&gt;
+//&lt;li&gt;mouse&lt;/li&gt;
+//&lt;li&gt;elephant&lt;/li&gt;
+//&lt;li&gt;python&lt;/li&gt;
+//&lt;/ul&gt;</pre></blockquote></div></div></div>
 
 </div><!--Content-->
 
