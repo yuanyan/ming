@@ -1,0 +1,125 @@
+Format: 1.51
+
+
+# You can add a title and sub-title to your menu like this:
+# Title: [project name]
+# SubTitle: [subtitle]
+
+# You can add a footer to your documentation like this:
+# Footer: [text]
+# If you want to add a copyright notice, this would be the place to do it.
+
+# You can add a timestamp to your documentation like one of these:
+# Timestamp: Generated on month day, year
+# Timestamp: Updated mm/dd/yyyy
+# Timestamp: Last updated mon day
+#
+#   m     - One or two digit month.  January is "1"
+#   mm    - Always two digit month.  January is "01"
+#   mon   - Short month word.  January is "Jan"
+#   month - Long month word.  January is "January"
+#   d     - One or two digit day.  1 is "1"
+#   dd    - Always two digit day.  1 is "01"
+#   day   - Day with letter extension.  1 is "1st"
+#   yy    - Two digit year.  2006 is "06"
+#   yyyy  - Four digit year.  2006 is "2006"
+#   year  - Four digit year.  2006 is "2006"
+
+
+# --------------------------------------------------------------------------
+# 
+# Cut and paste the lines below to change the order in which your files
+# appear on the menu.  Don't worry about adding or removing files, Natural
+# Docs will take care of that.
+# 
+# You can further organize the menu by grouping the entries.  Add a
+# "Group: [name] {" line to start a group, and add a "}" to end it.
+# 
+# You can add text and web links to the menu by adding "Text: [text]" and
+# "Link: [name] ([URL])" lines, respectively.
+# 
+# The formatting and comments are auto-generated, so don't worry about
+# neatness when editing the file.  Natural Docs will clean it up the next
+# time it is run.  When working with groups, just deal with the braces and
+# forget about the indentation and comments.
+# 
+# --------------------------------------------------------------------------
+
+
+File: global  (global.js)
+
+Group: Lang  {
+
+   File: Array  (lang\Array.js)
+   File: Base  (lang\Base.js)
+   File: Class  (lang\Class.js)
+   File: Function  (lang\Function.js)
+   File: JSON  (lang\JSON.js)
+   File: String  (lang\String.js)
+   }  # Group: Lang
+
+Group: Net  {
+
+   File: Ajax  (net\Ajax.js)
+   File: JSONP  (net\JSONP.js)
+   File: Request  (net\Request.js)
+   }  # Group: Net
+
+Group: Event  {
+
+   File: Event  (event\Event.js)
+   }  # Group: Event
+
+Group: Dom  {
+
+   File: Dom  (dom\Dom.js)
+   File: Node  (dom\Node.js)
+   File: NodeList  (dom\NodeList.js)
+   File: query  (dom\query.js)
+   File: Selector  (dom\Selector.js)
+   File: Sizzle  (dom\sizzle.js)
+   }  # Group: Dom
+
+Group: Fx  {
+
+   File: Color  (fx\Color.js)
+   File: Effects  (fx\Effects.js)
+   File: Height  (fx\Height.js)
+   File: Opacity  (fx\Opacity.js)
+   File: Scroll  (fx\Scroll.js)
+   File: Style  (fx\Style.js)
+   File: Styles  (fx\Styles.js)
+   File: Transition  (fx\Transitions.js)
+   File: Width  (fx\Width.js)
+   }  # Group: Fx
+
+Group: Storage  {
+
+   File: Cookie  (storage\Cookie.js)
+   File: LocalStorage  (storage\LocalStorage.js)
+   }  # Group: Storage
+
+Group: Template  {
+
+   File: jMarker  (template\jMarker.js)
+   File: Template  (template\Template.js)
+   }  # Group: Template
+
+Group: Util  {
+
+   File: Color  (util\Color.js)
+   File: Format  (util\Format.js)
+   File: Loader  (util\Loader.js)
+   File: Timer  (util\Timer.js)
+   File: Uri  (util\Uri.js)
+   File: Validator  (util\Validator.js)
+   }  # Group: Util
+
+Group: Index  {
+
+   Index: Everything
+   Class Index: Classes
+   Function Index: Functions
+   Variable Index: Variables
+   }  # Group: Index
+
