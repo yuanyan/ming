@@ -2,6 +2,14 @@
 //(c) 2006 Valerio Proietti (http://mad4milk.net). MIT-style license.
 /**
  * Class: Height
+ * 高度
+ *
+ * Example:
+ *  (code)
+ * 	var el = document.getElementById('box');
+ * 	var fx = new Height(el);
+ * 	fx.toggle(); 
+ *  (end)
  */
 module("fx.Height", function(global){
 	

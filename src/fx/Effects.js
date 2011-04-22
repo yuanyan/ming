@@ -1,6 +1,7 @@
 ﻿/**
  * Class: Effects
- * 
+ *
+ * //TODO
  * 动画效果 
  * - blind 
  * - bounce 

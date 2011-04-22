@@ -2,6 +2,14 @@
 //(c) 2006 Valerio Proietti (http://mad4milk.net). MIT-style license.
 /**
  * Class: Style
+ * 元素样式单个属性
+ *
+ * Example:
+ *  (code)
+ * 	var el = document.getElementById('box');
+ *  var fx = new Style(el,"left");
+ *	fx.custom(el.offsetWidth,el.offsetWidth+500);
+ *  (end)
  */
 module("fx.Style", function(global){
 	

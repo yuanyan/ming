@@ -2,6 +2,14 @@
 //(c) 2006 Valerio Proietti (http://mad4milk.net). MIT-style license.
 /**
  * Class: Width
+ * 宽度
+ *
+ * Example:
+ *  (code)
+ * 	var el = document.getElementById('box');
+ * 	var fx = new Width(el);
+ * 	fx.toggle(); 
+ *  (end)
  */
 module("fx.Width", function(global){
 	

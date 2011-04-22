@@ -2,6 +2,14 @@
 //(c) 2006 Valerio Proietti (http://mad4milk.net). MIT-style license.
 /**
  * Class: Scroll
+ * 滚动
+ *
+ * Example:
+ *  (code)
+ * 	var el = document.getElementById('box');
+ * 	var fx = new Scroll(el);
+ * 	fx.custom(el.scrollTop, el.scrollTop+400);
+ *  (end)
  */
 module("fx.Scroll", function(global){
 	

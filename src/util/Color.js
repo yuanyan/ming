@@ -46,6 +46,11 @@ module("util.Color",function(){
 	 * 
 	 * Returns:
 	 *  {String|Array}
+	 * 
+	 * Example:
+	 * (code)
+	 * 	hexToRgb("#FFF",true) //[255,255,255]
+	 * (end)
 	 */
     var hexToRgb = function(hex,array){
         hex = hex.match(rHex);

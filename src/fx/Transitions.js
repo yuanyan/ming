@@ -3,6 +3,36 @@
 //License: Easing Equations v1.5, (c) 2003 Robert Penner, all rights reserved. Open Source BSD License.
 /**
  * Class: Transition
+ * 过渡算法集合
+ * 
+ * - linear
+ * - quadIn
+ * - quadOut
+ * - quadInOut
+ * - sineIn
+ * - sineOut
+ * - sineInOut
+ * - cubicIn
+ * - cubicOut
+ * - quartInOut
+ * - quintIn
+ * - quintOut
+ * - quintInOut
+ * - expoIn
+ * - expoOut
+ * - expoInOut
+ * - circIn
+ * - circOut
+ * - circInOut
+ * - elasticIn
+ * - elasticOut
+ * - elasticInOut
+ * - backIn
+ * - backOut
+ * - backInOut
+ * - bounceIn
+ * - bounceOut
+ * - bounceInOut 
  */
 module("fx.Transition", function(global){
 	

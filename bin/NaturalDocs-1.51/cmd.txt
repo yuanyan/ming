@@ -1,0 +1,1 @@
+NaturalDocs -i ..\..\src -o HTML ..\..\..\modulejs@gh-pages\docs -p ..\..\..\modulejs@gh-pages\config -r -s Modulejs
