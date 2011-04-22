@@ -11,7 +11,13 @@ if (browserType) {document.write("<div class=" + browserType + ">");if (browserV
 
 
 
-<div id=Content><div class="CClass"><div class=CTopic id=MainTopic><h1 class=CTitle><a name="Styles"></a>Styles</h1><div class=CBody></div></div></div>
+<div id=Content><div class="CClass"><div class=CTopic id=MainTopic><h1 class=CTitle><a name="Styles"></a>Styles</h1><div class=CBody><p>元素样式多个属性</p><h4 class=CHeading>Example</h4><blockquote><pre class="prettyprint">var el = document.getElementById('box');
+var fx = new Styles(el);
+//设置top left时，position 必须不为static
+fx.custom({
+    top: [el.offsetHeight, el.offsetHeight+500],
+    left: [el.offsetWidth, el.offsetWidth+500]
+});</pre></blockquote></div></div></div>
 
 </div><!--Content-->
 
