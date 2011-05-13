@@ -56,7 +56,7 @@ module("dom.Node", function (global) {
 		 *	{Node} return self
          */
         "on": function (type, handler) {
-            Event.on(this.node, type, handler);
+            Event.on(this[0], type, handler);
             return this;
         },
 
@@ -72,7 +72,7 @@ module("dom.Node", function (global) {
 		 * 	{Node} return self
          */
         "off": function (type, handler) {
-            Event.off(this.domNode, type, handler);
+            Event.off(this[0], type, handler);
             return this;
         },
 		
@@ -99,9 +99,9 @@ module("dom.Node", function (global) {
             if (name === undefined) return this;
 
             if (value === undefined) { //获取属性值
-                return this.domNode.getAttribute(name);
+                return this[0].getAttribute(name);
             } else { //设置属性值 
-                this.domNode.setAttribute(name, value);
+                this[0].setAttribute(name, value);
             }
 
             return this;
@@ -120,7 +120,7 @@ module("dom.Node", function (global) {
          */
         "removeAttr": function (name) {
 
-            if (this.domNode.hasAttribute(name)) {
+            if (this[0].hasAttribute(name)) {
                 this[0].removeAttribute(name);
             }
 
