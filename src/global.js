@@ -140,8 +140,9 @@ var module = (function(global, undefined){
 	var callModule = function(ns){
 		if (checkModule(ns)) {
            return  modules[ns];       
-        }
-        else {
+        }else if(moduleInFlight[ns]){
+			
+		}else {
             throw new Error("call a unregisted module: "+ns);
         }
 	}
@@ -166,7 +167,7 @@ var module = (function(global, undefined){
 		var script = DOM.createElement("script");
 		script.charset =  config.charset; //字符集设置
 		script.type = 'text/javascript';
-		script.async = true; //异步加载属性设置（HTML5 规范）
+		//script.async = true; //异步加载属性设置（HTML5 规范）目前异步加载后无法保证脚步按加载顺序正确执行，预期在下一版本中支持异步加载脚步
 		script.src = config.host + namespace.split(".").join("/") + config.suffix;; 
 
 		var head = DOM.getElementsByTagName("head")[0] || DOM.body;
