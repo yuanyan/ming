@@ -1,4 +1,4 @@
-ï»¿//Namespaces: global
+//Namespaces: global
 
 var module = (function(global, undefined){
 
@@ -96,13 +96,13 @@ var module = (function(global, undefined){
 
 	//Group: module
 	
-	global.moduleConfig = global.moduleConfig||{};//é…ç½®é¡¹
+	global.moduleConfig = global.moduleConfig||{};//ÅäÖÃÏî
 	
-	var config = {   //é»˜è®¤é…ç½®é¡¹
-		"debug":true, //è°ƒè¯•æ¨¡å¼
-		"host" : "./",  //é»˜è®¤æœåŠ¡å™¨åœ°å€ä¸ºæœ¬åœ°ç›¸å¯¹åœ°å€
-		"suffix" : ".js", //æ¨¡å—æ–‡ä»¶åç¼€
-		"charset" : "utf-8" //é»˜è®¤å­—ç¬¦é›†
+	var config = {   //Ä¬ÈÏÅäÖÃÏî
+		"debug":true, //µ÷ÊÔÄ£Ê½
+		"host" : "./",  //Ä¬ÈÏ·şÎñÆ÷µØÖ·Îª±¾µØÏà¶ÔµØÖ·
+		"suffix" : ".js", //Ä£¿éÎÄ¼şºó×º
+		"charset" : "utf-8" //Ä¬ÈÏ×Ö·û¼¯
 	};
 	
 	for(var k in moduleConfig){
@@ -110,81 +110,155 @@ var module = (function(global, undefined){
 	};
 	
 	global.moduleConfig = config;
+	
+	//load regist install 
 
     var DOM = global.document,
-		modules = new Object,//æ¨¡å—ä»“åº“
-		moduleInFlight = new Object,
-		isDomReady = false, // è¡¨ç¤º DOM ready äº‹ä»¶æ˜¯å¦è¢«è§¦å‘è¿‡ï¼Œå½“è¢«è§¦å‘åè®¾ä¸ºtrue
-		isModuleReady = false, 
-		isReady = false, //ready æ–¹æ³•æ‰§è¡Œä¸€æ¬¡
-		lastLoadModule = null,
-		readyHandler = [];	// DOM readyäº‹ä»¶å¤„ç†æ–¹æ³•
+		modules = {},//Ä£¿é²Ö¿â
+		isReady = false, //domReady ·½·¨Ö´ĞĞÒ»´Î
+		isDomReady = false, // ±íÊ¾ DOM ready ÊÂ¼şÊÇ·ñ±»´¥·¢¹ı£¬µ±±»´¥·¢ºóÉèÎªtrue	
+		moduleConstructor = {},
+		
+		registedModule = 0,
+		isModuleReady = false,
+		moduleInstallQueue= [], //Ä£¿é°²×°¶ÓÁĞ
+		
+		
+		readyHandler = [];	// DOM readyÊÂ¼ş´¦Àí·½·¨
+		
     
     var checkModule = function(ns){
         return modules.hasOwnProperty(ns);
     }
     
-    var registModule = function(ns, fn, global){
+	/**
+	 * Ìí¼ÓÄ£¿é
+	 */
+	var addModule = function(namespace, src){
+	
+		if(!namespace) return;
+		
+		if(namespace instanceof Array){
+			
+			namespace.forEach(function(v){
+				addModule(v, src);
+			});
+		}else{
+		
+		    if (!checkModule(namespace)) {
+				var module = {'namespace':namespace,'src':src};
+				moduleInstallQueue.push(module);
+			}
+			else {
+				throw new Error("namesapce hava been registed: "+namespace);
+			}
+		
+		}
+		
+
+    };	
+	
+
+	
+	/**
+	 * ¼ÓÔØÄ£¿é
+	 */
+	var loadModule = function(){
+	
+		var host = config.host;
+				
+		if(host[host.length-1] !== '/') {
+			host += "/";
+		}
+	
+		moduleInstallQueue.forEach(function(module){
+			
+			var ns = module['namespace'],
+				src = module['src'];
+				
+			var script = DOM.createElement("script");
+			script.charset =  config.charset; //×Ö·û¼¯ÉèÖÃ
+			script.type = 'text/javascript';
+			script.async = true; //Òì²½¼ÓÔØÊôĞÔÉèÖÃ£¨HTML5 ¹æ·¶£©
+			script.src = src || (host + ns.split(".").join("/") + config.suffix); 
+
+			var head = DOM.getElementsByTagName("head")[0] || DOM.body;
+			head.appendChild(script); 
+			
+		});	
+
+		
+		
+
+	};
+
+	/**
+	 * ×¢²áÄ£¿é
+	 */
+    var registModule = function(ns, fn){
         if (!checkModule(ns)) {
-            modules[ns] = fn(global);
-            
-            //log				
+		
+			moduleConstructor[ns] = fn;
+			
+			//Ä£¿é×¢²á¼´ÊÂ¼ş
+			if( ++registedModule  ===  moduleInstallQueue.length){
+			
+				installModule();
+			}
+  			
             //console.log(ns + " module registed!");
         }
         else {
             throw new Error("namesapce hava been registed: "+ns);
         }
+		
+		
         
-    };
+    };	
+		
+	/**
+	 * °²×°Ä£¿é
+	 */	
+	var installModule = function(){
 	
+		moduleInstallQueue.forEach(function(module){
+			
+			var ns = module['namespace'],
+				fn = moduleConstructor[ns];
+				
+            modules[ns] = fn(global);			
+			
+		});		
+		
+		isModuleReady = true;
+		if(isDomReady){	
+			var mod = modules['_onReady'];
+			mod.forEach(function(v){
+				v();
+			});
+		}
+		
+	}
+	
+	/**
+	 * µ÷ÓÃÄ£¿é
+	 */	
 	var callModule = function(ns){
 		if (checkModule(ns)) {
            return  modules[ns];       
-        }else if(moduleInFlight[ns]){
-			
-		}else {
+        }else {
             throw new Error("call a unregisted module: "+ns);
         }
-	}
-	
-	
-	/**
-	 * åŠ è½½æ¨¡å—
-	 */
-	var loadModule = function(namespace){
-		if(!namespace) return;
-		
-		if(modules[namespace] || moduleInFlight[namespace]){
-			return;
-		}
-		// set module in flight
-		moduleInFlight[namespace] = true;
-		
-		if(config.host[config.host.length-1] !== '/') {
-			config.host += "/";
-		}
-		
-		var script = DOM.createElement("script");
-		script.charset =  config.charset; //å­—ç¬¦é›†è®¾ç½®
-		script.type = 'text/javascript';
-		//script.async = true; //å¼‚æ­¥åŠ è½½å±æ€§è®¾ç½®ï¼ˆHTML5 è§„èŒƒï¼‰ç›®å‰å¼‚æ­¥åŠ è½½åæ— æ³•ä¿è¯è„šæ­¥æŒ‰åŠ è½½é¡ºåºæ­£ç¡®æ‰§è¡Œï¼Œé¢„æœŸåœ¨ä¸‹ä¸€ç‰ˆæœ¬ä¸­æ”¯æŒå¼‚æ­¥åŠ è½½è„šæ­¥
-		script.src = config.host + namespace.split(".").join("/") + config.suffix;; 
-
-		var head = DOM.getElementsByTagName("head")[0] || DOM.body;
-		head.appendChild(script); 
-		
-		isModuleReady  = false;  //æ›´æ–°æ¨¡å—åŠ è½½çŠ¶æ€
-		lastLoadModule = script; //æ›´æ–°æœ€ååŠ è½½æ¨¡å—
-	};
+	}	
 	
 	/**
-     * DOM Ready å¤„ç†
+     * DOM Ready ´¦Àí
      */
-    var ready = function(fn){
+    var domReady = function(fn){
 		
 		readyHandler.push(fn);
 
-        // readyæ–¹æ³•åªæ‰§è¡Œä¸€æ¬¡
+        // ready·½·¨Ö»Ö´ĞĞÒ»´Î
         if (isReady) {
             return;
         }
@@ -197,20 +271,20 @@ var module = (function(global, undefined){
 			}
         }
         
-        // å¦‚æœ å½“onReady()è¢«è°ƒç”¨æ—¶é¡µé¢å·²ç»åŠ è½½å®Œæ¯•ï¼Œåˆ™ç›´æ¥è¿è¡Œå¤„ç†
+        // Èç¹û µ±onReady()±»µ÷ÓÃÊ±Ò³ÃæÒÑ¾­¼ÓÔØÍê±Ï£¬ÔòÖ±½ÓÔËĞĞ´¦Àí
         if (DOM.readyState === "complete") {
             return run();
         }
         
-        // DOM-level 2 æ ‡å‡†çš„äº‹ä»¶æ³¨å†Œæ¥å£ Mozilla, Opera, webkit éƒ½æ”¯æŒ 
+        // DOM-level 2 ±ê×¼µÄÊÂ¼ş×¢²á½Ó¿Ú Mozilla, Opera, webkit ¶¼Ö§³Ö 
         if (DOM.addEventListener) {
-            // æ³¨å†ŒDOMContentLoadedäº‹ä»¶çš„å›è°ƒæ–¹æ³•run
+            // ×¢²áDOMContentLoadedÊÂ¼şµÄ»Øµ÷·½·¨run
             DOM.addEventListener("DOMContentLoaded", run, false);
             
-            // åŒæ—¶æ³¨å†Œloadäº‹ä»¶å›è°ƒæ–¹æ³•ï¼Œç¡®ä¿è¢«æ‰§è¡Œ 
+            // Í¬Ê±×¢²áloadÊÂ¼ş»Øµ÷·½·¨£¬È·±£±»Ö´ĞĞ 
             global.addEventListener("load", run, false);
             
-            //IE çš„äº‹ä»¶æ³¨å†Œæ¥å£
+            //IE µÄÊÂ¼ş×¢²á½Ó¿Ú
         }
         else  
 			if (DOM.attachEvent) {
@@ -252,11 +326,11 @@ var module = (function(global, undefined){
 	
 	/*
 	Function: module
-		æ¨¡å—å£°æ˜
+		Ä£¿éÉùÃ÷
 		
 	Parameters:
-		ns - {String} æ¨¡å—å‘½åç©ºé—´,å¤§å°å†™æ•æ„Ÿ
-		fn - {Function} æ¨¡å—
+		ns - {String} Ä£¿éÃüÃû¿Õ¼ä,´óĞ¡Ğ´Ãô¸Ğ
+		fn - {Function} Ä£¿é
 		
 	Returns:
 		module - {Object}
@@ -270,76 +344,56 @@ var module = (function(global, undefined){
     var module = function(ns, fn){
 		if(ns == undefined) return;
     
-        if (fn === undefined) { //æ¨¡å—è°ƒç”¨
+        if (fn === undefined) { //Ä£¿éµ÷ÓÃ
             return callModule(ns);
         }
-        else {//æ¨¡å—æ³¨å†Œ
-            registModule(ns, fn, global);        
+        else {//Ä£¿é×¢²á
+            registModule(ns, fn);        
         }
         
     };
 	
+
+	
+	
 	/*
 	Function: module.load
-		æ¨¡å—åŠ è½½
+		Ä£¿é¼ÓÔØ
 		
 	Parameters:
-		namespace - {String|Array} 
+		namespace - {String|Array}
+		src - {String}
 	*/	 
-	module.load = function(namespace){
-		
-		if(namespace instanceof Array){
-			namespace.forEach(function(v){
-				loadModule(v);
-			});
-		}else{
-			loadModule(namespace);
-		}
+	module.load = function(namespace, src){
+			
+		addModule(namespace, src);
 
 	};
     
 	/*
 	Function: module.onReady
-		onReady äº‹ä»¶æ³¨å†Œ
+		onReady ÊÂ¼ş×¢²á
 		
 	Parameters:
 		fn - {Function}
 	*/	 
 	module.onReady = function(fn){
-
-		function run(){
-			// å¦‚æœDom Readyå·²ç»è§¦å‘è¿‡ï¼Œç«‹å³æ‰§è¡Œå¤„ç†æ–¹æ³•
-			if (isDomReady) {
-				fn.call(DOM);
-			} 
-			// å¦åˆ™åŠ å…¥readyHandleré˜Ÿåˆ—ä¸­
-			else {
-				 ready(fn);
-			}
+		
+		loadModule();
+		
+		if(modules['_onReady']){
+			modules['_onReady'].push(fn);
+		}else{
+			modules['_onReady'] = [fn];
 		}
 		
-		//å­˜åœ¨æœ€åéœ€è¦åŠ è½½çš„æ¨¡å—å¹¶ä¸”è¿˜æœªåŠ è½½å®Œæˆ
-		if(lastLoadModule && !isModuleReady){ 
-			
-			var callback =function() {
-				isModuleReady = true;
-				run();
-			};
-
-			if (lastLoadModule.attachEvent) 
-				lastLoadModule.attachEvent("onreadystatechange", function() {
-					var target = global.event.srcElement;
-					if(target.readyState == "loaded" || target.readyState === "complete")
-						callback.call(target);
-				});
-			else if(lastLoadModule.addEventListener) 
-				lastLoadModule.addEventListener("load", callback, false);
-
-		}else{
-			run();
-		}
-        
-        
+		domReady(function(e){			
+			if(isModuleReady){
+				fn(e);
+				//fn.isCalled = true;
+			}	
+		});
+	 
         
     };	
 	
