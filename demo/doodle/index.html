@@ -12,8 +12,8 @@ module.load(['lang.Base',"dom.Selector","event.Event","dom.Node","dom.NodeList",
 
 module.onReady(function(global) {
 	
-	console.log("onReady!");
-console.log(global);
+	//window['console']&&console.log("onReady!");
+
 	var style_info = [
 	[307,48,88,89,0,0],
 	[307,48,89,89,-88,0],
@@ -192,7 +192,7 @@ console.log(global);
 
 						'background:url("./o_graham11-hp-sprite.png") no-repeat '+style[4]+'px '+style[5]+'px;';
 										
-					div.attr("style",css);
+					div.style(css);
 
 					doodle.append(div);
 
@@ -217,7 +217,7 @@ console.log(global);
 <img src="./o_graham11-hp-start.png" alt="ÏÖ´úÎèÏÈÇýÂêÉ¯&middot;¸ðÀ¼Ä· 117 ÖÜÄêµ®³½" title="ÏÖ´úÎèÏÈÇýÂêÉ¯&middot;¸ðÀ¼Ä· 117 ÖÜÄêµ®³½" />
 </div>
 <p></p>
-<div><a href="#" onclick="doodleRun()">Run doodle</a></div>
+<div><a href="javascript:void(0)" onclick="doodleRun()">Run doodle</a></div>
 
 </body>
 </html>

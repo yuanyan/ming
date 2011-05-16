@@ -327,6 +327,19 @@ module("dom.Node", function (global) {
 
         /*-----样式方法-----*/
 		//Group: Style
+		
+		/**
+         * Function: style
+         * 设置节点样式
+         * 
+         * Parameters:
+         *  cssText - {String} 样式
+         *  
+         */
+		"style": function(cssText){
+			this[0].style.cssText = cssText;
+		},
+		
         /**
          * Function: css
          * 设置节点样式值

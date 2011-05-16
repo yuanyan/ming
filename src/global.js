@@ -1,4 +1,4 @@
-//Namespaces: global
+ï»¿//Namespaces: global
 
 var module = (function(global, undefined){
 
@@ -96,13 +96,13 @@ var module = (function(global, undefined){
 
 	//Group: module
 	
-	global.moduleConfig = global.moduleConfig||{};//ÅäÖÃÏî
+	global.moduleConfig = global.moduleConfig||{};//é…ç½®é¡¹
 	
-	var config = {   //Ä¬ÈÏÅäÖÃÏî
-		"debug":true, //µ÷ÊÔÄ£Ê½
-		"host" : "./",  //Ä¬ÈÏ·şÎñÆ÷µØÖ·Îª±¾µØÏà¶ÔµØÖ·
-		"suffix" : ".js", //Ä£¿éÎÄ¼şºó×º
-		"charset" : "utf-8" //Ä¬ÈÏ×Ö·û¼¯
+	var config = {   //é»˜è®¤é…ç½®é¡¹
+		"debug":true, //è°ƒè¯•æ¨¡å¼
+		"host" : "./",  //é»˜è®¤æœåŠ¡å™¨åœ°å€ä¸ºæœ¬åœ°ç›¸å¯¹åœ°å€
+		"suffix" : ".js", //æ¨¡å—æ–‡ä»¶åç¼€
+		"charset" : "utf-8" //é»˜è®¤å­—ç¬¦é›†
 	};
 	
 	for(var k in moduleConfig){
@@ -114,17 +114,17 @@ var module = (function(global, undefined){
 	//load regist install 
 
     var DOM = global.document,
-		modules = {},//Ä£¿é²Ö¿â
-		isReady = false, //domReady ·½·¨Ö´ĞĞÒ»´Î
-		isDomReady = false, // ±íÊ¾ DOM ready ÊÂ¼şÊÇ·ñ±»´¥·¢¹ı£¬µ±±»´¥·¢ºóÉèÎªtrue	
+		modules = {},//æ¨¡å—ä»“åº“
+		isReady = false, //domReady æ–¹æ³•æ‰§è¡Œä¸€æ¬¡
+		isDomReady = false, // è¡¨ç¤º DOM ready äº‹ä»¶æ˜¯å¦è¢«è§¦å‘è¿‡ï¼Œå½“è¢«è§¦å‘åè®¾ä¸ºtrue	
 		moduleConstructor = {},
 		
 		registedModule = 0,
 		isModuleReady = false,
-		moduleInstallQueue= [], //Ä£¿é°²×°¶ÓÁĞ
+		moduleInstallQueue= [], //æ¨¡å—å®‰è£…é˜Ÿåˆ—
 		
 		
-		readyHandler = [];	// DOM readyÊÂ¼ş´¦Àí·½·¨
+		readyHandler = [];	// DOM readyäº‹ä»¶å¤„ç†æ–¹æ³•
 		
     
     var checkModule = function(ns){
@@ -132,7 +132,7 @@ var module = (function(global, undefined){
     }
     
 	/**
-	 * Ìí¼ÓÄ£¿é
+	 * æ·»åŠ æ¨¡å—
 	 */
 	var addModule = function(namespace, src){
 	
@@ -161,7 +161,7 @@ var module = (function(global, undefined){
 
 	
 	/**
-	 * ¼ÓÔØÄ£¿é
+	 * åŠ è½½æ¨¡å—
 	 */
 	var loadModule = function(){
 	
@@ -177,9 +177,9 @@ var module = (function(global, undefined){
 				src = module['src'];
 				
 			var script = DOM.createElement("script");
-			script.charset =  config.charset; //×Ö·û¼¯ÉèÖÃ
+			script.charset =  config.charset; //å­—ç¬¦é›†è®¾ç½®
 			script.type = 'text/javascript';
-			script.async = true; //Òì²½¼ÓÔØÊôĞÔÉèÖÃ£¨HTML5 ¹æ·¶£©
+			script.async = true; //å¼‚æ­¥åŠ è½½å±æ€§è®¾ç½®ï¼ˆHTML5 è§„èŒƒï¼‰
 			script.src = src || (host + ns.split(".").join("/") + config.suffix); 
 
 			var head = DOM.getElementsByTagName("head")[0] || DOM.body;
@@ -193,14 +193,14 @@ var module = (function(global, undefined){
 	};
 
 	/**
-	 * ×¢²áÄ£¿é
+	 * æ³¨å†Œæ¨¡å—
 	 */
     var registModule = function(ns, fn){
         if (!checkModule(ns)) {
 		
 			moduleConstructor[ns] = fn;
 			
-			//Ä£¿é×¢²á¼´ÊÂ¼ş
+			//æ¨¡å—æ³¨å†Œå³äº‹ä»¶
 			if( ++registedModule  ===  moduleInstallQueue.length){
 			
 				installModule();
@@ -217,7 +217,7 @@ var module = (function(global, undefined){
     };	
 		
 	/**
-	 * °²×°Ä£¿é
+	 * å®‰è£…æ¨¡å—
 	 */	
 	var installModule = function(){
 	
@@ -241,7 +241,7 @@ var module = (function(global, undefined){
 	}
 	
 	/**
-	 * µ÷ÓÃÄ£¿é
+	 * è°ƒç”¨æ¨¡å—
 	 */	
 	var callModule = function(ns){
 		if (checkModule(ns)) {
@@ -252,13 +252,13 @@ var module = (function(global, undefined){
 	}	
 	
 	/**
-     * DOM Ready ´¦Àí
+     * DOM Ready å¤„ç†
      */
     var domReady = function(fn){
 		
 		readyHandler.push(fn);
 
-        // ready·½·¨Ö»Ö´ĞĞÒ»´Î
+        // readyæ–¹æ³•åªæ‰§è¡Œä¸€æ¬¡
         if (isReady) {
             return;
         }
@@ -271,20 +271,20 @@ var module = (function(global, undefined){
 			}
         }
         
-        // Èç¹û µ±onReady()±»µ÷ÓÃÊ±Ò³ÃæÒÑ¾­¼ÓÔØÍê±Ï£¬ÔòÖ±½ÓÔËĞĞ´¦Àí
+        // å¦‚æœ å½“onReady()è¢«è°ƒç”¨æ—¶é¡µé¢å·²ç»åŠ è½½å®Œæ¯•ï¼Œåˆ™ç›´æ¥è¿è¡Œå¤„ç†
         if (DOM.readyState === "complete") {
             return run();
         }
         
-        // DOM-level 2 ±ê×¼µÄÊÂ¼ş×¢²á½Ó¿Ú Mozilla, Opera, webkit ¶¼Ö§³Ö 
+        // DOM-level 2 æ ‡å‡†çš„äº‹ä»¶æ³¨å†Œæ¥å£ Mozilla, Opera, webkit éƒ½æ”¯æŒ 
         if (DOM.addEventListener) {
-            // ×¢²áDOMContentLoadedÊÂ¼şµÄ»Øµ÷·½·¨run
+            // æ³¨å†ŒDOMContentLoadedäº‹ä»¶çš„å›è°ƒæ–¹æ³•run
             DOM.addEventListener("DOMContentLoaded", run, false);
             
-            // Í¬Ê±×¢²áloadÊÂ¼ş»Øµ÷·½·¨£¬È·±£±»Ö´ĞĞ 
+            // åŒæ—¶æ³¨å†Œloadäº‹ä»¶å›è°ƒæ–¹æ³•ï¼Œç¡®ä¿è¢«æ‰§è¡Œ 
             global.addEventListener("load", run, false);
             
-            //IE µÄÊÂ¼ş×¢²á½Ó¿Ú
+            //IE çš„äº‹ä»¶æ³¨å†Œæ¥å£
         }
         else  
 			if (DOM.attachEvent) {
@@ -326,11 +326,11 @@ var module = (function(global, undefined){
 	
 	/*
 	Function: module
-		Ä£¿éÉùÃ÷
+		æ¨¡å—å£°æ˜
 		
 	Parameters:
-		ns - {String} Ä£¿éÃüÃû¿Õ¼ä,´óĞ¡Ğ´Ãô¸Ğ
-		fn - {Function} Ä£¿é
+		ns - {String} æ¨¡å—å‘½åç©ºé—´,å¤§å°å†™æ•æ„Ÿ
+		fn - {Function} æ¨¡å—
 		
 	Returns:
 		module - {Object}
@@ -344,10 +344,10 @@ var module = (function(global, undefined){
     var module = function(ns, fn){
 		if(ns == undefined) return;
     
-        if (fn === undefined) { //Ä£¿éµ÷ÓÃ
+        if (fn === undefined) { //æ¨¡å—è°ƒç”¨
             return callModule(ns);
         }
-        else {//Ä£¿é×¢²á
+        else {//æ¨¡å—æ³¨å†Œ
             registModule(ns, fn);        
         }
         
@@ -358,7 +358,7 @@ var module = (function(global, undefined){
 	
 	/*
 	Function: module.load
-		Ä£¿é¼ÓÔØ
+		æ¨¡å—åŠ è½½
 		
 	Parameters:
 		namespace - {String|Array}
@@ -372,7 +372,7 @@ var module = (function(global, undefined){
     
 	/*
 	Function: module.onReady
-		onReady ÊÂ¼ş×¢²á
+		onReady äº‹ä»¶æ³¨å†Œ
 		
 	Parameters:
 		fn - {Function}
