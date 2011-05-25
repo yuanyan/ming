@@ -121,10 +121,8 @@ var module = (function(global, undefined){
 		
 		registedModule = 0,
 		isModuleReady = false,
-		moduleInstallQueue= [], //模块安装队列
-		
-		
-		readyHandler = [];	// DOM ready事件处理方法
+		moduleInstallQueue= []; //模块安装队列
+
 		
     
     var checkModule = function(ns){
@@ -150,7 +148,7 @@ var module = (function(global, undefined){
 				moduleInstallQueue.push(module);
 			}
 			else {
-				throw new Error("namesapce hava been registed: "+namespace);
+				throw new Error("namespace hava been registed: "+namespace);
 			}
 		
 		}
@@ -209,7 +207,7 @@ var module = (function(global, undefined){
             //console.log(ns + " module registed!");
         }
         else {
-            throw new Error("namesapce hava been registed: "+ns);
+            throw new Error("namespace hava been registed: "+ns);
         }
 		
 		
@@ -231,11 +229,8 @@ var module = (function(global, undefined){
 		});		
 		
 		isModuleReady = true;
-		if(isDomReady){	
-			var mod = modules['_onReady'];
-			mod.forEach(function(v){
-				v();
-			});
+		if(isDomReady){
+			runReadyHandler();
 		}
 		
 	}
@@ -249,26 +244,32 @@ var module = (function(global, undefined){
         }else {
             throw new Error("call a unregisted module: "+ns);
         }
-	}	
+	};
+
 	
+	var runReadyHandler = function(e){
+
+		for (var i = 0, len = modules['_readyHandler'].length; i < len; i++) {
+			modules['_readyHandler'].shift()(e);
+		}
+	
+	};
 	/**
      * DOM Ready 处理
      */
     var domReady = function(fn){
-		
-		readyHandler.push(fn);
 
         // ready方法只执行一次
         if (isReady) {
             return;
         }
 		isReady = true;
+		
+		loadModule();
 
         var run = function(e){	
 			isDomReady = true;
-			for (var i = 0, len = readyHandler.length; i < len; i++) {
-				readyHandler.shift()(e);
-			}
+			runReadyHandler(e);
         }
         
         // 如果 当onReady()被调用时页面已经加载完毕，则直接运行处理
@@ -379,12 +380,10 @@ var module = (function(global, undefined){
 	*/	 
 	module.onReady = function(fn){
 		
-		loadModule();
-		
-		if(modules['_onReady']){
-			modules['_onReady'].push(fn);
+		if(modules['_readyHandler']){
+			modules['_readyHandler'].push(fn);
 		}else{
-			modules['_onReady'] = [fn];
+			modules['_readyHandler'] = [fn];
 		}
 		
 		domReady(function(e){			

@@ -136,10 +136,10 @@ module("dom.Node", function (global) {
          * 设置元素的html内容。
          * 
          * Parameters:
-         *  html - {String|Number}
+         *  html - {String}
          *  
          * Returns: 
-		 * 	{String|Node}
+		 * 	{Node}
          */
         "html": function (html) {
             var elem = this[0];
@@ -149,7 +149,7 @@ module("dom.Node", function (global) {
             }
             // setter
             else {
-                this.empty().append(html);
+                elem.innerHTML = html;
             }
 
             return this;
