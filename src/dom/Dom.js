@@ -8,7 +8,7 @@ module("dom.Dom",function(global){
 		Base = module("lang.Base"),
 		query = module("dom.query");
 	
-	var DOM=document,Dom=new Node(document);
+	var DOM=document,Dom=new Node(DOM);
 	
 	
 	
@@ -93,6 +93,7 @@ module("dom.Dom",function(global){
     };
 
 	var fns = {
+		//"body"  : new Node(DOM.body),
 		"isNode": isNode,
 		"create": create,
 		"remove": remove,
