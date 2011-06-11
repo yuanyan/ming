@@ -94,7 +94,8 @@ module("lang.Base",function(global){
 		//测试结果相差将近一倍
         //toString.call(object) == "[object Array]";
 		
-		//通过instanceof 操作符判断
+		//另可以通过constructor属性和instanceof操作符判断,但当obj来自不同执行上下文时，如frame，此时则为false
+		//obj.consructor === Array 
 		//obj instanceof Array
     };
     
