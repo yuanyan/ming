@@ -18,16 +18,15 @@ module("lang.Array",function(){
 	 *  array - {Array}
 	 * 	from - {Object}
 	 * 	to - {optional}{Object} 
-	 */
+	 */ 
+	// Array Remove - By John Resig (MIT Licensed)
+	// http://ejohn.org/blog/javascript-array-remove/
     var remove = function(array, from, to){
-		if (array.remove) {
-			return array.remove(from, to);
-		}
-		else {
-			var rest = array.slice((to || from) + 1 || array.length);
-			array.length = from < 0 ? array.length + from : from;
-			return array.push.apply(array, rest);
-		}
+		
+		var rest = array.slice((to || from) + 1 || array.length);
+		array.length = from < 0 ? array.length + from : from;
+		return array.push.apply(array, rest);
+
     };
 
 
