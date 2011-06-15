@@ -10,7 +10,7 @@
  */
 
 module("util.UserAgent", function(global){
-	var ie, firefox, chrome, opera, safari, iphone, window, linux, osx, explored = false;
+	var ie, firefox, chrome, opera, safari, ios, window, linux, osx, explored = false;
     
     (function(){
         if (explored) 
@@ -21,7 +21,7 @@ module("util.UserAgent", function(global){
 		//浏览器检测
         var b = /(?:MSIE.(\d+\.\d+))|(?:Firefox.(\d+\.\d+))|(?:Opera(?:.+Version.|.)(\d+\.\d+))|(?:AppleWebKit.(\d+(?:\.\d+)?))/.exec(UA);
         //操作系统检测
-		var os = /(Mac OS X)|(Windows)|(Linux)|(iPhone|iP[ao]d)/.exec(UA);
+		var os = /(Mac OS X)|(Windows)|(Linux)|(iPhone|iP[ao]d)/.exec(UA); 
 		
 		//浏览器识别
         if (b) {
@@ -47,9 +47,9 @@ module("util.UserAgent", function(global){
 			osx = !!os[1];
 			windows = !!os[2];
 			linux = !!os[3];
-			iphone = !!os[4];
+			ios = !!os[4];
 		}else {
-			osx = windows = linux = iphone = false;
+			osx = windows = linux = ios = false;
 		}
     })();
 	
@@ -65,7 +65,7 @@ module("util.UserAgent", function(global){
         "windows": windows,
         "osx": osx,
         "linux": linux,
-        "iphone": iphone
+        "ios": ios
     };
     
 });
