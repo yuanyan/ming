@@ -1,44 +1,38 @@
 ﻿/**
  * Class: Effects
- *
- * //TODO
- * 动画效果 
- * - blind 
- * - bounce 
- * - clip 
- * - drop 
- * - explode
- * - fade 淡入淡出
- * - fold 
- * - highlight 高亮
- * - pulsate 
- * - scale 
- * - shake 
- * - slide 幻灯片
- * - transfer
+ * 动画效果类 The high-level api of fx module
+ * 
+ * 支持以下动画效果
+ * - blind  百叶窗效果，元素从下至上收起来，直到隐藏
+ * - bounce 弹跳效果，元素上下跳动
+ * - clip  修剪效果，元素上下边缘同时收起来，直到隐藏 
+ * - drop 切出效果，元素向左边移动并升高透明度，直到隐藏
+ * - explode 分解效果，元素被拆分成9块，向外扩展并透明度提高，直到隐藏
+ * - fade 淡入淡出效果，淡出时，元素透明度提高，直到隐藏，淡入反之
+ * - fold 折叠效果，元素向上收起，再向左收起，直到隐藏
+ * - highlight 高亮效果，元素颜色高亮
+ * - pulsate 闪烁效果，元素闪烁
+ * - scale 缩放效果，元素从右下向左上收起，直到隐藏 
+ * - shake 震动效果，元素左右晃动元素
+ * - slide 幻灯片效果，元素从左往右滑动元素，直到全部显示
+ * - transfer 迁移效果，元素缩小并迁移元素至触发事件的元素 
  */
 module("fx.Effects", function(global){
 
-
-	/**
-	 * @param {Object} options (object, optional) An object with options for the effect. See below.
-	 * 
-	 * fps - (number: defaults to 50) The frames per second for the transition.
-	 * unit - (string: defaults to false) The unit, e.g. 'px', 'em', or '%'. See Element:setStyle.
-	 * transition - (function: defaults to 'sine:in:out' The equation to use for the effect see Fx.Transitions. Also accepts a string in the following form:
-	 * transition[:in][:out] - for example, 'linear', 'quad:in', 'back:in', 'bounce:out', 'elastic:out', 'sine:in:out'
-	 * Events:
-	 *	start - (function) The function to execute when the effect begins.
-	 *	cancel - (function) The function to execute when you manually stop the effect.
-	 *	complete - (function) The function to execute after the effect has processed.
-	 *	chainComplete - (function) The function to execute when using link 'chain' (see options). It gets called after all effects in the chain have completed.
-	 * Notes:
-	 *	You cannot change the transition if you haven't included Fx.Transitions.js, (unless you plan on developing your own curve). ;)
-	 *	The Fx Class is just a skeleton for other Classes to extend the basic functionality.
-	 */
-	
-		
 	//IMPORT
+	
+	function effect(options，speed，callback){
+	
+	
+	}
+	
+	
+	//EXPOSE
+	return {
+	
+	
+	
+	}
 
 	
 	
