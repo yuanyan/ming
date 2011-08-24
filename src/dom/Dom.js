@@ -104,7 +104,7 @@ module("dom.Dom",function(global){
 	 *	document.documentElement.clientHeight/Width
 	 *		Provided by most DOM browsers, including Internet Explorer.
 	 *
-     * See: 
+	 * See: 
 	 * http://www.howtocreate.co.uk/tutorials/javascript/browserwindow
      */
 	var getPageWH = function(){
@@ -157,8 +157,8 @@ module("dom.Dom",function(global){
 		"create": create,
 		"remove": remove,
 		"addStyle": addStyle,
-		"getWH": getWH,
-		"getXY": getXY
+		"getPageWH": getPageWH,
+		"getPageOffset": getPageOffset
 	};
 	
 	//EXPOSE
