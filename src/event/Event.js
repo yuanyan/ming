@@ -187,6 +187,22 @@ module("event.Event", function(global){
 		return obj["_event_guid"]||(obj["_event_guid"] = guid++);
 	};
 	
+	var addEventListener = function(obj, type, handler){
+		if (obj.addEventListener) {
+			obj.addEventListener(type, handler, false);
+		} else if (obj.attachEvent) {
+			obj.attachEvent('on'+type, handler);
+		}
+	}
+	
+	var removeEventListener = function(obj, type, handler){
+		if (obj.addEventListener) {
+			obj.removeEventListener(type, handler, false);
+		} else if (obj.attachEvent) {
+			obj.detachEvent('on'+type, handler);
+		}
+	}
+	
 	/**
 	 * Function: on
 	 * 注册事件
@@ -197,7 +213,14 @@ module("event.Event", function(global){
 	 * 	handler - {Function}
 	 */
 	var addListener= function(obj,type,handler){
-		obj["on"+type]= addEventHandle(obj,type,handler);		
+		// IE6 IE7 IE8 中无法通过为属性赋值方式为 IFRAME 元素绑定 load 事件处理函数。
+		// 需使用事件监听方式为 IFRAME 的 onload 事件绑定处理函数
+		// See: http://www.w3help.org/zh-cn/causes/SD9022
+		if( type == "load" ){
+			addEventListener(obj, type, handler);
+		}
+		
+		obj["on"+type]= addEventHandle(obj,type,handler);	
 	};
 	
 	/**
@@ -210,6 +233,13 @@ module("event.Event", function(global){
 	 * 	handler - {Function}
 	 */
 	var removeListener= function(obj,type,handler){
+		// IE6 IE7 IE8 中无法通过为属性赋值方式为 IFRAME 元素绑定 load 事件处理函数, 
+		// 需使用事件监听方式为 IFRAME 的 onload 事件绑定处理函数
+		// See: http://www.w3help.org/zh-cn/causes/SD9022
+		if( type == "load" ){
+			removeEventListener(obj, type, handler);
+		}
+		
 		removeEventHandle(obj,type,handler);
 	};
 	

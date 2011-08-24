@@ -61,7 +61,7 @@ module("net.JSONP", function(global){
 			
 		this.jsonpId = jsonpId; //保存jsonpId
 		module[jsonpId] = callback; //回调函数cache在module全局命名空间下	
-		
+
 		if(Base.isString(opts)){	
 			url = opts;
 		}else{
@@ -70,7 +70,7 @@ module("net.JSONP", function(global){
 			url = opts['url']+"?"+Uri.param(opts["data"]);
 		}
 		
-		url = url +"&"+opts["callback"]+"="+callbackId;
+		url = url +"&"+opts["callback"]+"="+"module."+jsonpId;
 		
 		var that = this;
 		var onComplate = function(){

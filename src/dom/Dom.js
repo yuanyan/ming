@@ -8,7 +8,8 @@ module("dom.Dom",function(global){
 		Base = module("lang.Base"),
 		query = module("dom.query");
 	
-	var DOM=document,Dom=new Node(DOM);
+	var DOM= document,
+		Dom= new Node(DOM);
 	
 	
 	
@@ -91,13 +92,73 @@ module("dom.Dom",function(global){
 		
 		return this;
     };
+	
+    /**
+     * Function: getWH
+     * 获取页面长宽
+	 *
+	 *	window.innerHeight/Width
+	 *		Provided by most browsers, but not Internet Explorer 8-, and even in Internet Explorer 9+, it is not available in quirks mode.
+	 *	document.body.clientHeight/Width
+	 *		Provided by many browsers, including Internet Explorer.
+	 *	document.documentElement.clientHeight/Width
+	 *		Provided by most DOM browsers, including Internet Explorer.
+	 *
+     * See: 
+	 * http://www.howtocreate.co.uk/tutorials/javascript/browserwindow
+     */
+	var getPageWH = function(){
+		var width = 0, height = 0;
+		if( typeof( global.innerWidth ) == 'number' ) {
+			//Non-IE
+			width = global.innerWidth;
+			height = global.innerHeight;
+		} else if( DOM.documentElement && ( DOM.documentElement.clientWidth || DOM.documentElement.clientHeight ) ) {
+			//IE 6+ in 'standards compliant mode'
+			width = DOM.documentElement.clientWidth;
+			height = DOM.documentElement.clientHeight;
+		} else if( DOM.body && ( DOM.body.clientWidth || DOM.body.clientHeight ) ) {
+			//IE 4 compatible
+			width = DOM.body.clientWidth;
+			height = DOM.body.clientHeight;
+		}
+		
+		return {"width": width, "height": height}
+	
+	};
+	
+	/**
+	 * Function:
+	 * 获取页面偏移
+	 */
+	var getPageOffset = function(){
+		var scrOfX = 0, scrOfY = 0;
+		if( typeof( global.pageYOffset ) == 'number' ) {
+			//Netscape compliant
+			scrOfY = global.pageYOffset;
+			scrOfX = global.pageXOffset;
+		} else if( DOM.body && ( DOM.body.scrollLeft || DOM.body.scrollTop ) ) {
+			//DOM compliant
+			scrOfY = DOM.body.scrollTop;
+			scrOfX = DOM.body.scrollLeft;
+		} else if( DOM.documentElement && ( DOM.documentElement.scrollLeft || DOM.documentElement.scrollTop ) ) {
+			//IE6 standards compliant mode
+			scrOfY = DOM.documentElement.scrollTop;
+			scrOfX = DOM.documentElement.scrollLeft;
+		}
+		
+		return {"x": scrOfX, "y": scrOfY };
+	};
+	
 
 	var fns = {
 		//"body"  : new Node(DOM.body),
 		"isNode": isNode,
 		"create": create,
 		"remove": remove,
-		"addStyle": addStyle
+		"addStyle": addStyle,
+		"getWH": getWH,
+		"getXY": getXY
 	};
 	
 	//EXPOSE
