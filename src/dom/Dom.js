@@ -95,7 +95,7 @@ module("dom.Dom",function(global){
 	
     /**
      * Function: getWH
-     * 获取页面长宽
+     * 获取窗口长宽
 	 *
 	 *	window.innerHeight/Width
 	 *		Provided by most browsers, but not Internet Explorer 8-, and even in Internet Explorer 9+, it is not available in quirks mode.
@@ -107,7 +107,7 @@ module("dom.Dom",function(global){
 	 * See: 
 	 * http://www.howtocreate.co.uk/tutorials/javascript/browserwindow
      */
-	var getPageWH = function(){
+	var getWindowWH = function(){
 		var width = 0, height = 0;
 		if( typeof( global.innerWidth ) == 'number' ) {
 			//Non-IE
