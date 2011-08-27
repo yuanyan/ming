@@ -104,6 +104,9 @@ module("dom.Dom",function(global){
 	 *	document.documentElement.clientHeight/Width
 	 *		Provided by most DOM browsers, including Internet Explorer.
 	 *
+	 * Returns:
+	 *  {"width": width, "height": height}
+	 *
 	 * See: 
 	 * http://www.howtocreate.co.uk/tutorials/javascript/browserwindow
      */
@@ -130,6 +133,9 @@ module("dom.Dom",function(global){
 	/**
 	 * Function:
 	 * 获取页面偏移
+	 *
+	 * Returns:
+	 * {"x": scrOfX, "y": scrOfY }
 	 */
 	var getPageOffset = function(){
 		var scrOfX = 0, scrOfY = 0;
@@ -150,7 +156,17 @@ module("dom.Dom",function(global){
 		return {"x": scrOfX, "y": scrOfY };
 	};
 	
-	
+	/**
+	 * Function:
+	 * 获取指定Frame的文档对象
+	 * 
+     * Parameters:
+     *  frame - {HTMLIframeElement}
+	 * 
+	 * Returns:
+	 * document - {Document}
+	 *
+	 */
 	var getFrameDocument = function(frame){
 		return frame.document || frame.contentDocument || frame.contentWindow.document; 
 	}
