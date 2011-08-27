@@ -150,6 +150,11 @@ module("dom.Dom",function(global){
 		return {"x": scrOfX, "y": scrOfY };
 	};
 	
+	
+	var getFrameDocument = function(frame){
+		return frame.document || frame.contentDocument || frame.contentWindow.document; 
+	}
+	
 
 	var fns = {
 		//"body"  : new Node(DOM.body),
@@ -157,8 +162,9 @@ module("dom.Dom",function(global){
 		"create": create,
 		"remove": remove,
 		"addStyle": addStyle,
-		"getPageWH": getPageWH,
+		"getWindowWH": getWindowWH,
 		"getPageOffset": getPageOffset
+		"getFrameDocument" : getFrameDocument 
 	};
 	
 	//EXPOSE

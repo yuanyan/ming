@@ -329,19 +329,19 @@ module("dom.Node", function (global) {
 		//Group: Style
 		
 		/**
-         * Function: style
+         * Function: css
          * 设置节点样式
          * 
          * Parameters:
          *  cssText - {String} 样式
          *  
          */
-		"style": function(cssText){
+		"css": function(cssText){
 			this[0].style.cssText = cssText;
 		},
 		
         /**
-         * Function: css
+         * Function: style
          * 设置节点样式值
          * 
          * Parameters:
@@ -351,11 +351,11 @@ module("dom.Node", function (global) {
          * Returns: 
 		 * 	{String} return self
          */
-        "css": function (name, value) {
+        "style": function (name, value) {
             //properties
             if (Base.isObject(name)) {
                 for (var k in name) {
-                    this.css(k, name[k]);
+                    this.style(k, name[k]);
                 }
                 return this;
             }
@@ -373,13 +373,23 @@ module("dom.Node", function (global) {
             }
             //setter
             else {
-                //TODO 对某些样式的值类型和范围进行判断
-                elem.style[name] = value || "";
-
+                //部分样式浏览器兼容性处理
+				if(name === "opacity"){				
+					elem.style["opacity"] = value; // CSS3
+					elem.style["filter"] = 'alpha(opacity=' + (value * 100) + ')'; // IE 6/7/8
+					
+				}else if(name === "whiteSpace" && value === "pre-wrap")(
+					elem.style[name] = value;  // CSS3
+					elem.style[name] = "pre";   // IE 6/7
+					elem.style["wordWrap"] = "break-word"; // IE 6/7
+					
+				)else {
+					elem.style[name] = value || "";
+				}
+				
             }
 
             return this;
-
 
         },
 		
@@ -725,7 +735,7 @@ module("dom.Node", function (global) {
             //setter
             else {
 
-                this.css("height", value);
+                this.style("height", value);
 
             }
 
@@ -752,7 +762,7 @@ module("dom.Node", function (global) {
             //setter
             else {
 
-                this.css("width", value);
+                this.style("width", value);
 
             }
 
@@ -838,10 +848,10 @@ module("dom.Node", function (global) {
                 current, key;
 
             for (key in obj) {
-                current = parseInt(this.css(key), 10) || 0;
+                current = parseInt(this.style(key), 10) || 0;
                 styles[key] = current + obj[key] - origOffset[key];
             }
-            this.css(styles);
+            this.style(styles);
 
         },
 
@@ -869,12 +879,12 @@ module("dom.Node", function (global) {
             // Subtract element margins
             // note: when an element has margin: auto the offsetLeft and marginLeft
             // are the same in Safari causing offset.left to incorrectly be 0
-            offset.top -= parseFloat(this.css("marginTop")) || 0;
-            offset.left -= parseFloat(this.css("marginLeft")) || 0;
+            offset.top -= parseFloat(this.style("marginTop")) || 0;
+            offset.left -= parseFloat(this.style("marginLeft")) || 0;
 
             // Add offsetParent borders
-            parentOffset.top += parseFloat(offsetParent.css("borderTopWidth")) || 0;
-            parentOffset.left += parseFloat(offsetParent.css("borderLeftWidth")) || 0;
+            parentOffset.top += parseFloat(offsetParent.style("borderTopWidth")) || 0;
+            parentOffset.left += parseFloat(offsetParent.style("borderLeftWidth")) || 0;
 
             // Subtract the two offsets
             return {
@@ -916,7 +926,7 @@ module("dom.Node", function (global) {
 		 * 	{Node} return self
          */
         "show": function () {
-            return this.css("display","none");
+            return this.style("display","none");
         },
 		
         /**
@@ -927,7 +937,7 @@ module("dom.Node", function (global) {
 		 * 	{Node} return self
          */
         "hide": function () {
-			return this.css("display","");
+			return this.style("display","");
         },
 		
         /**
@@ -938,7 +948,7 @@ module("dom.Node", function (global) {
 		 * 	{Node} return self
          */
         "toggle": function () {
-			if(this.css("display")){
+			if(this.style("display")){
 				this.show();	
 			}else{	
 				this.hide();

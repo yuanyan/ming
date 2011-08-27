@@ -138,7 +138,7 @@ module("dom.NodeList",function(global){
 	}
 		
 	//Node映射到NodeList的方法列表
-	var NodeFns=['on', 'off', 'attr', 'removeAttr', 'html', 'text', 'val', 'hasClass', 'addClass', 'removeClass', 'toggleClass', 'empty', 'destroy', 'clone', 'css', 'show', 'hide', 'toggle'];
+	var NodeFns=['on', 'off', 'attr', 'removeAttr', 'html', 'text', 'val', 'hasClass', 'addClass', 'removeClass', 'toggleClass', 'empty', 'destroy', 'clone', 'style', 'css', 'show', 'hide', 'toggle'];
 	
 	for(var i=0,l=NodeFns.length; i<l; i++){
 		var fn=NodeFns[i];
