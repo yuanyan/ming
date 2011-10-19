@@ -119,7 +119,7 @@ var module = (function(global, undefined){
 		isDomReady = false, // 表示 DOM ready 事件是否被触发过，当被触发后设为true	
 		moduleConstructor = {},
 		
-		registedModule = 0,
+		registedModules = 0,
 		isModuleReady = false,
 		moduleInstallQueue= []; //模块安装队列
 
@@ -161,7 +161,7 @@ var module = (function(global, undefined){
 	/**
 	 * 加载模块
 	 */
-	var loadModule = function(){
+	var loadModules = function(){
 	
 		var host = config.host;
 				
@@ -199,9 +199,9 @@ var module = (function(global, undefined){
 			moduleConstructor[ns] = fn;
 			
 			//模块注册即事件
-			if( ++registedModule  ===  moduleInstallQueue.length){
+			if( ++registedModules  ===  moduleInstallQueue.length){
 			
-				installModule();
+				installModules();
 			}
   			
             //console.log(ns + " module registed!");
@@ -217,7 +217,7 @@ var module = (function(global, undefined){
 	/**
 	 * 安装模块
 	 */	
-	var installModule = function(){
+	var installModules = function(){
 	
 		moduleInstallQueue.forEach(function(module){
 			
@@ -265,12 +265,14 @@ var module = (function(global, undefined){
         }
 		isReady = true;
 		
-		loadModule();
+		loadModules();
 
         var run = function(e){	
 			isDomReady = true;
-			runReadyHandler(e);
-        }
+            if(isModuleReady){
+               runReadyHandler(e);
+            }
+        };
         
         // 如果 当onReady()被调用时页面已经加载完毕，则直接运行处理
         if (DOM.readyState === "complete") {
