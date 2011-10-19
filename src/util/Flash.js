@@ -41,6 +41,12 @@ module("util.Flash", function(global){
 	
 	}
 	
+	
+	return {
+		"getFlashVersion": getFlashVersion
+	
+	}
+	
 
 
 });
