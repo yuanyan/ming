@@ -99,7 +99,7 @@ module("dom.Node", function (global) {
             if (name === undefined) return this;
 
             if (value === undefined) { //获取属性值
-                return this[0].getAttribute(name);
+                return this[0].getAttribute(name)||"";
             } else { //设置属性值 
                 this[0].setAttribute(name, value);
             }
@@ -378,12 +378,12 @@ module("dom.Node", function (global) {
 					elem.style["opacity"] = value; // CSS3
 					elem.style["filter"] = 'alpha(opacity=' + (value * 100) + ')'; // IE 6/7/8
 					
-				}else if(name === "whiteSpace" && value === "pre-wrap")(
+				}else if(name === "whiteSpace" && value === "pre-wrap"){
 					elem.style[name] = value;  // CSS3
 					elem.style[name] = "pre";   // IE 6/7
 					elem.style["wordWrap"] = "break-word"; // IE 6/7
 					
-				)else {
+                }else {
 					elem.style[name] = value || "";
 				}
 				
@@ -406,7 +406,7 @@ module("dom.Node", function (global) {
         "hasClass": function (clazz) {
             var flag = false;
             this.attr("class").split(" ").forEach(function (val) {
-                if (val == calzz) flag = true;
+                if (val == clazz) flag = true;
             });
 
             return flag;

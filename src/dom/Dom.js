@@ -179,7 +179,7 @@ module("dom.Dom",function(global){
 		"remove": remove,
 		"addStyle": addStyle,
 		"getWindowWH": getWindowWH,
-		"getPageOffset": getPageOffset
+		"getPageOffset": getPageOffset,
 		"getFrameDocument" : getFrameDocument 
 	};
 	
