@@ -41,18 +41,61 @@ module("dom.Dom",function(global){
 		
 	/**
 	 * Function: create
-	 * 创建元素节点
+	 * 创建元素节点,如：
+     * 1. create("div#id.class1.class2","hello world");
+     * 2. create("script#id[src=demo.js][defer]");
 	 * 
 	 * Parameters:
-	 *   tagName- {String} 元素标签名
-	 *   
+	 *   selector- {String} 元素选择器
+	 *   content- {String} 元素内容
+	 *
 	 * Returns: 
 	 * 	{Node} element
 	 */
-	var create = function(tagName){
-		var elem=DOM.createElement(tagName);	
-		return new Node(elem);
+
+    var rTag = /^([\w\*\-_]+)/,
+        rId = /#([\w\-_]+)/,
+        rClass = /\.([\w\-_]+)/g,
+        rAttr = /\[([^\]=]+)=?['"]?([^\]'"]*)['"]?\]/g;
+
+	var create = function(selector, content) {
+        selector = selector.trim();
+
+        var tag = selector.match(rTag);
+        tag = (tag && tag[1])||"div";
+
+        var id = selector.match(rId);
+        id = id && id[1];
+
+        var result, attrs = {};
+
+        while((result = rClass.exec(selector)) != null) {
+            if(attrs["class"]){
+                attrs["class"] += (" " + result[1]);
+            }else{
+                attrs["class"] = result[1];
+            }
+            
+        }
+
+        while((result = rAttr.exec(selector)) != null) {
+            attrs[result[1]] = result[2]||true;
+        }
+
+		var elem=DOM.createElement(tag);
+        var node = new Node(elem);
+
+        for(var key in attrs) {
+            node.attr(key, attrs[key]);
+        }
+
+        if(content) {
+            node.text(content);
+        }
+
+		return node;
 	};
+
 	
 	/**
 	 * Function: remove
@@ -176,6 +219,7 @@ module("dom.Dom",function(global){
 		//"body"  : new Node(DOM.body),
 		"isNode": isNode,
 		"create": create,
+        "put": put,
 		"remove": remove,
 		"addStyle": addStyle,
 		"getWindowWH": getWindowWH,
