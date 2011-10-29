@@ -219,7 +219,6 @@ module("dom.Dom",function(global){
 		//"body"  : new Node(DOM.body),
 		"isNode": isNode,
 		"create": create,
-        "put": put,
 		"remove": remove,
 		"addStyle": addStyle,
 		"getWindowWH": getWindowWH,
