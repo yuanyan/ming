@@ -1,10 +1,10 @@
 /**
- * Clsss: CrossDomain
+ * Clsss: Remote
  *
  *
  */
 
-module("message.CrossDomain", function(global) {
+module("xdm.Remote", function(global) {
 
     function getTimestamp() {
         return  +new Date();
