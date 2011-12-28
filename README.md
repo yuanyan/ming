@@ -26,6 +26,9 @@ http://madscript.com/modulejs/docs
 * [Google Group for discussion](http://groups.google.com/group/modulejs)
 * [Visit the Wiki](https://github.com/yuanyan/modulejs/wiki)
 
+###Changelog
+#### 2011-09-01 Alpha 0.1 release
+
 ###License
 
 (The MIT License)
