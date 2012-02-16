@@ -5,69 +5,27 @@
 	<title>proxy</title>
 </head>
 <body>
-<script type="text/javascript">
+<script>
 // document.domain = "origin";
 
 (function () {
-	var ret, loc, pos,
-		targetWindow,
-		hasOwnProperty, 
-		parseQueryString;
 
-	hasOwnProperty = function (obj, property) {
-		if (Object.prototype.hasOwnProperty) {
-			return obj.hasOwnProperty(property);
-		}
-		return (typeof obj[property] !== "undefined" && obj.constructor.prototype[property] !== obj[property]);
-	};
+	var TARGET = /top|parent|frames\[(?:(?:['"][a-zA-Z\d-_%\.]*['"])|\d+)\]/;
+	var msg = eval( decodeURIComponent(window.name) );
 
-	parseQueryString = function (hash) {
-		var data = {}, items = hash.split("&"), i, j, item;
-		for (i = 0, j = items.length; i < j; i++) {
-			item = items[i].split("=");
-			if (item.length === 2 && item[0].length > 0) {
-				data[""+decodeURIComponent(item[0])] = decodeURIComponent(item[1]);
-			}
-		}
-		return data;
-	};
-
-	if (navigator.userAgent.toLowerCase().match(/firefox\/[\d.]+/)) { // firefox auto decode location.hash
-		loc = location.href, pos = loc.indexOf('#');
-		if (pos < 0) {
-			return;
-		} else {
-			pos = loc.substr(pos+1);
-		}
-	} else {
-		pos = location.hash.substr(1);
-	}
-
-	ret = parseQueryString(pos);
-
-	if ( hasOwnProperty(ret, "target") && hasOwnProperty(ret, "host")) {
-
-		var PATTERN = /top|parent|frames\[(?:(?:['"][a-zA-Z\d-_%\.]*['"])|\d+)\]/;
-		if (!PATTERN.test(ret.target)) {
-			return;
-		}
+	if ( msg["target"] && TARGET.test( msg["target"] ) && msg["targetOrigin"] ) {
 		
 		// Evaluate failed for IE6
 		try{
-			targetWindow = eval("(parent." + ret.target + ")");
+			target = eval("(parent." + msg["target"] + ")");
 		}catch (e){
 			return;
 		}
 
-		var message = window.name;
-		if (!message || !targetWindow) {
-			return;
-		}
-
-		var module = targetWindow.module,
+		var module = target.module,
 			Event= module("event.Event");
 			
-		Event.fire( targetWindow, "message", {'origin':origin, 'data':message} );
+		Event.fire( target, "message", msg );
 	} 
 })();
 </script>
