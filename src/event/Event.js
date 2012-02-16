@@ -28,8 +28,8 @@ module("event.Event", function(global){
 		var returnFalse= function(){return false},
 			returnTrue= function(){return true};
 			
-			
-		var props= "altKey attrChange attrName bubbles button cancelable charCode clientX clientY ctrlKey currentTarget data detail eventPhase fromElement handler keyCode layerX layerY metaKey newValue offsetX offsetY pageX pageY prevValue relatedNode relatedTarget screenX screenY shiftKey srcElement target toElement view wheelDelta which".split(" ");
+		// event.layerX and event.layerY are broken and deprecated in WebKit
+		var props= "altKey attrChange attrName bubbles button cancelable charCode clientX clientY ctrlKey currentTarget data detail eventPhase fromElement handler keyCode metaKey newValue offsetX offsetY pageX pageY prevValue relatedNode relatedTarget screenX screenY shiftKey srcElement target toElement view wheelDelta which".split(" ");
         /**
          * @class Event
          * @param {Object} target
@@ -177,7 +177,7 @@ module("event.Event", function(global){
         };
         
         return new Event(target, domEvent, type);
-    }
+    };
 	
 	var isElement = function(obj) {
         return obj && (obj.nodeType || obj.attachEvent || obj.addEventListener);
@@ -193,7 +193,7 @@ module("event.Event", function(global){
 		} else if (obj.attachEvent) {
 			obj.attachEvent('on'+type, handler);
 		}
-	}
+	};
 	
 	var removeEventListener = function(obj, type, handler){
 		if (obj.addEventListener) {
@@ -201,7 +201,7 @@ module("event.Event", function(global){
 		} else if (obj.attachEvent) {
 			obj.detachEvent('on'+type, handler);
 		}
-	}
+	};
 	
 	/**
 	 * Function: on
@@ -270,7 +270,7 @@ module("event.Event", function(global){
 		handler=function(e){
 			originalHandler(e);
 			removeListener(obj,type,handler);	
-		}
+		};
 		addListener(obj,type,handler);	
 	};
 	
