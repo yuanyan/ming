@@ -1,7 +1,7 @@
 ﻿/**
  * Class: JSON
  */
-module("lang.JSON",function(global){
+define("lang.JSON",function(require, exports, module){
 	
     /**
 	 * ECMA-262-5 15.12

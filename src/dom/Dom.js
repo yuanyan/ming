@@ -1,12 +1,12 @@
 ﻿/**
  * Class: Dom
  */
-module("dom.Dom",function(global){
+define("dom.Dom",function(require, exports, module){
 	
 	//IMPORT
-	var Node = module("dom.Node"),
-		Base = module("lang.Base"),
-		query = module("dom.query");
+	var Node = require("dom.Node"),
+		Base = require("lang.Base"),
+		query = require("dom.query");
 	
 	var DOM= document,
 		Dom= new Node(DOM);
@@ -155,10 +155,10 @@ module("dom.Dom",function(global){
      */
 	var getWindowWH = function(){
 		var width = 0, height = 0;
-		if( typeof( global.innerWidth ) == 'number' ) {
+		if( typeof( window.innerWidth ) == 'number' ) {
 			//Non-IE
-			width = global.innerWidth;
-			height = global.innerHeight;
+			width = window.innerWidth;
+			height = window.innerHeight;
 		} else if( DOM.documentElement && ( DOM.documentElement.clientWidth || DOM.documentElement.clientHeight ) ) {
 			//IE 6+ in 'standards compliant mode'
 			width = DOM.documentElement.clientWidth;
@@ -182,10 +182,10 @@ module("dom.Dom",function(global){
 	 */
 	var getPageOffset = function(){
 		var scrOfX = 0, scrOfY = 0;
-		if( typeof( global.pageYOffset ) == 'number' ) {
+		if( typeof( window.pageYOffset ) == 'number' ) {
 			//Netscape compliant
-			scrOfY = global.pageYOffset;
-			scrOfX = global.pageXOffset;
+			scrOfY = window.pageYOffset;
+			scrOfX = window.pageXOffset;
 		} else if( DOM.body && ( DOM.body.scrollLeft || DOM.body.scrollTop ) ) {
 			//DOM compliant
 			scrOfY = DOM.body.scrollTop;

@@ -17,7 +17,7 @@
  * - slide 幻灯片效果，元素从左往右滑动元素，直到全部显示
  * - transfer 迁移效果，元素缩小并迁移元素至触发事件的元素 
  */
-module("fx.Effects", function(global){
+define("fx.Effects", function(require, exports, module){
 
 	//IMPORT
 	

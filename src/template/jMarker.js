@@ -56,10 +56,10 @@
  * Version: 1.3.0
  * Date: Nov 24, 2010
  */
-module("template.jMarker",function(global){
+define("template.jMarker",function(require, exports, module){
 	
 //IMPORT	
-var Base = module("lang.Base");	
+var Base = require("lang.Base");
 	
 var _cache={};
 

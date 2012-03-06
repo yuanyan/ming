@@ -3,7 +3,7 @@
 // Copyright Yuanyan <yuanyan.cao@gmail.com>.
 // 2011/9/12
 
-module("event.EventEmitter", function(global){
+define("event.EventEmitter", function(require, exports, module){
 
     var isArray = Array.isArray || function(obj) {
         return Object.prototype.toString.call(obj) === "[object Array]";

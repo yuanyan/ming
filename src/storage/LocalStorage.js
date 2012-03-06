@@ -16,9 +16,9 @@ LocalStorage implement Storage
 		
 		localStorage提供在cookie之外存储会话数据，并且localStorage不会像cookie一样会在每次请求头中发回服务器
 */
-module("storage.LocalStorage", function(global){
+define("storage.LocalStorage", function(require, exports, module){
 	
-	var storage=global.localStorage;
+	var storage= window.localStorage;
 
     /*
 	Function: length

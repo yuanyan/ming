@@ -14,9 +14,9 @@ Cookie implement Storage
 	Cookie操作的静态工具类
 	TODO：添加storage事件，当数据被修改、添加、删除时触发storage事件
 */
-module("storage.Cookie", function(global){
+define("storage.Cookie", function(require, exports, module){
 	
-	var cookie=global.document.cookie;
+	var cookie= document.cookie;
     
     /*
 	Function: set

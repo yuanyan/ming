@@ -1,10 +1,10 @@
 ﻿/**
  * Class: Function
  */
-module("lang.Function", function(global){
+define("lang.Function", function(require, exports, module){
 	
 	//IMPORT
-    var Base = module("lang.Base");
+    var Base = require("lang.Base");
 
     /**
      * Function: bind

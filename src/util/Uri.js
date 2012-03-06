@@ -1,9 +1,9 @@
 ﻿/**
  * Class: Uri
  */
-module("util.Uri",function(global){
+define("util.Uri",function(require, exports, module){
 	
-	var Base = module("lang.Base");
+	var Base = require("lang.Base");
 	
 	//http://www.example.com:80/index.php?mod=foo&action=foo
 	//var reg=/^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([0-9.\-A-Za-z]+)+)?(?:\?([&=\w]+))?$/;

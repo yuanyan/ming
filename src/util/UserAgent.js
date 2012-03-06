@@ -9,7 +9,7 @@
  * 
  */
 
-module("util.UserAgent", function(global){
+define("util.UserAgent", function(require, exports, module){
 	var ie, firefox, chrome, opera, safari, ios, window, linux, osx, explored = false;
     
     (function(){

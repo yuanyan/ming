@@ -4,7 +4,7 @@
  *
  */
 
-module("xdm.Remote", function(global) {
+define("xdm.Remote", function(require, exports, module) {
 
     function getTimestamp() {
         return  +new Date();

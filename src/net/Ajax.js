@@ -1,11 +1,11 @@
 ﻿/**
  * Class: Ajax
  */
-module("net.Ajax", function(global){
+define("net.Ajax", function(require, exports, module){
 	
 	//IMPORT
-	var Base = module("lang.Base"),
-		Request = module("net.Request");
+	var Base = require("lang.Base"),
+		Request = require("net.Request");
 	
 	/**
 	 * Function: ajax

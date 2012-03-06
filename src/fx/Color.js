@@ -11,12 +11,12 @@
  * 	fx.custom("#FFF", "#000"); //从白色渐变到黑色
  *  (end)
  */
-module("fx.Color", function(){
+define("fx.Color", function(require, exports, module){
 	
 	//IMPORT
-	var Base = module("fx.Base"),
-		langBase = module("lang.Base"),
-		utilColor = module("util.Color");
+	var Base = require("fx.Base"),
+		langBase = require("lang.Base"),
+		utilColor = require("util.Color");
 	//
     var Color = function(el, options){
         this.initialize(el, options);

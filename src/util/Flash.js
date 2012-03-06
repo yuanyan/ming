@@ -2,11 +2,11 @@
  * Class: Flash
  *
  */
-module("util.Flash", function(global){
+define("util.Flash", function(require, exports, module){
 
 	/**
 	 * Function: getFlashVersion 
-	 * »ñÈ¡Flash°æ±¾ºÅ
+	 * è·å–Flashç‰ˆæœ¬å·
 	 * 
 	 * Returns:
 	 * {Array|undefined} [10,2,152,32]
@@ -15,18 +15,18 @@ module("util.Flash", function(global){
 		var flashVersion;
 		if(window.ActiveXObject){
 			try{
-				// IE·µ»Ø"WIN 10,2,152,32"¸ñÊ½
+				// IEè¿”å›"WIN 10,2,152,32"æ ¼å¼
 				flashVersion=(new ActiveXObject("ShockwaveFlash.ShockwaveFlash")).GetVariable("$version")
 			}catch(e){}
 		}
 		else if(navigator.plugins && navigator.plugins["Shockwave Flash"]){
-			// NPAPI²å¼ş¼Ü¹¹ä¯ÀÀÆ÷·µ»Ø"Shockwave Flash 10.3 r181"¸ñÊ½
+			// NPAPIæ’ä»¶æ¶æ„æµè§ˆå™¨è¿”å›"Shockwave Flash 10.3 r181"æ ¼å¼
 			flashVersion = (navigator.plugins["Shockwave Flash"]||0).description;
 		}
 		
 		if(flashVersion){
 			/**
-			 * ¸ñÊ½»¯°æ±¾ºÅ
+			 * æ ¼å¼åŒ–ç‰ˆæœ¬å·
 			 * @param {String}
 			 * @return {Array}
 			 */

@@ -1,9 +1,10 @@
 ﻿
-module("net.JSONP", function(global){
+define("net.JSONP", function(require, exports, module){
 	
-	var Base = module("lang.Base"),
-		Uri = module("util.Uri"),
-		Loader = module("util.Loader");
+	var Base = require("lang.Base"),
+		Uri = require("util.Uri"),
+		Loader = require("util.Loader"),
+        DOM = document;
 	
 	/**
 	 * Class: JSONP
@@ -15,7 +16,7 @@ module("net.JSONP", function(global){
 		        "url": location.href, //请求地址，默认为当前地址
 		        "cache": false,    //浏览器缓存，默认不允许
 		        "timeout": false,  //请求过期时间，默认不过期
-				"callback": "callback", //回调函数参数名
+				"callback": "callback" //回调函数参数名
 	    	};	
 		//Before 0, Loading 1, Complete 2
 		this._status=0;
@@ -87,7 +88,7 @@ module("net.JSONP", function(global){
 	 */
 	JSONP.prototype.abort = function(){
 		if (this.jsonpId) {
-			var script = global.document.getElementById(this.jsonpId); //删除注入节点
+			var script = DOM.getElementById(this.jsonpId); //删除注入节点
 			script && script.parentNode.removeChild(script);
 			
 			delete module[this.jsonpId]; //注销回调函数

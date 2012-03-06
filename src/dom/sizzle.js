@@ -16,10 +16,10 @@
  * Returns: 
  *	{NodeList}
  */ 
-module("dom.sizzle",function(global){
+define("dom.sizzle",function(require, exports, module){
 	
 	//IMPORT
-	var NodeList=module("dom.NodeList");
+	var NodeList=require("dom.NodeList");
 
 	var chunker = /((?:\((?:\([^()]+\)|[^()]+)+\)|\[(?:\[[^\[\]]*\]|['"][^'"]*['"]|[^\[\]'"]+)+\]|\\.|[^ >+~,(\[\\]+)+|[>+~])(\s*,\s*)?((?:.|\r|\n)*)/g,
 		done = 0,

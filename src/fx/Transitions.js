@@ -34,7 +34,7 @@
  * - bounceOut
  * - bounceInOut 
  */
-module("fx.Transition", function(global){
+define("fx.Transition", function(require, exports, module){
 	
 	/**
 	 * 过渡算法

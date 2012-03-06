@@ -1,11 +1,11 @@
 ﻿/**
  * Class: Base
  */
-module("lang.Base",function(global){
+define("lang.Base",function(require, exports, module){
 	
-    var DOM = global.document,
+    var DOM = document,
 		toString = Object.prototype.toString,
-		config = global.moduleConfig;
+		config = window["moduleConfig"];
 
     /**
      * Function: isIterable
@@ -326,13 +326,13 @@ module("lang.Base",function(global){
      */
     var log = function(){
 		
-        if (config.debug && global['console'] !== undefined && global['console'].log) {
+        if (config.debug && window['console'] !== undefined && window['console'].log) {
 			var logs=[];
             for (var i = 0; i < arguments.length; ++i) {
 				logs.push(arguments[i]);
 			}  
 			
-			global['console'].log(logs.join(' '));
+			window['console'].log(logs.join(' '));
         }   
         return this;
     };
@@ -351,13 +351,13 @@ module("lang.Base",function(global){
      * 
      * Example: 
      * (code)
-     *  namespace("lang.JSON",global); //等同于 namespace("lang.JSON"); 
-     *  namespace("lang.JSON","lang.Array",global);
+     *  namespace("lang.JSON",window); //等同于 namespace("lang.JSON");
+     *  namespace("lang.JSON","lang.Array",window);
      * (end) 
      * 
      */
     var namespace = function(){
-		var len = arguments.length,ns=global,i,j,l;
+		var len = arguments.length,ns=window,i,j,l;
 		
 		if(isObject(arguments[len-1])){	 //末尾参数类型判断
 			ns=arguments[len-1];

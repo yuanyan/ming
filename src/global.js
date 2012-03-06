@@ -1,6 +1,5 @@
 ﻿//Namespaces: global
-
-var module = (function(global, undefined){
+var define,require,module = (function(global, undefined){
 
 	//Group: Native extension
 
@@ -96,10 +95,10 @@ var module = (function(global, undefined){
 
 	//Group: module
 	
-	global.moduleConfig = global.moduleConfig||{};//配置项
+	global.moduleConfig = global.moduleConfig || {};//配置项
 	
 	var config = {   //默认配置项
-		"debug":true, //调试模式
+		"debug": true, //调试模式
 		"host" : "./",  //默认服务器地址为本地相对地址
 		"suffix" : ".js", //模块文件后缀
 		"charset" : "utf-8" //默认字符集
@@ -107,7 +106,7 @@ var module = (function(global, undefined){
 	
 	for(var k in moduleConfig){
 		config[k] = moduleConfig[k];
-	};
+	}
 	
 	global.moduleConfig = config;
 	
@@ -116,18 +115,50 @@ var module = (function(global, undefined){
     var DOM = global.document,
 		modules = {},//模块仓库
 		isReady = false, //domReady 方法执行一次
-		isDomReady = false, // 表示 DOM ready 事件是否被触发过，当被触发后设为true	
-		moduleConstructor = {},
-		
+		isDomReady = false, // 表示 DOM ready 事件是否被触发过，当被触发后设为true
 		registedModules = 0,
 		isModuleReady = false,
 		moduleInstallQueue= []; //模块安装队列
 
-		
+
+    function build(module) {
+        var factory = module.factory;
+        module.exports = {};
+        delete module.factory; // 每个module只build一次
+        module.exports = factory(require, module.exports, module) || module.exports; // exports 支持直接 return 或 module.exports 方式
+        return module.exports;
+    }
+
+    require = function (id) {
+        if (!modules[id]) {
+            throw "module " + id + " not found";
+        }
+        return modules[id].factory ? build(modules[id]) : modules[id].exports;
+    };
+
+    define = function (id, factory) {
+        if (modules[id]) {
+            throw "module " + id + " already defined";
+        }
+
+        //模块注册即事件
+        if( ++registedModules  ===  moduleInstallQueue.length){
+
+            isModuleReady = true;
+            if(isDomReady){
+                runReadyHandler();
+            }
+        }
+
+        modules[id] = {
+            id: id,
+            factory: factory
+        };
+    };
     
     var checkModule = function(ns){
         return modules.hasOwnProperty(ns);
-    }
+    };
     
 	/**
 	 * 添加模块
@@ -139,8 +170,8 @@ var module = (function(global, undefined){
 		if(namespace instanceof Array){
 			
 			namespace.forEach(function(v){
-				addModule(v, src);
-			});
+                addModule(v, src);
+            });
 		}else{
 		
 		    if (!checkModule(namespace)) {
@@ -155,9 +186,7 @@ var module = (function(global, undefined){
 		
 
     };	
-	
 
-	
 	/**
 	 * 加载模块
 	 */
@@ -185,65 +214,7 @@ var module = (function(global, undefined){
 			
 		});	
 
-		
-		
 
-	};
-
-	/**
-	 * 注册模块
-	 */
-    var registModule = function(ns, fn){
-        if (!checkModule(ns)) {
-		
-			moduleConstructor[ns] = fn;
-			
-			//模块注册即事件
-			if( ++registedModules  ===  moduleInstallQueue.length){
-			
-				installModules();
-			}
-  			
-            //console.log(ns + " module registed!");
-        }
-        else {
-            throw new Error("namespace hava been registed: "+ns);
-        }
-		
-		
-        
-    };	
-		
-	/**
-	 * 安装模块
-	 */	
-	var installModules = function(){
-	
-		moduleInstallQueue.forEach(function(module){
-			
-			var ns = module['namespace'],
-				fn = moduleConstructor[ns];
-				
-            modules[ns] = fn(global);			
-			
-		});		
-		
-		isModuleReady = true;
-		if(isDomReady){
-			runReadyHandler();
-		}
-		
-	}
-	
-	/**
-	 * 调用模块
-	 */	
-	var callModule = function(ns){
-		if (checkModule(ns)) {
-           return  modules[ns];       
-        }else {
-            throw new Error("call a unregisted module: "+ns);
-        }
 	};
 
 	
@@ -348,16 +319,14 @@ var module = (function(global, undefined){
 		if(ns == undefined) return;
     
         if (fn === undefined) { //模块调用
-            return callModule(ns);
+            return require(ns);
         }
         else {//模块注册
-            registModule(ns, fn);        
+            define(ns, fn);
         }
         
     };
-	
 
-	
 	
 	/*
 	Function: module.load

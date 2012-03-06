@@ -1,7 +1,7 @@
 ﻿/**
  * Class: Format
  */
-module("util.Format", function(global){
+define("util.Format", function(require, exports, module){
 	
 	/**
 	 * Function: camelize

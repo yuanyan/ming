@@ -1,7 +1,7 @@
 ﻿/**
  * Class: String
  */
-module("lang.String", function(){
+define("lang.String", function(require, exports, module){
     var LEFT = /^\s+/, RIGHT = /\s+$/;
     
     /**

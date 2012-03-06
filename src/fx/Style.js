@@ -11,11 +11,11 @@
  *	fx.custom(el.offsetWidth,el.offsetWidth+500);
  *  (end)
  */
-module("fx.Style", function(global){
+define("fx.Style", function(require, exports, module){
 	
 	//IMPORT
-	var Base = module("fx.Base"),
-		langBase = module("lang.Base");
+	var Base = require("fx.Base"),
+		langBase = require("lang.Base");
 	/**
 	 * 
 	 * @param {Element} el

@@ -1,7 +1,7 @@
 ﻿/**
  * Class: Validator
  */
-module("util.Validator",function(global){
+define("util.Validator",function(require, exports, module){
 	
 	var ALPHA = /^[a-zA-Z]+$/, //英文字符
 		CHINESE = /^[\u2E80-\uFE4F]+$/,  // 中文字符

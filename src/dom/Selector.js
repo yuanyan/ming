@@ -26,10 +26,10 @@
 // - http://github.com/jeresig/sizzle
 // - http://james.padolsey.com/javascript/mini/
 
-module("dom.Selector", function(global){
+define("dom.Selector", function(require, exports, module){
 	
 	//IMPORT
-	var Base = module("lang.Base");
+	var Base = require("lang.Base");
 
     var DOM = document,
         na = [null, null],

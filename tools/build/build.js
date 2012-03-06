@@ -311,7 +311,7 @@ function getModuleInfo(filepath) {
 
 function getModuleNamespace(ast){
 
-	var pattern = /,call,name,module,string,([^,?]+)(?:\?|,|$)function/g;
+	var pattern = /,call,name,define,string,([^,?]+)(?:\?|,|$)function/g;
 	var text = ast.toString();
 	var match = pattern.exec(text);
 		
@@ -324,7 +324,7 @@ function getModuleDependencies(ast) {
 
   // get dependencies
   // module('a') ==> call,name,module,string,a
-  var pattern = /,call,name,module,string,([^,?]+)(?:\?|,|$)(?![function])/g;
+  var pattern = /,call,name,require,string,([^,?]+)(?:\?|,|$)(?![function])/g;
   var text = ast.toString();
   var match;
   while ((match = pattern.exec(text))) {

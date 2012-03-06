@@ -1,12 +1,12 @@
 ﻿/**
  * Class: NodeList
  */
-module("dom.NodeList",function(global){
+define("dom.NodeList",function(require, exports, module){
 	
 	//IMPORT
 	var $AP= Array.prototype, 
-		Base = module("lang.Base"),
-		Node=module("dom.Node");
+		Base = require("lang.Base"),
+		Node= require("dom.Node");
 	
     /** 
      * Constructor: NodeList

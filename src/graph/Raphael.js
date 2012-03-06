@@ -4,7 +4,7 @@
  * Copyright (c) 2010 Dmitry Baranovskiy (http://raphaeljs.com)
  * Licensed under the MIT (http://raphaeljs.com/license.html) license.
  */
-module("graph.Raphael", function () {
+define("graph.Raphael", function (require, exports, module) {
 
     function R() {
         if (R.is(arguments[0], array)) {

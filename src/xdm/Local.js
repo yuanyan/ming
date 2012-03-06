@@ -14,17 +14,17 @@
  * 
  */
 
-module("xdm.Local", function(global) {
+define("xdm.Local", function(require, exports, module) {
 
-	var doc = document, 
-	    JSON = module("lang.JSON"),
-		Event = module("event.Event"),
+	var DOM = document,
+	    JSON = require("lang.JSON"),
+		Event = require("event.Event"),
 		proxy_html;
 
 	// remove node self
-	global['__removeNode'] = function(node){
+	window['__removeNode'] = function(node){
 		node.parentNode.removeChild(node);
-	}
+	};
 	
 	// target object|string
 	// data string
@@ -32,15 +32,15 @@ module("xdm.Local", function(global) {
 	// proxy string
 	function postMessage(target, data, targetOrigin, proxy){
 	
-		if( global['postMessage'] ){
+		if( window['postMessage'] ){
 			target = ( "string" === typeof target? eval(target): target ); // target: parent\top 
 			target.postMessage(data, targetOrigin);
 			
 		}else{
 			proxy = proxy || ( targetOrigin + '/proxy.html' );
 			if(!proxy_html){
-				proxy_html = doc.createElement("div");
-				doc.body.appendChild(proxy_html);
+				proxy_html = DOM.createElement("div");
+				DOM.body.appendChild(proxy_html);
 			}
 			
 			var message = {

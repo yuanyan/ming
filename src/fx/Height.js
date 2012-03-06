@@ -11,11 +11,11 @@
  * 	fx.toggle(); 
  *  (end)
  */
-module("fx.Height", function(global){
+define("fx.Height", function(require, exports, module){
 	
 	//IMPORT
-	var Base = module("fx.Base"),
-		langBase = module("lang.Base");
+	var Base = require("fx.Base"),
+		langBase = require("lang.Base");
 	
     var Height = function(el, options){
         this.initialize(el, options);

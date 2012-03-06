@@ -1,10 +1,10 @@
 ﻿/**
  * Class: Loader
  */
-module("util.Loader",function(global){
+define("util.Loader",function(require, exports, module){
 				
   	var config = {   //默认配置项
-		"charset" : global.moduleConfig.charset || "utf-8" //默认字符集
+		"charset" : window["moduleConfig"].charset || "utf-8" //默认字符集
 	};
 	
 

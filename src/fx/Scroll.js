@@ -11,11 +11,11 @@
  * 	fx.custom(el.scrollTop, el.scrollTop+400);
  *  (end)
  */
-module("fx.Scroll", function(global){
+define("fx.Scroll", function(require, exports, module){
 	
 	//IMPORT
-	var Base = module("fx.Base"),
-		langBase = module("lang.Base");	//IMPORT
+	var Base = require("fx.Base"),
+		langBase = require("lang.Base");	//IMPORT
 
 	
     var Scroll = function(el, options){

@@ -3,11 +3,11 @@
  * 事件机制封装
  * 对标准事件模型与IE事件模型间差异进行封装
  */
-module("event.Event", function(global){
+define("event.Event", function(require, exports, module){
 	
 	//IMPORT
-	var Selector = module("dom.Selector"),
-		langBase = module("lang.Base");
+	var Selector = require("dom.Selector"),
+		langBase = require("lang.Base");
 	
 	/**
 	 * 事件仓库
