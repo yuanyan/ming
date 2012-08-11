@@ -1,12 +1,12 @@
 ﻿/**
  * Class: Dom
  */
-define("dom.Dom",function(require, exports, module){
+define("dom/Dom",function(require, exports, module){
 	
 	//IMPORT
-	var Node = require("dom.Node"),
-		Base = require("lang.Base"),
-		query = require("dom.query");
+	var Node = require("dom/Node"),
+		Base = require("dom/Base"),
+		query = require("dom/query");
 	
 	var DOM= document,
 		Dom= new Node(DOM);

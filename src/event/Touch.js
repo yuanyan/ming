@@ -73,12 +73,12 @@
  });
  */
 
-define("event.Touch", function(require, exports, module){
+define("event/Touch", function(require, exports, module){
 
-    var event = require("event.Event"),
+    var event = require("event/Event"),
         bind = event.on,
         unbind = event.off,
-        array = require("lang.Array"),
+        array = require("lang/Array"),
         forEach = array.forEach,
         indexOf = array.indexOf,
         map = array.map,

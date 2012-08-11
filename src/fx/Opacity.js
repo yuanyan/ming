@@ -11,11 +11,11 @@
  * 	fx.toggle(); 
  *  (end)
  */
-define("fx.Opacity", function(require, exports, module){
+define("fx/Opacity", function(require, exports, module){
 
 	//IMPORT
-	var Base = require("fx.Base"),
-		langBase = require("lang.Base");
+	var Base = require("fx/Base"),
+		langBase = require("lang/Base");
 	
     var Opacity = function(el, options){
         this.initialize(el, options);

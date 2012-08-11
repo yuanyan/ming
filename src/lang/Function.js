@@ -1,10 +1,10 @@
 ﻿/**
  * Class: Function
  */
-define("lang.Function", function(require, exports, module){
+define("lang/Function", function(require, exports, module){
 	
 	//IMPORT
-    var Base = require("lang.Base");
+    var Base = require("lang/Base");
 
     /**
      * Function: bind

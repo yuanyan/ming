@@ -1,9 +1,9 @@
 ﻿
-define("net.JSONP", function(require, exports, module){
+define("net/JSONP", function(require, exports, module){
 	
-	var Base = require("lang.Base"),
-		Uri = require("util.Uri"),
-		Loader = require("util.Loader"),
+	var Base = require("lang/Base"),
+		Uri = require("util/Uri"),
+		Loader = require("util/Loader"),
         DOM = document;
 	
 	/**
@@ -61,7 +61,7 @@ define("net.JSONP", function(require, exports, module){
 			jsonpId = "jsonp_"+id;
 			
 		this.jsonpId = jsonpId; //保存jsonpId
-		module[jsonpId] = callback; //回调函数cache在module全局命名空间下	
+		window[jsonpId] = callback; //回调函数cache在window全局命名空间下
 
 		if(Base.isString(opts)){	
 			url = opts;
@@ -71,15 +71,15 @@ define("net.JSONP", function(require, exports, module){
 			url = opts['url']+"?"+Uri.param(opts["data"]);
 		}
 		
-		url = url +"&"+opts["callback"]+"="+"module."+jsonpId;
+		url = url +"&"+opts["callback"]+"="+jsonpId;
 		
 		var that = this;
-		var onComplate = function(){
-			if(Base.isFunction(opts["complate"])) opts["complate"]();
+		var onComplete = function(){
+			if(Base.isFunction(opts["complete"])) opts["complete"]();
 			that.abort();
 		};
 		
-		Loader.load("script", url, jsonpId, onComplate);
+		Loader.load("script", url, jsonpId, onComplete);
 	};
 	
 	/**
@@ -90,8 +90,9 @@ define("net.JSONP", function(require, exports, module){
 		if (this.jsonpId) {
 			var script = DOM.getElementById(this.jsonpId); //删除注入节点
 			script && script.parentNode.removeChild(script);
-			
-			delete module[this.jsonpId]; //注销回调函数
+
+            window[this.jsonpId] = null;
+			delete window[this.jsonpId]; //注销回调函数
 			delete this.jsonpId;
 		}
 	};

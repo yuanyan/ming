@@ -28,7 +28,7 @@
  * (end)
  */
 
-define("lang.Class",function(require, exports, module){
+define("lang/Class",function(require, exports, module){
 	
     function Class(proto){
 	

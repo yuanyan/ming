@@ -4,26 +4,35 @@
  *
  */
 
-define("xdm.Remote", function(require, exports, module) {
+define("xdm/Remote", function(require, exports, module) {
 
     function getTimestamp() {
         return  +new Date();
     }
 
-    function crossDomainPost (action, data) {
+    /**
+     *
+     * @param method
+     * @param action
+     * @param data
+     * @param opt_id
+     * @return {String}
+     */
+    function requstWithResponse (method, action, data, opt_id){
 
         // Add the iframe with a unique name
         var iframe = document.createElement("iframe");
-        var uniqueString = "cross_domain_post_" + getTimestamp();
+        var uniqueString = "cross_domain_withres_" + getTimestamp() || opt_id;
         document.body.appendChild(iframe);
         iframe.style.display = "none";
         iframe.contentWindow.name = uniqueString;
+        iframe.id = uniqueString;
 
         // construct a form with hidden inputs, targeting the iframe
         var form = document.createElement("form");
         form.target = uniqueString;
         form.action = action;
-        form.method = "POST";
+        form.method = method;
 
         for(var key in data){
             if(data.hasOwnProperty(key)){
@@ -39,10 +48,19 @@ define("xdm.Remote", function(require, exports, module) {
         form.submit();
 
         return uniqueString;
+
     }
 
-    function crossDomainGet (action, data) {
-        var uniqueString = "cross_domain_get_"+ getTimestamp();
+
+    /**
+     *
+     * @param action
+     * @param data
+     * @param opt_id
+     * @return {String}
+     */
+    function requestWithoutResponse (action, data, opt_id) {
+        var uniqueString = "cross_domain_withoutres_"+ getTimestamp() || opt_id;
         var img = window[uniqueString] = new Image;
 
         img.onerror = img.onload = function(){
@@ -66,8 +84,8 @@ define("xdm.Remote", function(require, exports, module) {
 
  	//EXPOSE
     return {
-        post: crossDomainPost,
-        get: crossDomainGet
+        requstWithResponse: requstWithResponse,
+        requestWithoutResponse: requestWithoutResponse
     };
 
 });

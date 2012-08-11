@@ -1,7 +1,7 @@
 ﻿/**
  * Class: Loader
  */
-define("util.Loader",function(require, exports, module){
+define("util/Loader",function(require, exports, module){
 				
   	var config = {   //默认配置项
 		"charset" : window["moduleConfig"].charset || "utf-8" //默认字符集
@@ -39,7 +39,7 @@ define("util.Loader",function(require, exports, module){
 				var script = document.createElement("script");
 				script.charset = config.charset; //字符集设置
 				script.type = 'text/javascript';
-				opt_id && (script.id = id);
+				opt_id && (script.id = opt_id);
             	script.async = true; //异步加载属性设置（HTML5 规范）
 				script.src = url; 
 				script.onload = script.onreadystatechange = callbackfn;				
@@ -51,7 +51,7 @@ define("util.Loader",function(require, exports, module){
                 var style = document.createElement('link');
                 style.rel = "stylesheet";
                 style.type = "text/css";
-				opt_id && (style.id = id);
+				opt_id && (style.id = opt_id);
                 style.media = "all";
                 style.href = url;
 				style.onload = style.onreadystatechange = callbackfn;				
@@ -60,7 +60,7 @@ define("util.Loader",function(require, exports, module){
 				break;	
 							
 			default: 
-				log(type,"is Unsupported resource type!");
+				throw Error(type + " is Unsupported resource type!");
 		}
 
 		

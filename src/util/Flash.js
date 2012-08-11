@@ -2,7 +2,7 @@
  * Class: Flash
  *
  */
-define("util.Flash", function(require, exports, module){
+define("util/Flash", function(require, exports, module){
 
 	/**
 	 * Function: getFlashVersion 

@@ -14,11 +14,11 @@
  * 
  */
 
-define("xdm.Local", function(require, exports, module) {
+define("xdm/Local", function(require, exports, module) {
 
 	var DOM = document,
-	    JSON = require("lang.JSON"),
-		Event = require("event.Event"),
+	    JSON = require("lang/JSON"),
+		Event = require("event/Event"),
 		proxy_html;
 
 	// remove node self

@@ -3,10 +3,10 @@
 /**
  * Base
  */
-define("fx.Base", function(require, exports, module){
+define("fx/Base", function(require, exports, module){
 	
 	//IMPORT
-	var langBase = require("lang.Base");
+	var langBase = require("lang/Base");
 	
     //Transitions (c) 2003 Robert Penner (http://www.robertpenner.com/easing/), BSD License.
 	/**

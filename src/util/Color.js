@@ -1,7 +1,7 @@
 ﻿/**
  * Class: Color
  */
-define("util.Color",function(require, exports, module){
+define("util/Color",function(require, exports, module){
 	
     var rRgb=new RegExp('([\\d]{1,3})', 'g');
 	var rHex=new RegExp('^[#]{0,1}([\\w]{1,2})([\\w]{1,2})([\\w]{1,2})$');

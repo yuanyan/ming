@@ -16,10 +16,10 @@
  *	});	
  *  (end)
  */
-define("fx.Styles", function(require, exports, module){
+define("fx/Styles", function(require, exports, module){
 	//IMPORT
-	var Base = require("fx.Base"),
-		langBase = require("lang.Base");
+	var Base = require("fx/Base"),
+		langBase = require("lang/Base");
 	
 	/**
 	 * 

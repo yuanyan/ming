@@ -1,7 +1,7 @@
 ﻿/**
  * Class: Template
  */
-define("template.Template", function(require, exports, module){
+define("template/Template", function(require, exports, module){
 
 	/**
 	 * Function: template

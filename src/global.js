@@ -1,5 +1,5 @@
 ﻿//Namespaces: global
-var define,require,module = (function(global, undefined){
+var define,require,modulejs = (function(global, undefined){
 
 	//Group: Native extension
 
@@ -93,7 +93,7 @@ var define,require,module = (function(global, undefined){
 	});
 
 
-	//Group: module
+	//Group: modulejs
 	
 	global.moduleConfig = global.moduleConfig || {};//配置项
 	
@@ -125,20 +125,20 @@ var define,require,module = (function(global, undefined){
         var factory = module.factory;
         module.exports = {};
         delete module.factory; // 每个module只build一次
-        module.exports = factory(require, module.exports, module) || module.exports; // exports 支持直接 return 或 module.exports 方式
+        module.exports = factory(require, module.exports, module) || module.exports; // exports 支持直接 return 或 modulejs.exports 方式
         return module.exports;
     }
 
     require = function (id) {
         if (!modules[id]) {
-            throw "module " + id + " not found";
+            throw "modulejs " + id + " not found";
         }
         return modules[id].factory ? build(modules[id]) : modules[id].exports;
     };
 
     define = function (id, factory) {
         if (modules[id]) {
-            throw "module " + id + " already defined";
+            throw "modulejs " + id + " already defined";
         }
 
         //模块注册即事件
@@ -299,7 +299,7 @@ var define,require,module = (function(global, undefined){
     };	
 	
 	/*
-	Function: module
+	Function: modulejs
 		模块声明
 		
 	Parameters:
@@ -307,15 +307,15 @@ var define,require,module = (function(global, undefined){
 		fn - {Function} 模块
 		
 	Returns:
-		module - {Object}
+		modulejs - {Object}
 		
 	Example:
 		(code)
-		module("lang.JSON",function(global){});
+		modulejs("lang.JSON",function(global){});
 		(end)		
 			
 	*/	 
-    var module = function(ns, fn){
+    var modulejs = function(ns, fn){
 		if(ns == undefined) return;
     
         if (fn === undefined) { //模块调用
@@ -329,27 +329,27 @@ var define,require,module = (function(global, undefined){
 
 	
 	/*
-	Function: module.load
+	Function: modulejs.load
 		模块加载
 		
 	Parameters:
 		namespace - {String|Array}
 		src - {String}
 	*/	 
-	module.load = function(namespace, src){
+	modulejs.load = function(namespace, src){
 			
 		addModule(namespace, src);
 
 	};
     
 	/*
-	Function: module.onReady
+	Function: modulejs.onReady
 		onReady 事件注册
 		
 	Parameters:
 		fn - {Function}
 	*/	 
-	module.onReady = function(fn){
+	modulejs.onReady = function(fn){
 		
 		if(modules['_readyHandler']){
 			modules['_readyHandler'].push(fn);
@@ -367,6 +367,6 @@ var define,require,module = (function(global, undefined){
         
     };	
 	
-	return module;
+	return modulejs;
        
 }(this));

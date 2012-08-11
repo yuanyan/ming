@@ -1,6 +1,5 @@
 ﻿/*
 interface Storage{
-	number length();
 	string key(number index);
 	void set(string key,object val);
 	object get(strin key);
@@ -16,20 +15,93 @@ LocalStorage implement Storage
 		
 		localStorage提供在cookie之外存储会话数据，并且localStorage不会像cookie一样会在每次请求头中发回服务器
 */
-define("storage.LocalStorage", function(require, exports, module){
+define("storage/LocalStorage", function(require, exports, module){
 	
-	var storage= window.localStorage;
+	var storage= window.localStorage,
+        noop = function(){};
 
-    /*
-	Function: length
-		获取当前localStorage的长度
-		
-	Returns:
-		number
-    */    
-	var length = function(){
-		return storage.length;
-	};
+    // IE8+ Chrome 4.0+ support localStorage
+    // IE 6,7 localStorage use IE userData Behavior
+    // see: http://msdn.microsoft.com/en-us/library/ie/ms531424(v=vs.85).aspx
+    if ('undefined' === typeof storage) {
+        modulejs.onReady(function () { // make sure the document is ready
+            var prefix = 'data-userdata',
+                doc = window['document'],
+                attrSrc = doc.body,
+                html = doc.documentElement,
+
+            // save attributeNames to <html>'s
+            // data-userdata attribute
+                mark = function (key, isRemove, temp, reg) {
+
+                    html.load(prefix);
+                    temp = html.getAttribute(prefix)||'';
+                    reg = RegExp('\\b' + key + '\\b,?', 'i');
+
+                    var hasKey = reg.test(temp) ? 1 : 0;
+
+                    temp = isRemove ? temp.replace(reg, '').replace(',', '') :
+                        hasKey ? temp : temp === '' ? key :
+                            temp.split(',').concat(key).join(',');
+
+
+                    html.setAttribute(prefix, temp);
+                    html.save(prefix);
+
+                };
+
+
+            storage = {'setItem': noop,'getItem': noop,'removeItem': noop,'clear': noop};
+
+            try{
+                // add IE behavior support
+                attrSrc.addBehavior('#default#userData');
+                html.addBehavior('#default#userData');
+            }catch(e){
+
+            }
+
+
+            storage.getItem = function (key) {
+                attrSrc.load(key);
+                return attrSrc.getAttribute(key);
+            };
+
+            storage.setItem = function (key, value) {
+                attrSrc.setAttribute(key, value);
+                attrSrc.save(key);
+                mark(key);
+            };
+
+            storage.removeItem = function (key) {
+                attrSrc.removeAttribute(key);
+                attrSrc.save(key);
+                mark(key, 1);
+            };
+
+            // clear all attributes on <body> tag that using for textStorage
+            // and clearing them from the
+            // 'data-userdata' attribute's value of <html> tag
+            storage.clear = function () {
+
+                html.load(prefix);
+
+                var attrs = html.getAttribute(prefix).split(','),
+                    len = attrs.length;
+
+                for (var i = 0; i < len; i++) {
+                    attrSrc.removeAttribute(attrs[i]);
+                    attrSrc.save(attrs[i]);
+                }
+
+                html.setAttribute(prefix, '');
+                html.save(prefix);
+
+            };
+
+            window.localStorage = storage;
+        });
+    }
 
     /*
 	Function: key
@@ -89,7 +161,6 @@ define("storage.LocalStorage", function(require, exports, module){
 	}	
 	
     return {
-		"length": length,
 		"key": key,
 		"set": set,
 		"get": get,

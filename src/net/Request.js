@@ -1,8 +1,8 @@
 ﻿
 define("net.Request",function (require, exports, module){
 	
-	var Base = require("lang.Base"),
-		Uri = require("util.Uri");
+	var Base = require("lang/Base"),
+		Uri = require("util/Uri");
 		
 	/**
 	 * Class: Request

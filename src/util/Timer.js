@@ -1,7 +1,7 @@
 ﻿/**
  * Class: Timer
  */
-define("util.Timer",function(require, exports, module){
+define("util/Timer",function(require, exports, module){
 	
 	var taskQueue = new Object; //任务队列
 	

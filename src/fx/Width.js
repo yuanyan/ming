@@ -11,11 +11,11 @@
  * 	fx.toggle(); 
  *  (end)
  */
-define("fx.Width", function(require, exports, module){
+define("fx/Width", function(require, exports, module){
 	
 	//IMPORT
-	var Base = require("fx.Base"),
-		langBase = require("lang.Base");
+	var Base = require("fx/Base"),
+		langBase = require("lang/Base");
 	
     var Width = function(el, options){
         this.initialize(el, options);

@@ -1,10 +1,10 @@
 ﻿/**
  * Class: Array
  */
-define("lang.Array",function(require, exports, module){
+define("lang/Array",function(require, exports, module){
 	
     //IMPORT
-	var Base = require("lang.Base");
+	var Base = require("lang/Base");
 	
     /*Array extentions start */
 

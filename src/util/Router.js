@@ -1,7 +1,7 @@
 /**
  * Class: Router
  */
-define("util.Router",function(require, exports, module){
+define("util/Router",function(require, exports, module){
 
 
     /*

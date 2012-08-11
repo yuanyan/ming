@@ -1,7 +1,7 @@
 ﻿/**
  * Class: Base
  */
-define("lang.Base",function(require, exports, module){
+define("lang/Base",function(require, exports, module){
 	
     var DOM = document,
 		toString = Object.prototype.toString,

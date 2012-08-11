@@ -9,10 +9,10 @@
  * Returns: 
  *	{NodeList}
  */
-module("dom.query",function(require, exports, module){
+module("dom/query",function(require, exports, module){
 	
-	var NodeList = require("dom.NodeList"),
-		Selector = require("dom.Selector");
+	var NodeList = require("dom/NodeList"),
+		Selector = require("dom/Selector");
 	
     return  function(query, context){
        return new NodeList(Selector.select(query, context));

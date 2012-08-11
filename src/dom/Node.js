@@ -1,11 +1,11 @@
 ﻿/**
  * Class: Node
  */
-define("dom.Node", function (require, exports, module) {
+define("dom/Node", function (require, exports, module) {
 	
 	//IMPORT
-	var Base = require("lang.Base"),
-		Event = require("event.Event");
+	var Base = require("lang/Base"),
+		Event = require("event/Event");
 	
     var isNodeName = function (elem, name) {
         return elem.nodeName && elem.nodeName.toUpperCase() === name.toUpperCase();
