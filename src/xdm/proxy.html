@@ -22,8 +22,8 @@
 			return;
 		}
 
-		var module = target.module,
-			Event= module("event.Event");
+		var require = target["require"],
+			Event= require("event/Event");
 			
 		Event.fire( target, "message", msg );
 	} 
