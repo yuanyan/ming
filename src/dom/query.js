@@ -9,7 +9,7 @@
  * Returns: 
  *	{NodeList}
  */
-module("dom/query",function(require, exports, module){
+define("dom/query",function(require, exports, module){
 	
 	var NodeList = require("dom/NodeList"),
 		Selector = require("dom/Selector");
