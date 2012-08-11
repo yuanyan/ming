@@ -1,4 +1,19 @@
-
+/**
+ *
+ 与JSONP不同，JSONPI允许跨域发送所有类型的请求，而JSONP只允许GET类型，
+ 但通过JSONPI请求，服务器返回的数据需是以下模块中的内容：
+ <!DOCTYPE html>
+ <html>
+ <head>
+ <script>document.domain = 'example.com';</script>
+ </head>
+ <body>
+ <script>
+ window.parent.jsonpi_1234567890({ 'id': '630' });
+ </script>
+ </body>
+ </html>
+ */
 define("net/JSONPI", function(require, exports, module){
 
     var Base = require("lang/Base"),
