@@ -27,13 +27,20 @@ http://madscript.com/modulejs/docs
 * [Visit the Wiki](https://github.com/yuanyan/modulejs/wiki)
 
 ###Changelog
-#### 2011-09-01 0.1 Alpha release
-#### 2012-08-11 0.1 Beta release
+
+#### 2012-09-26 0.0.3 release
+
+1. remove sizzle module
+2. fix Node.text bug
+
+#### 2012-08-11 0.0.2  release
 
 1. remove graph module
 2. all module AMD support
 3. add net/JSONPI module
 4. storage/LocalStorage module support IE6-7
+
+#### 2011-09-01 0.0.1 release
 
 ###License
 

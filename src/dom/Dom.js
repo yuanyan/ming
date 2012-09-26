@@ -5,7 +5,7 @@ define("dom/Dom",function(require, exports, module){
 	
 	//IMPORT
 	var Node = require("dom/Node"),
-		Base = require("dom/Base"),
+		Base = require("lang/Base"),
 		query = require("dom/query");
 	
 	var DOM= document,

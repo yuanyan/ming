@@ -174,7 +174,7 @@ define("dom/Node", function (require, exports, module) {
             //getter
             if (text === undefined) {
                 if (elem.nodeType === 1) { // 检查是否为 elem_NODE(1)
-                    return elem.textContent || "";
+                    return elem.textContent || elem.innerText ||"";
                 } else if (elem.nodeType === 3) { // 检查是否为TEXT_NODE(3);
                     return elem.nodeValue;
                 }
@@ -183,7 +183,12 @@ define("dom/Node", function (require, exports, module) {
             else {
 
                 if (elem.nodeType === 1) { // 检查是否为 elem_NODE(1)
-                    elem.textContent = text;
+
+                    if(elem.textContent)
+                        elem.textContent = text;
+                    else
+                        elem.innerText = text;
+
                 } else if (elem.nodeType === 3) { // 检查是否为TEXT_NODE(3);
                     elem.nodeValue = text;
                 }

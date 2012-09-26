@@ -311,7 +311,7 @@ var define,require,modulejs = (function(global, undefined){
 		
 	Example:
 		(code)
-		modulejs("lang.JSON",function(global){});
+		modulejs("lang/JSON",function(global){});
 		(end)		
 			
 	*/	 
