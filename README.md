@@ -10,7 +10,8 @@ yuanyan.cao@gmail.com
 * Animation
 * Cookie/localStorage storage
 * Language extensions
-* Ajax/JSONP request
+* Ajax/JSONP/JSONPI request
+* Cross document message
 * Template engine
 * Rich utility class
 

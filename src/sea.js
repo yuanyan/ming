@@ -1,5 +1,5 @@
 // copyright https://github.com/seajs/seajs
-
+// base es5
 this.seajs = {
      _util:  {}
     ,_config: {charset:"utf-8"}
