@@ -32,7 +32,7 @@ define("lang/Class",function(require, exports, module){
 	
     function Class(proto){
 	
-		if (!this instanceof Class) {
+		if (!(this instanceof Class)) {
 			return new Class(proto);
 		}
 		
