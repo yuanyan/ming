@@ -2,7 +2,7 @@
 
 Modulejs a high-productivity JavaScript solution that integrates jQuery and modules you need for modern web application development.
 
-## Solution Features
+### Solution Features
 * Development based on ES5
 * Development based on modular JavaScript
 * Better asynchronous programming with Futures
@@ -36,7 +36,7 @@ http://modulejs.github.com/doc
 
 ###Links
 * [Google Group for discussion](http://groups.google.com/group/modulejs)
-* [Visit the Wiki](https://github.com/yuanyan/modulejs/wiki)
+* [Visit the Wiki](https://github.com/modulejs/modulejs/wiki)
 
 ###Changelog
 
