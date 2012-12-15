@@ -1,0 +1,20 @@
+{
+    "name": "modulejs",
+    "version": "2.0.0",
+    "description": "modular javascript solution for jQuery ",
+    "homepage": "modulejs.github.com",
+    "author": "yuanyan@tencent.com",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/modulejs/modulejs"
+    },
+    "bugs": {
+        "url": "https://github.com/modulejs/modulejs/issues"
+    },
+    "license": "MIT",
+    "devDependencies": {
+        "modjs": "*"
+    },
+    "webDependencies": {
+    }
+}
