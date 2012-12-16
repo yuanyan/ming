@@ -21,9 +21,10 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery and modu
 * documentcloud/underscore
 
 ### Integrates
-* marcuswestin/store.js
-* carhartl/jquery-cookie
-* madrobby/keymaster
+* marcuswestin/store.js@1.3.5
+* carhartl/jquery-cookie@1.3
+* madrobby/keymaster@1.0.2
+* EightMedia/hammer.js@0.6.1
 
 ###Guide
 
