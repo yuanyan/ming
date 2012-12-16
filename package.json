@@ -16,5 +16,7 @@
         "modjs": "*"
     },
     "webDependencies": {
+        "jquery" : "http://code.jquery.com/jquery-latest.js",
+        "underscore" : "documentcloud/underscore"
     }
 }

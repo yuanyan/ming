@@ -10,7 +10,6 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery and modu
 ### Shims
 * es5-shim
 * console-shim
-* json2
 
 ### Module Loader Support
 * requirejs - AMD
@@ -20,11 +19,10 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery and modu
 ### Dependencies
 * jquery/jquery
 * documentcloud/underscore
+
+### Integrates
+* marcuswestin/store.js
 * carhartl/jquery-cookie
-* yuanyan/jquery-xdm
-* yuanyan/jquery-storage
-* yuanyan/jquery-prefetch
-* jzaefferer/jquery-validation
 
 ###Guide
 
@@ -40,7 +38,7 @@ http://modulejs.github.com/doc
 
 ###Changelog
 
-#### 2012-09-26 2.0.0 dev
+#### 2012-12-12 2.0.0 dev
 1. modulejs2.0 in dev
 2. modulejs2.0 in modulejs-1.0 branch
 
