@@ -25,6 +25,7 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery and modu
 * carhartl/jquery-cookie@1.3
 * madrobby/keymaster@1.0.2
 * EightMedia/hammer.js@0.6.1
+* ryanseddon/H5F@1.0.0
 
 ###Guide
 
