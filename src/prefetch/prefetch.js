@@ -17,28 +17,19 @@
     }
 })('prefetch', function ($) {
 
-    var prefetchRel = 'prefetch prerender',
-        prefetchUrls = {},
-        prefetchWorker,
-        isSupportWorker = window.Worker && window.Blob;
+    var prefetchRel = 'prefetch prerender';
+    var prefetchUrls = {};
+    var prefetchWorker;
+    var isSupportWorker = window.Worker && window.Blob;
 
-    function isSameDomain(url){
-        var parser = document.createElement('a');
-        parser.href = url;
-
-        return parser.protocol == location.protocol && parser.hostname == location.hostname && parser.port == location.port;
-
-    }
-
-    function fetch(e){
+    function xhrFetch(evt){
         try{
-            var url = e.data || e,
-                xhr = new XMLHttpRequest();
+            var url = evt.data || evt;
+            var xhr = new XMLHttpRequest();
 
             xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4) {
                     xhr.onreadystatechange = function(){}; // fix a memory leak in IE
-
                 }
             };
             xhr.open("GET", url);
@@ -51,52 +42,46 @@
 
 
     // prefetch
-    $.prefetch = $.fn.prefetch = function(){
+    var prefetch = function(url){
+        if ( url && !prefetchUrls[url] ) {
 
-        return this.each(function(){
+            if( isSupportWorker ){
 
-            var $this = $(this),
-                url = $this.attr('href');
-
-            if ( url && !prefetchUrls[url] ) {
-
-                if( isSameDomain(url) ){
-
-                    if(isSupportWorker){
-
-                        if(!prefetchWorker){
-                            window.URL = window.URL || window.webkitURL;
-                            var blob = new Blob(["onmessage = "+ fetch.toString() ]);
-                            // Obtain a blob URL reference to our worker 'file'.
-                            var blobURL = window.URL.createObjectURL(blob);
-                            prefetchWorker = new Worker(blobURL);
-                        }
-
-                        prefetchWorker.postMessage(url);
-
-                    }else{
-                        fetch(url);
-                    }
-
-                }else{
-
-                    var link = $('<link />', { rel: prefetchRel, href: url } );
-                    var script = $('<script />', { type: "text/prefetch", src: url } );
-                    $('head').append( link.after(script) );
-
+                if(!prefetchWorker){
+                    window.URL = window.URL || window.webkitURL;
+                    var blob = new Blob(["onmessage = "+ fetch.toString() ]);
+                    // Obtain a blob URL reference to our worker 'file'.
+                    var blobURL = window.URL.createObjectURL(blob);
+                    prefetchWorker = new Worker(blobURL);
                 }
 
-                prefetchUrls[url]= true;
+                prefetchWorker.postMessage(url);
+
+            } else {
+
+                var link = $('<link />', { rel: prefetchRel, href: url } );
+                $('head').append( link );
+
+                xhrFetch(url);
 
             }
+
+            prefetchUrls[url]= true;
+
+        }
+    };
+
+    $.fn.prefetch = function(){
+        return this.each(function(){
+            prefetch(this.href);
         });
     };
 
     //prefetch pages when anchors with data-prefetch are encountered
     // <a href="prefetchThisPage.html" data-prefetch> ... </a>
     $( window ).load(function() {
-        $("a[data-prefetch]").each(function() {
-            $(this).prefetch();
-        });
+        $("a[data-prefetch]").prefetch();
     });
+
+    return prefetch;
 })
