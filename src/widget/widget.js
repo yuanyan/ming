@@ -1,32 +1,23 @@
-/*!
- * jQuery UI Widget v1.10.0pre - 2012-11-13 (ff055a0c353c3c8ce6e5bfa07ad7cb03e8885bc5)
- * http://jqueryui.com
- *
- * Copyright 2012 jQuery Foundation and other contributors
- * Released under the MIT license.
- * http://jquery.org/license
- *
- * http://api.jqueryui.com/jQuery.widget/
- */
 !(function (name, factory) {
-    if (!factory) {
-        factory = name;
-        name = null;
-    }
     if (typeof define === 'function') {
-        // *MD Register as an anonymous module.
-        define(['jquery'], factory);
-    } else if (typeof exports === 'object') {
-        // Node/CommonJS
-        exports = factory(require('jquery'));
+        define(name, ['jquery'], factory);
     } else {
         var $ = this.jQuery || this.$;
         var ret = factory($);
-        // Assign to common namespaces or simply the global object (window)
-        name && ret && (($ || this)[name] = ret);
+        ret && ($[name] = ret);
     }
 })('widget', function ($) {
 
+    /*!
+     * jQuery UI Widget v1.10.0pre - 2012-11-13 (ff055a0c353c3c8ce6e5bfa07ad7cb03e8885bc5)
+     * http://jqueryui.com
+     *
+     * Copyright 2012 jQuery Foundation and other contributors
+     * Released under the MIT license.
+     * http://jquery.org/license
+     *
+     * http://api.jqueryui.com/jQuery.widget/
+     */
     var uuid = 0,
         slice = Array.prototype.slice,
         _cleanData = $.cleanData;
