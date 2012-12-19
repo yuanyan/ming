@@ -231,4 +231,6 @@
     global.key.getPressedKeyCodes = getPressedKeyCodes;
     global.key.noConflict = noConflict;
 
+    return global.key;
+
 })

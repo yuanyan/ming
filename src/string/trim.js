@@ -15,7 +15,7 @@
     var nativeTrimRight = StringProto.trimRight;
     var nativeTrimLeft = StringProto.trimLeft;
 
-    $.extend($, {
+    var trim = {
         /**
          * Function: trim
          * ECMA-262-5 15.5.4.20
@@ -63,5 +63,8 @@
             if (nativeTrimRight) return nativeTrimRight.call(str);
             return str.replace(RIGHT, "");
         }
-    });
+    };
+
+    $.extend($, trim);
+    return trim;
 })

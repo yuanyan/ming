@@ -332,7 +332,7 @@
     };
 
     // Since all methods are only used internally no need to expose globally
-    $[pluginName] = {
+    return $[pluginName] = {
         setup: setup
     };
 

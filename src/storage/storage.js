@@ -205,5 +205,5 @@
     store.enabled = !store.disabled
 
     // Expose
-    $[pluginName] = storage;
+    return $[pluginName] = store;
 })

@@ -68,5 +68,5 @@
     }
 
 
-    $[pluginName] = Class;
+    return $[pluginName] = Class;
 })

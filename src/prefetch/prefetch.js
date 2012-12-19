@@ -74,4 +74,7 @@
         $("a[data-prefetch]")[pluginName]();
     });
 
+
+    return prefetch;
+
 })

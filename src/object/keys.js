@@ -10,7 +10,7 @@
 
     // Retrieve the names of an object's properties.
     // Delegates to **ECMAScript 5**'s native `Object.keys`
-    $[pluginName] = Object.keys || function(obj) {
+    return $[pluginName] = Object.keys || function(obj) {
         if (obj !== Object(obj)) throw new TypeError('Invalid object');
         var keys = [];
         for (var key in obj) if (obj.hasOwnProperty(key)) keys[keys.length] = key;

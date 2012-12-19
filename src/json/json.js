@@ -8,7 +8,7 @@
     'use strict';
     var pluginName = 'json';
 
-    $[pluginName] = {
+    return $[pluginName] = {
         // http://api.jquery.com/jQuery.parseJSON/
         parse : $.parseJSON,
 

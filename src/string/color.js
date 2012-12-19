@@ -10,7 +10,7 @@
     var RGB = /([\\d]{1,3})/g;
     var HEX = /^[#]{0,1}([\\w]{1,2})([\\w]{1,2})([\\w]{1,2})$/;
 
-    $.extend($, {
+    var color =   {
         /**
          * Function: rgbToHex
          * RGB格式转化为HEX
@@ -75,5 +75,9 @@
             }
         }
 
-    });
+    };
+
+    $.extend($, color);
+
+    return color;
 })

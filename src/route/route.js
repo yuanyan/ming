@@ -92,9 +92,6 @@
 
     };
 
-    $.Router = Router;
-    $[pluginName] = function(route, callback) {
-
-    };
+    return $.Router = Router;
 
 })

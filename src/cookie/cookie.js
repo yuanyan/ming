@@ -6,7 +6,7 @@
     }
 })(function ($) {
     'use strict';
-
+    var pluginName = 'cookie';
     /*!
      * jQuery Cookie Plugin v1.3
      * https://github.com/carhartl/jquery-cookie
@@ -26,7 +26,7 @@
         return decodeURIComponent(s.replace(pluses, ' '));
     }
 
-    var config = $.cookie = function (key, value, options) {
+    var config = $[pluginName] = function (key, value, options) {
 
         // write
         if (value !== undefined) {
@@ -68,12 +68,6 @@
 
     config.defaults = {};
 
-    $.removeCookie = function (key, options) {
-        if ($.cookie(key) !== null) {
-            $.cookie(key, null, options);
-            return true;
-        }
-        return false;
-    };
+    return $[pluginName];
 
 })

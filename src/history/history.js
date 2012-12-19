@@ -226,5 +226,5 @@
 
     $.History = History;
     // Create the default history.
-    $[pluginName] = new History;
+    return $[pluginName] = new History;
 })
