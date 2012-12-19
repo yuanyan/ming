@@ -31,21 +31,23 @@
     <p>Created by <a href="http://github.com/yuanyan">yuanyan</a></p>
     <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
 </footer>
-<script id="todo-template" type="text/x-handlebars-template">
-    {{#this}}
-    <li {{#if completed}}class="completed"{{/if}} data-id="{{id}}">
+<script id="todo-template" type="text/x-template">
+    <% $.each( todos, function(i, item){ %>
+    <li <%= item.completed ? 'class="completed"' : '' %> data-id="<%- item.id %>">
     <div class="view">
-        <input class="toggle" type="checkbox" {{#if completed}}checked{{/if}}>
-        <label>{{title}}</label>
+        <input class="toggle" type="checkbox" <%= item.completed ? 'checked' : '' %> >
+        <label><%- item.title %></label>
         <button class="destroy"></button>
     </div>
-    <input class="edit" value="{{title}}">
+    <input class="edit" value="<%- item.title %>">
     </li>
-    {{/this}}
+    <% }); %>
 </script>
-<script id="footer-template" type="text/x-handlebars-template">
-    <span id="todo-count"><strong>{{activeTodoCount}}</strong> {{activeTodoWord}} left</span>
-    {{#if completedTodos}}<button id="clear-completed">Clear completed ({{completedTodos}})</button>{{/if}}
+<script id="footer-template" type="text/x-template">
+    <span id="todo-count"><strong><%= activeTodoCount %></strong> <%= activeTodoWord %> left</span>
+    <% if ( completedTodos ) { %>
+    <button id="clear-completed">Clear completed (<%= completedTodos %>)</button>
+    <% } %>
 </script>
 </body>
 </html>

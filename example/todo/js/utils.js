@@ -1,7 +1,6 @@
 define(function (require, exports, module) {
 
     var storage = require('../../../src/storage/storage');
-    var JSON = require('../../../src/json/json');
 
     return {
         // https://gist.github.com/1308368

@@ -1,8 +1,8 @@
 /*global jQuery, Handlebars */
 define(function(require, exports, module) {
 	'use strict';
-    var $ = require('jquery');
-    var Handlebars = require('handlebars');
+    var $ = require('$');
+    var template = require('../../../src/template/template');
     var Utils = require('utils');
 
 	var App = {
@@ -14,8 +14,8 @@ define(function(require, exports, module) {
 			this.render();
 		},
 		cacheElements: function() {
-			this.todoTemplate = Handlebars.compile( $('#todo-template').html() );
-			this.footerTemplate = Handlebars.compile( $('#footer-template').html() );
+			this.todoTemplate = template( $('#todo-template').html() );
+			this.footerTemplate = template( $('#footer-template').html() );
 			this.$todoApp = $('#todoapp');
 			this.$newTodo = $('#new-todo');
 			this.$toggleAll = $('#toggle-all');
@@ -37,7 +37,8 @@ define(function(require, exports, module) {
 			list.on( 'click', '.destroy', this.destroy );
 		},
 		render: function() {
-			this.$todoList.html( this.todoTemplate( this.todos ) );
+            debugger;
+			this.$todoList.html( this.todoTemplate( { todos: this.todos } ) );
 			this.$main.toggle( !!this.todos.length );
 			this.$toggleAll.prop( 'checked', !this.activeTodoCount() );
 			this.renderFooter();
