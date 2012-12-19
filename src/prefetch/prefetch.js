@@ -1,12 +1,12 @@
-!(function (name, factory) {
+!(function (factory) {
     if (typeof define === 'function') {
-        define(name, ['jquery'], factory);
+        define(['$'], factory);
     } else {
-        var $ = this.jQuery || this.$;
-        var ret = factory($);
-        ret && ($[name] = ret);
+        factory($);
     }
-})('prefetch', function ($) {
+})(function ($) {
+    'use strict';
+    var pluginName = 'prefetch';
 
     var prefetchRel = 'prefetch prerender';
     var prefetchUrls = {};
@@ -62,17 +62,16 @@
         }
     };
 
-    $.fn.prefetch = function(){
+    $.fn[pluginName] = function(){
         return this.each(function(){
             prefetch(this.href);
         });
     };
 
-    //prefetch pages when anchors with data-prefetch are encountered
+    // prefetch pages when anchors with data-prefetch are encountered
     // <a href="prefetchThisPage.html" data-prefetch> ... </a>
     $( window ).load(function() {
-        $("a[data-prefetch]").prefetch();
+        $("a[data-prefetch]")[pluginName]();
     });
 
-    return prefetch;
 })

@@ -1,12 +1,14 @@
-!(function (name, factory) {
+!(function (factory) {
     if (typeof define === 'function') {
-        define(name, ['jquery','json'], factory);
+        define(['$', '../json/json'], factory);
     } else {
-        var $ = this.jQuery || this.$;
-        var ret = factory($, $.json);
-        ret && (($ || this)[name] = ret);
+        factory($);
     }
-})('storage', function ($, JSON) {
+})(function ($) {
+    'use strict';
+
+    var pluginName = 'storage';
+    var JSON = $.json;
 
     /* Copyright (c) 2010-2012 Marcus Westin
      *
@@ -202,5 +204,6 @@
     }
     store.enabled = !store.disabled
 
-    return store;
+    // Expose
+    $[pluginName] = storage;
 })

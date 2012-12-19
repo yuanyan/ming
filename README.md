@@ -1,6 +1,6 @@
 ## Modulejs
 
-Modulejs a high-productivity JavaScript solution that integrates jQuery and modules you need for modern web application development.
+Modulejs a high-productivity JavaScript solution that integrates jQuery and micro modules you need for modern web application development.
 
 ### Solution Features
 * Development based on ES5

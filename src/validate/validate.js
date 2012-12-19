@@ -1,12 +1,13 @@
-!(function (name, factory) {
+!(function (factory) {
     if (typeof define === 'function') {
-        define(name, ['jquery'], factory);
+        define(['$'], factory);
     } else {
-        var $ = this.jQuery || this.$;
-        var ret = factory($);
-        ret && ($[name] = ret);
+        factory($);
     }
-})('validate', function ($) {
+})(function ($) {
+    'use strict';
+    var pluginName = 'validate';
+
 
     /*! H5F - v1.0.0 - 2012-07-18
      * https://github.com/ryanseddon/H5F/
@@ -331,7 +332,7 @@
     };
 
     // Since all methods are only used internally no need to expose globally
-    return {
+    $[pluginName] = {
         setup: setup
     };
 

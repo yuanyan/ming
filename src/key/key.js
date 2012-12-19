@@ -1,18 +1,18 @@
-//     keymaster.js
-//     (c) 2011-2012 Thomas Fuchs
-//     keymaster.js may be freely distributed under the MIT license.
-!(function (name, factory) {
+!(function (factory) {
     if (typeof define === 'function') {
-        define(name, ['jquery'], factory);
+        define(['$'], factory);
     } else {
-        var $ = this.jQuery || this.$;
-        var ret = factory($);
-        ret && ($[name] = ret);
+        factory($);
     }
-})('key', function ($) {
+})(function ($) {
+    'use strict';
+    var pluginName = 'key';
 
     var global = $;
 
+    //     keymaster.js
+    //     (c) 2011-2012 Thomas Fuchs
+    //     keymaster.js may be freely distributed under the MIT license.
     var k,
         _handlers = {},
         _mods = { 16: false, 18: false, 17: false, 91: false },
@@ -230,7 +230,5 @@
     global.key.isPressed = isPressed;
     global.key.getPressedKeyCodes = getPressedKeyCodes;
     global.key.noConflict = noConflict;
-
-    return global.key;
 
 })

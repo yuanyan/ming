@@ -1,12 +1,12 @@
-!(function (name, factory) {
+!(function (factory) {
     if (typeof define === 'function') {
-        define(name, ['jquery'], factory);
+        define(['$'], factory);
     } else {
-        var $ = this.jQuery || this.$;
-        var ret = factory($);
-        ret && ($[name] = ret);
+        factory($);
     }
-})('class', function ($) {
+})(function ($) {
+    'use strict';
+    var pluginName = 'Class';
 
     function Class(proto){
 
@@ -55,7 +55,7 @@
             for (var i in parent) {
 
                 if (!proto.hasOwnProperty(i)) {
-                    proto[i] = json[i];
+                    proto[i] = parent[i];
                 }
                 else {
                     !override || (proto[i] = parent[i]);
@@ -68,6 +68,5 @@
     }
 
 
-    //EXPOSE
-    return Class;
+    $[pluginName] = Class;
 })

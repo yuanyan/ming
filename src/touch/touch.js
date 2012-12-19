@@ -1,12 +1,12 @@
-!(function (name, factory) {
+!(function (factory) {
     if (typeof define === 'function') {
-        define(name, ['jquery'], factory);
+        define(['$'], factory);
     } else {
-        var $ = this.jQuery || this.$;
-        var ret = factory($);
-        ret && ($[name] = ret);
+        factory($);
     }
-})('touch', function ($) {
+})(function ($) {
+    'use strict';
+    var pluginName = 'touch';
 
     /*
      * Hammer.JS
@@ -840,14 +840,14 @@
     }
 
 
-    $.fn['touch'] = function(options)
+    $.fn[pluginName] = function(options)
     {
         return this.each(function()
         {
             var hammer = new Hammer(this, options);
 
-            var $el = $(this);
-            $el.data('touch', hammer);
+            var $this = $(this);
+            $this.data('touch', hammer);
 
             var events = ['hold','tap','doubletap','transformstart','transform','transformend','dragstart','drag','dragend','swipe','release'];
 
@@ -856,7 +856,7 @@
                     return function(ev) {
                         el.trigger($.Event(eventName, ev));
                     };
-                })($el, events[e]);
+                })($this, events[e]);
             }
         });
     };

@@ -1,14 +1,14 @@
-!(function (name, factory) {
+!(function (factory) {
     if (typeof define === 'function') {
-        define(name, ['jquery'], factory);
+        define(['$'], factory);
     } else {
-        var $ = this.jQuery || this.$;
-        var ret = factory($);
-        ret && ($[name] = ret);
+        factory($);
     }
-})('json', function ($) {
+})(function ($) {
+    'use strict';
+    var pluginName = 'json';
 
-    return {
+    $[pluginName] = {
         // http://api.jquery.com/jQuery.parseJSON/
         parse : $.parseJSON,
 

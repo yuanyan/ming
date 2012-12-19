@@ -1,6 +1,6 @@
 !(function (factory) {
     if (typeof define === 'function') {
-        define(['$', 'history', 'object/keys'], factory);
+        define(['$', '../history/history', '../object/keys'], factory);
     } else {
         factory($);
     }
@@ -9,6 +9,7 @@
     'use strict';
     var pluginName = 'route';
     var history = $.history;
+    var keys = $.keys;
 
     // $.Router
     // ---------------
@@ -48,9 +49,10 @@
             history.route(route, $.proxy(function(fragment) {
                 var args = this._extractParameters(route, fragment);
                 callback && callback.apply(this, args);
-                this.trigger.apply(this, ['route:' + name].concat(args));
+                // TODO: support it
+                //this.trigger.apply(this, ['route:' + name].concat(args));
 
-                history.trigger('route', this, name, args);
+                //history.trigger('route', this, name, args);
             }, this));
             return this;
         },
@@ -66,7 +68,7 @@
         // routes can be defined at the bottom of the route map.
         _bindRoutes: function() {
             if (!this.routes) return;
-            var route, routes = $.keys(this.routes);
+            var route, routes = keys(this.routes);
             while ((route = routes.pop()) != null) {
                 this.route(route, this.routes[route]);
             }
