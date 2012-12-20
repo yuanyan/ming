@@ -1,7 +1,7 @@
 {
     "name": "modulejs",
     "version": "2.0.0",
-    "description": "modular javascript solution for jQuery ",
+    "description": "modular javascript solution with jQuery",
     "homepage": "modulejs.github.com",
     "author": "yuanyan@tencent.com",
     "repository": {
@@ -17,6 +17,8 @@
     },
     "webDependencies": {
         "jquery" : "http://code.jquery.com/jquery-latest.js",
+        "requirejs" : "https://raw.github.com/jrburke/requirejs/master/require.js",
+        "seajs" : "https://raw.github.com/seajs/seajs/master/dist/sea.js",
         "underscore" : "documentcloud/underscore"
     }
 }
