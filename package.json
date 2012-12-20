@@ -4,10 +4,15 @@
     "description": "modular javascript solution with jQuery",
     "homepage": "modulejs.github.com",
     "author": "yuanyan@tencent.com",
-    "repository": {
+    "repository": [{
         "type": "git",
-        "url": "https://github.com/modulejs/modulejs"
+        "url": "https://github.com/modulejs/modulejs.git"
     },
+    {
+        "type": "svn", 
+        "url": "https://tc-svn.tencent.com/pub/pub_connectjs_rep/connectjs_proj/trunk/",
+        "path": "components/modulejs"
+    }],
     "bugs": {
         "url": "https://github.com/modulejs/modulejs/issues"
     },
