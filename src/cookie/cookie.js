@@ -41,7 +41,7 @@
                 t.setDate(t.getDate() + days);
             }
 
-            value = config.json ? JSON.stringify(value) : String(value);
+            value = config.json ? $.json.stringify(value) : String(value);
 
             return (document.cookie = [
                 encodeURIComponent(key), '=', config.raw ? value : encodeURIComponent(value),
@@ -59,7 +59,7 @@
             var parts = cookies[i].split('=');
             if (decode(parts.shift()) === key) {
                 var cookie = decode(parts.join('='));
-                return config.json ? JSON.parse(cookie) : cookie;
+                return config.json ?  $.json.parse(cookie) : cookie;
             }
         }
 

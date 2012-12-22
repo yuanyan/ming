@@ -861,7 +861,6 @@
         });
     };
 
-
-    return Hammer;
+    return $.Touch = Hammer
 
 })
