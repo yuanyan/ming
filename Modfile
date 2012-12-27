@@ -1,6 +1,13 @@
-//
+/*
+ * modjs
+ * http://github.com/modulejs/modjs
+ */
+
 module.exports = {
     "tasks": {
+        min: {
+
+        }
     },
 
     "targets" : {
