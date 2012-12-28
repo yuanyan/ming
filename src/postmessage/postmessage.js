@@ -2,7 +2,7 @@
     if (typeof define === 'function') {
         define(['$'], factory);
     } else {
-        factory($);
+        factory(this.$ || this);
     }
 })(function ($) {
     'use strict';
@@ -27,7 +27,8 @@
         p_receiveMessage,
 
     // I couldn't get window.postMessage to actually work in Opera 9.64!
-        has_postMessage = window[postMessage] && !$.browser.opera;
+    //  has_postMessage = window[postMessage] && !$.browser.opera;
+        has_postMessage = window[postMessage];
 
     // Method: jQuery.postMessage
     //
