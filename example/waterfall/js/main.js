@@ -9,7 +9,7 @@ require.config({
 });
 
 require([
-	'$','waterfall'
+	'$','waterfall','lazyload'
 ], function( $ ) {
 
     $(document).ready(new function() {
@@ -93,6 +93,10 @@ require([
 
         // Do initial update (shows all items).
         updateFilters();
+
+        $("img[data-original]").lazyload({
+            effect : "fadeIn"
+        })
     });
 
 });
