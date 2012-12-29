@@ -46,8 +46,6 @@
     // Arguments:
     //
     //  message - (String) A message to be passed to the other frame.
-    //  message - (Object) An object to be serialized into a params string, using
-    //    the jQuery.param method.
     //  target_url - (String) The URL of the other frame this window is
     //    attempting to communicate with. This must be the exact URL (including
     //    any query string) of the other window for this script to work in
