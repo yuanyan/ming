@@ -2,7 +2,7 @@
     if (typeof define === 'function') {
         define(['$'], factory);
     } else {
-        factory(this.$ || this);
+        factory(this.$ = this.$ || {});
     }
 })(function ($) {
     'use strict';
@@ -65,7 +65,7 @@
         // Serialize the message if not a string. Note that this is the only real
         // jQuery dependency for this script. If removed, this script could be
         // written as very basic JavaScript.
-        message = typeof message === 'string' ? message : $.param( message );
+        message =  ''+message;
 
         // Default to parent if unspecified.
         target = target || parent;
@@ -80,7 +80,7 @@
             // of the target to target_url#message. A bit ugly, but it works! A cache
             // bust parameter is added to ensure that repeat messages trigger the
             // callback.
-            target.location = target_url.replace( /#.*$/, '' ) + '#' + (+new Date) + (cache_bust++) + '&' + message;
+            target.location = target_url.replace( /#.*$/, '' ) + '#' + (+new Date) + (cache_bust++) + '&' + encodeURIComponent(message);
         }
     };
 
@@ -144,7 +144,7 @@
                 // unbinding.
                 rm_callback = function(e) {
                     if ( ( typeof source_origin === 'string' && e.origin !== source_origin )
-                        || ( $.isFunction( source_origin ) && source_origin( e.origin ) === FALSE ) ) {
+                        || ( typeof source_origin === 'function' && source_origin( e.origin ) === FALSE ) ) {
                         return FALSE;
                     }
                     callback( e );
@@ -176,7 +176,7 @@
                         re = /^#?\d+&/;
                     if ( hash !== last_hash && re.test( hash ) ) {
                         last_hash = hash;
-                        callback({ data: hash.replace( re, '' ) });
+                        callback({ data: decodeURIComponent(hash.replace( re, '' )) });
                     }
                 }, delay );
             }
