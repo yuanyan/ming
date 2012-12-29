@@ -14,8 +14,8 @@
     var isSupportWorker = window.Worker && window.Blob;
 
     function xhrFetch(evt){
+        var url = evt.data || evt;
         try{
-            var url = evt.data || evt;
             var xhr = new XMLHttpRequest();
 
             xhr.onreadystatechange = function() {
@@ -26,7 +26,7 @@
             xhr.open("GET", url);
             xhr.send(null);
         }catch(e){
-            //console.log(e)
+            $("<img />",{src: url})
         }
 
     }
@@ -64,7 +64,7 @@
 
     $.fn[pluginName] = function(){
         return this.each(function(){
-            prefetch(this.href);
+            setTimeout(function(){prefetch(this.href)}, 1);
         });
     };
 
