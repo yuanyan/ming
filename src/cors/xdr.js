@@ -7,6 +7,7 @@
 })(function ($) {
     'use strict';
 
+    // http://msdn.microsoft.com/en-us/library/cc288060(v=vs.85).aspx
     if (window.XDomainRequest && !$.support.cors) {
         $.ajaxTransport(function (s) {
             if (s.crossDomain && s.async) {
@@ -43,22 +44,23 @@
                         xdr.onload = function () {
                             callback(
                                 200,
-                                'OK',
+                                'success',
                                 {text: xdr.responseText},
                                 'Content-Type: ' + xdr.contentType
                             );
                         };
                         xdr.onerror = function () {
-                            callback(404, 'Not Found');
+                            callback(400, 'failed');
                         };
                         if (s.xdrTimeout) {
                             xdr.ontimeout = function () {
-                                callback(408, 'Request Timeout');
+                                callback(408, 'timeout');
                             };
                             xdr.timeout = s.xdrTimeout;
                         }
                         xdr.send((s.hasContent && s.data) || null);
                     },
+
                     abort: function () {
                         if (xdr) {
                             xdr.onerror = $.noop();
