@@ -1,7 +1,7 @@
 !(function (factory) {
     if (typeof define === 'function') {
         define([
-            '$',
+            './$',
             './class/class',
             './cookie/cookie',
             './cookie/remove',

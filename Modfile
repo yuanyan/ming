@@ -4,12 +4,21 @@
  */
 
 module.exports = {
-    "tasks": {
-        min: {
-
+    tasks: {
+        rm : {
+            target: 'dist'
+        },
+        mkdir: {
+            target: 'dist'
+        },
+        compile: {
+            source: "module.js",
+            dest: "./dist/module.js",
+            exclude: "jquery",
+            baseUrl: "./src"
         }
     },
-
-    "targets" : {
+    targets : {
+        dist: "rm mkdir compile"
     }
 };
