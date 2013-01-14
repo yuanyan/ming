@@ -12,6 +12,7 @@
 <script src="lib/mocha/mocha.js"></script>
 <!-- assertion framework -->
 <script src="lib/chai.js"></script>
+<!-- https://github.com/chaijs/chai-jquery -->
 <script src="lib/chai-jquery.js"></script>
 <script>
     mocha.setup('bdd');
@@ -21,11 +22,12 @@
 </script>
 
 <!-- include source files here... -->
+<script src="../dist/module.js"></script>
 
 <!-- include spec files here... -->
 <script src="spec/spec.js"></script>
-<script src="spec/jquery-inspect-spec.js"></script>
-<script src="spec/chai-jquery-spec.js"></script>
+<!--<script src="spec/jquery-inspect-spec.js"></script>-->
+<!--<script src="spec/chai-jquery-spec.js"></script>-->
 
 
 <!-- trigger the mocha runner -->

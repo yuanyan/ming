@@ -1,27 +1,14 @@
-describe("setUp/tearDown", function() {
-    beforeEach(function() {
-        // console.log("Before");
-    });
+describe("$.Class", function() {
 
-    afterEach(function() {
-        // console.log("After");
-    });
-
-    it("example", function() {
-        // console.log("During");
-    });
-
-    describe("setUp/tearDown", function() {
-        beforeEach(function() {
-            // console.log("Before2");
+    it("create a Class", function(){
+        var City = $.Class({
+            name: '',
+            color: '',
+            country: 'china'
         });
 
-        afterEach(function() {
-            // console.log("After2");
-        });
-
-        it("example", function() {
-            // console.log("During Nested");
-        });
+        var beijing = new City();
+        beijing.country.should.equal('china')
     });
+
 });

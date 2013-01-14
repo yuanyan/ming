@@ -1,3 +1,9 @@
-define(function (require, exports, module) {
-    return require('jquery');
+!(function (factory) {
+    if (typeof define === 'function') {
+        define(['jquery'], factory);
+    } else {
+        factory($);
+    }
+})(function ($) {
+    return $;
 });

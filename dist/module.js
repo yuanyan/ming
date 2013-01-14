@@ -1,6 +1,12 @@
 
-define('$',['require','exports','module','jquery'],function (require, exports, module) {
-    return require('jquery');
+!(function (factory) {
+    if (typeof define === 'function') {
+        define('$',['jquery'], factory);
+    } else {
+        factory($);
+    }
+})(function ($) {
+    return $;
 });
 !(function (factory) {
     if (typeof define === 'function') {
