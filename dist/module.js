@@ -18,53 +18,202 @@
     
     var pluginName = 'Class';
 
-    function Class(proto){
+    // copyright https://github.com/aralejs/class
 
-        if (!(this instanceof Class)) {
-            return new Class(proto);
+    // Class
+    // -----------------
+    // Thanks to:
+    //  - http://mootools.net/docs/core/Class/Class
+    //  - http://ejohn.org/blog/simple-javascript-inheritance/
+    //  - https://github.com/ded/klass
+    //  - http://documentcloud.github.com/backbone/#Model-extend
+    //  - https://github.com/joyent/node/blob/master/lib/util.js
+    //  - https://github.com/kissyteam/kissy/blob/master/src/seed/src/kissy.js
+
+    // The base Class implementation.
+    function Class(o) {
+        // Convert existed function to Class.
+        if (!(this instanceof Class) && isFunction(o)) {
+            return classify(o)
         }
-
-        proto = proto || {};
-
-        var parent = proto.extend;
-
-        var clazz = function(){
-            if (parent)
-                new parent();
-
-            var value = (proto.constructor && (typeof this.constructor === "function")) ? this.constructor.apply(this, arguments) : this;
-            return value;
-        };
-
-        if (parent) {
-            clazz.extend(parent);
-        }
-
-        clazz.prototype = proto;
-
-        clazz.extend = function(parent, override){
-
-            if (typeof parent === "function") {
-                parent = parent.prototype;
-            }
-
-            var proto = clazz.prototype;
-
-            for (var i in parent) {
-
-                if (!proto.hasOwnProperty(i)) {
-                    proto[i] = parent[i];
-                }
-                else {
-                    !override || (proto[i] = parent[i]);
-                }
-            }
-
-            return clazz; // return self
-        };
-
     }
 
+    // module.exports = Class
+
+
+    // Create a new Class.
+    //
+    //  var SuperPig = Class.create({
+    //    Extends: Animal,
+    //    Implements: Flyable,
+    //    initialize: function() {
+    //      SuperPig.superclass.initialize.apply(this, arguments)
+    //    },
+    //    Statics: {
+    //      COLOR: 'red'
+    //    }
+    // })
+    //
+    Class.create = function(parent, properties) {
+        if (!isFunction(parent)) {
+            properties = parent
+            parent = null
+        }
+
+        properties || (properties = {})
+        parent || (parent = properties.Extends || Class)
+        properties.Extends = parent
+
+        // The created class constructor
+        function SubClass() {
+            // Call the parent constructor.
+            parent.apply(this, arguments)
+
+            // Only call initialize in self constructor.
+            if (this.constructor === SubClass && this.initialize) {
+                this.initialize.apply(this, arguments)
+            }
+        }
+
+        // Inherit class (static) properties from parent.
+        if (parent !== Class) {
+            mix(SubClass, parent, parent.StaticsWhiteList)
+        }
+
+        // Add instance properties to the subclass.
+        implement.call(SubClass, properties)
+
+        // Make subclass extendable.
+        return classify(SubClass)
+    }
+
+
+    function implement(properties) {
+        var key, value
+
+        for (key in properties) {
+            value = properties[key]
+
+            if (Class.Mutators.hasOwnProperty(key)) {
+                Class.Mutators[key].call(this, value)
+            } else {
+                this.prototype[key] = value
+            }
+        }
+    }
+
+
+    // Create a sub Class based on `Class`.
+    Class.extend = function(properties) {
+        properties || (properties = {})
+        properties.Extends = this
+
+        return Class.create(properties)
+    }
+
+
+    function classify(cls) {
+        cls.extend = Class.extend
+        cls.implement = implement
+        return cls
+    }
+
+
+    // Mutators define special properties.
+    Class.Mutators = {
+
+        'Extends': function(parent) {
+            var existed = this.prototype
+            var proto = createProto(parent.prototype)
+
+            // Keep existed properties.
+            mix(proto, existed)
+
+            // Enforce the constructor to be what we expect.
+            proto.constructor = this
+
+            // Set the prototype chain to inherit from `parent`.
+            this.prototype = proto
+
+            // Set a convenience property in case the parent's prototype is
+            // needed later.
+            this.superclass = parent.prototype
+
+        },
+
+        'Implements': function(items) {
+            isArray(items) || (items = [items])
+            var proto = this.prototype, item
+
+            while (item = items.shift()) {
+                mix(proto, item.prototype || item)
+            }
+        },
+
+        'Statics': function(staticProperties) {
+            mix(this, staticProperties)
+        }
+    }
+
+
+    // Shared empty constructor function to aid in prototype-chain creation.
+    function Ctor() {
+    }
+
+    // See: http://jsperf.com/object-create-vs-new-ctor
+    var createProto = Object.__proto__ ?
+        function(proto) {
+            return { __proto__: proto }
+        } :
+        function(proto) {
+            Ctor.prototype = proto
+            return new Ctor()
+        }
+
+
+    // Helpers
+    // ------------
+
+    function mix(r, s, wl) {
+        // Copy "all" properties including inherited ones.
+        for (var p in s) {
+            if (s.hasOwnProperty(p)) {
+                if (wl && indexOf(wl, p) === -1) continue
+
+                // 在 iPhone 1 代等设备的 Safari 中，prototype 也会被枚举出来，需排除
+                if (p !== 'prototype') {
+                    r[p] = s[p]
+                }
+            }
+        }
+    }
+
+
+    var toString = Object.prototype.toString
+    var isArray = Array.isArray
+
+    if (!isArray) {
+        isArray = function(val) {
+            return toString.call(val) === '[object Array]'
+        }
+    }
+
+    var isFunction = function(val) {
+        return toString.call(val) === '[object Function]'
+    }
+
+    var indexOf = Array.prototype.indexOf ?
+        function(arr, item) {
+            return arr.indexOf(item)
+        } :
+        function(arr, item) {
+            for (var i = 0, len = arr.length; i < len; i++) {
+                if (arr[i] === item) {
+                    return i
+                }
+            }
+            return -1
+        }
 
     return $[pluginName] = Class;
 });
@@ -2785,59 +2934,40 @@
     
     var pluginName = 'url';
 
-    /*
-     var parser = document.createElement('a');
-     parser.href = 'http://user:pass@host.com:8080/p/a/t/h?query=string#hash';
-     parser.protocol; // => "http:"
-     parser.hostname; // => "example.com"
-     parser.port;     // => "3000"
-     parser.pathname; // => "/pathname/"
-     parser.search;   // => "?search=test"
-     parser.hash;     // => "#hash"
-     parser.host;     // => "example.com:3000"
-     */
-    $[pluginName] = function (href, parseQueryString){
-        var type = $.type(href);
 
-        if(type == 'string'){
-            // work perfectly in all modern browsers (including IE6)
-            // @see http://james.padolsey.com/javascript/parsing-urls-with-the-dom/
-            var a = document.createElement('a');
-            a.href = href;
-            return {
-                href: href,
-                protocol: a.protocol,
-                hostname: a.hostname,
-                port: a.port,
-                search: a.search,
-                hash: a.hash,
-                pathname: a.pathname,
-                path: a.pathname + a.search,
-                query: (function(){
+    var REG_URI =  /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/;
+    var REG_QUERY  =  /(?:^|&)([^&=]*)=?([^&]*)/g;
+    var HOSTNAME = 'hostname';
+    var PORT = 'port';
+    var HOST = 'host';  // full lowercased host portion of the URL, including port information: 'host.com:8080'
+    var ANCHOR =  'anchor';
+    var HASH = 'hash';
+    var QUERY = 'query'; // querystring-parsed object
+    var QUERYSTRING = 'querystring';
+    var SEARCH = 'search';
+    var PROTOCOL = 'protocol';
+    var SCHEME = 'scheme';
+    var PARTS =  ["href",SCHEME,"authority","auth","user","password",HOSTNAME, PORT,"relative","path","directory","file",QUERYSTRING, ANCHOR];
 
-                    var qs = a.search.replace(/^\?/,'');
-                    if(!parseQueryString){
-                        return qs;
-                    }else{
-                        var ret = {},
-                            seg = qs.split('&'),
-                            len = seg.length, i = 0, s;
-                        for (;i<len;i++) {
-                            if (!seg[i]) { continue; }
-                            s = seg[i].split('=');
-                            ret[s[0]] = s[1];
-                        }
-                        return ret;
-                    }
+    $[pluginName] =  function (href) {
+        var	match = REG_URI.exec(href),
+            uri = {},
+            i = 14;
 
-                })()
-            };
+        while (i--) uri[PARTS[i]] = match[i] || "";
 
+        uri[QUERY] = {};
+        uri[QUERYSTRING].replace(REG_QUERY, function ($0, $1, $2) {
+            if ($1) uri[QUERY][$1] = $2;
+        });
 
+        uri[HOST] = uri[PORT] ? (uri[HOSTNAME] + ':' + uri[PORT]) : '';
+        uri[HASH] = uri[ANCHOR] ? '#' + uri[ANCHOR] : '';
+        uri[SEARCH] = uri[QUERYSTRING] ? '?' + uri[QUERYSTRING] : '';
+        uri[PROTOCOL] = uri[SCHEME] ? uri[SCHEME] + ':' : '' ;
+        return uri;
+    }
 
-        }
-
-    };
 
 });
 !(function (factory) {

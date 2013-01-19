@@ -2,6 +2,8 @@
 
 Modulejs a high-productivity JavaScript solution that integrates jQuery and micro modules you need for modern web application development.
 
+[![Build Status](https://secure.travis-ci.org/modulejs/modulejs.png)](https://travis-ci.org/modulejs/modulejs)
+
 ### Solution Features
 * Development based on ES5
 * Development based on modular JavaScript

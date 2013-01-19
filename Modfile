@@ -16,6 +16,10 @@ module.exports = {
             dest: "./dist/module.js",
             exclude: "jquery",
             baseUrl: "./src"
+        },
+        watch: {
+            source: "./src/**/*.js",
+            tasks: "rm mkdir compile"
         }
     },
     targets : {

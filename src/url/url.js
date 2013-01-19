@@ -13,58 +13,39 @@
     'use strict';
     var pluginName = 'url';
 
-    /*
-     var parser = document.createElement('a');
-     parser.href = 'http://user:pass@host.com:8080/p/a/t/h?query=string#hash';
-     parser.protocol; // => "http:"
-     parser.hostname; // => "example.com"
-     parser.port;     // => "3000"
-     parser.pathname; // => "/pathname/"
-     parser.search;   // => "?search=test"
-     parser.hash;     // => "#hash"
-     parser.host;     // => "example.com:3000"
-     */
-    $[pluginName] = function (href, parseQueryString){
-        var type = $.type(href);
 
-        if(type == 'string'){
-            // work perfectly in all modern browsers (including IE6)
-            // @see http://james.padolsey.com/javascript/parsing-urls-with-the-dom/
-            var a = document.createElement('a');
-            a.href = href;
-            return {
-                href: href,
-                protocol: a.protocol,
-                hostname: a.hostname,
-                port: a.port,
-                search: a.search,
-                hash: a.hash,
-                pathname: a.pathname,
-                path: a.pathname + a.search,
-                query: (function(){
+    var REG_URI =  /^(?:(?![^:@]+:[^:@\/]*@)([^:\/?#.]+):)?(?:\/\/)?((?:(([^:@]*)(?::([^:@]*))?)?@)?([^:\/?#]*)(?::(\d*))?)(((\/(?:[^?#](?![^?#\/]*\.[^?#\/.]+(?:[?#]|$)))*\/?)?([^?#\/]*))(?:\?([^#]*))?(?:#(.*))?)/;
+    var REG_QUERY  =  /(?:^|&)([^&=]*)=?([^&]*)/g;
+    var HOSTNAME = 'hostname';
+    var PORT = 'port';
+    var HOST = 'host';  // full lowercased host portion of the URL, including port information: 'host.com:8080'
+    var ANCHOR =  'anchor';
+    var HASH = 'hash';
+    var QUERY = 'query'; // querystring-parsed object
+    var QUERYSTRING = 'querystring';
+    var SEARCH = 'search';
+    var PROTOCOL = 'protocol';
+    var SCHEME = 'scheme';
+    var PARTS =  ["href",SCHEME,"authority","auth","user","password",HOSTNAME, PORT,"relative","path","directory","file",QUERYSTRING, ANCHOR];
 
-                    var qs = a.search.replace(/^\?/,'');
-                    if(!parseQueryString){
-                        return qs;
-                    }else{
-                        var ret = {},
-                            seg = qs.split('&'),
-                            len = seg.length, i = 0, s;
-                        for (;i<len;i++) {
-                            if (!seg[i]) { continue; }
-                            s = seg[i].split('=');
-                            ret[s[0]] = s[1];
-                        }
-                        return ret;
-                    }
+    $[pluginName] =  function (href) {
+        var	match = REG_URI.exec(href),
+            uri = {},
+            i = 14;
 
-                })()
-            };
+        while (i--) uri[PARTS[i]] = match[i] || "";
 
+        uri[QUERY] = {};
+        uri[QUERYSTRING].replace(REG_QUERY, function ($0, $1, $2) {
+            if ($1) uri[QUERY][$1] = $2;
+        });
 
+        uri[HOST] = uri[PORT] ? (uri[HOSTNAME] + ':' + uri[PORT]) : '';
+        uri[HASH] = uri[ANCHOR] ? '#' + uri[ANCHOR] : '';
+        uri[SEARCH] = uri[QUERYSTRING] ? '?' + uri[QUERYSTRING] : '';
+        uri[PROTOCOL] = uri[SCHEME] ? uri[SCHEME] + ':' : '' ;
+        return uri;
+    }
 
-        }
-
-    };
 
 })

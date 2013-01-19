@@ -9,16 +9,20 @@
 <div id="mocha"></div>
 
 <script src="../lib/jquery/jquery-1.8.3.min.js"></script>
-<script src="lib/mocha/mocha.js"></script>
+
 <!-- assertion framework -->
-<script src="lib/chai.js"></script>
+<script src="lib/expect.js"></script>
+<script src="lib/sinon-1.5.2.js"></script>
+<script src="lib/mocha/mocha.js"></script>
 <!-- https://github.com/chaijs/chai-jquery -->
-<script src="lib/chai-jquery.js"></script>
+<!--<script src="lib/chai-jquery.js"></script>-->
 <script>
     mocha.setup('bdd');
-    should = chai.should();
-    expect = chai.expect;
-    assert = chai.assert;
+    // chai.Assertion.includeStack = true; // defaults to false
+    // expect = chai.expect;
+    // should = chai.should();
+    // assert = chai.assert;
+
 </script>
 
 <!-- include source files here... -->
