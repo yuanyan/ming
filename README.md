@@ -28,6 +28,7 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery and micr
 * madrobby/keymaster@1.0.2
 * EightMedia/hammer.js@0.6.1
 * ryanseddon/H5F@1.0.0
+* aralejs/class@1.0.0
 
 ###Guide
 
