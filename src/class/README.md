@@ -1,6 +1,7 @@
 # Class 
 
-Copyright http://aralejs.org/class/
+
+MIT LICENSE, Copyright http://aralejs.org/class/
 
 ---
 
