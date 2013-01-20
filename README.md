@@ -18,10 +18,6 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery and micr
 * seajs - CMD
 * curljs - CommonJS
 
-### Dependencies
-* jquery/jquery
-* documentcloud/underscore
-
 ### Integrates
 * marcuswestin/store.js@1.3.5
 * carhartl/jquery-cookie@1.3
