@@ -1,5 +1,6 @@
+# Class 
 
-# Class
+Copyright http://aralejs.org/class/
 
 ---
 
