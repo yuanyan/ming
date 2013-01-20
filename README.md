@@ -14,8 +14,8 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery and micr
 * console-shim
 
 ### Module Loader Support
-* requirejs - AMD
-* seajs - CMD
+* requirejs - AMD (default)
+* seajs - CMD 
 * curljs - CommonJS
 
 ### Integrates
