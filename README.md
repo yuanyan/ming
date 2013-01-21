@@ -5,18 +5,16 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery and micr
 [![Build Status](https://secure.travis-ci.org/modulejs/modulejs.png)](https://travis-ci.org/modulejs/modulejs)
 
 ### Solution Features
+* Improve programming experience
+* Enhance source maintainability
 * Development based on ES5
 * Development based on modular JavaScript
 * Better asynchronous programming with Futures
 
-### Shims
-* es5-shim
-* console-shim
-
 ### Module Loader Support
-* requirejs - AMD (default)
-* seajs - CMD 
-* curljs - CommonJS
+* requirejs - AMD   (default)
+* seajs - CMD       (optional)
+* curljs - CommonJS (optional)
 
 ### Integrates
 * marcuswestin/store.js@1.3.5
@@ -25,6 +23,18 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery and micr
 * EightMedia/hammer.js@0.6.1
 * ryanseddon/H5F@1.0.0
 * aralejs/class@1.0.0
+
+### Shims
+* es5-shim     (optional)
+* console-shim (optional)
+
+### Works
+* IE 6+
+* Chrome
+* Safari
+* Firefox
+* Opera
+* Node.js
 
 ###Guide
 
