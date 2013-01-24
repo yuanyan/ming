@@ -3346,6 +3346,439 @@
 });
 !(function (factory) {
     if (typeof define === 'function') {
+        define('placeholder/placeholder',['$'], factory);
+    } else {
+        factory($);
+    }
+})(function ($) {
+
+    /*! http://mths.be/placeholder v2.0.7 by @mathias */
+
+    var isInputSupported = 'placeholder' in document.createElement('input'),
+        isTextareaSupported = 'placeholder' in document.createElement('textarea'),
+        prototype = $.fn,
+        valHooks = $.valHooks,
+        hooks,
+        placeholder;
+
+    if (isInputSupported && isTextareaSupported) {
+
+        placeholder = prototype.placeholder = function() {
+            return this;
+        };
+
+        placeholder.input = placeholder.textarea = true;
+
+    } else {
+
+        placeholder = prototype.placeholder = function() {
+            var $this = this;
+            $this
+                .filter((isInputSupported ? 'textarea' : ':input') + '[placeholder]')
+                .not('.placeholder')
+                .bind({
+                    'focus.placeholder': clearPlaceholder,
+                    'blur.placeholder': setPlaceholder
+                })
+                .data('placeholder-enabled', true)
+                .trigger('blur.placeholder');
+            return $this;
+        };
+
+        placeholder.input = isInputSupported;
+        placeholder.textarea = isTextareaSupported;
+
+        hooks = {
+            'get': function(element) {
+                var $element = $(element);
+                return $element.data('placeholder-enabled') && $element.hasClass('placeholder') ? '' : element.value;
+            },
+            'set': function(element, value) {
+                var $element = $(element);
+                if (!$element.data('placeholder-enabled')) {
+                    return element.value = value;
+                }
+                if (value == '') {
+                    element.value = value;
+                    // Issue #56: Setting the placeholder causes problems if the element continues to have focus.
+                    if (element != document.activeElement) {
+                        // We can't use `triggerHandler` here because of dummy text/password inputs :(
+                        setPlaceholder.call(element);
+                    }
+                } else if ($element.hasClass('placeholder')) {
+                    clearPlaceholder.call(element, true, value) || (element.value = value);
+                } else {
+                    element.value = value;
+                }
+                // `set` can not return `undefined`; see http://jsapi.info/jquery/1.7.1/val#L2363
+                return $element;
+            }
+        };
+
+        isInputSupported || (valHooks.input = hooks);
+        isTextareaSupported || (valHooks.textarea = hooks);
+
+        $(function() {
+            // Look for forms
+            $(document).delegate('form', 'submit.placeholder', function() {
+                // Clear the placeholder values so they don't get submitted
+                var $inputs = $('.placeholder', this).each(clearPlaceholder);
+                setTimeout(function() {
+                    $inputs.each(setPlaceholder);
+                }, 10);
+            });
+        });
+
+        // Clear placeholder values upon page reload
+        $(window).bind('beforeunload.placeholder', function() {
+            $('.placeholder').each(function() {
+                this.value = '';
+            });
+        });
+
+    }
+
+    function args(elem) {
+        // Return an object of element attributes
+        var newAttrs = {},
+            rinlinejQuery = /^jQuery\d+$/;
+        $.each(elem.attributes, function(i, attr) {
+            if (attr.specified && !rinlinejQuery.test(attr.name)) {
+                newAttrs[attr.name] = attr.value;
+            }
+        });
+        return newAttrs;
+    }
+
+    function clearPlaceholder(event, value) {
+        var input = this,
+            $input = $(input);
+        if (input.value == $input.attr('placeholder') && $input.hasClass('placeholder')) {
+            if ($input.data('placeholder-password')) {
+                $input = $input.hide().next().show().attr('id', $input.removeAttr('id').data('placeholder-id'));
+                // If `clearPlaceholder` was called from `$.valHooks.input.set`
+                if (event === true) {
+                    return $input[0].value = value;
+                }
+                $input.focus();
+            } else {
+                input.value = '';
+                $input.removeClass('placeholder');
+                input == document.activeElement && input.select();
+            }
+        }
+    }
+
+    function setPlaceholder() {
+        var $replacement,
+            input = this,
+            $input = $(input),
+            $origInput = $input,
+            id = this.id;
+        if (input.value == '') {
+            if (input.type == 'password') {
+                if (!$input.data('placeholder-textinput')) {
+                    try {
+                        $replacement = $input.clone().attr({ 'type': 'text' });
+                    } catch(e) {
+                        $replacement = $('<input>').attr($.extend(args(this), { 'type': 'text' }));
+                    }
+                    $replacement
+                        .removeAttr('name')
+                        .data({
+                            'placeholder-password': true,
+                            'placeholder-id': id
+                        })
+                        .bind('focus.placeholder', clearPlaceholder);
+                    $input
+                        .data({
+                            'placeholder-textinput': $replacement,
+                            'placeholder-id': id
+                        })
+                        .before($replacement);
+                }
+                $input = $input.removeAttr('id').hide().prev().attr('id', id).show();
+                // Note: `$input[0] != input` now!
+            }
+            $input.addClass('placeholder');
+            $input[0].value = $input.attr('placeholder');
+        } else {
+            $input.removeClass('placeholder');
+        }
+    }
+});
+/*!
+ * jQuery Data Link plugin v1.0.0pre
+ * http://github.com/jquery/jquery-datalink
+ *
+ * Copyright Software Freedom Conservancy, Inc.
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ * http://jquery.org/license
+ */
+!(function (factory) {
+    if (typeof define === 'function') {
+        define('datalink/datalink',['$'], factory);
+    } else {
+        factory($);
+    }
+})(function ($) {
+
+    var oldcleandata = $.cleanData,
+        fnSetters = {
+            val:"val",
+            html:"html",
+            text:"text"
+        },
+        eventNameSetField = "setField",
+        eventNameChangeField = "changeField";
+
+    function getLinks(obj) {
+        var data = $.data(obj),
+            cache,
+            fn = data._getLinks || (cache = {s:[], t:[]}, data._getLinks = function () {
+                return cache;
+            });
+        return fn();
+    }
+
+    function bind(obj, wrapped, handler) {
+        wrapped.bind(obj.nodeType ? "change" : eventNameChangeField, handler);
+    }
+
+    function unbind(obj, wrapped, handler) {
+        wrapped.unbind(obj.nodeType ? "change" : eventNameChangeField, handler);
+    }
+
+    $.extend({
+        cleanData:function (elems) {
+
+            var links;
+
+            for (var j, i = 0, elem; (elem = elems[i]) != null; i++) {
+                // remove any links with this element as the source
+                // or the target.
+                var links = $.data(elem, "_getLinks");
+                if (links) {
+                    links = links();
+                    // links this element is the source of
+                    var self = $(elem);
+                    $.each(links.s, function () {
+                        unbind(elem, self, this.handler);
+                        if (this.handlerRev) {
+                            unbind(this.target, $(this.target), this.handlerRev);
+                        }
+                    });
+                    // links this element is the target of
+                    $.each(links.t, function () {
+                        unbind(this.source, $(this.source), this.handler);
+                        if (this.handlerRev) {
+                            unbind(elem, self, this.handlerRev);
+                        }
+                    });
+                    links.s = [];
+                    links.t = [];
+                }
+            }
+            oldcleandata(elems);
+        },
+        convertFn:{
+            "!":function (value) {
+                return !value;
+            }
+        },
+        setField:function (target, field, value) {
+            if (target.nodeType) {
+                var setter = fnSetters[ field ] || "attr";
+                $(target)[setter](value);
+            } else {
+                var parts = field.split(".");
+                parts[1] = parts[1] ? "." + parts[1] : "";
+
+                var $this = $(target),
+                    args = [ parts[0], value ];
+
+                $this.triggerHandler(eventNameSetField + parts[1] + "!", args);
+                if (value !== undefined) {
+                    target[ field ] = value;
+                }
+                $this.triggerHandler(eventNameChangeField + parts[1] + "!", args);
+            }
+        }
+    });
+
+    function getMapping(ev, changed, newvalue, map) {
+        var target = ev.target,
+            isSetData = ev.type === eventNameChangeField,
+            mappedName,
+            convert,
+            name;
+        if (isSetData) {
+            name = changed;
+            if (ev.namespace) {
+                name += "." + ev.namespace;
+            }
+        } else {
+            name = (target.name || target.id);
+        }
+
+        if (!map) {
+            mappedName = name;
+        } else {
+            var m = map[ name ];
+            if (!m) {
+                return null;
+            }
+            mappedName = m.name;
+            convert = m.convert;
+            if (typeof convert === "string") {
+                convert = $.convertFn[ convert ];
+            }
+        }
+        return {
+            name:mappedName,
+            convert:convert,
+            value:isSetData ? newvalue : $(target).val()
+        };
+    }
+
+    $.extend($.fn, {
+        link:function (target, mapping) {
+            var self = this;
+            if (!target) {
+                return self;
+            }
+            function matchByName(name) {
+                var selector = "[name=" + name + "], [id=" + name + "]";
+                // include elements in this set that match as well a child matches
+                return self.filter(selector).add(self.find(selector));
+            }
+
+            if (typeof target === "string") {
+                target = $(target, this.context || null)[ 0 ];
+            }
+            var hasTwoWay = !mapping,
+                map,
+                mapRev,
+                handler = function (ev, changed, newvalue) {
+                    // a dom element change event occurred, update the target
+                    var m = getMapping(ev, changed, newvalue, map);
+                    if (m) {
+                        var name = m.name,
+                            value = m.value,
+                            convert = m.convert;
+                        if (convert) {
+                            value = convert(value, ev.target, target);
+                        }
+                        if (value !== undefined) {
+                            $.setField(target, name, value);
+                        }
+                    }
+                },
+                handlerRev = function (ev, changed, newvalue) {
+                    // a change or changeData event occurred on the target,
+                    // update the corresponding source elements
+                    var m = getMapping(ev, changed, newvalue, mapRev);
+                    if (m) {
+                        var name = m.name,
+                            value = m.value,
+                            convert = m.convert;
+                        // find elements within the original selector
+                        // that have the same name or id as the field that updated
+                        matchByName(name).each(function () {
+                            newvalue = value;
+                            if (convert) {
+                                newvalue = convert(newvalue, target, this);
+                            }
+                            if (newvalue !== undefined) {
+                                $.setField(this, "val", newvalue);
+                            }
+                        });
+                    }
+
+                };
+            if (mapping) {
+                $.each(mapping, function (n, v) {
+                    var name = v,
+                        convert,
+                        convertBack,
+                        twoWay;
+                    if ($.isPlainObject(v)) {
+                        name = v.name || n;
+                        convert = v.convert;
+                        convertBack = v.convertBack;
+                        twoWay = v.twoWay !== false;
+                        hasTwoWay |= twoWay;
+                    } else {
+                        hasTwoWay = twoWay = true;
+                    }
+                    if (twoWay) {
+                        mapRev = mapRev || {};
+                        mapRev[ n ] = {
+                            name:name,
+                            convert:convertBack
+                        };
+                    }
+                    map = map || {};
+                    map[ name ] = { name:n, convert:convert, twoWay:twoWay };
+                });
+            }
+
+            // associate the link with each source and target so it can be
+            // removed automaticaly when _either_ side is removed.
+            self.each(function () {
+                bind(this, $(this), handler);
+                var link = {
+                    handler:handler,
+                    handlerRev:hasTwoWay ? handlerRev : null,
+                    target:target,
+                    source:this
+                };
+                getLinks(this).s.push(link);
+                if (target.nodeType) {
+                    getLinks(target).t.push(link);
+                }
+            });
+            if (hasTwoWay) {
+                bind(target, $(target), handlerRev);
+            }
+            return self;
+        },
+        unlink:function (target) {
+            this.each(function () {
+                var self = $(this),
+                    links = getLinks(this).s;
+                for (var i = links.length - 1; i >= 0; i--) {
+                    var link = links[ i ];
+                    if (link.target === target) {
+                        // unbind the handlers
+                        //wrapped.unbind( obj.nodeType ? "change" : "changeData", handler );
+                        unbind(this, self, link.handler);
+                        if (link.handlerRev) {
+                            unbind(link.target, $(link.target), link.handlerRev);
+                        }
+                        // remove from source links
+                        links.splice(i, 1);
+                        // remove from target links
+                        var targetLinks = getLinks(link.target).t,
+                            index = $.inArray(link, targetLinks);
+                        if (index !== -1) {
+                            targetLinks.splice(index, 1);
+                        }
+                    }
+                }
+            });
+        },
+        setField:function (field, value) {
+            return this.each(function () {
+                $.setField(this, field, value);
+            });
+        }
+    });
+
+});
+
+!(function (factory) {
+    if (typeof define === 'function') {
         define('module.js',[
             './$',
             './class/class',
@@ -3371,7 +3804,9 @@
             './url/url',
             './uuid/uuid',
             './validate/validate',
-            './uuid/uuid'
+            './uuid/uuid',
+            './placeholder/placeholder',
+            './datalink/datalink'
         ], factory);
     } else {
         factory($);

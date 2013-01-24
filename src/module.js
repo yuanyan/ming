@@ -25,7 +25,9 @@
             './url/url',
             './uuid/uuid',
             './validate/validate',
-            './uuid/uuid'
+            './uuid/uuid',
+            './placeholder/placeholder',
+            './datalink/datalink'
         ], factory);
     } else {
         factory($);
