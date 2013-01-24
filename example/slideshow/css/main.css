@@ -2,7 +2,7 @@
     width: 510px;
     height: 310px;
     overflow: hidden;
-    position:relative;
+    position: relative;
     background: #eee;
 }
 
@@ -17,14 +17,14 @@
     height: 310px;
     margin: 0;
     padding: 0;
-    list-style:none;
+    list-style: none;
 }
 
 .slideshow ul li {
     float: left;
     width: 510px;
     height: 310px;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .slideshow ul li img {
@@ -40,7 +40,7 @@
 .overview ul {
     margin: 0;
     padding: 0;
-    list-style:none;
+    list-style: none;
 }
 
 .overview li {

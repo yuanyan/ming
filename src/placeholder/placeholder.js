@@ -160,4 +160,4 @@
             $input.removeClass('placeholder');
         }
     }
-}
+})

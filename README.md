@@ -19,6 +19,8 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery and micr
 ### Integrates
 * marcuswestin/store.js@1.3.5
 * carhartl/jquery-cookie@1.3
+* mathiasbynens/jquery-placeholder@2.0.7
+* jquery/jquery-datalink@1.0.0
 * madrobby/keymaster@1.0.2
 * EightMedia/hammer.js@0.6.1
 * ryanseddon/H5F@1.0.0

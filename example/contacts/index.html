@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Contacts - Linking Demo</title>
+    <link type="text/css" rel="Stylesheet" href="css/main.css"/>
+    <script data-main="js/main" src="../../lib/require/require.js"></script>
+    <script id="contacttmpl" type="text/x-template">
+        <tr>
+            <th>&nbsp;</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone Numbers</th>
+            <th>Age</th>
+        </tr>
+
+        {{ $.each(contacts, function(i,contact){ }}
+        <tr class="contact">
+            <td>
+                <a href="#" class="contact-remove">remove</a><br/>
+                <a href="#" class="contact-reset">reset</a><br/>
+            </td>
+            <td>
+                <input name="firstName" class="contact" type="text" value="${contact.firstName}"/>
+            </td>
+            <td><input name="lastName" class="contact" type="text" value="${contact.lastName}"/></td>
+            <td>
+                <table class="phones">
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>Type</th>
+                        <th>Number</th>
+                    </tr>
+                    {{  $.each(contact.phones, function(i,phone){ }}
+                    <tr class="phone">
+                        <td><a href="#" class="phone-remove">remove</td>
+                        <td><input class="phone phone-type" name="type" type="text" value="${phone.type}"/></td>
+                        <td><input class="phone phone-number" name="number" type="text" value="${phone.number}"/></td>
+                    </tr>
+                    {{ }); }}
+                </table>
+                <a href="#" class="newphone">add new phone</a>
+            </td>
+            <td>
+                <input type="text" class="agebar" name="age" value="${contact.age}"/>
+            </td>
+        </tr>
+        {{ }); }}
+    </script>
+</head>
+
+<body>
+<table class="contacts">
+</table>
+<input type="button" id="insert" value="Insert new contact"/>
+<input type="button" id="sort" value="Sort by Last Name"/>
+<input type="button" id="save" value="Save contacts"/>
+
+<pre id="results">
+</pre>
+
+</body>
+</html>

@@ -1,17 +1,19 @@
 <!doctype html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<title>Todo</title>
-	<link rel="stylesheet" href="css/base.css">
-	<script data-main="js/main" src="../../lib/require/require.js"></script>
-	<!--[if IE]>
-	<script src="js/ie.js"></script>
-	<![endif]-->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Todo</title>
+    <link rel="stylesheet" href="css/base.css">
+    <script data-main="js/main" src="../../lib/require/require.js"></script>
+    <!--[if IE]>
+    <script src="js/ie.js"></script>
+    <![endif]-->
 </head>
 <body>
-<a href="https://github.com/modulejs/modulejs"><img style="position: absolute; top: 0; right: 30px; border: 0;z-index:100;" src="https://raw.github.com/jamesflorentino/fork-ribbons/master/ribbons/blue-white.png" alt="Fork me on GitHub"></a>
+<a href="https://github.com/modulejs/modulejs"><img
+        style="position: absolute; top: 0; right: 30px; border: 0;z-index:100;"
+        src="https://raw.github.com/jamesflorentino/fork-ribbons/master/ribbons/blue-white.png" alt="Fork me on GitHub"></a>
 <section id="todoapp">
     <header id="header">
         <h1>todos</h1>
@@ -29,12 +31,15 @@
 </section>
 <footer id="info">
     <p>Double-click to edit a todo</p>
+
     <p>Created by <a href="http://github.com/modulejs/modulejs">modulejs</a></p>
+
     <p>Part of <a href="http://todomvc.com">TodoMVC</a></p>
 </footer>
 <script id="todo-template" type="text/x-template">
     <% $.each( todos, function(i, item){ %>
-    <li <%= item.completed ? 'class="completed"' : '' %> data-id="<%- item.id %>">
+    <li
+    <%= item.completed ? 'class="completed"' : '' %> data-id="<%- item.id %>">
     <div class="view">
         <input class="toggle" type="checkbox" <%= item.completed ? 'checked' : '' %> >
         <label><%- item.title %></label>
