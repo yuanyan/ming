@@ -1,4 +1,4 @@
-## Modulejs
+## Modulejs (2.0.0 dev)
 
 Modulejs a high-productivity JavaScript solution that integrates jQuery and micro modules you need for modern web application development.
 
