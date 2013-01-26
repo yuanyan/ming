@@ -24,10 +24,10 @@
     "testling": {
         "browsers": {
             "ie": [6, 7, 8, 9, 10 ],
-            "chrome": [ 9,10,20,"canary"],
-            "firefox": [ 9, 10, 15, "nightly" ],
-            "safari": [ 4.0, 5.1 ],
-            "opera": [10.0]
+            "chrome": [ "canary" ],
+            "firefox": [ "nightly" ],
+            "safari": [ 5.1 ],
+            "opera": [12]
         },
         "harness" : "mocha",
         "files": "test/spec/*.js"
