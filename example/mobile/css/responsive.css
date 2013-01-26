@@ -1,0 +1,22 @@
+/** horizontal landscape for iPhone/iPod Touch **/
+@media screen and (orientation:landscape) and (max-device-width: 480px) {
+	#w #pagebody #content p {
+		font-size: 1.0em;
+		line-height: 1.3em;
+	}
+}
+
+/** retina display **/
+@media only screen and (-webkit-min-device-pixel-ratio: 2),	
+  only screen and (min--moz-device-pixel-ratio: 1.5),
+  only screen and (min-device-pixel-ratio: 1.5) {
+  	#w #pagebody header {
+  		background: #0b1851 url('../img/tabbar-solid-bg@2x.png') top left no-repeat;
+  		background-size: 640px 44px;
+  	}
+  	
+  	#w #pagebody header #menu-btn {
+  		background: url('../img/nav-btn@2x.png') no-repeat;
+  		background-size: 53px 30px;
+  	}
+}
