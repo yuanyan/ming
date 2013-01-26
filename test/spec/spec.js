@@ -1,3 +1,7 @@
+require('../lib/expect');
+require('../../lib/jquery/jquery');
+require('../../dist/module');
+
 describe("$.Class module", function() {
 
     var Class = $.Class;
@@ -365,6 +369,5 @@ describe("$.url module", function() {
             protocol: 'http:'
         });
     });
-
 
 });

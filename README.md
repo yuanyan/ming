@@ -30,13 +30,8 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery and micr
 * es5-shim     (optional)
 * console-shim (optional)
 
-### Works
-* IE 6+
-* Chrome
-* Safari
-* Firefox
-* Opera
-* Node.js
+### Browsers
+[![browser support](http://ci.testling.com/modulejs/modulejs.png)](http://ci.testling.com/modulejs/modulejs)
 
 ###Guide
 

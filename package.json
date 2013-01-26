@@ -18,10 +18,22 @@
     },
     "license": "MIT",
     "devDependencies": {
-        "modjs": "*"
+        "modjs": "*",
+        "mocha": "~1.7.4"
+    },
+    "testling": {
+        "browsers": {
+            "ie": [6,7, 8, 9,10 ],
+            "chrome": [ 9,10,20,24, "canary"],
+            "firefox": [ 9, 10, 15, "nightly" ],
+            "safari": [ 5.1 ],
+            "opera": [10.6, 11.0, 12]
+        },
+        "harness" : "mocha",
+        "files": "test/spec/*.js"
     },
     "webDependencies": {
-        "jquery" : "http://code.jquery.com/jquery-latest.js",
+        "jquery" : "https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js",
         "requirejs" : "https://raw.github.com/jrburke/requirejs/master/require.js",
         "seajs" : "https://raw.github.com/seajs/seajs/master/dist/sea.js",
         "underscore" : "documentcloud/underscore"
