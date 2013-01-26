@@ -1,0 +1,230 @@
+<!DOCTYPE HTML>
+<html> 
+  <head> 
+    <meta charset="utf-8"> 
+    <title>modulejs | modular javascript framework</title> 
+	<link href=' http://fonts.googleapis.com/css?family=Kreon' rel='stylesheet' type='text/css' />
+    <style type="text/css" media="screen"> 
+      
+      body { background: #D9CBA3; font:17px "宋体"}
+      
+      #container { width: 890px; color: white; margin: 20px auto; padding: 30px;
+        -moz-box-shadow:    0 10px 14px rgba(0, 0, 0, 0.8);
+        -webkit-box-shadow: 0 10px 14px rgba(0, 0, 0, 0.8);
+        background-color: #333;
+        font-family: 'Droid Sans', arial, serif;
+        line-height: 1.4;
+      }
+      
+      h1, h2 { font-family: 'Kreon', arial, serif; color: #FFC830; text-shadow: 1px 1px 1px #FA8103; margin: 5px auto; }
+      h1 { text-align: center; font-size: 5em }
+      h2 { font-size: 2.2em; }
+      h3 { font-size: 1.6em; margin: 5px auto; }
+      h4 { font-size: 1.2em; margin: 5px auto; }
+      
+      a { color: inherit; }
+      
+      pre {
+        border: 3px dashed #333;
+        padding: 15px; 
+        background-color: #444;
+        text-wrap: wrap;
+        white-space: pre-wrap;
+        white-space: -moz-pre-wrap;
+        white-space: -pre-wrap;
+        white-space: -o-pre-wrap;
+        word-wrap: break-word;
+      }
+        
+      code {
+        padding: 2px;
+        font-size: 0.7em;
+        background-color: #444;
+        color: #C5DBA9;
+        font-family: 'Monaco',Courier,monospace !important;
+      }
+      
+      code .keyword              { font-weight: bold; color: #E9C062; }
+      code .string, code .regexp, code .number { color: #ffbb00 }
+      code .class, code .special { color: white }
+      code .comment              { color: #CCC }
+      
+      .footer { text-align: center; }
+    </style> 
+ 
+  </head> 
+  
+  <body> 
+    <div id="container" style="position: relative"> 
+      <a href="http://github.com/yuanyan/modulejs" target="_blank"> 
+        <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png" alt="Fork me on GitHub" /> 
+      </a> 
+      
+      <h1>modulejs</h1>
+      <div>
+		
+        <p>
+		modulejs是极致模块化的且面向对象的javascript框架，modulejs能让你在简单易用的前提下写出更佳维护性和可重用性的javascript代码。
+		</p>	
+		
+		<h2>Features</h2> 
+        <ul> 
+          <li>HTML document query/traversing/manipulation</li> 
+          <li>Lightweight selector engine</li> 
+          <li>Event handling</li> 
+          <li>Animation</li>
+          <li>Cookie/localStorage storage</li>
+          <li>Language extensions</li>
+          <li>Ajax/JSONP request</li>
+          <li>Template engine</li>
+          <li>Rich utility class</li>
+        </ul>
+		
+
+			
+        <p>modulejs 兼容全部主流浏览器 <code>Internet Explorer 6+, Firefox 2+ (and browsers based on gecko) Chrome 4+, Safari 3+ and Opera 9+.</code></p>
+		
+		<h5><em>modulejs quick example:</em></h5>
+ 		<pre><code>var ajax = module("net.Ajax").ajax;
+ajax({
+	url:"localhost/ajaxdemo.php",      //提交地址
+	form:"formName",                   //表单名称
+	timeout: 200,                      //过期时间
+	success: function(response){       //成功后回调函数
+		console.log(response);
+	}
+});</code></pre>
+
+	 <h2>Download</h2> 
+	<p>
+	  <a href="http://github.com/yuanyan/modulejs/zipball/master">
+		<img border="0" width="90" src="http://github.com/images/modules/download/zip.png"></a>
+	  <a href="http://github.com/yuanyan/modulejs/tarball/master">
+		<img border="0" width="90" src="http://github.com/images/modules/download/tar.png"></a>
+	</p>
+	 
+	 <p>You can also clone the project with <a href="http://git-scm.com">Git</a>
+	  by running:
+	  <pre>$ git clone git://github.com/yuanyan/modulejs</pre>
+	 </p>
+
+	  <h2 id="license">Open Source License </h2>
+	  
+	  <p>modulejs是免费并且开源的，基于目前最宽泛的<a href="http://opensource.org/licenses/mit-license.php" target="_blank">MIT</a>协议 ，你可以在项目中使用并修改modulejs的所有代码。
+	  </p>
+	  <p><img alt="open source" src="http://opensource.org/trademarks/opensource/web/transparent/opensource-75x65-t.png"/></p>
+		 
+        <h2 id="guide">Guide</h2> 
+        
+        <em>Note: 当前文档只适用于 modulejs 0.1.0</em>
+		
+		<h3>getting started</h3> 
+		<p>
+		在使用modulejs之前我们须加载global.js，global.js是整个modulejs的核心与基础。</p>
+	<pre><code> &ltscript src="./global.js"&gt &lt/script&gt </code></pre>
+
+<p>modulejs中一个很重要的概念就是按需加载，	modulej不是像jQuery一样在使用前加载整个已经打包的一个js文件，而是加载模块的最小集合。关于为什么需要按需加载，modulejs认为这不仅可以减少服务器的流量，更重要的是因为按需加载页面的加载时间也会大幅缩短，最终对用户更友好。</p>
+
+<p>modulejs通过下面方式加载模块：</p>
+<pre><code>module.load("lang.Base");
+module.load("util.Uri");
+module.load("net.Request");
+module.load("net.Ajax");
+ or 
+module.load(["lang.Base","util.Uri","net.Request","net.Ajax"]);
+</code></pre>
+
+<p>模块加载是有依赖顺序的，而modulejs的极致模块化设计可以让我们很方便的管理各模块间的依赖关系，对于简单的依赖关系你可以选择手动维护模块间依赖关系，当然我们推荐你使用modulejs提供的工具来自动生成以免出错。</p>
+
+<p>
+在moudlejs中<code>module.load</code>是异步加载module的，所以当需要调用一个module时，必须是在module加载完成之后。modulejs提供了onReady事件，只需注册onReady事件，需要执行的代码就会在module加载完成（ModuleReady）并且同时在整个页面文档加载完成（DOMReady）之后执行。
+</p>
+
+<p>注册onReady事件：</p>
+<pre><code>module.onReady(function(){
+	var ajax = module("net.Ajax").ajax;
+	ajax({
+		url:"localhost/ajaxdemo.php",      //提交地址
+		form:"formName",                   //表单名称
+		timeout: 200,                      //过期时间
+		success: function(response){       //成功后回调函数
+			console.log(response);
+		}
+	});
+});
+</code></pre>
+
+        <h3>about module</h3>
+ 
+        <p>在modulejs中<code>"everything is module"</code>，一个实例对象可以是一个module,一个类可以是一个module，甚至一个函数也可以是一个module，在modulejs中所有代码都是通过module方式来组织的，这让我们非常方便的扩展modulejs，并且可以自由控制module的粒度。
+        </p>
+        <p>下面例子是注册一个命名空间为<code>"lang.String"</code>的<code>module</code> :</p>      
+<pre><code>module("lang.String",function(){
+	var LEFT = /^\s+/, RIGHT = /\s+$/;
+	var trim = function(str){
+		return str.replace(LEFT, "").replace(RIGHT, "");
+	};
+	...
+	//EXPOSE
+	return {
+		"trim":trim
+	};
+});</code></pre>
+        <p>当module注册后module会自动存储在模块仓库中进行管理。然后你通过<code>moduel("namespace")</code>来导入moduel。</p>
+		<p>如导入并使用已注册的命名空间为<code>"lang.String"</code>的<code>module</code> :</p> 
+<pre><code>var trim = moduel("lang.String").trim;
+var r = trim("   betrimed  ");  //r === "betrimed"
+</code></pre>
+	
+		<h2 id="docs">Docs</h2>
+		<pre>Visit the <a href="./doc.html" target="_blank">API REFERENCE</a> </pre>
+	 
+        <h2 id="links">Links</h2>
+		
+		<h4>Group</h4> 
+		<p><a href="http://groups.google.com/group/modulejs" target="_blank">Google Group</a> for discussion</p>
+		
+		<h4>wiki</h4>
+        <p>Visit the <a href="https://github.com/yuanyan/modulejs/wiki" target="_blank">Wiki</a></p>
+
+        <h4>Issues</h4> 
+        <p>Please report issues <a href="http://github.com/yuanyan/modulejs/issues" target="_blank">here</a>.</p> 		
+ 
+      </div> 
+
+	  
+	  <div id="disqus_thread"></div>
+	<script type="text/javascript">
+	
+    var disqus_identifier = 'modulejs';
+    var disqus_title = 'Modulejs Documentation';
+
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://madscript.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+	</script>
+
+     <div class="footer">
+        <p>copyright &copy;2010-2011 <a href="http://www.madscript.com" target="_blank">Yuanyan</a></p>
+	</div> 
+      
+    </div> 
+
+    <script src="http://www.madscript.com/static/js/hijs.js" charset="utf-8"></script>
+	<script type="text/javascript">
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-19059856-3']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+  </body> 
+  
+</html>

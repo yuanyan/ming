@@ -1,0 +1,157 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Waterfall</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <!-- Styling for your grid blocks -->
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+<a href="https://github.com/modulejs/modulejs"><img
+        style="position: absolute; top: 0; right: 30px; border: 0;z-index:100;"
+        src="https://raw.github.com/jamesflorentino/fork-ribbons/master/ribbons/blue-white.png" alt="Fork me on GitHub"></a>
+
+<div id="container">
+    <header>
+        <h1>Waterfall</h1>
+    </header>
+    <div id="main" role="main">
+
+        <!--
+          These are our filter options. The "data-filter" classes are used to identify which
+          grid items to show.
+          -->
+        <ol id="filters">
+            <li data-filter="amsterdam">Amsterdam</li>
+            <li data-filter="tokyo">Tokyo</li>
+            <li data-filter="london">London</li>
+            <li data-filter="paris">Paris</li>
+            <li data-filter="berlin">Berlin</li>
+            <li data-filter="sport">Sport</li>
+            <li data-filter="fashion">Fashion</li>
+            <li data-filter="video">Video</li>
+            <li data-filter="art">Art</li>
+        </ol>
+
+        <ul id="tiles">
+            <!--
+              These are our grid items. Notice how each one has classes assigned that
+              are used for filtering. The classes match the "data-filter" properties above.
+              -->
+            <li class="london art"><img src="img/image_1.jpg" height="283" width="200">
+
+                <p>London Art</p></li>
+            <li class="berlin art"><img src="img/image_2.jpg" height="300" width="200">
+
+                <p>Berlin Art</p></li>
+            <li class="berlin video"><img src="img/image_3.jpg" height="252" width="200">
+
+                <p>Berlin Video</p></li>
+            <li class="tokyo fashion"><img src="img/image_4.jpg" height="158" width="200">
+
+                <p>Tokyo Fashion</p></li>
+            <li class="berlin art"><img src="img/image_5.jpg" height="300" width="200">
+
+                <p>Berlin Art</p></li>
+            <li class="tokyo fashion"><img src="img/image_6.jpg" height="297" width="200">
+
+                <p>Tokyo Fashion</p></li>
+            <li class="london art"><img src="img/image_7.jpg" height="200" width="200">
+
+                <p>London Art</p></li>
+            <li class="tokyo video"><img src="img/image_8.jpg" height="200" width="200">
+
+                <p>Tokyo Video</p></li>
+            <li class="tokyo art"><img src="img/image_9.jpg" height="398" width="200">
+
+                <p>Tokyo Art</p></li>
+            <li class="berlin fashion"><img src="img/image_10.jpg" height="267" width="200">
+
+                <p>Berlin Fashion</p></li>
+            <li class="amsterdam art"><img src="img/image_1.jpg" height="283" width="200">
+
+                <p>Amsterdam Art</p></li>
+            <li class="paris video"><img src="img/image_2.jpg" height="300" width="200">
+
+                <p>Paris Video</p></li>
+            <li class="london video"><img src="img/image_3.jpg" height="252" width="200">
+
+                <p>London Video</p></li>
+            <li class="london video"><img src="img/image_4.jpg" height="158" width="200">
+
+                <p>London Video</p></li>
+            <li class="amsterdam video"><img src="img/image_5.jpg" height="300" width="200">
+
+                <p>Amsterdam Video</p></li>
+            <li class="tokyo fashion"><img data-original="img/image_6.jpg" height="297" width="200">
+
+                <p>Tokyo Fashion</p></li>
+            <li class="tokyo sport"><img data-original="img/image_7.jpg" height="200" width="200">
+
+                <p>Tokyo Sport</p></li>
+            <li class="berlin video"><img data-original="img/image_8.jpg" height="200" width="200">
+
+                <p>Berlin Video</p></li>
+            <li class="amsterdam fashion"><img data-original="img/image_9.jpg" height="398" width="200">
+
+                <p>Amsterdam Fashion</p></li>
+            <li class="berlin sport"><img data-original="img/image_10.jpg" height="267" width="200">
+
+                <p>Berlin Sport</p></li>
+            <li class="paris video"><img data-original="img/image_1.jpg" height="283" width="200">
+
+                <p>Paris Video</p></li>
+            <li class="tokyo sport"><img data-original="img/image_2.jpg" height="300" width="200">
+
+                <p>Tokyo Sport</p></li>
+            <li class="amsterdam art"><img data-original="img/image_3.jpg" height="252" width="200">
+
+                <p>Amsterdam Art</p></li>
+            <li class="berlin sport"><img data-original="img/image_4.jpg" height="158" width="200">
+
+                <p>Berlin Sport</p></li>
+            <li class="paris art"><img data-original="img/image_5.jpg" height="300" width="200">
+
+                <p>Paris Art</p></li>
+            <li class="berlin art"><img data-original="img/image_6.jpg" height="297" width="200">
+
+                <p>Berlin Art</p></li>
+            <li class="london art"><img data-original="img/image_7.jpg" height="200" width="200">
+
+                <p>London Art</p></li>
+            <li class="london video"><img data-original="img/image_8.jpg" height="200" width="200">
+
+                <p>London Video</p></li>
+            <li class="london video"><img data-original="img/image_9.jpg" height="398" width="200">
+
+                <p>London Video</p></li>
+            <li class="paris video"><img data-original="img/image_10.jpg" height="267" width="200">
+
+                <p>Paris Video</p></li>
+            <!-- End of grid blocks -->
+        </ul>
+
+    </div>
+    <footer>
+
+    </footer>
+</div>
+
+<!-- include jQuery -->
+<script data-main="js/main" src="../../lib/require/require.js"></script>
+
+</body>
+</html>
