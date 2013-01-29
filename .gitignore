@@ -13,3 +13,6 @@ Desktop.ini
 # Tmp File
 tmp/
 *.swp
+
+# Node Modules
+node_modules/

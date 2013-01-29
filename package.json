@@ -19,8 +19,14 @@
     "license": "MIT",
     "devDependencies": {
         "modjs": "*",
-        "mocha": "~1.7.4"
+        "mocha": "~1.7.4",
+        "wd": "*"
     },
+
+    "scripts": {
+        "test": "node ./test/runner/webdriver.js"
+    },
+
     "testling": {
         "browsers": {
             "ie": [6, 7, 8, 9, 10 ],
