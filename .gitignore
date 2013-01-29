@@ -48,3 +48,6 @@ intermediate
 publish
 .idea
 
+#Node Modules
+node_modules/
+
