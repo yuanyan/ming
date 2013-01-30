@@ -1,4 +1,17 @@
 (function () {
+
+    if (window.ActiveXObject || !window.postMessage) {
+        (function() {
+            var timeouts = [];
+            process.nextTick = function(fn) {
+                timeouts.push(fn);
+                setTimeout(function() {
+                    if (timeouts.length) timeouts.shift()();
+                }, 0);
+            }
+        })();
+    }
+
     var runner = mocha.run();
 
     var failed = [];

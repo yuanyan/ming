@@ -6,91 +6,91 @@ var allDesired = [
         browserName:'internet explorer',
         version: '6',
         platform: 'Windows 2003'
-    },
-    {
-        browserName:'internet explorer',
-        version: '7',
-        platform: 'Windows 2003'
-    },
-    {
-        browserName:'internet explorer',
-        version: '8',
-        platform: 'Windows 2003'
-    },
-    {
-        browserName:'internet explorer',
-        version: '9',
-        platform: 'Windows 2008'
-    },
-    {
-        browserName:'internet explorer',
-        version: '10',
-        platform: 'Windows 2012'
-    },
-    {
-        browserName:'chrome',
-        platform: 'Windows 2003'
-    },
-    {
-        browserName:'chrome',
-        platform: 'Mac 10.8'
-    },
-    {
-        browserName:'chrome',
-        platform: 'Linux'
-    },
-    {
-        browserName:'android',
-        platform: 'Linux'
-    },
-    {
-        browserName:'ipad',
-        platform: 'Mac 10.8',
-        version: '5.1'
-    },
-    {
-        browserName:'ipad',
-        platform: 'Mac 10.8',
-        version: '6'
-    },
-    {
-        browserName:'iphone',
-        platform: 'Mac 10.8',
-        version: '5.1'
-    },
-    {
-        browserName:'iphone',
-        platform: 'Mac 10.8',
-        version: '6'
-    },
-    {
-        browserName:'firefox',
-        platform: 'Windows 2003'
-    },
-    {
-        browserName:'firefox',
-        platform: 'Windows 2008'
-    },
-    {
-        browserName: 'safari',
-        version: '5',
-        platform: 'Windows 2008'
-    },
-    {
-        browserName: 'safari',
-        version: '5',
-        platform: 'Mac 10.8'
-    },
-    {
-        browserName: 'opera',
-        version: '11',
-        platform: 'Windows 2003'
-    },
-    {
-        browserName: 'opera',
-        version: '12',
-        platform: 'Windows 2008'
     }
+//    ,{
+//        browserName:'internet explorer',
+//        version: '7',
+//        platform: 'Windows 2003'
+//    },
+//    {
+//        browserName:'internet explorer',
+//        version: '8',
+//        platform: 'Windows 2003'
+//    },
+//    {
+//        browserName:'internet explorer',
+//        version: '9',
+//        platform: 'Windows 2008'
+//    },
+//    {
+//        browserName:'internet explorer',
+//        version: '10',
+//        platform: 'Windows 2012'
+//    },
+//    {
+//        browserName:'chrome',
+//        platform: 'Windows 2003'
+//    },
+//    {
+//        browserName:'chrome',
+//        platform: 'Mac 10.8'
+//    },
+//    {
+//        browserName:'chrome',
+//        platform: 'Linux'
+//    },
+//    {
+//        browserName:'android',
+//        platform: 'Linux'
+//    },
+//    {
+//        browserName:'ipad',
+//        platform: 'Mac 10.8',
+//        version: '5.1'
+//    },
+//    {
+//        browserName:'ipad',
+//        platform: 'Mac 10.8',
+//        version: '6'
+//    },
+//    {
+//        browserName:'iphone',
+//        platform: 'Mac 10.8',
+//        version: '5.1'
+//    },
+//    {
+//        browserName:'iphone',
+//        platform: 'Mac 10.8',
+//        version: '6'
+//    },
+//    {
+//        browserName:'firefox',
+//        platform: 'Windows 2003'
+//    },
+//    {
+//        browserName:'firefox',
+//        platform: 'Windows 2008'
+//    },
+//    {
+//        browserName: 'safari',
+//        version: '5',
+//        platform: 'Windows 2008'
+//    },
+//    {
+//        browserName: 'safari',
+//        version: '5',
+//        platform: 'Mac 10.8'
+//    },
+//    {
+//        browserName: 'opera',
+//        version: '11',
+//        platform: 'Windows 2003'
+//    },
+//    {
+//        browserName: 'opera',
+//        version: '12',
+//        platform: 'Windows 2008'
+//    }
 ];
 
 allDesired.forEach(function(desired){
