@@ -20,7 +20,11 @@
     "devDependencies": {
         "modjs": "*",
         "mocha": "~1.7.4",
-        "mocha-cloud": "*"
+        "batch": "*",
+        "request": "*",
+        "max-component": "*",
+        "sum-component": "*",
+        "term-canvas": "*"
     },
 
     "scripts": {

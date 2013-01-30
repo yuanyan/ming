@@ -4,25 +4,26 @@
  */
 
 module.exports = {
-    tasks: {
-        rm : {
-            target: 'dist'
+
+    tasks:{
+        rm:{
+            target:'dist'
         },
-        mkdir: {
-            target: 'dist'
+        mkdir:{
+            target:'dist'
         },
-        compile: {
-            source: "module.js",
-            dest: "./dist/module.js",
-            exclude: "jquery",
-            baseUrl: "./src"
+        compile:{
+            source:"module.js",
+            dest:"./dist/module.js",
+            exclude:"jquery",
+            baseUrl:"./src"
         },
-        watch: {
-            source: "./src/**/*.js",
-            tasks: "rm mkdir compile"
+        watch:{
+            source:"./src/**/*.js",
+            tasks:"rm mkdir compile"
         }
     },
-    targets : {
-        dist: "rm mkdir compile"
+    targets:{
+        dist:"rm mkdir compile"
     }
 };
