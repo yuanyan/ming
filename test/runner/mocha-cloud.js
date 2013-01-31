@@ -3,10 +3,18 @@ var Batch = require('batch');
 var wd = require('wd');
 var request  = require('request');
 
+var DEBUG = false;
+for (var i = 0, args = process.argv.slice(2); i < args.length; i += 1) {
+    if (args[i] === '--debug') {
+        args.splice(i, 1);
+        DEBUG = true;
+    }
+}
+
 var debug = function(){
-    var DEBUG = false;
     if(DEBUG) console.log.apply(console, arguments);
 };
+
 
 var extend = function(destination, source) {
 
@@ -125,8 +133,7 @@ Cloud.prototype.start = function(fn){
                             debug('results %j', res);
                             conf.job = browser;
                             self.emit('end', conf, res);
-
-                            done(null, res);
+                            self.passed(conf, res, done);
                         });
                     }
 
@@ -140,11 +147,17 @@ Cloud.prototype.start = function(fn){
 };
 
 
-Cloud.prototype.passed = function(conf, status, callback) {
+Cloud.prototype.passed = function(conf, res, callback) {
+
+    var passed = true;
+    if(parseInt(res.failures)){
+        passed = false;
+    }
 
     this.baseUrl = ["https://", this.user, ':', this.key, '@saucelabs.com', '/rest/v1/', this.user].join("");
-    var _body = JSON.stringify({ "passed": status }),
+    var _body = JSON.stringify({ "passed": passed }),
         url = this.baseUrl + "/jobs/" + conf.job.sessionID;
+
 
     conf.job.quit(function(){
         request({
@@ -154,9 +167,8 @@ Cloud.prototype.passed = function(conf, status, callback) {
             body: _body,
             json: true,
             proxy: process.env.http_proxy
-        }, function(error, response, body) {
-            callback && callback();
+        }, function(err, response, body) {
+            callback && callback(err, response, body);
         });
     });
-
 };

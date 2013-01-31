@@ -13,16 +13,6 @@ var max = require('max-component')
 exports = module.exports = GridView;
 
 /**
- * Default symbol map.
- */
-
-exports.symbols = {
-  ok: '✓',
-  error: '✖',
-  none: ' '
-};
-
-/**
  * Default color map.
  */
 
@@ -106,19 +96,6 @@ GridView.prototype.onend = function(browser, res){
   this.draw(this.ctx);
 };
 
-/**
- * Return symbol for `browser` based on its state.
- *
- * @param {Object} browser
- * @return {String}
- * @api private
- */
-
-GridView.prototype.symbolFor = function(browser){
-  if ('end' != browser.state) return exports.symbols.none;
-  if (browser.results.failures) return exports.symbols.error;
-  return exports.symbols.ok;
-};
 
 /**
  * Return color for `browser` based on its state.
@@ -191,7 +168,6 @@ GridView.prototype.draw = function(ctx){
 
   this.browsers.forEach(function(browser){
     if (x + max > w - 5) { y += 3; x = 4; }
-    var sym = self.symbolFor(browser);
     var color = self.colorFor(browser);
     var name = browser.browserName;
     var version = browser.version;
@@ -199,6 +175,7 @@ GridView.prototype.draw = function(ctx){
     var label = name + ' ' + version;
     var pad = ' ';
     var ppad = ' ';
+
     if(max - label.length > 0){
         pad = Array(max - label.length).join(' ');
     }
@@ -207,10 +184,9 @@ GridView.prototype.draw = function(ctx){
     }
 
     ctx.moveTo(x, y);
-    ctx.write(label + pad);
-    ctx.write(' \033[' + color + 'm' + sym + '\033[0m');
+    ctx.write('\x1B[' + color + 'm' + label + pad + '\x1B[39m');
     ctx.moveTo(x, y + 1);
-    ctx.write('\033[90m' + platform + ppad + '\033[0m');
+    ctx.write('\x1B[90m' + platform + ppad + '\x1B[39m');
     x += max + 6;
   });
   ctx.write('\n\n');
