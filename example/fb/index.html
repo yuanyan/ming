@@ -1,0 +1,349 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <title>Fastbook</title>
+
+    <meta http-equiv="x-ua-compatible" content="IE=edge"/>
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+
+    <link rel="apple-touch-icon-precomposed" href="images/icons/57.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/icons/72.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/icons/114.png"/>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/icons/144.png"/>
+
+    <link href="images/startup/320x460.png"
+          media="(device-width: 320px) and (device-height: 480px)
+                     and (-webkit-device-pixel-ratio: 1)"
+          rel="apple-touch-startup-image">
+
+    <link href="images/startup/640x920.png"
+          media="(device-width: 320px) and (device-height: 480px)
+                     and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image">
+
+    <link href="images/startup/640x1096.png"
+          media="(device-width: 320px) and (device-height: 568px)
+                     and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image">
+
+    <link href="images/startup/768x1004.png"
+          media="(device-width: 768px) and (device-height: 1024px)
+                     and (orientation: portrait)
+                     and (-webkit-device-pixel-ratio: 1)"
+          rel="apple-touch-startup-image">
+    <link href="images/startup/748x1024.png"
+          media="(device-width: 768px) and (device-height: 1024px)
+                     and (orientation: landscape)
+                     and (-webkit-device-pixel-ratio: 1)"
+          rel="apple-touch-startup-image">
+
+    <link href="images/startup/1536x2008.png"
+          media="(device-width: 768px) and (device-height: 1024px)
+                     and (orientation: portrait)
+                     and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image">
+    <link href="images/startup/1496x2048.png"
+          media="(device-width: 768px) and (device-height: 1024px)
+                     and (orientation: landscape)
+                     and (-webkit-device-pixel-ratio: 2)"
+          rel="apple-touch-startup-image">
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/main.css" />
+
+</head>
+<!--<body class="loading">-->
+<body>
+
+<div id="loading"></div>
+
+<div class="container cards viewport sized" style="width: 100%; height: 100%;">
+<div class="inner container-inner cards-inner viewport-inner mode-display layout-card">
+<div class="container cards size-monitored paint-monitored viewport-item layout-card-item sized active">
+<div class="body">
+<div class="inner container-inner cards-inner mode-display layout-card">
+<div class="container login cards-item layout-card-item sized">
+    <div class="body">
+        <div class="center middle">
+            <div class="container sized" style="width: 100%; height: 200px; z-index: 2;">
+                <div class="inner container-inner">
+                    <div class="text unsized logo">fastbook</div>
+                    <div class="unsized spinner"></div>
+                    <div class="text unsized status">pulling your
+                        profile, one moment...
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inner container-inner"></div>
+    </div>
+</div>
+<div class="container cards-item layout-card-item sized active">
+<div class="body">
+<div class="container carousel photo-viewer composited floating sized"
+     style="display: none; left: 0px; top: 0px; bottom: 0px; right: 0px; z-index: 8;">
+    <div class="body size-monitored paint-monitored">
+        <div class="button unsized photo-viewer-done-button floating"
+             style="top: 10px; right: 10px; z-index: 2;"><span class="icon"></span><span
+                class="label active">Done</span>
+        </div>
+        <div class="inner container-inner carousel-inner photo-viewer-inner composited"
+             style="margin-left: 0px;">
+            <div class="container fit photo-viewer-item sized carousel-item"
+                 style="-webkit-transform: translate3d(-1000%, 0px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
+                <div class="body">
+                    <div class="inner container-inner fit-inner layout-fit no-spacing">
+                        <div class="image buffered-image photo-viewer-image composited fit-item layout-fit-item sized"
+                             style="background-size: contain;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="container fit photo-viewer-item sized carousel-item"
+                 style="-webkit-transform: translate3d(-1000%, 0px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
+                <div class="body">
+                    <div class="inner container-inner fit-inner layout-fit no-spacing">
+                        <div class="image buffered-image photo-viewer-image composited fit-item layout-fit-item sized"
+                             style="background-size: contain;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="container fit photo-viewer-item sized carousel-item"
+                 style="-webkit-transform: translate3d(-1000%, 0px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
+                <div class="body">
+                    <div class="inner container-inner fit-inner layout-fit no-spacing">
+                        <div class="image buffered-image photo-viewer-image composited fit-item layout-fit-item sized"
+                             style="background-size: contain;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="size-monitor overflowchanged">
+            <div class="expand">
+                <div class="expand-helper"></div>
+            </div>
+            <div class="shrink">
+                <div class="shrink-helper"></div>
+            </div>
+        </div>
+        <div class="paint-monitor cssanimation"></div>
+    </div>
+</div>
+<div class="container composited floating sized"
+     style="left: 0px; top: 0px; bottom: 0px; right: 0px; z-index: 6; -webkit-transform: translate3d(266px, 0px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
+    <div class="body">
+        <div class="container cards main-content floating sized"
+             style="left: 0px; top: 44px; bottom: 0px; right: 0px; z-index: 4;"></div>
+        <div class="container toolbar nav-bar main-nav-bar floating sized"
+             style="height: 44px; top: 0px; left: 0px; right: 0px; z-index: 2;">
+            <div class="body paint-monitored size-monitored">
+                <div class="center right">
+                    <div class="button unsized corner-button right-item"
+                         style="z-index: 12; -webkit-transform: translate3d(0px, -1000%, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
+                        <span class="icon active share"></span><span class="label"></span></div>
+                </div>
+                <div class="center right">
+                    <div class="button unsized corner-button right-item"
+                         style="z-index: 10; -webkit-transform: translate3d(0px, 0px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
+                        <span class="icon active chat"></span><span class="label"></span></div>
+                </div>
+                <div class="center middle"
+                     style="-webkit-transform: translate3d(0px, -1000%, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
+                    <div class="text unsized middle-item" style="z-index: 8;"></div>
+                </div>
+                <div class="center middle"
+                     style="-webkit-transform: translate3d(0px, 0px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
+                    <div class="container button-group unsized middle-item" style="z-index: 6; left: 0px;">
+                        <div class="inner container-inner button-group-inner">
+                            <div class="button unsized center-button friends button-group-item"><span
+                                    class="icon active friends"></span><span class="label"></span></div>
+                            <div class="button unsized center-button messages button-group-item"><span
+                                    class="icon active messages"></span><span class="label"></span>
+                            </div>
+                            <div class="button unsized center-button notification button-group-item"><span
+                                    class="icon active notification"></span><span class="label"></span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="center left">
+                    <div class="button unsized corner-button back left-item"
+                         style="z-index: 4; -webkit-transform: translate3d(0px, -1000%, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
+                        <span class="icon active back-arrow"></span><span class="label"></span></div>
+                </div>
+                <div class="center left">
+                    <div class="button unsized corner-button left-item"
+                         style="z-index: 2; -webkit-transform: translate3d(0px, 0px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
+                        <span class="icon active menu"></span><span class="label"></span></div>
+                </div>
+                <div class="paint-monitor cssanimation"></div>
+                <div class="size-monitor overflowchanged">
+                    <div class="expand">
+                        <div class="expand-helper" style="width: 1921px; height: 44px;"></div>
+                    </div>
+                    <div class="shrink">
+                        <div class="shrink-helper" style="width: 1920px; height: 43px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="inner container-inner"></div>
+    </div>
+</div>
+<div class="container list chat-menu floating sized"
+     style="width: 266px; right: -266px; top: 0px; bottom: 0px; z-index: 4;">
+    <div class="dock dock-vertical sized">
+        <div class="container main-search-proxy dock-item sized" style="height: 44px;">
+            <div class="inner container-inner">
+                <div class="unsized main-search-proxy-input"></div>
+            </div>
+        </div>
+        <div class="dock-body">
+            <div class="body scroll-container size-monitored paint-monitored">
+                <div class="container loading-mask floating sized"
+                     style="visibility: hidden; top: 0px; right: 0px; bottom: 0px; left: 0px; z-index: 8;">
+                    <div class="body">
+                        <div class="center middle">
+                            <div class="indicator sized"
+                                 style="width: 64px; height: 64px; z-index: 2; -webkit-transform: translate3d(0px, 0px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(360deg) skewX(0deg) skewY(0deg);"></div>
+                        </div>
+                        <div class="inner container-inner loading-mask-inner"></div>
+                    </div>
+                </div>
+                <div class="inner container-inner list-inner composited scroll-scroller"
+                     style="-webkit-transform: translate3d(0px, 0px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
+                    <div class="unsized pull refresh-indicator list-item"
+                         style="height: 50px; -webkit-transform: translate3d(100%, 0px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
+                        <div class="icon"></div>
+                        <div class="text">Pull down to update</div>
+                    </div>
+                    <div class="unsized next-indicator list-item"
+                         style="height: 50px; -webkit-transform: translate3d(100%, 0px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);"></div>
+                </div>
+                <div class="size-monitor overflowchanged">
+                    <div class="expand">
+                        <div class="expand-helper" style="width: 266px; height: 952px;"></div>
+                    </div>
+                    <div class="shrink">
+                        <div class="shrink-helper" style="width: 265px; height: 951px;"></div>
+                    </div>
+                </div>
+                <div class="paint-monitor cssanimation"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container list main-menu floating sized active"
+     style="width: 266px; left: -266px; top: 0px; bottom: 0px; z-index: 2;">
+    <div class="dock dock-vertical sized">
+        <div class="container main-search-proxy dock-item sized" style="height: 44px;">
+            <div class="inner container-inner">
+                <div class="unsized main-search-proxy-input"></div>
+            </div>
+        </div>
+        <div class="dock-body">
+            <div class="body scroll-container size-monitored paint-monitored">
+                <div class="inner container-inner list-inner composited scroll-scroller"
+                     style="-webkit-transform: translate3d(0px, 0px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
+                    <div class="container list-item sized"
+                         style="-webkit-transform: translate3d(0px, 0px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg); height: 45px;">
+                        <div class="inner container-inner list-item-inner">
+                            <div class="image sized list-item-item"
+                                 style="width: 34px; height: 34px; background-image: url(./img/user.jpg);"></div>
+                            <div class="text unsized list-item-item">元彦
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container list-item sized"
+                         style="-webkit-transform: translate3d(0px, 45px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg); height: 45px;">
+                        <div class="inner container-inner list-item-inner">
+                            <div class="image sized list-item-item"
+                                 style="width: 34px; height: 34px; background-image: url(./img/menu-newsfeed.png);"></div>
+                            <div class="text unsized list-item-item">News Feed
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container list-item sized"
+                         style="-webkit-transform: translate3d(0px, 90px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg); height: 45px;">
+                        <div class="inner container-inner list-item-inner">
+                            <div class="image sized list-item-item"
+                                 style="width: 34px; height: 34px; background-image: url(./img/menu-messages.png);"></div>
+                            <div class="text unsized list-item-item">Messages
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container list-item sized"
+                         style="-webkit-transform: translate3d(0px, 135px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg); height: 45px;">
+                        <div class="inner container-inner list-item-inner">
+                            <div class="image sized list-item-item"
+                                 style="width: 34px; height: 34px; background-image: url(./img/menu-nearby.png);"></div>
+                            <div class="text unsized list-item-item">Nearby
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container list-item sized"
+                         style="-webkit-transform: translate3d(0px, 180px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg); height: 45px;">
+                        <div class="inner container-inner list-item-inner">
+                            <div class="image sized list-item-item"
+                                 style="width: 34px; height: 34px; background-image: url(./img/menu-events.png);"></div>
+                            <div class="text unsized list-item-item">Events
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container list-item sized"
+                         style="-webkit-transform: translate3d(0px, 225px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg); height: 45px;">
+                        <div class="inner container-inner list-item-inner">
+                            <div class="image sized list-item-item"
+                                 style="width: 34px; height: 34px; background-image: url(./img/menu-friends.png);"></div>
+                            <div class="text unsized list-item-item">Friends
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container list-item sized"
+                         style="-webkit-transform: translate3d(0px, 270px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg); height: 45px;">
+                        <div class="inner container-inner list-item-inner">
+                            <div class="image sized list-item-item"
+                                 style="width: 34px; height: 34px; background-image: url(./img/menu-logout.png);"></div>
+                            <div class="text unsized list-item-item">Log Out
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="size-monitor overflowchanged">
+                    <div class="expand">
+                        <div class="expand-helper" style="width: 266px; height: 952px;"></div>
+                    </div>
+                    <div class="shrink">
+                        <div class="shrink-helper" style="width: 265px; height: 951px;"></div>
+                    </div>
+                </div>
+                <div class="paint-monitor cssanimation"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="inner container-inner"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="size-monitor overflowchanged">
+    <div class="expand">
+        <div class="expand-helper" style="width: 1921px; height: 996px;"></div>
+    </div>
+    <div class="shrink">
+        <div class="shrink-helper" style="width: 1920px; height: 995px;"></div>
+    </div>
+</div>
+<div class="paint-monitor cssanimation"></div>
+</div>
+</div>
+</div>
+
+<script src="http://pub.idqqimg.com/lib/jquery/1.9.0/jquery.js"></script>
+<script src="js/main.js"></script>
+
+
+</body>
+</html>
