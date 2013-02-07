@@ -1,4 +1,4 @@
-describe("$.url module", function() {
+describe("url module", function() {
 
     it("parse a url with all part", function(){
         var url ='http://user:pass@host.com:8080/p/a/t/h/index.html?q1=s1&&q2&q3=s3&#hash-123';

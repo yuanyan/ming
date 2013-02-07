@@ -1,4 +1,4 @@
-describe("$.Class module", function() {
+describe("Class module", function() {
 
     var Class = $.Class;
 
