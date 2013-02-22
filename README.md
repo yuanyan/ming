@@ -33,7 +33,7 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery and micr
 * console-shim (optional)
 
 ### Browsers
-[![browser support](http://ci.testling.com/modulejs/modulejs.png)](http://ci.testling.com/modulejs/modulejs)
+[![browser support](http://ci.testling.com/modulejs/modulejs.png?1)](http://ci.testling.com/modulejs/modulejs)
 
 ###Guide
 
