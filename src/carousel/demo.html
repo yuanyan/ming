@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Carousel</title>
+    <style>
+        .carousel {
+            position: relative;
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .carousel-inner {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .carousel-inner > .item {
+            position: relative;
+            display: none;
+            -webkit-transition: 0.4s ease-in-out left;
+            -moz-transition: 0.4s ease-in-out left;
+            -o-transition: 0.4s ease-in-out left;
+            transition: 0.4s ease-in-out left;
+        }
+
+        .carousel-inner > .active,
+        .carousel-inner > .next,
+        .carousel-inner > .prev {
+            display: block;
+        }
+
+        .carousel-inner > .active {
+            left: 0;
+        }
+
+        .carousel-inner > .next,
+        .carousel-inner > .prev {
+            position: absolute;
+            top: 0;
+            width: 100%;
+        }
+
+        .carousel-inner > .next {
+            left: 100%;
+        }
+
+        .carousel-inner > .prev {
+            left: -100%;
+        }
+
+        .carousel-inner > .next.left,
+        .carousel-inner > .prev.right {
+            left: 0;
+        }
+
+        .carousel-inner > .active.left {
+            left: -100%;
+        }
+
+        .carousel-inner > .active.right {
+            left: 100%;
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 5;
+            margin: 0;
+            list-style: none;
+        }
+
+        .carousel-indicators li {
+            display: block;
+            float: left;
+            width: 10px;
+            height: 10px;
+            margin-left: 5px;
+            text-indent: -999px;
+            background-color: #ccc;
+            border-radius: 5px;
+        }
+
+        .carousel-indicators .active {
+            background-color: #000;
+        }
+    </style>
+    <style>
+        .demo {
+            position: relative;
+            margin: 15px 0;
+            padding: 39px 19px 14px;
+            *padding-top: 19px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+        }
+
+        .unit {
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<h1>Carousel</h1>
+
+<div class="demo">
+    <h2>Demo</h2>
+
+    <div id="myCarousel" class="carousel slide">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1" class=""></li>
+            <li data-target="#myCarousel" data-slide-to="2" class=""></li>
+            <li data-target="#myCarousel" data-slide-to="3" class=""></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+            </div>
+            <div class="item">
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+                <div class="unit">
+                    <img data-src="holder.js/90x90" alt="">
+                </div>
+            </div>
+            <div class="item">
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+                <div class="unit">
+                    <img data-src="holder.js/80x80" alt="">
+                </div>
+            </div>
+            <div class="item">
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+                <div class="unit">
+                    <img data-src="holder.js/100x100" alt="">
+                </div>
+                <div class="unit">
+                    <img data-src="holder.js/70x70" alt="">
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <a href="#myCarousel" data-slide="prev">prev</a>
+            <a href="#myCarousel" data-slide="next">next</a>
+        </div>
+    </div>
+
+</div>
+
+<div id="usage">
+    <h2>Usage</h2>
+
+    <h3>Via data attributes</h3>
+    <p>Use data attributes to easily control the position of the carousel. <code>data-slide</code> accepts the keywords <code>prev</code> or <code>next</code>, which alters the slide position relative to it's current position. Alternatively, use <code>data-slide-to</code> to pass a raw slide index to the carousel <code>data-slide-to="2"</code>, which jump's the slide position to a particular index beginning with <code>0</code>.</p>
+
+    <h3>Via JavaScript</h3>
+    <p>Call carousel manually with:</p>
+    <pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="pln">$</span><span class="pun">(</span><span class="str">'.carousel'</span><span class="pun">).</span><span class="pln">carousel</span><span class="pun">()</span></li></ol></pre>
+
+    <h3>Options</h3>
+    <p>Options can be passed via data attributes or JavaScriptz. For data attributes, append the option name to <code>data-</code>, as in <code>data-interval=""</code>.</p>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th style="width: 100px;">Name</th>
+            <th style="width: 50px;">type</th>
+            <th style="width: 50px;">default</th>
+            <th>description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>interval</td>
+            <td>number</td>
+            <td>5000</td>
+            <td>The amount of time to delay between automatically cycling an item. If false, carousel will not automatically cycle.</td>
+        </tr>
+        <tr>
+            <td>pause</td>
+            <td>string</td>
+            <td>"hover"</td>
+            <td>Pauses the cycling of the carousel on mouseenter and resumes the cycling of the carousel on mouseleave.</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <h3>Methods</h3>
+    <h4>.carousel(options)</h4>
+    <p>Initializes the carousel with an optional options <code>object</code> and starts cycling through items.</p>
+    <pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><span class="pln">$</span><span class="pun">(</span><span class="str">'.carousel'</span><span class="pun">).</span><span class="pln">carousel</span><span class="pun">({</span></li><li class="L1"><span class="pln">  interval</span><span class="pun">:</span><span class="pln"> </span><span class="lit">2000</span></li><li class="L2"><span class="pun">})</span></li></ol></pre>
+    <h4>.carousel('cycle')</h4>
+    <p>Cycles through the carousel items from left to right.</p>
+    <h4>.carousel('pause')</h4>
+    <p>Stops the carousel from cycling through items.</p>
+    <h4>.carousel(number)</h4>
+    <p>Cycles the carousel to a particular frame (0 based, similar to an array).</p>
+    <h4>.carousel('prev')</h4>
+    <p>Cycles to the previous item.</p>
+    <h4>.carousel('next')</h4>
+    <p>Cycles to the next item.</p>
+
+    <h3>Events</h3>
+    <p>Bootstrap's carousel class exposes two events for hooking into carousel functionality.</p>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th style="width: 150px;">Event</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>slide</td>
+            <td>This event fires immediately when the <code>slide</code> instance method is invoked.</td>
+        </tr>
+        <tr>
+            <td>slid</td>
+            <td>This event is fired when the carousel has completed its slide transition.</td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+<script src="carousel.js"></script>
+<script src="https://raw.github.com/imsky/holder/master/holder.js"></script>
+</body>
+</html>
