@@ -1,3 +1,6 @@
+var expect = require('../lib/expect');
+var $ = require('../../dist/module');
+
 describe("Class module", function() {
 
     var Class = $.Class;

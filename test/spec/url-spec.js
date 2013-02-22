@@ -1,3 +1,6 @@
+var expect = require('../lib/expect');
+var $ = require('../../dist/module');
+
 describe("url module", function() {
 
     it("parse a url with all part", function(){

@@ -98,3 +98,6 @@
 
     return $[pluginName] = template;
 })
+
+
+//@ sourceURL=/template.js

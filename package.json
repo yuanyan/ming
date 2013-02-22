@@ -1,6 +1,6 @@
 {
     "name": "modulejs",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "description": "modular javascript solution with jQuery",
     "homepage": "modulejs.github.com",
     "author": "yuanyan@tencent.com",
@@ -22,6 +22,7 @@
         "mocha": "~1.7.4",
         "batch": "*",
         "request": "*",
+        "wd": "*",
         "max-component": "*",
         "sum-component": "*",
         "term-canvas": "*"
