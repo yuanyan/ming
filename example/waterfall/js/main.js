@@ -1,9 +1,9 @@
 // Require.js allows us to configure shortcut alias
 require.config({
     paths:{
-        $ : '../../../src/$',
+        $ : '../../../src/jquery',
         waterfall:'waterfall',
-        jquery:'../../../lib/jquery/jquery-1.8.3'
+        jquery:'../../../lib/jquery/jquery'
         //text: 'lib/require/text'
     }
 });

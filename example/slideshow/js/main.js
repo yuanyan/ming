@@ -1,8 +1,8 @@
 // Require.js allows us to configure shortcut alias
 require.config({
     paths:{
-        $:'../../../src/$',
-        jquery:'../../../lib/jquery/jquery-1.8.3',
+        $:'../../../src/jquery',
+        jquery:'../../../lib/jquery/jquery',
         touch:'../../../src/touch/touch'
     }
 });
