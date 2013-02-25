@@ -27,6 +27,7 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery and micr
 * EightMedia/hammer.js@0.6.1
 * ryanseddon/H5F@1.0.0
 * aralejs/class@1.0.0
+* bootstrap/carousel@2.3.0
 
 ### Shims
 * es5-shim     (optional)
