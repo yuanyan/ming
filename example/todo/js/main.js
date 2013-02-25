@@ -2,7 +2,7 @@
 require.config({
     paths:{
         $:'../../../src/$',
-        jquery:'../../../lib/jquery/jquery-1.8.3'
+        jquery:'../../../lib/jquery/jquery'
         //text: 'lib/require/text'
     }
 });
