@@ -10,6 +10,23 @@
     var format = {
 
         /**
+         * Convert bytes into KB or MB
+         * @param bytes
+         * @returns {string}
+         */
+        bytesToMB : function(bytes) {
+            var byteSize = Math.round(bytes / 1024 * 100) * 0.01;
+            var suffix = 'KB';
+            if (byteSize > 1000) {
+                byteSize = Math.round(byteSize * 0.001 * 100) * 0.01;
+                suffix = 'MB';
+            }
+            var sizeParts = byteSize.toString().split('.');
+            byteSize = sizeParts[0] + (sizeParts.length > 1 ? '.' + sizeParts[1].substr(0,1) : '');
+            return byteSize + ' ' + suffix;
+        },
+
+        /**
          * Function: camelize
          * 把Css属性名格式化为骆驼型
          *

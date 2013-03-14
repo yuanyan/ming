@@ -1,6 +1,6 @@
 ## Modulejs (2.0.0 dev)
 
-Modulejs a high-productivity JavaScript solution that integrates jQuery and micro modules you need for modern web application development.
+Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto and micro modules you need for modern desktop/mobile web application development.
 
 [![Selenium Test Status](https://saucelabs.com/buildstatus/modulejs)](https://saucelabs.com/u/modulejs)
 
