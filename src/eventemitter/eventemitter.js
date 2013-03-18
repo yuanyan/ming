@@ -1,4 +1,12 @@
-;!function(exports, undefined) {
+!(function (factory) {
+    if (typeof define === 'function') {
+        define(['$'], factory);
+    } else {
+        factory($);
+    }
+})(function ($) {
+   'use strict';
+   var pluginName = 'EventEmitter';
 
   var isArray = Array.isArray ? Array.isArray : function _isArray(obj) {
     return Object.prototype.toString.call(obj) === "[object Array]";
@@ -549,12 +557,6 @@
 
   };
 
-  if (typeof define === 'function' && define.amd) {
-    define(function() {
-      return EventEmitter;
-    });
-  } else {
-    exports.EventEmitter2 = EventEmitter; 
-  }
+  return $[pluginName] = EventEmitter;
 
-}(typeof process !== 'undefined' && typeof process.title !== 'undefined' && typeof exports !== 'undefined' ? exports : window);
+});

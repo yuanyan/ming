@@ -28,7 +28,7 @@
     var SCHEME = 'scheme';
     var PARTS =  ["href",SCHEME,"authority","auth","user","password",HOSTNAME, PORT,"relative","path","directory","file",QUERYSTRING, ANCHOR];
 
-    $[pluginName] =  function (href) {
+    return $[pluginName] =  function (href) {
         var	match = REG_URI.exec(href),
             uri = {},
             i = 14;

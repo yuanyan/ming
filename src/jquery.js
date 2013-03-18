@@ -2,7 +2,7 @@
     if (typeof define === 'function') {
         define(['jquery'], factory);
     } else {
-        factory($);
+        factory(jQuery);
     }
 })(function ($) {
     return $;

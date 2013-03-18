@@ -3,6 +3,8 @@
         define([
             './$',
             './class/class',
+            './eventemitter/eventemitter',
+            './runtime/object',
             './cookie/cookie',
             './cookie/remove',
             './cors/img',
@@ -19,6 +21,7 @@
             './storage/storage',
             './string/color',
             './string/format',
+            './string/escape',
             './string/trim',
             './template/template',
             './touch/touch',
@@ -33,5 +36,5 @@
         factory($);
     }
 })(function ($) {
-
+   return $
 });

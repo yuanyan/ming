@@ -1,8 +1,8 @@
 !(function (factory) {
     if (typeof define === 'function') {
-        define(['zepto'], factory);
+        define(['jquery'], factory);
     } else {
-        factory(Zepto);
+        factory($);
     }
 })(function ($) {
     return $;

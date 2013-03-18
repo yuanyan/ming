@@ -2,7 +2,7 @@
     if (typeof define === 'function') {
         define(['$', '../object/keys'], factory);
     } else {
-        factory($);
+        factory($, $.keys);
     }
 })(function ($, keys) {
     'use strict';

@@ -1,10 +1,10 @@
 !(function (factory) {
     if (typeof define === 'function') {
-        define(['$', './class'], factory);
+        define(['$', '../class/class', '../eventemitter/eventemitter'], factory);
     } else {
-        factory($);
+        factory($, $.Class, $.EventEmitter);
     }
-})(function ($, Class) {
+})(function ($, Class, EventEmitter) {
     'use strict';
 
     var pluginName = 'Object';
@@ -12,7 +12,20 @@
     // native objects. IE8 does not have defineProperies, however, so this check saves a try/catch block.
     var definePropertySupport = Object.defineProperty && Object.defineProperties;
 
-    return $[pluginName] = Class.create({
+    return $[pluginName] = Class.create(EventEmitter, {
+
+        /**
+         * object clone
+         * @param deep If true, the merge becomes recursive (aka. deep copy).
+         * @returns {{}}
+         */
+        clone : function( deep ){
+            // http://api.jquery.com/jQuery.extend/
+            var target = {};
+            $.extend(deep, target, this);
+            return target
+        },
+
         /***
          * @method watch(<obj>, <prop>, <fn>)
          * @returns Nothing
@@ -28,7 +41,7 @@
          *   });
          *
          ***/
-        'watch': function (prop, fn) {
+        watch : function (prop, fn) {
             if (!definePropertySupport) return;
             if (!this._watchers) this._watchers = {};
             if (!this._watchers[prop]) this._watchers[prop] = [fn];
@@ -43,14 +56,14 @@
                 },
                 'set': function (to) {
                     if(!self._watchers || !self._watchers[prop]) return value = to;
-                    $.each(self._watchers[prop])(function(i, watcher){
+                    $.each(self._watchers[prop], function(i, watcher){
                         value = watcher.call(self, prop, value, to) || to;
                     });
                 }
             });
         },
 
-        'unwatch': function(prop, fn){
+        unwatch : function(prop, fn){
             if (!definePropertySupport || !this._watchers) return;
             // if no param give
             if(!prop && !fn) this._watchers = null;
