@@ -6,6 +6,7 @@
     }
 })(function ($) {
     'use strict';
+    var pluginName = 'trim';
 
     var LEFT = /^\s+/;
     var RIGHT = /\s+$/;
@@ -15,56 +16,34 @@
     var nativeTrimRight = StringProto.trimRight;
     var nativeTrimLeft = StringProto.trimLeft;
 
-    var trim = {
-        /**
-         * Function: trim
-         * ECMA-262-5 15.5.4.20
-         * Trims whitespace from both ends of the string
-         *
-         * Parameters:
-         *  str - {String}
-         *
-         * Returns:
-         *  {String}
-         */
-        trim: function(str){
+
+    /**
+     * Function: trim
+     * ECMA-262-5 15.5.4.20
+     * Trims whitespace from both ends of the string
+     *
+     * Parameters:
+     *  str - {String}
+     *
+     * Returns:
+     *  {String}
+     */
+    return $[pluginName] = function(type, str){
+            if(type && str){
+                if(type === 'left'){
+                    if (nativeTrimLeft) return nativeTrimLeft.call(str);
+                    return str.replace(LEFT, "");
+                }else if(type === "right"){
+                    if (nativeTrimRight) return nativeTrimRight.call(str);
+                    return str.replace(RIGHT, "");
+                }
+            }else{
+               str = type;
+            }
+
             if (str == null) return '';
             if (nativeTrim) return nativeTrim.call(str);
             return str.replace(LEFT, "").replace(RIGHT, "");
-        },
-        /**
-         * Function: trimLeft
-         * Trims whitespace from the left side of the string
-         *
-         * Parameters:
-         *  str - {String}
-         *
-         * Returns:
-         *   {String}
-         */
-        trimLeft: function(str){
-            if (str == null) return '';
-            if (nativeTrimLeft) return nativeTrimLeft.call(str);
-            return str.replace(LEFT, "");
-        },
-
-        /**
-         * Function: trimRight
-         * Trims whitespace from the right side of the string
-         *
-         * Parameters:
-         *  str - {String}
-         *
-         * Returns:
-         *  {String}
-         */
-        trimRight : function(str){
-            if (str == null) return '';
-            if (nativeTrimRight) return nativeTrimRight.call(str);
-            return str.replace(RIGHT, "");
         }
-    };
 
-    $.extend($, trim);
-    return trim;
 })

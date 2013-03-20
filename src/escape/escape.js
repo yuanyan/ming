@@ -7,6 +7,8 @@
 })(function ($, keys) {
     'use strict';
 
+    var pluginName = 'escape';
+
     // List of HTML entities for escaping.
     var entityEscapeMap = {
         '&': '&amp;',
@@ -20,15 +22,15 @@
     // Regexes containing the keys and values listed immediately above.
     var entityEscapeRegExp =   new RegExp('[' + keys(entityEscapeMap).join('') + ']', 'g');
 
-    var escape = {
+    return $[pluginName] = {
         /**
          * Functions for escaping strings to HTML interpolation.
-         * @param string
+         * @param str
          * @returns {string}
          */
-        escapeHTML : function(string) {
-            if (string == null) return '';
-            return ('' + string).replace(entityEscapeRegExp, function(match) {
+        escapeHTML : function(str) {
+            if (str == null) return '';
+            return String(str).replace(entityEscapeRegExp, function(match) {
                 return entityEscapeMap[match];
             });
         },
@@ -36,14 +38,13 @@
         /**
          * Escape strings that are going to be used in a regex.
          * Escapes punctuation that would be incorrect in a regex.
-         * @param s
+         * @param str
          * @returns {string}
          */
-        escapeRegExp : function(s) {
-            return s.replace(/([.*+?^${}()|[\]\/\\])/g, '\\$1');
+        escapeRegExp : function(str) {
+            if (str == null) return '';
+            return String(str).replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
         }
     };
 
-    $.extend($, escape);
-    return escape;
 })

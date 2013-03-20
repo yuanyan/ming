@@ -75,6 +75,6 @@
     });
 
 
-    return prefetch;
+    return $[pluginName] = prefetch;
 
 })

@@ -2,14 +2,12 @@
     if (typeof define === 'function') {
         define(['$', '../history/history', '../object/keys'], factory);
     } else {
-        factory($);
+        factory($, $.history, $.keys);
     }
-})(function ($) {
+})(function ($, history, keys) {
 
     'use strict';
     var pluginName = 'route';
-    var history = $.history;
-    var keys = $.keys;
 
     // $.Router
     // ---------------

@@ -8,7 +8,7 @@
     'use strict';
     var pluginName = 'memoize';
 
-    $[pluginName] = function (fn, hasher) {
+    return $[pluginName] = function (fn, hasher) {
         var memo = {};
         var queues = {};
         hasher = hasher || function (x) {
@@ -38,12 +38,6 @@
         };
         memoized.unmemoized = fn;
         return memoized;
-    };
-
-    $['un'+pluginName] = function (fn) {
-        return function () {
-            return (fn.unmemoized || fn).apply(null, arguments);
-        };
     };
 
 });

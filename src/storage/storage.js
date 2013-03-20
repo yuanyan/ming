@@ -2,13 +2,12 @@
     if (typeof define === 'function') {
         define(['$', '../json/json'], factory);
     } else {
-        factory($);
+        factory($, $.json);
     }
-})(function ($) {
+})(function ($, JSON) {
     'use strict';
 
     var pluginName = 'storage';
-    var JSON = $.json;
 
     /* Copyright (c) 2010-2012 Marcus Westin
      *

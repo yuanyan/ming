@@ -6,18 +6,27 @@
     }
 })(function ($) {
 
-    /*! http://mths.be/placeholder v2.0.7 by @mathias */
+    var pluginName = 'placeholder';
+
+    /*!
+     * jQuery placeholder Plugin v2.0.7
+     * http://mths.be/placeholder
+     *
+     * Copyright Mathias Bynens <http://mathiasbynens.be/>
+     * Dual licensed under the MIT or GPL Version 2 licenses.
+     * http://www.opensource.org/licenses/mit-license.php
+     * http://www.opensource.org/licenses/GPL-2.0
+     */
 
     var isInputSupported = 'placeholder' in document.createElement('input'),
         isTextareaSupported = 'placeholder' in document.createElement('textarea'),
-        prototype = $.fn,
         valHooks = $.valHooks,
         hooks,
         placeholder;
 
     if (isInputSupported && isTextareaSupported) {
 
-        placeholder = prototype.placeholder = function() {
+        placeholder = function() {
             return this;
         };
 
@@ -25,7 +34,7 @@
 
     } else {
 
-        placeholder = prototype.placeholder = function() {
+        placeholder = function() {
             var $this = this;
             $this
                 .filter((isInputSupported ? 'textarea' : ':input') + '[placeholder]')
@@ -72,19 +81,17 @@
         isInputSupported || (valHooks.input = hooks);
         isTextareaSupported || (valHooks.textarea = hooks);
 
-        $(function() {
-            // Look for forms
-            $(document).delegate('form', 'submit.placeholder', function() {
-                // Clear the placeholder values so they don't get submitted
-                var $inputs = $('.placeholder', this).each(clearPlaceholder);
-                setTimeout(function() {
-                    $inputs.each(setPlaceholder);
-                }, 10);
-            });
+        // Look for forms
+        $(document).on('form', 'submit.placeholder', function() {
+            // Clear the placeholder values so they don't get submitted
+            var $inputs = $('.placeholder', this).each(clearPlaceholder);
+            setTimeout(function() {
+                $inputs.each(setPlaceholder);
+            }, 10);
         });
 
         // Clear placeholder values upon page reload
-        $(window).bind('beforeunload.placeholder', function() {
+        $(window).on('beforeunload.placeholder', function() {
             $('.placeholder').each(function() {
                 this.value = '';
             });
@@ -160,4 +167,6 @@
             $input.removeClass('placeholder');
         }
     }
+
+    return $.fn[pluginName] = placeholder;
 })

@@ -26,11 +26,11 @@
             return target
         },
 
-        /***
-         * @method watch(<obj>, <prop>, <fn>)
-         * @returns Nothing
-         * @short Watches a property of <obj> and runs <fn> when it changes.
-         * @extra <fn> is passed three arguments: the property <prop>, the old value, and the new value. The return value of [fn] will be set as the new value. This method is useful for things such as validating or cleaning the value when it is set. Warning: this method WILL NOT work in browsers that don't support %Object.defineProperty%. This notably includes IE 8 and below, and Opera. This is the only method in Sugar that is not fully compatible with all browsers. %watch% is available as an instance method on extended objects.
+        /**
+         * Watches a property of <obj> and runs <fn> when it changes.
+         * @param prop
+         * @param fn
+         * @return {*}
          * @example
          *
          *   Object.watch({ foo: 'bar' }, 'foo', function(prop, oldVal, newVal) {
@@ -39,8 +39,7 @@
          *   Object.extended().watch({ foo: 'bar' }, 'foo', function(prop, oldVal, newVal) {
          *     // Will be run when the property 'foo' is set on the object.
          *   });
-         *
-         ***/
+         */
         watch : function (prop, fn) {
             if (!definePropertySupport) return;
             if (!this._watchers) this._watchers = {};
@@ -63,6 +62,11 @@
             });
         },
 
+        /**
+         *
+         * @param prop
+         * @param fn
+         */
         unwatch : function(prop, fn){
             if (!definePropertySupport || !this._watchers) return;
             // if no param give

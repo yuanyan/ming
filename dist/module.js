@@ -808,11 +808,11 @@
             return target
         },
 
-        /***
-         * @method watch(<obj>, <prop>, <fn>)
-         * @returns Nothing
-         * @short Watches a property of <obj> and runs <fn> when it changes.
-         * @extra <fn> is passed three arguments: the property <prop>, the old value, and the new value. The return value of [fn] will be set as the new value. This method is useful for things such as validating or cleaning the value when it is set. Warning: this method WILL NOT work in browsers that don't support %Object.defineProperty%. This notably includes IE 8 and below, and Opera. This is the only method in Sugar that is not fully compatible with all browsers. %watch% is available as an instance method on extended objects.
+        /**
+         * Watches a property of <obj> and runs <fn> when it changes.
+         * @param prop
+         * @param fn
+         * @return {*}
          * @example
          *
          *   Object.watch({ foo: 'bar' }, 'foo', function(prop, oldVal, newVal) {
@@ -821,8 +821,7 @@
          *   Object.extended().watch({ foo: 'bar' }, 'foo', function(prop, oldVal, newVal) {
          *     // Will be run when the property 'foo' is set on the object.
          *   });
-         *
-         ***/
+         */
         watch : function (prop, fn) {
             if (!definePropertySupport) return;
             if (!this._watchers) this._watchers = {};
@@ -845,6 +844,11 @@
             });
         },
 
+        /**
+         *
+         * @param prop
+         * @param fn
+         */
         unwatch : function(prop, fn){
             if (!definePropertySupport || !this._watchers) return;
             // if no param give
@@ -1731,7 +1735,7 @@
     
     var pluginName = 'memoize';
 
-    $[pluginName] = function (fn, hasher) {
+    return $[pluginName] = function (fn, hasher) {
         var memo = {};
         var queues = {};
         hasher = hasher || function (x) {
@@ -1763,11 +1767,24 @@
         return memoized;
     };
 
-    $['un'+pluginName] = function (fn) {
+});
+!(function (factory) {
+    if (typeof define === 'function') {
+        define('memoize/unmemoize',['$'], factory);
+    } else {
+        factory($);
+    }
+})(function ($) {
+    
+    var pluginName = 'unmemoize';
+
+
+    return $[pluginName] = function (fn) {
         return function () {
             return (fn.unmemoized || fn).apply(null, arguments);
         };
     };
+
 
 });
 !(function (factory) {
@@ -1890,33 +1907,22 @@
     if (typeof define === 'function') {
         define('postmessage/postmessage',['$'], factory);
     } else {
-        factory(this.$ = this.$ || {});
+        factory($);
     }
 })(function ($) {
     
-    var pluginName = 'postmessage';
+    var pluginName = 'postMessage';
 
    // A few vars used in non-awesome browsers.
-    var interval_id,
-        last_hash,
-        cache_bust = 1,
-
-    // A var used in awesome browsers.
-        rm_callback,
-
+    var cache_bust = 1,
     // A few convenient shortcuts.
-        window = this,
-        FALSE = !1,
-
     // Reused internal strings.
         postMessage = 'postMessage',
-        addEventListener = 'addEventListener',
-
-        p_receiveMessage,
-
+        addEventListener = 'addEventListener';
     // I couldn't get window.postMessage to actually work in Opera 9.64!
     //  has_postMessage = window[postMessage] && !$.browser.opera;
-        has_postMessage = window[postMessage];
+
+    $.support.postMessage = !!window[postMessage];
 
     // Method: jQuery.postMessage
     //
@@ -1945,7 +1951,7 @@
     //
     //  Nothing.
 
-    $[postMessage] = function( message, target_url, target ) {
+    return $[pluginName] = function( message, target_url, target ) {
         if ( !target_url ) { return; }
 
         // Serialize the message if not a string. Note that this is the only real
@@ -1956,7 +1962,7 @@
         // Default to parent if unspecified.
         target = target || parent;
 
-        if ( has_postMessage ) {
+        if ( $.support.postMessage ) {
             // The browser supports window.postMessage, so call it with a targetOrigin
             // set appropriately, based on the target_url parameter.
             target[postMessage]( message, target_url.replace( /([^:]+:\/\/[^\/]+).*/, '$1' ) );
@@ -1969,6 +1975,36 @@
             target.location = target_url.replace( /#.*$/, '' ) + '#' + (+new Date) + (cache_bust++) + '&' + encodeURIComponent(message);
         }
     };
+
+});
+!(function (factory) {
+    if (typeof define === 'function') {
+        define('postmessage/receivemessage',['$'], factory);
+    } else {
+        factory($);
+    }
+})(function ($) {
+    
+    var pluginName = 'receiveMessage';
+
+   // A few vars used in non-awesome browsers.
+    var interval_id,
+        last_hash,
+
+    // A var used in awesome browsers.
+        rm_callback,
+
+    // A few convenient shortcuts.
+        FALSE = !1,
+
+    // Reused internal strings.
+        postMessage = 'postMessage',
+        addEventListener = 'addEventListener';
+
+    // I couldn't get window.postMessage to actually work in Opera 9.64!
+    //  has_postMessage = window[postMessage] && !$.browser.opera;
+    $.support.postMessage = !!window[postMessage];
+
 
     // Method: jQuery.receiveMessage
     //
@@ -2017,14 +2053,14 @@
     //
     //  Nothing!
 
-    $.receiveMessage = p_receiveMessage = function( callback, source_origin, delay ) {
-        if ( has_postMessage ) {
+    return $[pluginName] = function( callback, source_origin, delay ) {
+        if ( $.support.postMessage ) {
             // Since the browser supports window.postMessage, the callback will be
             // bound to the actual event associated with window.postMessage.
 
             if ( callback ) {
                 // Unbind an existing callback if it exists.
-                rm_callback && p_receiveMessage();
+                rm_callback && $.receiveMessage();
 
                 // Bind the callback. A reference to the callback is stored for ease of
                 // unbinding.
@@ -2068,24 +2104,17 @@
             }
         }
     };
-
-    $[pluginName] = {
-        postMessage: $[postMessage]
-        ,receiveMessage: $.receiveMessage
-    };
 });
 !(function (factory) {
     if (typeof define === 'function') {
         define('route/route',['$', '../history/history', '../object/keys'], factory);
     } else {
-        factory($);
+        factory($, $.history, $.keys);
     }
-})(function ($) {
+})(function ($, history, keys) {
 
     
     var pluginName = 'route';
-    var history = $.history;
-    var keys = $.keys;
 
     // $.Router
     // ---------------
@@ -2175,13 +2204,12 @@
     if (typeof define === 'function') {
         define('storage/storage',['$', '../json/json'], factory);
     } else {
-        factory($);
+        factory($, $.json);
     }
-})(function ($) {
+})(function ($, JSON) {
     
 
     var pluginName = 'storage';
-    var JSON = $.json;
 
     /* Copyright (c) 2010-2012 Marcus Westin
      *
@@ -2382,17 +2410,18 @@
 });
 !(function (factory) {
     if (typeof define === 'function') {
-        define('string/color',['$'], factory);
+        define('color/color',['$'], factory);
     } else {
         factory($);
     }
 })(function ($) {
     
+    var pluginName = 'color';
 
     var RGB = /([\\d]{1,3})/g;
     var HEX = /^[#]{0,1}([\\w]{1,2})([\\w]{1,2})([\\w]{1,2})$/;
 
-    var color =   {
+    return $[pluginName] = {
         /**
          * Function: rgbToHex
          * RGB格式转化为HEX
@@ -2459,20 +2488,19 @@
 
     };
 
-    $.extend($, color);
-
-    return color;
 });
 !(function (factory) {
     if (typeof define === 'function') {
-        define('string/format',['$'], factory);
+        define('format/format',['$'], factory);
     } else {
         factory($);
     }
 })(function ($) {
     
 
-    var format = {
+    var pluginName = 'format';
+
+    return $[pluginName] = {
 
         /**
          * Convert bytes into KB or MB
@@ -2493,7 +2521,7 @@
 
         /**
          * Function: camelize
-         * 把Css属性名格式化为骆驼型
+         * Converts underscored or dasherized string to a camelized one
          *
          * Parameters:
          *  str - {String}
@@ -2506,14 +2534,12 @@
          *  var after= camelize(before); //"fontSize"
          */
         camelize : function(str){
-            return str.replace(/-\D/gi, function(match){
-                return match.charAt(match.length - 1).toUpperCase();
-            });
+            return String(str).replace(/[-_\s]+(.)?/g, function(match, c){ return c.toUpperCase(); });
         },
 
         /**
          * Function: format
-         * 以模板方式格式化文本
+         * Simple String Formatting
          *
          * Parameters:
          *  temp - {String}
@@ -2525,8 +2551,8 @@
          *
          * Example:
          * (code)
-         * format("{1},{2}",1,2) === 1,2
-         * format("{1},{1}",1)  === 1,1
+         * print("{1},{2}",1,2) === 1,2
+         * print("{1},{1}",1)  === 1,1
          * (end)
          */
         format : function(temp){
@@ -2545,17 +2571,17 @@
 
     };
 
-    $.extend($, format);
-    return format;
 });
 !(function (factory) {
     if (typeof define === 'function') {
-        define('string/escape',['$', '../object/keys'], factory);
+        define('escape/escape',['$', '../object/keys'], factory);
     } else {
         factory($, $.keys);
     }
 })(function ($, keys) {
     
+
+    var pluginName = 'escape';
 
     // List of HTML entities for escaping.
     var entityEscapeMap = {
@@ -2570,15 +2596,15 @@
     // Regexes containing the keys and values listed immediately above.
     var entityEscapeRegExp =   new RegExp('[' + keys(entityEscapeMap).join('') + ']', 'g');
 
-    var escape = {
+    return $[pluginName] = {
         /**
          * Functions for escaping strings to HTML interpolation.
-         * @param string
+         * @param str
          * @returns {string}
          */
-        escapeHTML : function(string) {
-            if (string == null) return '';
-            return ('' + string).replace(entityEscapeRegExp, function(match) {
+        escapeHTML : function(str) {
+            if (str == null) return '';
+            return String(str).replace(entityEscapeRegExp, function(match) {
                 return entityEscapeMap[match];
             });
         },
@@ -2586,16 +2612,15 @@
         /**
          * Escape strings that are going to be used in a regex.
          * Escapes punctuation that would be incorrect in a regex.
-         * @param s
+         * @param str
          * @returns {string}
          */
-        escapeRegExp : function(s) {
-            return s.replace(/([.*+?^${}()|[\]\/\\])/g, '\\$1');
+        escapeRegExp : function(str) {
+            if (str == null) return '';
+            return String(str).replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
         }
     };
 
-    $.extend($, escape);
-    return escape;
 })
 ;
 !(function (factory) {
@@ -2606,6 +2631,7 @@
     }
 })(function ($) {
     
+    var pluginName = 'trim';
 
     var LEFT = /^\s+/;
     var RIGHT = /\s+$/;
@@ -2615,58 +2641,36 @@
     var nativeTrimRight = StringProto.trimRight;
     var nativeTrimLeft = StringProto.trimLeft;
 
-    var trim = {
-        /**
-         * Function: trim
-         * ECMA-262-5 15.5.4.20
-         * Trims whitespace from both ends of the string
-         *
-         * Parameters:
-         *  str - {String}
-         *
-         * Returns:
-         *  {String}
-         */
-        trim: function(str){
+
+    /**
+     * Function: trim
+     * ECMA-262-5 15.5.4.20
+     * Trims whitespace from both ends of the string
+     *
+     * Parameters:
+     *  str - {String}
+     *
+     * Returns:
+     *  {String}
+     */
+    return $[pluginName] = function(type, str){
+            if(type && str){
+                if(type === 'left'){
+                    if (nativeTrimLeft) return nativeTrimLeft.call(str);
+                    return str.replace(LEFT, "");
+                }else if(type === "right"){
+                    if (nativeTrimRight) return nativeTrimRight.call(str);
+                    return str.replace(RIGHT, "");
+                }
+            }else{
+               str = type;
+            }
+
             if (str == null) return '';
             if (nativeTrim) return nativeTrim.call(str);
             return str.replace(LEFT, "").replace(RIGHT, "");
-        },
-        /**
-         * Function: trimLeft
-         * Trims whitespace from the left side of the string
-         *
-         * Parameters:
-         *  str - {String}
-         *
-         * Returns:
-         *   {String}
-         */
-        trimLeft: function(str){
-            if (str == null) return '';
-            if (nativeTrimLeft) return nativeTrimLeft.call(str);
-            return str.replace(LEFT, "");
-        },
-
-        /**
-         * Function: trimRight
-         * Trims whitespace from the right side of the string
-         *
-         * Parameters:
-         *  str - {String}
-         *
-         * Returns:
-         *  {String}
-         */
-        trimRight : function(str){
-            if (str == null) return '';
-            if (nativeTrimRight) return nativeTrimRight.call(str);
-            return str.replace(RIGHT, "");
         }
-    };
 
-    $.extend($, trim);
-    return trim;
 });
 !(function (factory) {
     if (typeof define === 'function') {
@@ -4070,18 +4074,27 @@
     }
 })(function ($) {
 
-    /*! http://mths.be/placeholder v2.0.7 by @mathias */
+    var pluginName = 'placeholder';
+
+    /*!
+     * jQuery placeholder Plugin v2.0.7
+     * http://mths.be/placeholder
+     *
+     * Copyright Mathias Bynens <http://mathiasbynens.be/>
+     * Dual licensed under the MIT or GPL Version 2 licenses.
+     * http://www.opensource.org/licenses/mit-license.php
+     * http://www.opensource.org/licenses/GPL-2.0
+     */
 
     var isInputSupported = 'placeholder' in document.createElement('input'),
         isTextareaSupported = 'placeholder' in document.createElement('textarea'),
-        prototype = $.fn,
         valHooks = $.valHooks,
         hooks,
         placeholder;
 
     if (isInputSupported && isTextareaSupported) {
 
-        placeholder = prototype.placeholder = function() {
+        placeholder = function() {
             return this;
         };
 
@@ -4089,7 +4102,7 @@
 
     } else {
 
-        placeholder = prototype.placeholder = function() {
+        placeholder = function() {
             var $this = this;
             $this
                 .filter((isInputSupported ? 'textarea' : ':input') + '[placeholder]')
@@ -4136,19 +4149,17 @@
         isInputSupported || (valHooks.input = hooks);
         isTextareaSupported || (valHooks.textarea = hooks);
 
-        $(function() {
-            // Look for forms
-            $(document).delegate('form', 'submit.placeholder', function() {
-                // Clear the placeholder values so they don't get submitted
-                var $inputs = $('.placeholder', this).each(clearPlaceholder);
-                setTimeout(function() {
-                    $inputs.each(setPlaceholder);
-                }, 10);
-            });
+        // Look for forms
+        $(document).on('form', 'submit.placeholder', function() {
+            // Clear the placeholder values so they don't get submitted
+            var $inputs = $('.placeholder', this).each(clearPlaceholder);
+            setTimeout(function() {
+                $inputs.each(setPlaceholder);
+            }, 10);
         });
 
         // Clear placeholder values upon page reload
-        $(window).bind('beforeunload.placeholder', function() {
+        $(window).on('beforeunload.placeholder', function() {
             $('.placeholder').each(function() {
                 this.value = '';
             });
@@ -4224,6 +4235,8 @@
             $input.removeClass('placeholder');
         }
     }
+
+    return $.fn[pluginName] = placeholder;
 });
 /*!
  * jQuery Data Link plugin v1.0.0pre
@@ -4511,14 +4524,16 @@
             './jsonpi/jsonpi',
             './key/key',
             './memoize/memoize',
+            './memoize/unmemoize',
             './mousewheel/mousewheel',
             './object/keys',
             './postmessage/postmessage',
+            './postmessage/receivemessage',
             './route/route',
             './storage/storage',
-            './string/color',
-            './string/format',
-            './string/escape',
+            './color/color',
+            './format/format',
+            './escape/escape',
             './string/trim',
             './template/template',
             './touch/touch',
