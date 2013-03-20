@@ -1,4 +1,4 @@
-## Modulejs (2.0.0 dev)
+## Modulejs (2.3.0 dev)
 
 Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto and micro modules you need for modern desktop/mobile web application development.
 
@@ -49,6 +49,10 @@ http://modulejs.github.com/doc
 * [Visit the Wiki](https://github.com/modulejs/modulejs/wiki)
 
 ###Changelog
+
+#### 2013-3-20 2.3.0 dev
+1. base Object Class
+2. EventEmitter
 
 #### 2012-12-12 2.0.0 dev
 1. modulejs2.0 in dev
