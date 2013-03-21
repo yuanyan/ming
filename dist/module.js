@@ -432,7 +432,7 @@
       name = type.shift();
     }
     return true;
-  };
+  }
 
   // By default EventEmitters will print a warning if more than
   // 10 listeners are added to it. This is a useful default which
@@ -458,24 +458,21 @@
   };
 
   EventEmitter.prototype.many = function(event, ttl, fn) {
-    var self = this;
 
     if (typeof fn !== 'function') {
       throw new Error('many only accepts instances of Function');
     }
-
+    var self = this;
     function listener() {
       if (--ttl === 0) {
         self.off(event, listener);
       }
       fn.apply(this, arguments);
-    };
+    }
 
     listener._origin = fn;
 
-    this.on(event, listener);
-
-    return self;
+    return this.on(event, listener);
   };
 
   EventEmitter.prototype.emit = function() {
@@ -569,8 +566,9 @@
   EventEmitter.prototype.on = function(type, listener) {
     
     if (typeof type === 'function') {
-      this.onAny(type);
-      return this;
+      return this.onAny(type);
+    }else if(typeof listener === 'number') {
+      return this.many.apply(this, arguments)
     }
 
     if (typeof listener !== 'function') {
@@ -804,8 +802,7 @@
         clone : function( deep ){
             // http://api.jquery.com/jQuery.extend/
             var target = {};
-            $.extend(deep, target, this);
-            return target
+            return $.extend(deep, target, this);
         },
 
         /**

@@ -47,14 +47,6 @@ Fastest is EventEmitter2
     });
 ```
 
- - Pass in a namespaced event as an array rather than a delimited string.
-
-```javascript
-    server.many(['foo', 'bar', 'bazz'], function() {
-      console.log('hello');
-    });
-```
-
 
 ## API
 

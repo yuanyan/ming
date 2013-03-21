@@ -22,8 +22,7 @@
         clone : function( deep ){
             // http://api.jquery.com/jQuery.extend/
             var target = {};
-            $.extend(deep, target, this);
-            return target
+            return $.extend(deep, target, this);
         },
 
         /**
