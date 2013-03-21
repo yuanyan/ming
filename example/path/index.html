@@ -2,7 +2,7 @@
 <html lang="en-US">
 <head>
     <meta charset="utf-8">
-    <title>Fastbook</title>
+    <title>Path5</title>
 
     <meta http-equiv="x-ua-compatible" content="IE=edge"/>
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
@@ -51,7 +51,6 @@
                      and (-webkit-device-pixel-ratio: 2)"
           rel="apple-touch-startup-image">
 
-    <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/main.css" />
 </head>
 <!--<body class="loading">-->
@@ -82,11 +81,15 @@
 </div>
 <div class="container cards-item layout-card-item sized active">
 <div class="body">
-<div id="main" class="container composited floating sized"
-     style="left: 0px; top: 0px; bottom: 0px; right: 0px; z-index: 6;">
+<div id="main" class="container composited floating sized" style="left: 0px; top: 0px; bottom: 0px; right: 0px; z-index: 2;">
     <div class="body">
-        <div class="container cards main-content floating sized"
-             style="left: 0px; top: 44px; bottom: 0px; right: 0px; z-index: 4;"></div>
+        <div class="container cards main-content floating sized" style="">
+
+
+
+
+
+        </div>
         <div class="container toolbar nav-bar main-nav-bar floating sized"
              style="height: 44px; top: 0px; left: 0px; right: 0px; z-index: 2;">
             <div class="body paint-monitored size-monitored">
@@ -100,22 +103,26 @@
                          style="z-index: 10; -webkit-transform: translate3d(0px, 0px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
                         <span class="icon active chat" data-menu="#chat-menu" data-direction='left'></span><span class="label"></span></div>
                 </div>
+
                 <div class="center middle"
                      style="-webkit-transform: translate3d(0px, -1000%, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
                     <div class="text unsized middle-item" style="z-index: 8;"></div>
                 </div>
+
                 <div class="center middle"
                      style="-webkit-transform: translate3d(0px, 0px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(0deg) skewX(0deg) skewY(0deg);">
                     <div class="container button-group unsized middle-item" style="z-index: 6; left: 0px;">
-                        <div class="inner container-inner button-group-inner">
-                            <div class="button unsized center-button friends button-group-item"><span
-                                    class="icon active friends"></span><span class="label"></span></div>
-                            <div class="button unsized center-button messages button-group-item"><span
-                                    class="icon active messages"></span><span class="label"></span>
-                            </div>
-                            <div class="button unsized center-button notification button-group-item"><span
-                                    class="icon active notification"></span><span class="label"></span></div>
-                        </div>
+
+                        <div class="inner container-inner logo">Path5</div>
+                        <!--<div class="inner container-inner button-group-inner">-->
+                            <!--<div class="button unsized center-button friends button-group-item"><span-->
+                                    <!--class="icon active friends"></span><span class="label"></span></div>-->
+                            <!--<div class="button unsized center-button messages button-group-item"><span-->
+                                    <!--class="icon active messages"></span><span class="label"></span>-->
+                            <!--</div>-->
+                            <!--<div class="button unsized center-button notification button-group-item"><span-->
+                                    <!--class="icon active notification"></span><span class="label"></span></div>-->
+                        <!--</div>-->
                     </div>
                 </div>
                 <div class="center left">
@@ -291,6 +298,23 @@
 <div class="paint-monitor cssanimation"></div>
 </div>
 </div>
+</div>
+
+<div id="circle-menu">
+    <input type="checkbox" id="menu" class="menuControl" checked> <!-- Hidden -->
+    <label for="menu">
+                    <span class="circle-container">
+                        <button class="circle">&#10006;</button>
+                    </span>
+    </label>
+
+    <ul class="items">
+        <li>&#9733;</li>
+        <li>&#9733;</li>
+        <li>&#9733;</li>
+        <li>&#9733;</li>
+        <li>&#9733;</li>
+    </ul>
 </div>
 
 <script src="http://pub.idqqimg.com/lib/jquery/1.9.0/jquery.js"></script>

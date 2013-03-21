@@ -1,0 +1,69 @@
+html {
+    height: 100%;
+    color: #000;
+    background: #FFF
+}
+
+body {
+    font-size: 100%;
+    font-family: "Helvetica Neue", HelveticaNeue, "Helvetica-Neue", Helvetica, "BBAlpha Sans", sans-serif;
+    font-weight: normal
+}
+
+
+html, body {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    -webkit-text-size-adjust: none;
+}
+
+
+body.login {
+    position: relative;
+    background: -webkit-radial-gradient(center, circle cover, #6B87C4 0%, #506BA3 50%, #344e83 100%);
+}
+
+body.login #oauth-login {
+    display: block;
+}
+
+body.loading {
+    background-color: #344e83 !important;
+}
+
+body.phone {
+    -webkit-text-size-adjust: none
+}
+
+body.desktop {
+    overflow: hidden
+}
+
+
+@-webkit-keyframes body-loading {
+    from {
+        -webkit-transform: translate3d(0, 0, 0) scale(1.5);
+    }
+    to {
+        -webkit-transform: translate3d(0, 0, 0) scale(0);
+    }
+}
+
+#loading {
+    display: none;
+}
+
+body.ios.loading #loading {
+    display: block;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    -webkit-animation: body-loading 2s ease-out 0 infinite alternate;
+    background: -webkit-radial-gradient(center, circle cover, rgba(255, 255, 255, .4) 0%, rgba(255, 255, 255, .2) 10%, rgba(255, 255, 255, 0) 50%);
+}

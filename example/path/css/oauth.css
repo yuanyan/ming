@@ -1,0 +1,53 @@
+#oauth-login {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+#oauth-login > .box {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -110px;
+    height: 200px;
+    width: 100%;
+    text-align: center;
+}
+#oauth-login .logo {
+    font-size: 2.5em;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #394C77;
+}
+#oauth-login .description {
+    padding: 15px 10px 0 10px;
+    color: #FFF;
+    font-size: 0.8em;
+    text-shadow: 1px 1px 1px #555;
+}
+#oauth-login .button {
+    cursor: pointer;
+    margin-top: 10px;
+    display: inline-block;
+    color: #555555;
+    text-shadow: 0 1px 1px #FFFFFF;
+    font-size: 1.1em;
+    text-align: center;
+    border-radius: 8px;
+    font-weight: bold;
+    -webkit-box-shadow: 0 1px 1px 0 #394A6F;
+    border: none;
+    padding: 8px 30px;
+    background: -webkit-linear-gradient(#eff0f1, #d1d4d9, #d1d4d9);
+}
+#oauth-login a {
+    color: #FFF;
+}
+#oauth-login .trademark {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    bottom: 0;
+    font-size: 0.5em;
+    color: #FFF;
+}

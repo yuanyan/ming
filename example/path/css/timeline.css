@@ -1,0 +1,53 @@
+ .list{
+    position: relative;
+    float: right;
+    width: 180px;
+    height: 150px;
+    background: url(../img/icon-timeline.png) -32px 0 repeat-y
+}
+
+ .timeline {
+    margin: -5px 0 0 18px
+}
+
+ .timeline li {
+    position: relative;
+    width: 155px;
+    height: 22px;
+    line-height: 22px;
+    padding: 0 0 0 5px;
+    margin: 7px 0 0;
+    _margin-top: 5px;
+    color: #787878;
+    border: 1px solid #e1e1e1;
+    background: #fff
+}
+
+ .timeline .txt {
+    display: inline-block;
+    _zoom: 1;
+    width: 100px;
+    line-height : 24px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+
+ .timeline .time {
+    float: left;
+    _float: none;
+    width: 32px;
+    margin: 0 5px 0 0
+}
+
+ .timeline .square {
+    position: absolute;
+    left: -25px;
+    top: 3px;
+    display: block;
+    width: 14px;
+    height: 14px;
+    background: url(../img/icon-timeline.png) 0 -21px no-repeat
+}
+
