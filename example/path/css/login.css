@@ -1,0 +1,45 @@
+.login {
+    background: radial-gradient(center, circle cover, #6b87c4 0, #506ba3 50%, #344e83 100%);
+    background: -webkit-radial-gradient(center, circle cover, #6b87c4 0, #506ba3 50%, #344e83 100%)
+}
+
+.login .logo {
+    font-size: 2.5em;
+    text-align: center;
+    color: #FFF;
+    font-weight: bold;
+    text-shadow: 1px 1px 1px #394c77
+}
+
+.login .spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -30px;
+    margin-top: -30px;
+    width: 60px;
+    height: 60px;
+    animation: spin 600ms linear 0 infinite forwards;
+    -webkit-animation: spin 600ms linear 0 infinite forwards
+}
+
+.login .spinner::after {
+    position: inherit;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    font-family: 'fc';
+    font-size: 60px;
+    line-height: 60px;
+    text-align: center;
+    content: '\23';
+    color: #fff
+}
+
+.login .status {
+    text-align: center;
+    margin-top: 110px;
+    font-size: 1em;
+    color: #FFF
+}

@@ -1,0 +1,87 @@
+
+#circle-menu {
+    display: none;
+}
+
+#circle-menu:checked ~ label .circle {
+
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+
+
+
+.items li {
+    position: fixed;
+    z-index: 0;
+    bottom: 15px;
+    left: 15px;
+    display: block;
+    font-size: 16px;
+    text-align: center;
+    line-height: 36px;
+    height: 36px;
+    width: 36px;
+    color: white;
+    -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.3);
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #433f3c), color-stop(100%, #44403d));
+    background-image: -webkit-linear-gradient(#433f3c, #44403d);
+    background-image: linear-gradient(#433f3c, #44403d);
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+
+.circle-container {
+    z-index: 1;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+}
+
+.circle-container .circle {
+    position: relative;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+    z-index: 2;
+    border: 0px;
+    font-size: 20px;
+    line-height: 20px;
+    text-align: center;
+    color: white;
+    padding: 0px;
+    -webkit-transition: all 0.1s linear;
+    transition: all 0.1s linear;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #EB3A1F), color-stop(100%, #E7321A));
+    background-image: -webkit-linear-gradient(#EB3A1F, #E7321A);
+    background-image: linear-gradient(#EB3A1F, #E7321A);
+    -webkit-box-shadow: 0 0 0 3px white, 0 0 0 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 0 3px white, 0 0 0 4px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 100px;
+    border-radius: 100px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+
+.circle-container .circle:active:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;
+}

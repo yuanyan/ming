@@ -1,0 +1,36 @@
+@keyframes paint-monitor-helper {
+    from {
+        zoom: 1
+    }
+    to {
+        zoom: 1
+    }
+}
+
+.paint-monitored {
+    position: relative
+}
+
+.paint-monitor {
+    width: 0;
+    height: 0;
+    visibility: hidden
+}
+
+.paint-monitor.cssanimation {
+    animation-duration: .0001ms;
+    animation-name: paint-monitor-helper;
+    -webkit-animation-duration: .0001ms;
+    -webkit-animation-name: paint-monitor-helper
+}
+
+.paint-monitor.overflowchange {
+    overflow: hidden
+}
+
+.paint-monitor.overflowchange::after {
+    content: "";
+    display: block;
+    width: 1px;
+    height: 1px
+}

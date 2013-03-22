@@ -1,46 +1,44 @@
-// ============== Vars =====================
-$startArc: 0; // 
-$items: 5; // number of items
-$arc: 90;  // arc of the circle
-$angle: $arc/($items - 1);  // angle between items
-$radius: 150; //
-$disappearDelay: 50;    //123
+// circle menu
+$startArc: 0;
+$items: 5;
+$arc: 90;
+$angle: $arc/($items - 1);
+$radius: 120;
+$appearDelay : 300;
+$disappearDelay: 100;
 $bonce: 1.2;
 
-// Generate items position + keyframes animation
 @for $i from 1 through $items {                         
 
     $rad: ( $angle * ($i - 1) + $startArc ) * pi()/180;
 
     $x: round( $radius * sin($rad) );
     $y: round(- $radius * cos($rad) );
-                            
-    // Coords for the rebound during the animation
+
     $xm: round($x * $bonce);
     $ym: round($y * $bonce);
-    
-    $disappearDelay: $disappearDelay * 0.7;
 
-     
-    // CSS checkbox + label tricks
-    #menu:checked ~ .items li:nth-child(#{$i}) {
+   $disappearDelay : round($disappearDelay * 1.15);
+   $appearDelay: round($appearDelay * 0.5);
+
+    #circle-menu:checked ~ .items li:nth-child(#{$i}) {
         -webkit-animation-name: appear-#{$i};
-        -webkit-animation-duration: 240ms;
+        -webkit-animation-duration: 300ms;
         -webkit-animation-iteration-count: 1;
         -webkit-animation-fill-mode: forwards;
-        -webkit-animation-delay: ( ($items - $i)* 20 )+ms;
+        // must use negitive value, there is a bug
+        -webkit-animation-delay: -( $appearDelay )+ms;
     }       
     
-    #menu:not(:checked) ~ .items li:nth-child(#{$i}) {
+    #circle-menu:not(:checked) ~ .items li:nth-child(#{$i}) {
         -webkit-animation-name:disappear-#{$i};
-        -webkit-animation-duration:(320 - $disappearDelay)+ms;
+        -webkit-animation-duration: 400ms;
         -webkit-animation-iteration-count:1;
         -webkit-animation-fill-mode:forwards;
-
+        -webkit-animation-delay:  -($disappearDelay) + ms;
     }                             
                   
-    // Generating keyframes                    
-
+    // show keyframes
     @-webkit-keyframes appear-#{$i} {
         0% {
           -webkit-transform: translate3d(0, 0, 0) rotateZ(270deg);
@@ -54,7 +52,7 @@ $bonce: 1.2;
           -webkit-transform: translate3d($x+px, $y+px,0);
         }
     }
-
+   // hide keyframes
     @-webkit-keyframes disappear-#{$i} {
         0% {
           -webkit-transform: translate3d($x+px, $y+px,0) rotateZ(0deg);

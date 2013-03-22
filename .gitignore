@@ -16,3 +16,6 @@ tmp/
 
 # Node Modules
 node_modules/
+
+#Sass
+.sass-cache/
