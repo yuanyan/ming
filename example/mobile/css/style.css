@@ -9,44 +9,61 @@ img.photo { padding: 2px; background: #888; border: 1px solid #cecece; border-bo
 
 ul,ol,h1,h2,h3,h4,h5,h6,p { display: block; }
 
-#w { position: relative; overflow-x: hidden; overflow-y: hidden; }
+#w {overflow-x: hidden; overflow-y: hidden; 
+position: absolute;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;}
 
 /** @group core body **/
-#w #pagebody { position: relative; left: 0; max-width: 640px; min-width: 320px; z-index: 99999; }
+#pagebody {
+z-index: 99999; 
+position: absolute;
+top: 0;
+right: 0;
+bottom: 0;
+left: 0;
 
-#w #navmenu { background: #475566; height: 100%; display: block; position: fixed; width: 300px; left: 0px; top: 0px; z-index: 0;  }
+}
+
+#navmenu { background: #475566; height: 100%; display: block; position: fixed; width: 300px; left: 0px; top: 0px; z-index: 0;  }
 
 /** @group header **/
-#w #pagebody header#toolbarnav { display: block; position: fixed; left: 0px; top: 0px; z-index: 9999; background: #0b1851 url('../img/tabbar-solid-bg.png') top left no-repeat; border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; border-bottom-right-radius: 0; -moz-border-radius-bottomright: 0; -webkit-border-bottom-right-radius: 0; border-bottom-left-radius: 0; -moz-border-radius-bottomleft: 0; -webkit-border-bottom-left-radius: 0; height: 44px; width: 100%; max-width: 640px; }
+#pagebody header#toolbarnav { display: block; position: fixed; left: 0px; top: 0px; z-index: 9999; 
 
-#w #pagebody header#toolbarnav h1 { text-align: center; padding-top: 10px; padding-right: 40px; color: #e6e8f2; font-weight: bold; font-size: 2.1em; text-shadow: 1px 1px 0px #313131; }
+background: #0b1851 url('../img/tabbar-solid-bg.png') top left repeat; 
+
+border-radius: 5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; -o-border-radius: 5px; border-bottom-right-radius: 0; -moz-border-radius-bottomright: 0; -webkit-border-bottom-right-radius: 0; border-bottom-left-radius: 0; -moz-border-radius-bottomleft: 0; -webkit-border-bottom-left-radius: 0; height: 44px; width: 100%; }
+
+#pagebody header#toolbarnav h1 { text-align: center; padding-top: 10px; padding-right: 40px; color: #e6e8f2; font-weight: bold; font-size: 2.1em; text-shadow: 1px 1px 0px #313131; }
 
 
-#w #pagebody header #menu-btn { display: block; float: left; width: 53px; height: 30px; background: url('../img/nav-btn.png') no-repeat; margin-top: 6px; margin-left: 8px;}
+#pagebody header #menu-btn { display: block; float: left; width: 53px; height: 30px; background: url('../img/nav-btn.png') no-repeat; margin-top: 6px; margin-left: 8px;}
 
-#w #pagebody #content { display: block; background: #fff; padding: 5px 12px; margin-top: 40px; min-height: 550px; height: 100%; z-index: 9999; }
+#pagebody #content { display: block; background: #fff; padding: 5px 12px; margin-top: 40px; min-height: 550px; height: 100%; z-index: 9999; }
 
-#w #pagebody #content h2 { border-bottom: 1px solid #ddd; border-top: 1px solid #ddd; color: #181818;
+#pagebody #content h2 { border-bottom: 1px solid #ddd; border-top: 1px solid #ddd; color: #181818;
 font-family: "Droid Serif", Georgia, serif; font-size: 2.6em; line-height: 1.8em; font-weight: 500; margin-top: 25px; margin-bottom: 25px; padding: 12px 0; text-align: center; }
-#w #pagebody #content h3 { font-family: "Calibri", Verdana, Arial, sans-serif; font-weight: 700; font-size: 1.8em; line-height: 1.75em; text-transform: capitalize; margin-bottom: 5px; color: #222; }
-#w #pagebody #content p { font-size: 1.4em; line-height: 1.6em; margin-bottom: 15px; color: #444; }
+#pagebody #content h3 { font-family: "Calibri", Verdana, Arial, sans-serif; font-weight: 700; font-size: 1.8em; line-height: 1.75em; text-transform: capitalize; margin-bottom: 5px; color: #222; }
+#pagebody #content p { font-size: 1.4em; line-height: 1.6em; margin-bottom: 15px; color: #444; }
 
-#w #pagebody #content a { color: #78a5ce; }
-#w #pagebody #content a:hover { color: #678eb2; }
+#pagebody #content a { color: #78a5ce; }
+#pagebody #content a:hover { color: #678eb2; }
 
 /** @group nav menu **/
-#w #navmenu header { display: block; background: #303a44; height: 44px; }
+#navmenu header { display: block; background: #303a44; height: 44px; }
 
-#w #navmenu header h1 { text-align: center; padding-top: 10px; color: #e6e8f2; font-weight: bold; font-size: 2.1em; text-shadow: 1px 1px 0px #313131; }
+#navmenu header h1 { text-align: center; padding-top: 10px; color: #e6e8f2; font-weight: bold; font-size: 2.1em; text-shadow: 1px 1px 0px #313131; }
 
-#w #navmenu ul { list-style: none; background: #475566; height: 100%; }
+#navmenu ul { list-style: none; background: #475566; height: 100%; }
 
-#w #navmenu ul li { display: block; }
-#w #navmenu ul li a { position: relative; display: block; border-bottom: 1px solid #303c4a; padding: 14px 11px; font-weight: bold; color: #f0f0f0; text-shadow: -1px -1px 1px #222; font-size: 1.6em; text-decoration: none; }
+#navmenu ul li { display: block; }
+#navmenu ul li a { position: relative; display: block; border-bottom: 1px solid #303c4a; padding: 14px 11px; font-weight: bold; color: #f0f0f0; text-shadow: -1px -1px 1px #222; font-size: 1.6em; text-decoration: none; }
 
-#w #navmenu ul li a:hover { color: #cad0e6; text-decoration: none; }
+#navmenu ul li a:hover { color: #cad0e6; text-decoration: none; }
 
-#w #navmenu ul li a::after {
+#navmenu ul li a::after {
 	content: '';
 	display: block;
 	width: 6px;
@@ -62,7 +79,7 @@ font-family: "Droid Serif", Georgia, serif; font-size: 2.6em; line-height: 1.8em
 	transform: rotate(45deg);
 }
 
-#w #navmenu ul li a:hover::after { border-color: #cad0e6; }
+#navmenu ul li a:hover::after { border-color: #cad0e6; }
 
 /** @group misc **/
 .blue { color: #1c609f !important; font-weight: bold; }
