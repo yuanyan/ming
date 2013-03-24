@@ -1,0 +1,84 @@
+
+.list .refresh-indicator {
+    line-height: 50px;
+    height: 50px;
+    padding-left: 30px
+}
+
+.list .refresh-indicator .text {
+    font-weight: bold;
+    color: #365181;
+    font-size: .9em;
+    display: inline-block
+}
+
+.list .refresh-indicator .icon {
+    height: 50px;
+    width: 40px;
+    position: relative;
+    top: 4px;
+    display: inline-block;
+    text-align: center
+}
+
+.list .refresh-indicator .icon:before {
+    font-family: 'fc';
+    font-size: 20px;
+    color: #365181
+}
+
+.list .refresh-indicator.pull .icon::before {
+    content: "\21"
+}
+
+.list .refresh-indicator.release .icon::before {
+    content: "\22"
+}
+
+.list .refresh-indicator.updating .icon::before {
+    content: "\28"
+}
+
+.list .loading-indicator {
+    width: 64px;
+    height: 64px
+}
+
+.list .loading-indicator::after {
+    font-family: 'fc';
+    font-size: 64px;
+    line-height: 64px;
+    text-align: center;
+    content: '\23';
+    color: #49639c
+}
+
+.list .next-indicator {
+    height: 50px;
+    color: #49639c;
+    font-weight: bold;
+    text-align: center
+}
+
+.list .next-indicator::before {
+    font-family: 'fc';
+    font-size: 26px;
+    content: '\2f';
+    position: relative;
+    top: 8px
+}
+
+.list .next-indicator::after {
+    font-size: .925em;
+    padding-left: 5px;
+    content: 'loading more...'
+}
+
+
+.list-item {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%
+}
+

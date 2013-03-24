@@ -3,8 +3,6 @@
 <head>
     <meta charset="utf-8">
     <title>Path</title>
-
-    <meta http-equiv="x-ua-compatible" content="IE=edge"/>
     <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-touch-fullscreen" content="yes">
@@ -16,42 +14,12 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/icons/114.png"/>
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/icons/144.png"/>
 
-    <link href="img/startup/320x460.png"
-          media="(device-width: 320px) and (device-height: 480px)
-                     and (-webkit-device-pixel-ratio: 1)"
-          rel="apple-touch-startup-image">
-
-    <link href="img/startup/640x920.png"
-          media="(device-width: 320px) and (device-height: 480px)
-                     and (-webkit-device-pixel-ratio: 2)"
-          rel="apple-touch-startup-image">
 
     <link href="img/startup/640x1096.png"
           media="(device-width: 320px) and (device-height: 568px)
                      and (-webkit-device-pixel-ratio: 2)"
           rel="apple-touch-startup-image">
 
-    <link href="img/startup/768x1004.png"
-          media="(device-width: 768px) and (device-height: 1024px)
-                     and (orientation: portrait)
-                     and (-webkit-device-pixel-ratio: 1)"
-          rel="apple-touch-startup-image">
-    <link href="img/startup/748x1024.png"
-          media="(device-width: 768px) and (device-height: 1024px)
-                     and (orientation: landscape)
-                     and (-webkit-device-pixel-ratio: 1)"
-          rel="apple-touch-startup-image">
-
-    <link href="img/startup/1536x2008.png"
-          media="(device-width: 768px) and (device-height: 1024px)
-                     and (orientation: portrait)
-                     and (-webkit-device-pixel-ratio: 2)"
-          rel="apple-touch-startup-image">
-    <link href="img/startup/1496x2048.png"
-          media="(device-width: 768px) and (device-height: 1024px)
-                     and (orientation: landscape)
-                     and (-webkit-device-pixel-ratio: 2)"
-          rel="apple-touch-startup-image">
 
     <link rel="stylesheet" href="css/main.css" />
 </head>
@@ -96,9 +64,9 @@
                     <div class="body">
 
                         <!-- main start -->
-                        <div id="main" class="container composited floating sized" style="left: 0px; top: 0px; bottom: 0px; right: 0px; z-index: 2;">
+                        <div id="main" class="container floating sized">
                             <div class="body">
-                                <div class="container cards main-content floating sized" style="">
+                                <div class="container cards main-content floating sized">
 
                                     <div>
                                         <input type="checkbox" id="circle-menu" class="menuControl" checked> <!-- Hidden -->
@@ -181,8 +149,7 @@
                         <!-- main end -->
 
                         <!-- chat menu start -->
-                        <div id="chat-menu" class="container list chat-menu floating sized"
-                             style="width: 266px; right: -266px; top: 0px; bottom: 0px; z-index: 4;">
+                        <div id="chat-menu" data-role="panel" data-position="right" data-display="reveal" class="container list chat-menu floating sized">
                             <div class="dock dock-vertical sized">
 
                                 <div class="container main-search-proxy dock-item sized" style="height: 44px;">
@@ -192,142 +159,92 @@
                                 </div>
 
                                 <div class="dock-body">
-                                    <div class="body scroll-container size-monitored paint-monitored">
 
-                                        <div class="container loading-mask floating sized"
-                                             style="visibility: hidden; top: 0px; right: 0px; bottom: 0px; left: 0px; z-index: 8;">
-                                            <div class="body">
-                                                <div class="center middle">
-                                                    <div class="indicator sized"
-                                                         style="width: 64px; height: 64px; z-index: 2; -webkit-transform: translate3d(0px, 0px, 0px) scaleX(1) scaleY(1) scaleZ(1) rotateX(0deg) rotateY(0deg) rotateZ(360deg) skewX(0deg) skewY(0deg);"></div>
-                                                </div>
-                                                <div class="inner container-inner loading-mask-inner"></div>
-                                            </div>
-                                        </div>
 
-                                        <div class="inner container-inner list-inner composited scroll-scroller"
-                                             style="-webkit-transform: translate3d(0px, 0px, 0px) ;">
-                                            <div class="unsized pull refresh-indicator list-item"
-                                                 style="height: 50px; -webkit-transform: translate3d(100%, 0px, 0px) ;">
-                                                <div class="icon"></div>
-                                                <div class="text">Pull down to update</div>
-                                            </div>
-                                            <div class="unsized next-indicator list-item"
-                                                 style="height: 50px; -webkit-transform: translate3d(100%, 0px, 0px) ;"></div>
-                                        </div>
-
-                                        <div class="size-monitor overflowchanged">
-                                            <div class="expand">
-                                                <div class="expand-helper" style="width: 266px; height: 952px;"></div>
-                                            </div>
-                                            <div class="shrink">
-                                                <div class="shrink-helper" style="width: 265px; height: 951px;"></div>
-                                            </div>
-                                        </div>
-                                        <div class="paint-monitor cssanimation"></div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                         <!-- chat menu end -->
 
                         <!-- main menu start -->
-                        <div id="main-menu" class="container list main-menu floating sized"
-                             style="width: 266px; left: -266px; top: 0px; bottom: 0px; z-index: 2;">
-                            <div class="dock dock-vertical sized">
+                        <div id="main-menu" data-role="panel" data-position="left" data-display="reveal" class="container list main-menu floating sized">
+                            <div class="list">
 
-                                <div class="dock-body">
-                                    <div class="body scroll-container size-monitored paint-monitored">
-                                        <div class="inner container-inner list-inner composited scroll-scroller">
+                                <div class="list-item">
+                                    <span class="icon-pinterest"></span> 主页
+                                    <span class="icon-arrow-right pull-right"></span>
+                                </div>
 
-                                            <div class="container list-item sized"
-                                                 style="-webkit-transform: translate3d(0px, 0px, 0px) ; height: 45px;">
-                                                <div class="inner container-inner list-item-inner">
+                                <div class="list-item">
 
-                                                    <div class="text list-item-item"><span class="icon-pinterest"></span> 主页 <span class="icon-arrow-right pull-right"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="container list-item sized"
-                                                 style="-webkit-transform: translate3d(0px, 45px, 0px) ; height: 45px;">
-                                                <div class="inner container-inner list-item-inner">
-                                                    <div class="text list-item-item"><img class="avatar" src="./img/user.jpg" /> 元彦 <span class="icon-cog"></span>  <span class="icon-arrow-right pull-right"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="container list-item sized"
-                                                 style="-webkit-transform: translate3d(0px, 90px, 0px) ; height: 45px;">
-                                                <div class="inner container-inner list-item-inner">
+                                    <img class="avatar" src="./img/user.jpg"/> 元彦 <span
+                                        class="icon-cog"></span> <span class="icon-arrow-right pull-right"></span>
 
-                                                    <div class="text list-item-item"><span class="icon-home"></span> 商店 <span class="icon-arrow-right pull-right"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                </div>
+                                <div class="list-item">
+                                    <span class="icon-home"></span> 商店 <span
+                                        class="icon-arrow-right pull-right"></span>
+                                </div>
 
-                                            <div class="container list-item sized"
-                                                 style="-webkit-transform: translate3d(0px, 135px, 0px) ; height: 45px;">
-                                                <div class="inner container-inner list-item-inner">
+                            </div>
+                            <div class="list">
+                                    <div class="list-item">
 
-                                                    <div class="text list-item-item"> 活动  <span class=""></span> </div>
-                                                </div>
-                                            </div>
+                                        <div class="text list-item-item"> 活动 <span class=""></span></div>
 
-                                            <div class="container list-item sized"
-                                                 style="-webkit-transform: translate3d(0px, 180px, 0px) ; height: 90px;">
-                                                <div class="inner container-inner list-item-inner">
-                                                    <div class="list-item-item">
-                                                        <img style="width: 34px; height: 34px;" src="./img/user.jpg">
-                                                        已接受 您作为好友
-                                                    </div>
-                                                    <div class="list-item-item">
-                                                        <button>发送信息</button>
-                                                        <button>建议的好友</button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    </div>
 
-                                            <div class="container list-item sized"
-                                                 style="-webkit-transform: translate3d(0px, 270px, 0px) ; height: 90px;">
-                                                <div class="inner container-inner list-item-inner">
-                                                    <div class="list-item-item">
-                                                        <img style="width: 34px; height: 34px;" src="./img/user.jpg">
-                                                        已接受 您作为好友
-                                                    </div>
-                                                    <div class="list-item-item">
-                                                        <button>发送信息</button>
-                                                        <button>建议的好友</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="container list-item sized"
-                                                 style="-webkit-transform: translate3d(0px, 360px, 0px) ; height: 90px;">
-                                                <div class="inner container-inner list-item-inner">
-                                                    <div class="list-item-item">
-                                                        <img style="width: 34px; height: 34px;" src="./img/user.jpg">
-                                                        已接受 您作为好友
-                                                    </div>
-                                                    <div class="list-item-item">
-                                                        <button>发送信息</button>
-                                                        <button>建议的好友</button>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    <div class="list-item">
+
+                                        <div class="list-item-item">
+                                            <img style="width: 34px; height: 34px;" src="./img/user.jpg">
+                                            已接受 您作为好友
+                                        </div>
+                                        <div class="list-item-item">
+                                            <button>发送信息</button>
+                                            <button>建议的好友</button>
+                                        </div>
+                                    </div>
+
+                                    <div class="list-item">
+
+                                        <div class="list-item-item">
+                                            <img style="width: 34px; height: 34px;" src="./img/user.jpg">
+                                            已接受 您作为好友
+                                        </div>
+                                        <div class="list-item-item">
+                                            <button>发送信息</button>
+                                            <button>建议的好友</button>
+                                        </div>
+                                    </div>
+                                    <div class="list-item">
+
+                                        <div class="list-item-item">
+                                            <img style="width: 34px; height: 34px;"
+                                                 src="./img/user.jpg">
+                                            已接受 您作为好友
+                                        </div>
+                                        <div class="list-item-item">
+                                            <button>发送信息</button>
+                                            <button>建议的好友</button>
                                         </div>
 
-                                        <!-- helper dom-->
-                                        <div class="size-monitor overflowchanged">
-                                            <div class="expand">
-                                                <div class="expand-helper" style="width: 266px; height: 952px;"></div>
-                                            </div>
-                                            <div class="shrink">
-                                                <div class="shrink-helper" style="width: 265px; height: 951px;"></div>
-                                            </div>
-                                        </div>
-
-                                        <div class="paint-monitor cssanimation"></div>
                                     </div>
                                 </div>
+
+                            <!-- helper dom-->
+                            <div class="size-monitor overflowchanged">
+                                <div class="expand">
+                                    <div class="expand-helper"
+                                         style="width: 266px; height: 952px;"></div>
+                                </div>
+                                <div class="shrink">
+                                    <div class="shrink-helper"
+                                         style="width: 265px; height: 951px;"></div>
+                                </div>
                             </div>
+
+                            <div class="paint-monitor cssanimation"></div>
                         </div>
                         <!-- main menu end -->
 
@@ -355,7 +272,7 @@
 <!-- home screen end -->
 
 
-<script src="http://pub.idqqimg.com/lib/jquery/1.9.0/jquery.js"></script>
+<script src="../../lib/jquery/jquery.js"></script>
 <script src="js/main.js"></script>
 
 

@@ -1,0 +1,35 @@
+.story-container {
+    background-color: #bfc7d8
+}
+
+body.tablet .story {
+    font-size: 120%
+}
+
+.video {
+    position: relative
+}
+
+.video.loading .video-poster::after {
+    content: "\26"
+}
+
+.video-element {
+    width: 100%;
+    height: 100%
+}
+
+.image {
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 0
+}
+
+.image.loading {
+    background-image: none !important
+}
+
+
+

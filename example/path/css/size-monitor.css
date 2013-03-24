@@ -1,0 +1,47 @@
+.size-monitored {
+    position: relative
+}
+
+.size-monitor {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    visibility: hidden
+}
+
+.size-monitor>.shrink, .size-monitor>.expand {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden
+}
+
+.size-monitor.scroll>.shrink::after {
+    content: "";
+    display: block;
+    width: 200%;
+    height: 200%;
+    min-width: 1px;
+    min-height: 1px
+}
+
+.size-monitor.scroll>.expand::after {
+    content: "";
+    display: block;
+    width: 100000px;
+    height: 100000px
+}
+
+.size-monitor.overflowchanged>.shrink>.shrink-helper {
+    width: 100%;
+    height: 100%
+}
+
+.size-monitor.overflowchanged>.expand>.expand-helper {
+    width: 200%;
+    height: 200%
+}

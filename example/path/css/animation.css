@@ -6,3 +6,39 @@
         -webkit-transform: translate3d(0, 0, 0) rotate(360deg)
     }
 }
+
+.translatable {
+    position: absolute !important;
+    top: 100% !important;
+    left: 100% !important;
+    overflow: visible !important;
+    z-index: 1
+}
+
+.translatable::before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    visibility: hidden
+}
+
+.translatable-container {
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%
+}
+
+.translatable-container::before {
+    content: "";
+    display: block;
+    width: 300%;
+    height: 300%;
+    visibility: hidden
+}

@@ -1,0 +1,45 @@
+body {
+    background-color: #574B41
+}
+
+
+#main {
+    left: 0px;
+    top: 0px;
+    bottom: 0px;
+    right: 0px;
+    z-index: 2;
+
+    background-color: #F5F0EB;
+}
+
+
+.logo {
+    color: #ffffff;
+    font-size: 25px;
+    font-family: 'Gabriela', serif;
+}
+
+/*To avoid blinks when opening a panel*/
+[data-role=panel]{
+    -webkit-transform: translate3d(0,0,0);
+}
+
+
+#chat-menu {
+    width: 266px;
+    right: -266px;
+    top: 0px;
+    bottom: 0px;
+    z-index: 4;
+}
+
+#main-menu {
+    width: 266px;
+    left: -266px;
+    top: 0px;
+    bottom: 0px;
+    z-index: 2;
+}
+
+

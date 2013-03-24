@@ -1,0 +1,19 @@
+.button {
+    cursor: pointer;
+    display: inline-block;
+    padding: .3em .6em;
+    font-weight: bold
+}
+
+
+.button>.label:not(.active), .button>.icon:not(.active) {
+    display: none
+}
+
+.button>.icon.align-right {
+    float: right
+}
+
+.button.layout-box-item {
+    display: block
+}

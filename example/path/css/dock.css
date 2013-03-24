@@ -1,0 +1,38 @@
+.dock {
+    display: -webkit-flex;
+}
+
+.dock.sized, .dock.sized>.dock-body>*, .dock.sized>.dock-body>.body>.inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%
+}
+
+.dock.sized>.dock-body {
+    display: -webkit-flex;
+    -webkit-box-flex: 1;
+    position: relative;
+    border-top: 1px solid #322B26;
+}
+
+.dock.dock-vertical {
+    -webkit-box-orient: vertical;
+}
+
+.dock.dock-horizontal {
+    -webkit-box-orient: horizontal;
+}
+
+.dock.dock-horizontal>.dock-item {
+    display: -webkit-flex;
+}
+
+.dock.dock-horizontal>.dock-item.sized>.inner, .dock.dock-horizontal>.dock-item.sized>.body {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%
+}

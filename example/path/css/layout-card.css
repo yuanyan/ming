@@ -1,0 +1,30 @@
+.layout-card {
+    position: relative;
+    overflow: hidden
+}
+
+.layout-card>.layout-card-item {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0
+}
+
+.layout-card.mode-display>.layout-card-item:not(.active) {
+    display: none !important
+}
+
+.layout-card.mode-offset>.layout-card-item {
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0)
+}
+
+.layout-card.mode-offset>.layout-card-item:not(.active) {
+    transform: translate3d(200%, 200%, 0) !important;
+    -webkit-transform: translate3d(200%, 200%, 0) !important
+}
+
+.layout-card.mode-visibility>.layout-card-item:not(.active) {
+    visibility: hidden !important
+}

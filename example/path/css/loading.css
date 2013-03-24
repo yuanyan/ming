@@ -1,0 +1,18 @@
+.loading-mask {
+    background-color: #FFF;
+    transform: translate3d(0, 0, 0);
+    -webkit-transform: translate3d(0, 0, 0)
+}
+
+.loading-mask .indicator {
+    text-align: center;
+    font-size: 64px;
+    line-height: 64px;
+    color: #49639c
+}
+
+.loading-mask .indicator::after {
+    font-family: 'fc';
+    display: inline-block;
+    content: '\23'
+}

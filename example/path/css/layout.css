@@ -1,0 +1,56 @@
+
+
+.layout-float>.layout-float-item {
+    float: left
+}
+
+.layout-float.direction-right>.layout-float-item {
+    float: right
+}
+
+
+.center {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center
+}
+
+.center.top {
+    bottom: auto;
+    -webkit-box-align: start;
+    -ms-flex-align: start
+}
+
+.center.right {
+    left: auto;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end
+}
+
+.center.bottom {
+    top: auto;
+    -webkit-box-align: end;
+    -ms-flex-align: end
+}
+
+.center.left {
+    right: auto;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start
+}
+
+.center>* {
+    position: relative
+}
+
+.floating {
+    position: absolute !important
+}
