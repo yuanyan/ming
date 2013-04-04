@@ -1,3 +1,42 @@
+
+!(function (factory) {
+    if (typeof define === 'function') {
+        define('$',['jquery'], factory);
+    } else {
+        factory(jQuery);
+    }
+})(function ($) {
+    return $;
+});
+define('tmpl',{load: function(id){throw new Error("Dynamic load not allowed: " + id);}});
+define('tmpl!tpl/footer.html',[],function () { return function(obj){
+var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
+with(obj||{}){
+__p+='<footer>footer</footer>\r\n';
+}
+return __p;
+};});
+
+define('tmpl!tpl/frame.html',[],function () { return function(obj){
+var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
+with(obj||{}){
+__p+='<h2>'+
+((__t=( title ))==null?'':__t)+
+'</h2>\r\n\r\n<p>'+
+((__t=( content ))==null?'':__t)+
+'</p>\r\n\r\n'+
+(function(obj){
+var __t,__p='',__j=Array.prototype.join,print=function(){__p+=__j.call(arguments,'');};
+with(obj||{}){
+__p+='<footer>footer</footer>\r\n';
+}
+return __p;
+})()+
+'\r\n';
+}
+return __p;
+};});
+
 require.config({
 	baseUrl: '.',
 	paths : {
@@ -77,4 +116,5 @@ require(['$', 'tmpl!tpl/frame.html'],function($, frameTpl){
 		});
 	});
 
-})
+});
+define("js/main.js", function(){});

@@ -1,0 +1,21 @@
+/*
+ * modjs
+ * http://github.com/modulejs/modjs
+ */
+
+module.exports = {
+
+    tasks:{
+
+        compile:{
+            source:"./js/main.js",
+            dest:"./mobile.js",
+            exclude:"jquery",
+            stubModules: ['tmpl'],
+            baseUrl:"."
+        }
+    },
+    targets:{
+        dist:"compile"
+    }
+};
