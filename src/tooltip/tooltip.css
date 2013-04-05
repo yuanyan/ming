@@ -1,0 +1,351 @@
+/*! Hint.css - v1.2.1 - 2013-03-24
+* http://kushagragour.in/lab/tooltip/
+* Copyright (c) 2013 Kushagra Gour; Licensed MIT */
+
+/*-------------------------------------*\
+	HINT.css - A CSS tooltip library
+\*-------------------------------------*/
+/**
+ * HINT.css is a tooltip library made in pure CSS.
+ *
+ * Source: https://github.com/chinchang/tooltip.css
+ * Demo: http://kushagragour.in/labs/tooltip/
+ *
+ * Release under The MIT License
+ *
+ */
+/**
+ * source: tooltip-core.scss
+ *
+ * Defines the basic styling for the tooltip.
+ * Each tooltip is made of 2 parts:
+ * 	1) body (:after)
+ * 	2) arrow (:before)
+ *
+ * Classes added:
+ * 	1) tooltip
+ */
+.tooltip, [data-tooltip] {
+    position: relative;
+    display: inline-block;
+    /**
+       * tooltip arrow
+       */
+    /**
+       * tooltip body
+       */
+}
+
+.tooltip:before, .tooltip:after, [data-tooltip]:before, [data-tooltip]:after {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    z-index: 1000000;
+    pointer-events: none;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+
+.tooltip:hover:before, .tooltip:hover:after, [data-tooltip]:hover:before, [data-tooltip]:hover:after {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip:before, [data-tooltip]:before {
+    content: '';
+    position: absolute;
+    background: transparent;
+    border: 6px solid transparent;
+    z-index: 1000001;
+}
+
+.tooltip:after, [data-tooltip]:after {
+    content: attr(data-tooltip);
+    background: #383838;
+    color: white;
+    text-shadow: 0 -1px 0px black;
+    padding: 8px 10px;
+    font-size: 12px;
+    line-height: 12px;
+    white-space: nowrap;
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/**
+ *
+ * Defines the positoning logic for the tooltips.
+ *
+ * Classes added:
+ * 	1) tooltip-top
+ * 	2) tooltip-bottom
+ * 	3) tooltip-left
+ * 	4) tooltip-right
+ */
+/**
+ * set default color for tooltip arrows
+ */
+.tooltip-top:before {
+    border-top-color: #383838;
+}
+
+.tooltip-bottom:before {
+    border-bottom-color: #383838;
+}
+
+.tooltip-left:before {
+    border-left-color: #383838;
+}
+
+.tooltip-right:before {
+    border-right-color: #383838;
+}
+
+/**
+ * top tooltip
+ */
+.tooltip-top:before {
+    margin-bottom: -12px;
+}
+
+.tooltip-top:after {
+    margin-left: -18px;
+}
+
+.tooltip-top:before, .tooltip-top:after {
+    bottom: 100%;
+    left: 50%;
+}
+
+.tooltip-top:hover:before, .tooltip-top:hover:after {
+    -webkit-transform: translateY(-8px);
+    -moz-transform: translateY(-8px);
+    transform: translateY(-8px);
+}
+
+/**
+ * bottom tooltip
+ */
+.tooltip-bottom:before {
+    margin-top: -12px;
+}
+
+.tooltip-bottom:after {
+    margin-left: -18px;
+}
+
+.tooltip-bottom:before, .tooltip-bottom:after {
+    top: 100%;
+    left: 50%;
+}
+
+.tooltip-bottom:hover:before, .tooltip-bottom:hover:after {
+    -webkit-transform: translateY(8px);
+    -moz-transform: translateY(8px);
+    transform: translateY(8px);
+}
+
+/**
+ * right tooltip
+ */
+.tooltip-right:before {
+    margin-left: -12px;
+    margin-bottom: -6px;
+}
+
+.tooltip-right:after {
+    margin-bottom: -14px;
+}
+
+.tooltip-right:before, .tooltip-right:after {
+    left: 100%;
+    bottom: 50%;
+}
+
+.tooltip-right:hover:before, .tooltip-right:hover:after {
+    -webkit-transform: translateX(8px);
+    -moz-transform: translateX(8px);
+    transform: translateX(8px);
+}
+
+/**
+ * left tooltip
+ */
+.tooltip-left:before {
+    margin-right: -12px;
+    margin-bottom: -6px;
+}
+
+.tooltip-left:after {
+    margin-bottom: -14px;
+}
+
+.tooltip-left:before, .tooltip-left:after {
+    right: 100%;
+    bottom: 50%;
+}
+
+.tooltip-left:hover:before, .tooltip-left:hover:after {
+    -webkit-transform: translateX(-8px);
+    -moz-transform: translateX(-8px);
+    transform: translateX(-8px);
+}
+
+/**
+ * source: tooltip-color-types.scss
+ *
+ * Contains tooltips of various types based on color differences.
+ *
+ * Classes added:
+ * 	1) tooltip-error
+ * 	2) tooltip-warning
+ * 	3) tooltip-info
+ * 	4) tooltip-success
+ *
+ */
+/**
+ * Error
+ */
+.tooltip-error:after {
+    background-color: #b34e4d;
+    text-shadow: 0 -1px 0px #5a2626;
+}
+
+.tooltip-error.tooltip-top:before {
+    border-top-color: #b34e4d;
+}
+
+.tooltip-error.tooltip-bottom:before {
+    border-bottom-color: #b34e4d;
+}
+
+.tooltip-error.tooltip-left:before {
+    border-left-color: #b34e4d;
+}
+
+.tooltip-error.tooltip-right:before {
+    border-right-color: #b34e4d;
+}
+
+/**
+ * Warning
+ */
+.tooltip-warning:after {
+    background-color: #c09854;
+    text-shadow: 0 -1px 0px #6d5228;
+}
+
+.tooltip-warning.tooltip-top:before {
+    border-top-color: #c09854;
+}
+
+.tooltip-warning.tooltip-bottom:before {
+    border-bottom-color: #c09854;
+}
+
+.tooltip-warning.tooltip-left:before {
+    border-left-color: #c09854;
+}
+
+.tooltip-warning.tooltip-right:before {
+    border-right-color: #c09854;
+}
+
+/**
+ * Info
+ */
+.tooltip-info:after {
+    background-color: #3986ac;
+    text-shadow: 0 -1px 0px #193c4c;
+}
+
+.tooltip-info.tooltip-top:before {
+    border-top-color: #3986ac;
+}
+
+.tooltip-info.tooltip-bottom:before {
+    border-bottom-color: #3986ac;
+}
+
+.tooltip-info.tooltip-left:before {
+    border-left-color: #3986ac;
+}
+
+.tooltip-info.tooltip-right:before {
+    border-right-color: #3986ac;
+}
+
+/**
+ * Success
+ */
+.tooltip-success:after {
+    background-color: #458746;
+    text-shadow: 0 -1px 0px #1a331a;
+}
+
+.tooltip-success.tooltip-top:before {
+    border-top-color: #458746;
+}
+
+.tooltip-success.tooltip-bottom:before {
+    border-bottom-color: #458746;
+}
+
+.tooltip-success.tooltip-left:before {
+    border-left-color: #458746;
+}
+
+.tooltip-success.tooltip-right:before {
+    border-right-color: #458746;
+}
+
+/**
+ * source: tooltip-always.scss
+ *
+ * Defines a persisted tooltip which shows always.
+ *
+ * Classes added:
+ * 	1) tooltip-always
+ *
+ */
+.tooltip-always:after, .tooltip-always:before {
+    opacity: 1;
+    visibility: visible;
+}
+
+.tooltip-always.tooltip-top:after, .tooltip-always.tooltip-top:before {
+    -webkit-transform: translateY(-8px);
+    -moz-transform: translateY(-8px);
+    transform: translateY(-8px);
+}
+
+.tooltip-always.tooltip-bottom:after, .tooltip-always.tooltip-bottom:before {
+    -webkit-transform: translateY(8px);
+    -moz-transform: translateY(8px);
+    transform: translateY(8px);
+}
+
+.tooltip-always.tooltip-left:after, .tooltip-always.tooltip-left:before {
+    -webkit-transform: translateX(-8px);
+    -moz-transform: translateX(-8px);
+    transform: translateX(-8px);
+}
+
+.tooltip-always.tooltip-right:after, .tooltip-always.tooltip-right:before {
+    -webkit-transform: translateX(8px);
+    -moz-transform: translateX(8px);
+    transform: translateX(8px);
+}
+
+/**
+ * source: tooltip-rounded.scss
+ *
+ * Defines rounded corner tooltips.
+ *
+ * Classes added:
+ * 	1) tooltip-rounded
+ *
+ */
+.tooltip-rounded:after {
+    border-radius: 4px;
+}
