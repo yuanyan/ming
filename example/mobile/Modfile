@@ -13,9 +13,19 @@ module.exports = {
             exclude:"jquery",
             stubModules: ['tmpl'],
             baseUrl:"."
-        }
+        },
+		
+		sprite: {
+			"source": "./css/",                          // required
+			"sourceImageRoot": "./img/",                 // optional default source
+			"dest": "./dist/css/",                       // required
+			"destImageRoot": "./sprites/",               // optional relative to  dest path, default "./sprites/"
+			"maxSize": 60,                               // optional "kb"
+			"margin": 5,                                 // optional default 0
+			"prefix": "sprite_",                         // optional          
+		}
     },
     targets:{
-        dist:"compile"
+        dist:"compile sprite"
     }
 };
