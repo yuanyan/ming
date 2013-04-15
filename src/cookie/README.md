@@ -17,6 +17,10 @@ Create session cookie:
 
     $.cookie('the_cookie', 'the_value');
 
+Create expiring cookie:
+
+    $.cookie('the_cookie', 'the_value', { expires: new Date('Mon, 15 Apr 2013 11:10:15 GMT') });
+
 Create expiring cookie, 7 days from then:
 
     $.cookie('the_cookie', 'the_value', { expires: 7 });
