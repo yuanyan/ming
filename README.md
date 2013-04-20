@@ -1,4 +1,4 @@
-## Modulejs (2.1.0 alpha)
+## Modulejs (2.1 alpha)
 
 Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto and micro modules you need for modern desktop/mobile web application development.
 
@@ -49,30 +49,30 @@ http://modulejs.github.com/doc
 * [Visit the Wiki](https://github.com/modulejs/modulejs/wiki)
 
 ###Changelog
-#### 2013-4-20 2.1.0 alpha
+#### 2013-4-20 2.1 alpha
 1. modulejs-2.0 in branch
 
-#### 2013-3-20 2.1.0 dev
+#### 2013-3-20 2.1 dev
 1. base Object Class
 2. EventEmitter
 
-#### 2012-12-12 2.0.0 dev
+#### 2012-12-12 2.0 dev
 1. modulejs2.0 in dev
 2. modulejs2.0 in modulejs-1.0 branch
 
-#### 2012-09-26 0.1.2 release
+#### 2012-09-26 1.2 release
 
 1. remove sizzle module
 2. fix Node.text bug
 
-#### 2012-08-11 0.1.4  release
+#### 2012-08-11 1.1 release
 
 1. remove graph module
 2. all module AMD support
 3. add net/JSONPI module
 4. storage/LocalStorage module support IE6-7
 
-#### 2011-09-01 0.1.0 release
+#### 2011-09-01 1.0 release
 
 ###License
 
