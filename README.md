@@ -1,10 +1,10 @@
-## Modulejs (2.3.0 dev)
+## Makejs (2.3.0 dev)
 
-Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto and micro modules you need for modern desktop/mobile web application development.
+Makejs a high-productivity JavaScript solution that integrates jQuery/Zepto and micro modules you need for modern desktop/mobile web application development.
 
-[![Selenium Test Status](https://saucelabs.com/buildstatus/modulejs)](https://saucelabs.com/u/modulejs)
+[![Selenium Test Status](https://saucelabs.com/buildstatus/modulejs)](https://saucelabs.com/u/makejs)
 
-[![Build Status](https://secure.travis-ci.org/modulejs/modulejs.png)](https://travis-ci.org/modulejs/modulejs)
+[![Build Status](https://secure.travis-ci.org/modulejs/modulejs.png)](https://travis-ci.org/modulejs/makejs)
 
 ### Solution Features
 * Improve programming experience
@@ -34,7 +34,7 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto an
 * console-shim (optional)
 
 ### Browsers
-[![browser support](http://ci.testling.com/modulejs/modulejs.png)](http://ci.testling.com/modulejs/modulejs)
+[![browser support](http://ci.testling.com/modulejs/makejs.png)](http://ci.testling.com/modulejs/makejs)
 
 ###Guide
 
@@ -49,14 +49,17 @@ http://modulejs.github.com/doc
 * [Visit the Wiki](https://github.com/modulejs/modulejs/wiki)
 
 ###Changelog
+#### 2013-4-20
+1. modulejs-2.0 in branch
+2. rename modulejs to makejs
 
 #### 2013-3-20 2.3.0 dev
 1. base Object Class
 2. EventEmitter
 
 #### 2012-12-12 2.0.0 dev
-1. modulejs2.0 in dev
-2. modulejs2.0 in modulejs-1.0 branch
+1. modulejs-2.0 in dev
+2. modulejs-1.0 in branch
 
 #### 2012-09-26 0.1.2 release
 
