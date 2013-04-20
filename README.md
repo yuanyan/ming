@@ -1,10 +1,10 @@
-## Makejs (2.3.0 dev)
+## Modulejs (2.1.0 alpha)
 
-Makejs a high-productivity JavaScript solution that integrates jQuery/Zepto and micro modules you need for modern desktop/mobile web application development.
+Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto and micro modules you need for modern desktop/mobile web application development.
 
-[![Selenium Test Status](https://saucelabs.com/buildstatus/modulejs)](https://saucelabs.com/u/makejs)
+[![Selenium Test Status](https://saucelabs.com/buildstatus/modulejs)](https://saucelabs.com/u/modulejs)
 
-[![Build Status](https://secure.travis-ci.org/modulejs/modulejs.png)](https://travis-ci.org/modulejs/makejs)
+[![Build Status](https://secure.travis-ci.org/modulejs/modulejs.png)](https://travis-ci.org/modulejs/modulejs)
 
 ### Solution Features
 * Improve programming experience
@@ -34,7 +34,7 @@ Makejs a high-productivity JavaScript solution that integrates jQuery/Zepto and 
 * console-shim (optional)
 
 ### Browsers
-[![browser support](http://ci.testling.com/modulejs/makejs.png)](http://ci.testling.com/modulejs/makejs)
+[![browser support](http://ci.testling.com/modulejs/modulejs.png)](http://ci.testling.com/modulejs/modulejs)
 
 ###Guide
 
@@ -49,17 +49,16 @@ http://modulejs.github.com/doc
 * [Visit the Wiki](https://github.com/modulejs/modulejs/wiki)
 
 ###Changelog
-#### 2013-4-20
+#### 2013-4-20 2.1.0 alpha
 1. modulejs-2.0 in branch
-2. rename modulejs to makejs
 
-#### 2013-3-20 2.3.0 dev
+#### 2013-3-20 2.1.0 dev
 1. base Object Class
 2. EventEmitter
 
 #### 2012-12-12 2.0.0 dev
-1. modulejs-2.0 in dev
-2. modulejs-1.0 in branch
+1. modulejs2.0 in dev
+2. modulejs2.0 in modulejs-1.0 branch
 
 #### 2012-09-26 0.1.2 release
 
@@ -79,7 +78,7 @@ http://modulejs.github.com/doc
 
 (The MIT License)
 
-Copyright (c) 2010-2011 yuanyan <yuanyan.cao@gmail.com>
+Copyright (c) 2010-2013 yuanyan <yuanyan.cao@gmail.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
