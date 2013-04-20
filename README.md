@@ -27,11 +27,17 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto an
 * EightMedia/hammer.js@0.6.1
 * ryanseddon/H5F@1.0.0
 * aralejs/class@1.0.0
+
+### Widgets
 * bootstrap/carousel@2.3.0
 
 ### Shims
 * es5-shim     (optional)
 * console-shim (optional)
+
+### Inspectors
+* FirebugLite
+* Darsain/fpsmeter@0.2.1
 
 ### Browsers
 [![browser support](http://ci.testling.com/modulejs/modulejs.png)](http://ci.testling.com/modulejs/modulejs)
