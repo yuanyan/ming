@@ -19,6 +19,7 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto an
 * curljs - CommonJS (optional)
 
 ### Modules
+#### Language Modules
 * object
 * string
 * format
@@ -26,34 +27,41 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto an
 * color
 * json
 * memoize
-* url
 
+#### OOP Modules
 * class - aralejs/class@1.0.0
 * runtime
 
-* history - Backbone.History
-* route - Backbone.Router
-
-* deferred
-* eventemitter
-
+#### Storage Modules
 * storage - marcuswestin/store.js@1.3.5
 * cookie - carhartl/jquery-cookie@1.3
 
+#### UI Modules
+* history - Backbone.History
+* route - Backbone.Router
 * template - underscore.template
 * datalink - jquery/jquery-datalink@1.0.0
 * validate - ryanseddon/H5F@1.0.0
+* layout
 
+#### Input Modules
 * mousewheel
 * key - madrobby/keymaster@1.0.2
 * touch - EightMedia/hammer.js@0.6.1
 
+#### Communication Modules
 * jsonpi
 * cors
 * postmessage
 
-* layout
+#### Pattern Modules
+* deferred
+* eventemitter
+
+#### Other Modules
 * prefetch
+* url
+
 
 ### Widgets
 * carousel - bootstrap/carousel@2.3.0
