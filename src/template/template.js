@@ -1,10 +1,10 @@
 !(function (factory) {
     if (typeof define === 'function') {
-        define(['$'], factory);
+        define(['$','../escape/escape'], factory);
     } else {
-        factory($);
+        factory($, $.escape);
     }
-})(function ($) {
+})(function ($, escape) {
     'use strict';
 
     var pluginName = 'template';
@@ -58,7 +58,7 @@
                 .replace(escaper, function(match) { return '\\' + escapes[match]; });
 
             if (escape) {
-                source += "'+\n((__t=(" + escape + "))==null?'':$('<a/>').text(__t).html())+\n'";
+                source += "'+\n((__t=(" + escape + "))==null?'': $.escape.escapeHTML(__t))+\n'";
             }
             if (interpolate) {
                 source += "'+\n((__t=(" + interpolate + "))==null?'':__t)+\n'";

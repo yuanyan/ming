@@ -18,26 +18,46 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto an
 * seajs - CMD       (optional)
 * curljs - CommonJS (optional)
 
-### Integrates
-* marcuswestin/store.js@1.3.5
-* carhartl/jquery-cookie@1.3
-* mathiasbynens/jquery-placeholder@2.0.7
-* jquery/jquery-datalink@1.0.0
-* madrobby/keymaster@1.0.2
-* EightMedia/hammer.js@0.6.1
-* ryanseddon/H5F@1.0.0
-* aralejs/class@1.0.0
+### Modules
+* object
+* string
+* class - aralejs/class@1.0.0
+* runtime
+* format
+* escape
+* color
+* cors
+* json
+* jsonpi
+* memoize
+* mousewheel
+* postmessage
+* prefetch
+* history - Backbone.History
+* route - Backbone.Router
+* url
+* eventemitter
+* layout
+* storage - marcuswestin/store.js@1.3.5
+* cookie - carhartl/jquery-cookie@1.3
+* template - underscore.template
+* datalink - jquery/jquery-datalink@1.0.0
+* validate - ryanseddon/H5F@1.0.0
+* key - madrobby/keymaster@1.0.2
+* touch - EightMedia/hammer.js@0.6.1
 
 ### Widgets
-* bootstrap/carousel@2.3.0
+* carousel - bootstrap/carousel@2.3.0
+* placeholder - mathiasbynens/jquery-placeholder@2.0.7
+* tooltip
+
+### Inspectors
+* firebuglite - getfirebug.com/firebuglite
+* fpsmeter - Darsain/fpsmeter@0.2.1
 
 ### Shims
 * es5-shim     (optional)
 * console-shim (optional)
-
-### Inspectors
-* FirebugLite
-* Darsain/fpsmeter@0.2.1
 
 ### Browsers
 [![browser support](http://ci.testling.com/modulejs/modulejs.png)](http://ci.testling.com/modulejs/modulejs)
