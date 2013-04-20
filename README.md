@@ -76,7 +76,8 @@ http://modulejs.github.com/doc
 
 ###Changelog
 #### 2013-4-20 2.1 alpha
-1. modulejs-2.0 in branch
+1. firebuglite
+1. fpsmeter
 
 #### 2013-3-20 2.1 dev
 1. base Object Class
