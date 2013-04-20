@@ -1,4 +1,4 @@
-## Modulejs (2.1 alpha)
+# Modulejs (2.1 alpha)
 
 Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto and micro modules you need for modern desktop/mobile web application development.
 
@@ -6,19 +6,19 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto an
 
 [![Build Status](https://secure.travis-ci.org/modulejs/modulejs.png)](https://travis-ci.org/modulejs/modulejs)
 
-### Solution Features
+## Solution Features
 * Improve programming experience
 * Enhance source maintainability
 * Development based on ES5
 * Development based on modular JavaScript
 * Better asynchronous programming with Futures
 
-### Module Loader Support
+## Module Loader Support
 * requirejs - AMD   (default)
 * seajs - CMD       (optional)
 * curljs - CommonJS (optional)
 
-### Modules
+## Modules
 #### Language Modules
 * object
 * string
@@ -63,35 +63,35 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto an
 * url
 
 
-### Widgets
+## Widgets
 * carousel - bootstrap/carousel@2.3.0
 * placeholder - mathiasbynens/jquery-placeholder@2.0.7
 * tooltip
 
-### Inspectors
+## Inspectors
 * firebuglite - getfirebug.com/firebuglite
 * fpsmeter - Darsain/fpsmeter@0.2.1
 
-### Shims
+## Shims
 * es5-shim     (optional)
 * console-shim (optional)
 
-### Browsers
+## Browsers
 [![browser support](http://ci.testling.com/modulejs/modulejs.png)](http://ci.testling.com/modulejs/modulejs)
 
-###Guide
+## Guide
 
 http://modulejs.github.com/guide
 
-###API
+## API
 
 http://modulejs.github.com/doc
 
-###Links
+## Links
 * [Google Group for discussion](http://groups.google.com/group/modulejs)
 * [Visit the Wiki](https://github.com/modulejs/modulejs/wiki)
 
-###Changelog
+## Changelog
 #### 2013-4-20 2.1 alpha
 1. firebuglite
 1. fpsmeter
@@ -118,14 +118,8 @@ http://modulejs.github.com/doc
 
 #### 2011-09-01 1.0 release
 
-###License
+## License
 
 (The MIT License)
 
 Copyright (c) 2010-2013 yuanyan <yuanyan.cao@gmail.com>
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
