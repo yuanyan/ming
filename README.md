@@ -71,6 +71,7 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto an
 ## Inspectors
 * firebuglite - getfirebug.com/firebuglite
 * fpsmeter - Darsain/fpsmeter@0.2.1
+* jstiming
 
 ## Shims
 * es5-shim     (optional)
