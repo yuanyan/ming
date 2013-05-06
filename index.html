@@ -1,43 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>Modulejs by modulejs</title>
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <body>
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>Modulejs</title>
+  <meta name="description" content="modular javascript solution with jQuery">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Modulejs</h1>
+    </header>
     <div id="container">
-      <div class="inner">
+      <p class="tagline">modular javascript solution with jQuery</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/modulejs/modulejs/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/modulejs/modulejs/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/modulejs/modulejs" class="code">View Modulejs on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <h1>Modulejs (2.1 alpha)</h1>
 
-        <header>
-          <h1>Modulejs</h1>
-          <h2>modular javascript solution with jQuery</h2>
-        </header>
+<p>Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto and micro modules you need for modern desktop/mobile web application development.</p>
 
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/modulejs/modulejs/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="https://github.com/modulejs/modulejs/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          <a href="https://github.com/modulejs/modulejs" id="view-on-github" class="button"><span>View on GitHub</span></a>
-        </section>
-
-        <hr>
-
-        <section id="main_content">
-          <h2>Modulejs (2.0.0 dev)</h2>
-
-<p>Modulejs a high-productivity JavaScript solution that integrates jQuery and micro modules you need for modern web application development.</p>
+<p><a href="https://saucelabs.com/u/modulejs"><img src="https://saucelabs.com/buildstatus/modulejs" alt="Selenium Test Status"></a></p>
 
 <p><a href="https://travis-ci.org/modulejs/modulejs"><img src="https://secure.travis-ci.org/modulejs/modulejs.png" alt="Build Status"></a></p>
 
-<h3>Solution Features</h3>
+<h2>Solution Features</h2>
 
 <ul>
 <li>Improve programming experience</li>
@@ -45,86 +52,155 @@
 <li>Development based on ES5</li>
 <li>Development based on modular JavaScript</li>
 <li>Better asynchronous programming with Futures</li>
-</ul><h3>Module Loader Support</h3>
+</ul><h2>Module Loader Support</h2>
 
 <ul>
 <li>requirejs - AMD   (default)</li>
 <li>seajs - CMD       (optional)</li>
 <li>curljs - CommonJS (optional)</li>
-</ul><h3>Integrates</h3>
+</ul><h2>Modules</h2>
+
+<h4>Language Modules</h4>
 
 <ul>
-<li>marcuswestin/store.js@1.3.5</li>
-<li>carhartl/jquery-cookie@1.3</li>
-<li>mathiasbynens/jquery-placeholder@2.0.7</li>
-<li>jquery/jquery-datalink@1.0.0</li>
-<li>madrobby/keymaster@1.0.2</li>
-<li>EightMedia/hammer.js@0.6.1</li>
-<li>ryanseddon/H5F@1.0.0</li>
-<li>aralejs/class@1.0.0</li>
-</ul><h3>Shims</h3>
+<li>object</li>
+<li>string</li>
+<li>format</li>
+<li>escape</li>
+<li>color</li>
+<li>json</li>
+<li>memoize</li>
+</ul><h4>OOP Modules</h4>
+
+<ul>
+<li>class - aralejs/class@1.0.0</li>
+<li>runtime</li>
+</ul><h4>Storage Modules</h4>
+
+<ul>
+<li>storage - marcuswestin/store.js@1.3.5</li>
+<li>cookie - carhartl/jquery-cookie@1.3</li>
+</ul><h4>UI Modules</h4>
+
+<ul>
+<li>history - Backbone.History</li>
+<li>route - Backbone.Router</li>
+<li>template - underscore.template</li>
+<li>datalink - jquery/jquery-datalink@1.0.0</li>
+<li>validate - ryanseddon/H5F@1.0.0</li>
+<li>layout</li>
+</ul><h4>Input Modules</h4>
+
+<ul>
+<li>mousewheel</li>
+<li>key - madrobby/keymaster@1.0.2</li>
+<li>touch - EightMedia/hammer.js@0.6.1</li>
+</ul><h4>Communication Modules</h4>
+
+<ul>
+<li>jsonpi</li>
+<li>cors</li>
+<li>postmessage</li>
+</ul><h4>Pattern Modules</h4>
+
+<ul>
+<li>deferred</li>
+<li>eventemitter</li>
+</ul><h4>Other Modules</h4>
+
+<ul>
+<li>prefetch</li>
+<li>url</li>
+</ul><h2>Widgets</h2>
+
+<ul>
+<li>carousel - bootstrap/carousel@2.3.0</li>
+<li>placeholder - mathiasbynens/jquery-placeholder@2.0.7</li>
+<li>tooltip</li>
+</ul><h2>Inspectors</h2>
+
+<ul>
+<li>firebuglite - getfirebug.com/firebuglite</li>
+<li>fpsmeter - Darsain/fpsmeter@0.2.1</li>
+<li>jstiming</li>
+</ul><h2>Shims</h2>
 
 <ul>
 <li>es5-shim     (optional)</li>
 <li>console-shim (optional)</li>
-</ul><h3>Browsers</h3>
+</ul><h2>Browsers</h2>
 
 <p><a href="http://ci.testling.com/modulejs/modulejs"><img src="http://ci.testling.com/modulejs/modulejs.png" alt="browser support"></a></p>
 
-<h3>Guide</h3>
+<h2>Guide</h2>
 
 <p><a href="http://modulejs.github.com/guide">http://modulejs.github.com/guide</a></p>
 
-<h3>API</h3>
+<h2>API</h2>
 
 <p><a href="http://modulejs.github.com/doc">http://modulejs.github.com/doc</a></p>
 
-<h3>Links</h3>
+<h2>Links</h2>
 
 <ul>
 <li><a href="http://groups.google.com/group/modulejs">Google Group for discussion</a></li>
 <li><a href="https://github.com/modulejs/modulejs/wiki">Visit the Wiki</a></li>
-</ul><h3>Changelog</h3>
+</ul><h2>Changelog</h2>
 
-<h4>2012-12-12 2.0.0 dev</h4>
+<h4>2013-4-20 2.1 alpha</h4>
+
+<ol>
+<li>firebuglite</li>
+<li>fpsmeter</li>
+</ol><h4>2013-3-20 2.1 dev</h4>
+
+<ol>
+<li>base Object Class</li>
+<li>EventEmitter</li>
+</ol><h4>2012-12-12 2.0 dev</h4>
 
 <ol>
 <li>modulejs2.0 in dev</li>
 <li>modulejs2.0 in modulejs-1.0 branch</li>
-</ol><h4>2012-09-26 0.1.2 release</h4>
+</ol><h4>2012-09-26 1.2 release</h4>
 
 <ol>
 <li>remove sizzle module</li>
 <li>fix Node.text bug</li>
-</ol><h4>2012-08-11 0.1.4  release</h4>
+</ol><h4>2012-08-11 1.1 release</h4>
 
 <ol>
 <li>remove graph module</li>
 <li>all module AMD support</li>
 <li>add net/JSONPI module</li>
 <li>storage/LocalStorage module support IE6-7</li>
-</ol><h4>2011-09-01 0.1.0 release</h4>
+</ol><h4>2011-09-01 1.0 release</h4>
 
-<h3>License</h3>
+<h2>License</h2>
 
 <p>(The MIT License)</p>
 
-<p>Copyright (c) 2010-2011 yuanyan <a href="mailto:yuanyan.cao@gmail.com">yuanyan.cao@gmail.com</a></p>
-
-<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
-
-<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
-
-<p>THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
-        </section>
-
-        <footer>
-          Modulejs is maintained by <a href="https://github.com/modulejs">modulejs</a><br>
-          This page was generated by <a href="http://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="http://twitter.com/jasonlong">Jason Long</a>.
-        </footer>
-
-        
+<p>Copyright (c) 2010-2013 yuanyan <a href="mailto:yuanyan.cao@gmail.com">yuanyan.cao@gmail.com</a></p>
+        </article>
       </div>
     </div>
-  </body>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/modulejs" class="avatar"><img src="https://secure.gravatar.com/avatar/cd822c0bacb048f5e2d66dce1fe78a73?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="48" height="48"/></a> <a href="https://github.com/modulejs">modulejs</a> maintains <a href="https://github.com/modulejs/modulejs">Modulejs</a></p>
+
+
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br/>theme by <a href="http://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/modulejs/modulejs/tarball/master" class="tar">tar</a><a href="https://github.com/modulejs/modulejs/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+  
+</body>
 </html>
