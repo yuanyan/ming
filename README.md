@@ -16,7 +16,6 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto an
 ## Module Loader Support
 * requirejs - AMD   (default)
 * seajs - CMD       (optional)
-* curljs - CommonJS (optional)
 
 ## Modules
 #### Language Modules
@@ -79,6 +78,13 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto an
 
 ## Browsers
 [![browser support](http://ci.testling.com/modulejs/modulejs.png)](http://ci.testling.com/modulejs/modulejs)
+
+## Examples
+* [Contacts](https://github.com/modulejs/modulejs/tree/master/example/contacts)
+* [Fpsmeter](https://github.com/modulejs/modulejs/tree/master/example/fpsmeter)
+* [Slideshow](https://github.com/modulejs/modulejs/tree/master/example/slideshow)
+* [TODO APP](https://github.com/modulejs/modulejs/tree/master/example/todo)
+* [Waterfall](https://github.com/modulejs/modulejs/tree/master/example/waterfall)
 
 ## Guide
 

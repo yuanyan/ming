@@ -39,26 +39,26 @@ The link API allows you to very quickly and easily link fields of a form to an o
 <pre>
 &lt;script>
 $().ready(function() {
-	var person = {};
-	$("form").link(person);
+    var person = {};
+    $("form").link(person);
 
-	$("[name=name]").val("NewValue"); // Set firstName to a value.
-	alert(person.name); // NewValue
+    $("[name=name]").val("NewValue"); // Set firstName to a value.
+    alert(person.name); // NewValue
 
-	$(person).setField("name", "NewValue");
-	alert($("[name=name]").val()); // NewValue
+    $(person).setField("name", "NewValue");
+    alert($("[name=name]").val()); // NewValue
 
-	// ... user changes value ...
-	$("form").change(function() {
-		// &lt;user typed value&gt;
-		alert(person.name);
-	});
+    // ... user changes value ...
+    $("form").change(function() {
+        // &lt;user typed value&gt;
+        alert(person.name);
+    });
 });
 &lt;/script>
 
 &lt;form name="person">
-	&lt;label for="name">Name:&lt;/label>
-	&lt;input type="text" name="name" id="name" />
+    &lt;label for="name">Name:&lt;/label>
+    &lt;input type="text" name="name" id="name" />
 &lt;/form>
 </pre>
 
@@ -73,8 +73,8 @@ It is not always that case that the field of an object and the name of a form in
 <pre>
 var person = {};
 $("form").link(person, {
-	firstName: "first-name",
-	lastName: "last-name",
+    firstName: "first-name",
+    lastName: "last-name",
 });
 </pre>
 <p>
@@ -94,32 +94,32 @@ The plugin comes with one converter named "!" which negates the value.
 <pre>
 &lt;script>
 $().ready(function() {
-	var person = {};
+    var person = {};
 
-	$.convertFn.round = function(value) {
-		return Math.round( parseFloat( value ) );
-	}
+    $.convertFn.round = function(value) {
+        return Math.round( parseFloat( value ) );
+    }
 
-	$("#age").link(person, {
-		age: {
-			convert: "round"
-		}
-	});
+    $("#age").link(person, {
+        age: {
+            convert: "round"
+        }
+    });
 
-	/* Once the user enters their age, the change event will fire which, in turn, will
-	 * cause the round function to be called. This will then round the age up or down,
-	 * set the rounded value on the object which will then cause the input field to be
-	 * updated with the new value.
-	 */
-	$("#age").change(function() {
-		alert(person.age);
-	});
+    /* Once the user enters their age, the change event will fire which, in turn, will
+     * cause the round function to be called. This will then round the age up or down,
+     * set the rounded value on the object which will then cause the input field to be
+     * updated with the new value.
+     */
+    $("#age").change(function() {
+        alert(person.age);
+    });
 });
 &lt;/script>
 
 &lt;form name="person">
-	&lt;label for="age">Age:&lt;/label>
-	&lt;input type="text" name="age" id="age" />
+    &lt;label for="age">Age:&lt;/label>
+    &lt;input type="text" name="age" id="age" />
 &lt;/form>
 </pre>
 
@@ -130,11 +130,11 @@ It is convenient to reuse converters by naming them this way. But you may also s
 <pre>
 var person = {};
 $("#age").link(person, {
-	age: {
-		convert: function(value) {
-			return Math.round( Math.parseFloat( value ) );
-		}
-	}
+    age: {
+        convert: function(value) {
+            return Math.round( Math.parseFloat( value ) );
+        }
+    }
 });
 
 $("#name").val("7.5");
@@ -147,13 +147,13 @@ Converter functions receive the value that came from the source, the source obje
 <pre>
 var person = {};
 $("#age").link(person, {
-	age: {
-		convert: function(value, source, target) {
-			var age = Math.round( Math.parseFloat( value ) );
-			target.age = age;
-			target.canVote = age >= 18;
-		}
-	}
+    age: {
+        convert: function(value, source, target) {
+            var age = Math.round( Math.parseFloat( value ) );
+            target.age = age;
+            target.canVote = age >= 18;
+        }
+    }
 });
 $("#name").val("7.5");
 alert(person.age); // 8
@@ -170,11 +170,11 @@ Converters can also be specified for the reverse process of updating the source 
 <pre>
 var product = { };
 $("#rank").link(product, {
-	salesRank: {
-		convertBack: function(value, source, target) {
-			$(target).height(value * 2);
-		}
-	}
+    salesRank: {
+        convertBack: function(value, source, target) {
+            $(target).height(value * 2);
+        }
+    }
 });
 $(product).setField("salesRank", 12);
 alert($("#rank").height()); // 24
@@ -191,17 +191,17 @@ Sometimes it is desired that the target of a link reflect the source value immed
 
 <pre>
 $(source)
-	.link(target)
-	.trigger("change");
+    .link(target)
+    .trigger("change");
 
 alert(target.input1); // value
 
 // or in reverse
 $(source)
-	.link(target);
+    .link(target);
 
 $(target)
-	.trigger("changeField");
+    .trigger("changeField");
 
 alert($("[name=age]").val()); // target.age
 </pre>
@@ -213,8 +213,8 @@ This removes a link previously established with link.
 
 <pre>
 $(source)
-	.link(target) // create link
-	.unlink(target); // cancel link
+    .link(target) // create link
+    .unlink(target); // cancel link
 </pre>
 
 <strong>Automatic unlinking</strong><br/>
@@ -225,7 +225,7 @@ Links are cleaned up when its target or source is a DOM element that is being de
 
 <pre>
 $("#input1").link("#span1", {
-	text: "input1"
+    text: "input1"
 });
 $("#span1").parent().html("");
 </pre>
