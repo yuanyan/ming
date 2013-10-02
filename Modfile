@@ -7,23 +7,23 @@ module.exports = {
 
     tasks:{
         rm:{
-            target:'dist'
+            dest: "dist"
         },
         mkdir:{
-            target:'dist'
+            dest: "dist"
         },
         compile:{
-            source:"module.js",
-            dest:"./dist/module.js",
-            exclude:"jquery",
-            baseUrl:"./src"
+            src: "ming.js",
+            dest: "./dist/ming.js",
+            exclude: "jquery",
+            baseUrl: "./src"
         },
         watch:{
-            source:"./src/**/*.js",
-            tasks:"rm mkdir compile"
+            src: "./src/**/*.js",
+            tasks: "rm mkdir compile"
         }
     },
     targets:{
-        dist:"rm mkdir compile"
+        dist: "rm mkdir compile"
     }
 };

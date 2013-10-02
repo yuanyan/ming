@@ -1,10 +1,10 @@
-# Modulejs (2.1 alpha)
+# ming (3.0 alpha)
 
-Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto and micro modules you need for modern desktop/mobile web application development.
+Ming is a high-productivity JavaScript solution that integrates jQuery/Zepto and micro modules you need for modern desktop/mobile web application development.
 
 [![Selenium Test Status](https://saucelabs.com/buildstatus/modulejs)](https://saucelabs.com/u/modulejs)
 
-[![Build Status](https://secure.travis-ci.org/modulejs/modulejs.png)](https://travis-ci.org/modulejs/modulejs)
+[![Build Status](https://secure.travis-ci.org/modulejs/ming.png)](https://travis-ci.org/modulejs/ming)
 
 ## Solution Features
 * Improve programming experience
@@ -33,7 +33,7 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto an
 
 #### Storage Modules
 * storage - marcuswestin/store.js@1.3.5
-* cookie - carhartl/jquery-cookie@1.3
+* cookie - carhartl/jquery-cookie@1.3.1
 
 #### UI Modules
 * history - Backbone.History
@@ -77,31 +77,35 @@ Modulejs a high-productivity JavaScript solution that integrates jQuery/Zepto an
 * console-shim (optional)
 
 ## Browsers
-[![browser support](http://ci.testling.com/modulejs/modulejs.png)](http://ci.testling.com/modulejs/modulejs)
+[![browser support](http://ci.testling.com/modulejs/ming.png)](http://ci.testling.com/modulejs/ming)
 
 ## Examples
-* [Contacts](https://github.com/modulejs/modulejs/tree/master/example/contacts)
-* [Fpsmeter](https://github.com/modulejs/modulejs/tree/master/example/fpsmeter)
-* [Slideshow](https://github.com/modulejs/modulejs/tree/master/example/slideshow)
-* [TODO APP](https://github.com/modulejs/modulejs/tree/master/example/todo)
-* [Waterfall](https://github.com/modulejs/modulejs/tree/master/example/waterfall)
+* [Contacts](https://github.com/modulejs/ming/tree/master/example/contacts)
+* [Fpsmeter](https://github.com/modulejs/ming/tree/master/example/fpsmeter)
+* [Slideshow](https://github.com/modulejs/ming/tree/master/example/slideshow)
+* [TODO APP](https://github.com/modulejs/ming/tree/master/example/todo)
+* [Waterfall](https://github.com/modulejs/ming/tree/master/example/waterfall)
 
 ## Guide
 
-http://modulejs.github.com/guide
+http://modulejs.github.com/ming/guide
 
 ## API
 
-http://modulejs.github.com/doc
+http://modulejs.github.com/ming/api
 
 ## Links
 * [Google Group for discussion](http://groups.google.com/group/modulejs)
-* [Visit the Wiki](https://github.com/modulejs/modulejs/wiki)
+* [Visit the Wiki](https://github.com/modulejs/ming/wiki)
 
 ## Changelog
+
+#### 2013-10-1 3.0 alpha
+1. rename modulejs to ming
+
 #### 2013-4-20 2.1 alpha
 1. firebuglite
-1. fpsmeter
+2. fpsmeter
 
 #### 2013-3-20 2.1 dev
 1. base Object Class

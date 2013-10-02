@@ -1,6 +1,6 @@
 {
-    "name": "ModuleJS",
-    "title": "ModuleJS - modular javascript solution with jQuery",
+    "name": "ming",
+    "title": "Ming - modular javascript solution with jQuery",
     "description": "modular javascript solution with jQuery",
     "keywords": [
         "class",
@@ -40,14 +40,14 @@
     "licenses": [
         {
             "type": "MIT",
-            "url": "https://github.com/modulejs/modulejs/MIT-LICENSE.txt"
+            "url": "https://github.com/modulejs/ming/MIT-LICENSE.txt"
         }
     ],
-    "bugs": "https://github.com/modulejs/modulejs/issues",
-    "homepage": "https://modulejs.github.com/modulejs",
-    "docs": "https://modulejs.github.com/modulejs",
-    "download": "https://modulejs.github.com/modulejs",
+    "bugs": "https://github.com/modulejs/ming/issues",
+    "homepage": "https://modulejs.github.com/ming",
+    "docs": "https://modulejs.github.com/ming",
+    "download": "https://github.com/modulejs/ming",
     "dependencies": {
-        "jquery": ">=1.5"
+        "jquery": ">=1.8"
     }
 }
