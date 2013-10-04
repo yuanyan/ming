@@ -1,4 +1,4 @@
-# ming (3.0 alpha)
+# ming (3.0 dev)
 
 Ming is a high-productivity JavaScript solution that integrates jQuery/Zepto and micro modules you need for modern desktop/mobile web application development.
 
@@ -76,7 +76,7 @@ Ming is a high-productivity JavaScript solution that integrates jQuery/Zepto and
 * console-shim (optional)
 
 ## Browsers
-[![browser support](http://ci.testling.com/modulejs/ming.png)](http://ci.testling.com/modulejs/ming)
+[![Selenium Test Status](https://saucelabs.com/browser-matrix/modulejs.svg)](https://saucelabs.com/u/modulejs)
 
 ## Examples
 * [Contacts](https://github.com/modulejs/ming/tree/master/example/contacts)
@@ -92,7 +92,7 @@ Ming is a high-productivity JavaScript solution that integrates jQuery/Zepto and
 
 ## Changelog
 
-#### 2013-10-1 3.0 alpha
+#### 2013-10-1 3.0 dev
 1. rename modulejs to ming
 
 #### 2013-4-20 2.1 alpha
