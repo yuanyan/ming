@@ -72,5 +72,3 @@
         alert(JSON.stringify(args));
     }
 })();
-
-

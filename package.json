@@ -1,6 +1,6 @@
 {
     "name": "ming",
-    "version": "3.0.0",
+    "version": "3.0.0-dev",
     "description": "modular javascript solution with jQuery",
     "homepage": "modulejs.github.com/ming",
     "author": "yuanyan.cao@gmail.com",
@@ -22,26 +22,7 @@
         "sum-component": "*",
         "term-canvas": "*"
     },
-
     "scripts": {
-        "test": "node ./test/runner/webdriver.js"
-    },
-
-    "testling": {
-        "browsers": {
-            "ie": [6, 7, 8, 9, 10 ],
-            "chrome": [ 22 ],
-            "firefox": [ 15 ],
-            "safari": [ 5.1 ],
-            "opera": [12]
-        },
-        "harness" : "mocha",
-        "files": "test/spec/*.js"
-    },
-    "webDependencies": {
-        "jquery" : "https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.js",
-        "requirejs" : "https://raw.github.com/jrburke/requirejs/master/require.js",
-        "seajs" : "https://raw.github.com/seajs/seajs/master/dist/sea.js",
-        "underscore" : "documentcloud/underscore"
+        "test": "node ./test/runner/webdriver.js --debug"
     }
 }

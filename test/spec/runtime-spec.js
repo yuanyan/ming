@@ -70,14 +70,16 @@ describe("runtime module", function() {
     })
 
     it('obs many event', function(done){
-
-        person.many('walking', 3, function(){
-           done()
+        var steps = 0;
+        person.many('walking', 3, function(step){
+            if((steps+=step) === 6){
+                done()
+            };
         });
 
-        person.emit('walking', 9)
-        person.emit('walking', 19)
-        person.emit('walking', 29)
+        person.emit('walking', 1)
+        person.emit('walking', 2)
+        person.emit('walking', 3)
     })
 
 

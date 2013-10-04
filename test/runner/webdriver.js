@@ -1,6 +1,4 @@
 var Cloud = require('./mocha-cloud');
-var GridView = require('./mocha-cloud-grid-view');
-var Canvas = require('term-canvas');
 
 var DEBUG = false;
 for (var i = 0, args = process.argv.slice(2); i < args.length; i += 1) {
@@ -105,7 +103,7 @@ allDesired.forEach(function(desired){
 });
 
 cloud.tags =  ["3.0-dev"];
-cloud.name = "Ming";
+cloud.name = "ming";
 cloud.build = 'master';
 cloud.url = 'http://rawgithub.com/modulejs/ming/master/test/index.html';
 
@@ -118,11 +116,12 @@ cloud.on('start', function(browser){
 });
 
 cloud.on('end', function(browser, res){
-
     debug('  end : %s %s : %d failures', browser.browserName, browser.version, res.failures);
 });
 
 if(!DEBUG){
+    var GridView = require('./mocha-cloud-grid-view');
+    var Canvas = require('term-canvas');
     // setup
     var size = process.stdout.getWindowSize();
     var canvas = new Canvas(size[0], size[1]);
@@ -137,7 +136,6 @@ if(!DEBUG){
         });
     });
 }
-
 
 // output failure messages
 // once complete, and exit > 0
