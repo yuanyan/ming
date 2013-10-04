@@ -1,3 +1,8 @@
 language: node_js
 node_js:
   - 0.8
+
+addons:
+  sauce_connect:
+    username: "modulejs"
+    access_key: "01acc19e-ac09-4594-b2fa-ea69690df91e"

@@ -9,8 +9,6 @@
     transform: rotate(-45deg);
 }
 
-
-
 .items li {
     position: fixed;
     z-index: 0;

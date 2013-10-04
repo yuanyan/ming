@@ -1,6 +1,6 @@
 var expect = require('../lib/expect');
 require('../../lib/jquery/jquery');
-require('../../dist/module');
+require('../../dist/ming');
 
 describe("Class module", function() {
 
