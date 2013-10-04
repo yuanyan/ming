@@ -1,7 +1,3 @@
-var expect = require('../lib/expect');
-require('../../lib/jquery/jquery');
-require('../../dist/ming');
-
 describe("url module", function() {
 
     it("parse a url with all part", function(){

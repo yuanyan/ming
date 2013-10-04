@@ -1,7 +1,3 @@
-var expect = require('../lib/expect');
-require('../../lib/jquery/jquery');
-require('../../dist/ming');
-
 describe("eventemitter module", function() {
     var EventEmitter = $.EventEmitter;
     it("binds by wildcard", function(done){

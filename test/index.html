@@ -28,17 +28,6 @@
 <!-- include source files here... -->
 <script src="../dist/ming.js"></script>
 
-<!-- hack for testling-ci( http://ci.testling.com/) -->
-<script>
-    function require(mod){
-        if(mod == "../lib/expect"){
-            return expect
-        }
-        else if(mod == "../../dist/ming"){
-            return $
-        }
-    }
-</script>
 <!-- include spec files here... -->
 <script src="spec/class-spec.js"></script>
 <script src="spec/url-spec.js"></script>
@@ -46,7 +35,6 @@
 <script src="spec/eventemitter-spec.js"></script>
 <!--<script src="spec/jquery-inspect-spec.js"></script>-->
 <!--<script src="spec/chai-jquery-spec.js"></script>-->
-
 
 <!-- trigger the mocha runner -->
 <script src="runner/mocha.js"></script>
