@@ -61,7 +61,6 @@ Ming is a high-productivity JavaScript solution that integrates jQuery/Zepto and
 * prefetch
 * url
 
-
 ## Widgets
 * carousel - bootstrap/carousel@2.3.0
 * placeholder - mathiasbynens/jquery-placeholder@2.0.7
@@ -86,17 +85,10 @@ Ming is a high-productivity JavaScript solution that integrates jQuery/Zepto and
 * [TODO APP](https://github.com/modulejs/ming/tree/master/example/todo)
 * [Waterfall](https://github.com/modulejs/ming/tree/master/example/waterfall)
 
-## Guide
-
-http://modulejs.github.com/ming/guide
-
-## API
-
-http://modulejs.github.com/ming/api
-
 ## Links
-* [Google Group for discussion](http://groups.google.com/group/modulejs)
-* [Visit the Wiki](https://github.com/modulejs/ming/wiki)
+* [Google Group](http://groups.google.com/group/modulejs)
+* [Wiki](https://github.com/modulejs/ming/wiki)
+* [Test Case](https://rawgithub.com/modulejs/ming/master/test/index.html)
 
 ## Changelog
 
