@@ -10,35 +10,57 @@
 
     /**
      *
-     * @param items array
+     * @param views object
      * @constructor
      */
-    var Card = function(items){
-
-        $.each(items, function(index, item){
-
-            if(index === 0)
-                // only display the top item when display by card style
-                this.setActiveItem(item);
-            else
-                item.hide()
-        })
+    var Card = function(views){
+        // views map is safe, array is also support but may index
+        this.add(views);
     };
 
     Card.prototype = {
 
         layout: 'card',
 
-        getActiveItem : function(){
-            return this._activeItem;
+        views: {},
+
+        // add('name', view)
+        // add({'name': view})
+        add: function(name, views){
+            var self = this;
+            if(views){
+                self.views[name] = views;
+            }else {
+                $.each(views, function(index, view){
+                    if(!self.activeView)
+                        // default display the top item when display by card style
+                        this.setActiveView(view);
+                    else
+                        view.hide();
+
+                    self.views[index] = view;
+                })
+            }
         },
 
-        setActiveItem: function(target){
+        getView: function(name){
+            return this.views[name];
+        },
 
-            if (target) {
-                this._activeItem && this._activeItem.hide();
-                this._activeItem = $(target);
-                this._activeItem.show();
+        getActiveView : function(){
+            return this.activeView;
+        },
+
+        setActiveView: function(view){
+            if(typeof view === 'string'){
+                 view = this.getView(view);
+            }
+
+            if (view !== this.activeView) {
+                // active view maybe null when init active view
+                this.activeView && this.activeView.hide();
+                this.activeView = view;
+                this.activeView.show();
             }
         }
 
